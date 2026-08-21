@@ -37,7 +37,7 @@ h3-prompt-writing   video-to-h3-prompt   h3-prompt-journal
 
 生成器是本研究基于上游经验与官方结构做的参数化重组，不是上游 Prompt 原文。它只在浏览器本地处理文本，不上传素材，也不调用 MiniMax H3。使用时仍需在 H3 中按 `Picture 1/2/3` 顺序上传对应参考图，并根据实际模型结果迭代。
 
-页面另提供 CASE 006 的第一套真实前置信息：Codex 生成的原创透明贴纸 PNG、固定中英 Prompt、`MiniMax-H3 / Reference-to-Video / 10s / 768P / 16:9` 参数，以及可选 API 运行器。最终视频由使用者在外部 H3 调度；在 MP4 返回前，页面明确显示“等待外部生成”，不把输入包冒充成实测结果。
+页面另提供 CASE 001–005 的五套真实前置信息：Codex 内置 ImageGen 生成的 11 张原创参考图、与上方默认模板完全一致的动态双语 Prompt、`MiniMax-H3 / Ref2VA / 12–15s / 768P` 参数，以及逐套原生立体声方案。最终视频由使用者在外部 H3 调度；在 MP4 返回前，页面明确显示“等待外部生成”，不把输入包冒充成实测结果。完整素材说明见 [`real-samples/`](real-samples/README.md)。
 
 ## 来源
 
