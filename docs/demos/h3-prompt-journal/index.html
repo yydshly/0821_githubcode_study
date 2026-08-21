@@ -3,9 +3,9 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="description" content="H3 Prompt Journal 能力分析、案例拆解与提示词结构演示。" />
+    <meta name="description" content="H3 Prompt Journal 六案例真实测试结项：仓库价值、失败边界、后期使用建议与归档演示。" />
     <meta name="color-scheme" content="light dark" />
-    <title>H3 Prompt Journal · 能力研究实验台</title>
+    <title>H3 Prompt Journal · 阶段性结项档案</title>
     <link rel="stylesheet" href="./styles.css" />
     <script src="./app.js" defer></script>
   </head>
@@ -18,11 +18,11 @@
         <span>GitHub 能力研究实验室</span>
       </a>
       <nav aria-label="页面导航">
+        <a href="#archive-summary">结论</a>
         <a href="#capabilities">能力</a>
-        <a href="#lab">实验台</a>
-        <a href="#real-sample">样例</a>
-        <a href="#scenarios">场景</a>
-        <a href="#roadmap">扩展</a>
+        <a href="#real-sample">实测</a>
+        <a href="#lab">历史实验台</a>
+        <a href="#roadmap">复研条件</a>
       </nav>
       <button class="theme-toggle" id="theme-toggle" type="button" aria-label="切换深色主题" aria-pressed="false">
         <span aria-hidden="true">◐</span>
@@ -33,12 +33,12 @@
     <main id="main">
       <section class="hero" aria-labelledby="hero-title">
         <div class="hero-copy">
-          <p class="eyebrow">CASE STUDY / MINIMAX H3 / 2026.08.21</p>
-          <h1 id="hero-title">提示词不是咒语，<br />是对视频<em>物理</em>的编排。</h1>
-          <p class="lede">我们拆解了 6 个 H3 生成案例，寻找它们如何把“连贯、快速、自然、好笑”这些模糊要求，转换成模型能够执行的参考职责、时间规则和运动逻辑。</p>
+          <p class="eyebrow">ARCHIVED RESEARCH / 6 REAL OUTPUTS / 2026.08.21</p>
+          <h1 id="hero-title">六次实测之后，<br />模板不该被<em>直接复制</em>。</h1>
+          <p class="lede">这个仓库的价值不是提供六份稳定成片配方，而是保存六种失败模式及其控制思路。复杂样例直接套用完整模板普遍出现问题；后期应把它作为策略词典，由 AI 围绕具体素材和唯一目标删减、消冲突、再重写。</p>
           <div class="hero-actions">
-            <a class="button primary" href="#lab">进入提示词实验台</a>
-            <a class="button quiet" href="https://github.com/LoveRain1997/h3-prompt-journal/tree/0c7b4882dad8a302c304fe9be40f0b8b1b098b26" target="_blank" rel="noreferrer">查看上游快照 ↗</a>
+            <a class="button primary" href="#archive-summary">先看结项结论</a>
+            <a class="button quiet" href="#real-sample">查看六次真实输出</a>
           </div>
         </div>
 
@@ -48,11 +48,12 @@
             <div><dt>真实形态</dt><dd>经验案例库</dd></div>
             <div><dt>不是</dt><dd>自动生成器</dd></div>
             <div><dt>案例数量</dt><dd>06</dd></div>
+            <div><dt>研究状态</dt><dd>阶段归档</dd></div>
             <div><dt>可执行代码</dt><dd>00</dd></div>
             <div><dt>许可证</dt><dd>MIT</dd></div>
             <div><dt>研究快照</dt><dd><code>0c7b488</code></dd></div>
           </dl>
-          <p>价值在于保存“失败 → 策略 → 最终 Prompt”的设计推理；自动反推能力位于配套的 <a href="https://github.com/LoveRain1997/video-to-h3-prompt" target="_blank" rel="noreferrer">video-to-h3-prompt</a>。</p>
+          <p>本轮完成的是一次全案例覆盖性测试，不是统计成功率基准。完整推理、停止条件与复研门槛已写入 <a href="https://github.com/yydshly/0821_githubcode_study/blob/main/projects/h3-prompt-journal/ARCHIVE.md" target="_blank" rel="noreferrer">结项档案 ↗</a>。</p>
         </aside>
       </section>
 
@@ -63,6 +64,65 @@
         <p>突破策略与结果描述，尚无重复率或 A/B 数据。</p>
         <span class="evidence-label inference">研究推断</span>
         <p>网页中的能力模型与扩展优先级。</p>
+      </section>
+
+      <section class="section archive-summary" id="archive-summary" aria-labelledby="archive-title">
+        <header class="section-heading archive-heading">
+          <div>
+            <p class="section-number">00 / FINAL VERDICT · STAGE ARCHIVED</p>
+            <h2 id="archive-title">研究问题已经回答。</h2>
+          </div>
+          <p>六种策略各完成一次真实外部生成、输入输出对照、画面与声音检查。结论足以指导是否使用，但不代表多次复跑后的稳定成功率。</p>
+        </header>
+
+        <div class="archive-verdict">
+          <article class="verdict-lead">
+            <span>最终定位</span>
+            <p>把它当成<strong>失败诊断手册与策略词典</strong>，不要当成“填写字段即可稳定生产”的模板库。</p>
+          </article>
+          <dl class="archive-metrics">
+            <div><dt>真实外部输出</dt><dd>6 / 6</dd></div>
+            <div><dt>可直接判为完全成功</dt><dd>0</dd></div>
+            <div><dt>本轮最佳总体效果</dt><dd>CASE 006</dd></div>
+            <div><dt>V2 修复稿待验证</dt><dd>2</dd></div>
+          </dl>
+        </div>
+
+        <div class="case-score-grid" aria-label="六次真实测试总评">
+          <article><span class="score-id">001</span><span class="score-state partial">部分通过</span><h3>身份保留，遮挡长镜头未完成</h3><p>15 秒内三次环绕与两次交接过载，空间路径和遮挡量化不足。</p></article>
+          <article><span class="score-id">002</span><span class="score-state failed">测试失效</span><h3>双脚全程不可见</h3><p>“全身动作”与“腰上近距镜头”直接冲突，3:1 比例根本无法观察。</p></article>
+          <article><span class="score-id">003</span><span class="score-state failed">观感失败</span><h3>结构执行，审美目标变差</h3><p>身份与姿态顺序保持，但微型飞行退化为人体扫描和长时间定格。</p></article>
+          <article><span class="score-id">004</span><span class="score-state partial">粗粒度通过</span><h3>参考分工有效，装备物理失败</h3><p>人物、帆板与摄影风格进入成片，手—杆—板接触关系仍不稳定。</p></article>
+          <article><span class="score-id">005</span><span class="score-state failed">因果失败</span><h3>节点出现，不等于故事成立</h3><p>对白和多数节点可见，但机关启动到落水的连续因果链断裂。</p></article>
+          <article class="best"><span class="score-id">006</span><span class="score-state best-state">本轮最佳</span><h3>贴纸效果最完整，仍有小偏差</h3><p>单主体、单参考职责和短因果链更匹配模型；盐罐盖子仍违反约束。</p></article>
+        </div>
+
+        <div class="archive-guidance">
+          <article>
+            <span>后期推荐流程</span>
+            <ol>
+              <li>先用一句话锁定唯一核心结果。</li>
+              <li>只抽取相关的 1–3 个控制原语。</li>
+              <li>让 AI 按具体素材轻量改写，不继承完整模板。</li>
+              <li>检查可观察性、时长密度和语义冲突。</li>
+              <li>外部生成后保留原始输入、Prompt 与失败证据。</li>
+            </ol>
+          </article>
+          <article>
+            <span>它为后期留下什么</span>
+            <ul>
+              <li>一套可按症状查找的生成失败模式词典。</li>
+              <li>参考职责、物理路径、时间比例、锁定 / 放权等控制原语。</li>
+              <li>输入与输出并列、失败结果不覆盖、修复稿先标待验证的研究规范。</li>
+              <li>判断生成式 AI 仓库是否值得产品化的证据门槛。</li>
+            </ul>
+          </article>
+        </div>
+
+        <aside class="archive-stop">
+          <div><span>为什么现在停止</span><strong>继续增加不同题材的单次样例，只会重复模型方差，不能增强结论。</strong></div>
+          <a class="button quiet" href="https://github.com/yydshly/0821_githubcode_study/blob/main/projects/h3-prompt-journal/ARCHIVE.md" target="_blank" rel="noreferrer">阅读完整结项档案 ↗</a>
+        </aside>
       </section>
 
       <section class="section capabilities" id="capabilities" aria-labelledby="capability-title">
@@ -110,9 +170,9 @@
         <header class="section-heading lab-heading">
           <div>
             <p class="section-number">02 / INTERACTIVE LAB</p>
-            <h2 id="lab-title">从失败模式，组装控制策略。</h2>
+            <h2 id="lab-title">历史策略实验台。</h2>
           </div>
-          <p>选择一种经过案例验证的控制策略，再把你的主体、场景与素材职责填进去。工作台会生成完整结构，但不会调用 H3 或上传素材。</p>
+          <p>保留用于理解六种控制结构和复盘当时的 V1。它不会调用 H3 或上传素材，也不再作为“可直接复制”的生产默认值。</p>
         </header>
 
         <div class="lab-shell">
@@ -191,8 +251,8 @@
               </div>
 
               <div class="designer-notice">
-                <strong>怎么用</strong>
-                <p>左侧选择策略 → 先用中文理解 → 分别调整中英字段 → 保留必要约束 → 复制对应版本。两份内容独立保存在浏览器本次会话中，不会上传素材。</p>
+                <strong>归档提示</strong>
+                <p>这里生成的是历史 V1 结构稿。后期应先确定唯一目标，再让 AI 只抽取相关策略、删除无关检查项并消除镜头与动作冲突；不要把六段式完整当作质量保证。</p>
               </div>
 
               <div class="language-switch" role="group" aria-label="编辑与预览语言">
@@ -809,15 +869,15 @@
         <header class="section-heading">
           <div>
             <p class="section-number">07 / EXTENSION ROADMAP</p>
-            <h2 id="roadmap-title">从经验日志，到可验证系统。</h2>
+            <h2 id="roadmap-title">什么情况下值得重启？</h2>
           </div>
-          <p>扩展重点不是继续堆更多长 Prompt，而是先把经验变成结构化数据，再建立生成与评估闭环。</p>
+          <p>当前不继续堆题材。只有新的模型版本、重复生成能力、严格 A/B 对照或自动评估工具到位，复研才会增加证据强度。</p>
         </header>
         <ol class="roadmap-list">
-          <li><span>P0</span><div><h3>实验可复现</h3><p>记录模型版本、模式、分辨率、时长、种子、成本、失败样本与重复成功率。</p></div><small>现在最值得做</small></li>
-          <li><span>P1</span><div><h3>参数化策略模块</h3><p>统一参考职责、时间线、锁定项、自由项、物理逻辑、负面约束与音频 schema。</p></div><small>从复制走向组合</small></li>
-          <li><span>P2</span><div><h3>自动评估与回归</h3><p>抽帧、镜头边界、身份一致性、时间锚点和媒介漂移检测，形成版本回归报告。</p></div><small>从经验走向证据</small></li>
-          <li><span>P3</span><div><h3>生产工作台</h3><p>把需求、策略选择、反推、生成、结果评估和迭代谱系连接起来；真实 API 留在独立后端。</p></div><small>从仓库走向产品</small></li>
+          <li><span>R1</span><div><h3>模型发生显著变化</h3><p>MiniMax H3 或参考视频模式升级，旧结论可能失效，需要运行固定回归案例。</p></div><small>版本触发</small></li>
+          <li><span>R2</span><div><h3>能够重复生成</h3><p>相同输入和参数至少复跑多次，开始计算成功次数与模型方差。</p></div><small>证据触发</small></li>
+          <li><span>R3</span><div><h3>能够严格 A/B</h3><p>用同一素材比较自由提示词、轻量定制稿与完整模板，而不是比较不同题材。</p></div><small>方法触发</small></li>
+          <li><span>R4</span><div><h3>评估工具到位</h3><p>具备抽帧、镜头边界、身份一致性和动作计数等可重复指标，再考虑产品化。</p></div><small>能力触发</small></li>
         </ol>
       </section>
 
@@ -837,7 +897,7 @@
 
     <footer>
       <a href="../../">← 返回研究展厅</a>
-      <p>Research 001 · H3 Prompt Journal</p>
+      <p>Research 001 · Archived 2026.08.21</p>
       <p>Observe · Reproduce · Explain</p>
     </footer>
 

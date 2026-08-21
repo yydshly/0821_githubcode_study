@@ -6,7 +6,7 @@
 
 | 字段 | 内容 |
 | --- | --- |
-| 状态 | `validated` |
+| 状态 | `archived`（阶段性结项，2026-08-21） |
 | 研究日期 | 2026-08-21 |
 | 上游许可证 | MIT |
 | 上游形态 | 6 个案例的 Markdown 经验日志，包含提示词与部分媒体资产 |
@@ -16,6 +16,8 @@
 ## 一句话结论
 
 这个仓库不是自动提示词生成器，而是一套以失败模式为入口的 **H3 提示词工程案例库**。它最有价值的能力，是把“更快、更连贯、更像真人、更有喜剧感”等模糊意图，改写成参考图职责、物理路径、时间锚点、数字比例、负面约束以及明确的模型自由度。
+
+六个案例各完成一次外部真实生成后，本研究的阶段性结论是：这些方法适合作为诊断清单与策略词典，不适合作为不经改写的生产模板。复杂案例直接套用完整模板普遍出现任务过载、目标错配、不可观察或物理失败；CASE 006 贴纸效果总体最好，但仍有道具偏差。完整结项判断见 [`ARCHIVE.md`](ARCHIVE.md)。
 
 真正承担“视频反推 H3 提示词”自动化工作的，是作者同时链接的 [`video-to-h3-prompt`](https://github.com/LoveRain1997/video-to-h3-prompt)；官方 [`h3-prompt-writing`](https://github.com/MiniMax-AI/MiniMax-H3/tree/main/skills/h3-prompt-writing) 则提供模式与字段结构。三者更像：
 
@@ -27,6 +29,7 @@ h3-prompt-writing   video-to-h3-prompt   h3-prompt-journal
 ## 本研究交付
 
 - [`ANALYSIS.md`](ANALYSIS.md)：能力模型、六案例对照、证据边界、场景与扩展路线。
+- [`ARCHIVE.md`](ARCHIVE.md)：阶段性结论、仓库价值、后期使用建议、停止条件与复研门槛。
 - [`DESIGN.md`](DESIGN.md)：网页设计契约与验收覆盖清单。
 - [`VALIDATION.md`](VALIDATION.md)：静态检查和浏览器验收记录。
 - [`docs/demos/h3-prompt-journal/`](../../docs/demos/h3-prompt-journal/)：可交互网页实验台。
