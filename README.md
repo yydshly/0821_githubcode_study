@@ -9,6 +9,7 @@
 | 项目 | 能力方向 | 状态 | 原项目 | 研究记录 | 在线演示 |
 | --- | --- | --- | --- | --- | --- |
 | H3 Prompt Journal | MiniMax H3 提示词工程、参考图分工、时间与物理约束 | `validated` | [上游仓库](https://github.com/LoveRain1997/h3-prompt-journal) | [完整分析](projects/h3-prompt-journal/) | [交互实验台](https://yydshly.github.io/0821_githubcode_study/demos/h3-prompt-journal/) |
+| ZhuLink | 私人 RSS 阅读、公共内容推荐、透明热度排序 | `archived` | [上游仓库](https://github.com/TwoThreeWang/zhulink) | [案例整理](projects/zhulink-community-aggregation/) | 暂无 |
 
 状态统一使用 `planned`、`researching`、`validated`、`archived`，方便快速判断研究进度。
 

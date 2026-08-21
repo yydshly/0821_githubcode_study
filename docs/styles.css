@@ -195,6 +195,8 @@ h2 {
 
 .empty-card > a { font-weight: 700; text-decoration: none; }
 
+.empty-card + .empty-card { margin-top: 24px; }
+
 .empty-icon {
   display: grid;
   width: 86px;
