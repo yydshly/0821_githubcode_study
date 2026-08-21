@@ -10,6 +10,7 @@
 | ZhuLink：RSS 与公共资讯社区 | `archived` | [案例分析](zhulink-community-aggregation/) | 暂无 |
 | Moovie：视频与直播来源研究 | `archived` | [来源研究归档](moovie-video-playback/ARCHIVE.md) · [完整分析](moovie-video-playback/) | [原研究实验室](https://yydshly.github.io/0821_githubcode_study/demos/moovie-video-playback/) · [归档结论页](https://yydshly.github.io/0821_githubcode_study/demos/moovie-source-research/) |
 | Architecture Map：交互式项目架构地图 | `validated` | [研究记录](architecture-map/) · [扩展方向](architecture-map/EXTENSIONS.md) | [独立实现演示](https://yydshly.github.io/0821_githubcode_study/demos/architecture-map/) |
+| Chinese Poetry：古典诗词产品基础底座 | `researching` | [数据边界、基础底座与产品方向](chinese-poetry-product-foundation/) | 暂无 |
 
 ## 推荐布局
 
