@@ -7,6 +7,7 @@
 | 项目 | 状态 | 研究记录 | 在线演示 |
 | --- | --- | --- | --- |
 | H3 Prompt Journal | `validated` | [能力分析](h3-prompt-journal/) | [交互实验台](https://yydshly.github.io/0821_githubcode_study/demos/h3-prompt-journal/) |
+| ZhuLink：RSS 与公共资讯社区 | `archived` | [案例分析](zhulink-community-aggregation/) | 暂无 |
 
 ## 推荐布局
 
