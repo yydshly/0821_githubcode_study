@@ -3,8 +3,8 @@
 ## 可复现环境
 
 ```text
-Start command: python -m http.server 8041 --directory docs
-Canonical local URL: http://127.0.0.1:8041/demos/h3-prompt-journal/
+Start command: python -m http.server 8042 --directory docs
+Canonical local URL: http://127.0.0.1:8042/demos/h3-prompt-journal/
 Browser runner: agent-browser 0.27.0
 Validation date: 2026-08-21 (Asia/Shanghai)
 ```
@@ -15,22 +15,25 @@ Validation date: 2026-08-21 (Asia/Shanghai)
 
 | 表面 | 主题 | 检查 | 结果 |
 | --- | --- | --- | --- |
-| 1440×900 桌面 | 浅色 | 首屏、能力地图、实验台、媒体、场景、审计、路线图、来源 | pass |
-| 768×1024 平板 | 深色 | 双列卡、三列案例选择、实验台、媒体、页面宽度 | pass |
-| 390×844 手机 | 浅色 | 单列案例、约束、代码预览、视频、路线图、页脚 | pass |
+| 1440×900 桌面 | 浅色 | 首屏、能力地图、完整生产表单、六段预览、操作栏、其余研究内容 | pass |
+| 768×1024 平板 | 深色 + reduced-motion | 双列卡、三列案例选择、表单、媒体、页面宽度 | pass |
+| 390×844 手机 | 浅色 | 单列案例、单列表单、参考职责、策略参数、约束、预览 | pass |
 
-三个视口均满足 `scrollWidth <= clientWidth`；代码预览宽度未超过组合器容器。
+三个视口的 `scrollWidth - innerWidth` 均为 `-15`（垂直滚动条宽度），不存在页面级横向溢出；Prompt 预览宽度未超过工作台容器。
 
 ## 交互与状态
 
-- 六个案例均能切换并渲染各自标题、参考职责、时间线、约束与骨架。
-- 使用真实点击从 CASE 004 切换到 CASE 005；方向键从 CASE 004 切换到 CASE 005，焦点保留在选中项。
-- 关闭 CASE 004 的“高潮移除摄影图”后，对应约束从 Prompt 预览消失。
-- “复制骨架”返回“已复制提示词骨架”。
-- 主题成功从深色切到浅色，`aria-pressed` 与标签同步。
+- 六个案例均通过真实点击切换，默认数据均显示“可复制到 H3”，并输出官方顺序的六个段落。
+- CASE 001 默认输出 `3,563` 字符；段落依次为 `subject_definitions`、`summary`、`retention_analysis`、`detailed_description`、`overall_soundscape`、`non_diegetic_music`。
+- 把时长改为 `20` 后显示“时长必须是 4–15 秒”并禁用复制/下载；恢复 `15` 后重新就绪。
+- 关闭 CASE 004 全部五项约束后显示“至少保留一项策略约束”；恢复一项后重新就绪。
+- CASE 004 选择“高潮段”后，`subject_definitions` 不再包含 Picture 3，`retention_analysis` 增加 `Picture 3: weak_reference` 的有意移除说明。
+- “复制 Prompt”返回“已复制完整 Prompt，可前往 H3 粘贴并上传对应参考图”。
+- “下载 .txt”返回 `已下载 h3-prompt-case-004.txt`；“恢复模板”恢复默认分段、字段和五项约束。
+- 深色主题模拟后 `document.documentElement.dataset.theme === "dark"`；主题标签同步显示“浅色”。
 - 首次 Tab 聚焦“跳到主要内容”，位置为页面顶部；Enter 后 URL hash 为 `#main`。
-- 案例按钮焦点轮廓为 `solid 3px`。
-- `prefers-reduced-motion: reduce` 浏览器模拟为 true，页面存在对应降级样式。
+- 方向键从 CASE 001 切换到 CASE 002，再用左方向键返回 CASE 001，焦点与选中态同步。
+- `prefers-reduced-motion: reduce` 浏览器模拟结果为 `true`，页面存在对应降级样式。
 
 ## 媒体与回退
 
@@ -65,7 +68,8 @@ Validation date: 2026-08-21 (Asia/Shanghai)
 1. `100vw` 把滚动条宽度算入深色全宽区，桌面产生 8px 横向溢出；改为只扩展绘制区域，复验通过。
 2. 五张能力卡在平板双列布局中留下空格；最后一张改为占满整行，移动端仍为单列。
 3. 页面最初沿用 README 的 45 秒说法；读取真实媒体元数据后改为明确标注附件约 36 秒及其证据差异。
+4. 第一版生产表单只监听 `input` 事件，自动化选择 CASE 004 高潮段时界面值变化但生成状态未更新；补充 `change` 事件后，画幅和分段选择均即时重建 Prompt。
 
 ## 终审
 
-设计契约中的必需行全部为 `pass`，没有剩余 `continue`、`defer` 或 `blocked`。本地交付闭环已完成；远端 Pages 发布状态在对应 PR 和工作流中另行核验。
+设计契约中的生产工作台必需行已完成本地验收；远端 Pages 发布状态在对应 PR 和工作流中另行核验。

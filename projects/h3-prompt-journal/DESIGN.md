@@ -3,23 +3,23 @@
 ## Design contract
 
 ```text
-Entry mode: brief-led implementation
-Request revision: 1
+Entry mode: revision-led implementation
+Request revision: 2
 Target user and context: 想评估、学习或复用 MiniMax H3 提示词方法的内容创作者、提示词工程师和研究者
-Desired first impression: 这是一个有证据边界的提示词实验台，而不是仓库 README 的视觉复制品
-Visual ambition: Editorial
-Experience architecture: Editorial Flow
+Desired first impression: 这是一个既能理解六种策略、又能当场产出可用 H3 Prompt 的生产工作台
+Visual ambition: Functional + Editorial
+Experience architecture: Editorial Flow + Functional Workbench
 Visual constraints: 延续总展厅的纸张感与强层级；通过编号、时间轴、参考角色卡和等宽文本表达“研究档案”；完整支持浅色/深色
 Information constraints: 必须区分上游事实、作者经验性结论、本研究推断和未来设想；不宣称网页实际调用 H3
 Operation constraints: 纯静态 HTML/CSS/JS；无需登录、后端、API key 或构建步骤；键盘可达
-State constraints: 六个案例选择态、约束开关态、提示词预览态、复制成功/失败反馈、浅色/深色主题
+State constraints: 六个案例选择态、公共字段与策略字段编辑态、4–15 秒校验态、参考职责编辑态、完整 Prompt 预览态、复制/下载/重置反馈、浅色/深色主题
 Environment constraints: GitHub Pages 子路径；桌面、平板、390px 手机；外部视频失败时保留上游链接作为回退
-Primary journey: 选择案例 → 理解失败模式与策略 → 查看参考图/时间线/约束结构 → 组合提示词骨架 → 复制或前往上游完整案例
+Primary journey: 选择策略模板 → 理解失败模式 → 填写项目与参考图职责 → 调整策略专属参数 → 通过校验 → 生成六段式 Prompt → 复制或下载并在 H3 中配合参考图使用
 User-defined phases: 分析能力；演示能力；说明使用场景；提出可扩展方向
-Required artifacts: 项目研究 README、分析文档、交互演示页、总索引入口、浏览器验收记录
+Required artifacts: 项目研究 README、分析文档、生产 Prompt 设计器、总索引入口、浏览器验收记录
 Autonomy authorization: 用户明确要求以网页方式完成分析与演示，可自主进行可逆的页面结构和视觉决策
-User-decision boundary: 不调用真实 MiniMax 服务；不添加账号、后端、付费接口；不复制整套上游提示词和大型媒体文件
-Observable completion criteria: 六案例数据可切换；提示词骨架随策略/约束变化；可复制；来源可追溯；能力边界、场景和扩展方向完整；三个视口无关键遮挡；键盘和 reduced-motion 可用
+User-decision boundary: 不调用真实 MiniMax 服务；不添加账号、后端、付费接口；不上传或保存用户素材；不复制整套上游提示词和大型媒体文件
+Observable completion criteria: 六种模板均能产出官方顺序的六段式 Prompt；时长与必填项可校验；参考职责与策略参数可编辑；可复制、下载、重置；来源可追溯；三个视口无关键遮挡；键盘和 reduced-motion 可用
 ```
 
 ## 设计方向
@@ -40,13 +40,16 @@ Observable completion criteria: 六案例数据可切换；提示词骨架随策
 | --- | --- | --- | --- | --- | --- | --- |
 | 分析能力 | 六个案例与共性方法准确 | 项目文档、页面能力地图 | 固定提交来源核对完成 | 3 | pass | — |
 | 演示能力 | 案例选择与结构拆解 | 桌面默认态及六种选择态 | 六状态 DOM 与真实点击通过 | 5 | pass | — |
-| 演示能力 | 约束组合并生成骨架 | 开关、预览、复制反馈 | CASE 004 开关与复制反馈通过 | 5-6 | pass | — |
+| 生产能力 | 公共字段可编辑并生成完整 Prompt | 项目表单、六段式预览 | 六模板默认数据与六段顺序通过 | 6-7 | pass | — |
+| 生产能力 | 六种策略专属参数与参考职责 | 动态字段、动态参考图 | 六案例逐一切换；CASE 004 高潮职责映射通过 | 6-7 | pass | — |
+| 生产能力 | 4–15 秒与必填项校验 | 错误摘要、字段内提示、就绪状态 | 20 秒拦截与恢复 15 秒通过 | 7 | pass | — |
+| 生产能力 | 复制、下载与重置闭环 | 操作按钮、状态反馈 | 剪贴板、txt 文件名和恢复默认通过 | 7 | pass | — |
 | 使用场景 | 场景与适用边界清楚 | 内容区 | 三视口截图与文本核对通过 | 3 | pass | — |
 | 可扩展方向 | 分层路线图与优先级 | 内容区 | P0–P3 路线完整渲染 | 3 | pass | — |
 | 证据边界 | 区分事实、经验、推断 | 首屏、审计区 | 标签、审计层级与固定来源通过 | 3 | pass | — |
 | 主题 | 浅色与深色可切换 | 桌面、移动 | 深→浅与浅/深截图通过 | 7 | pass | — |
-| 响应式 | 桌面、平板、390px | 1440、768、390 | 三视口无页面级横向溢出 | 7 | pass | — |
-| 键盘 | 核心闭环可达且焦点可见 | 按钮、案例、复选框、复制 | skip link、方向键、3px 焦点通过 | 7 | pass | — |
+| 响应式 | 桌面、平板、390px | 1440、768、390 | 三视口 `scrollWidth - innerWidth = -15` | 7 | pass | — |
+| 键盘 | 核心闭环可达且焦点可见 | 按钮、案例、表单、复制、下载、重置 | 方向键案例往返与原生表单控件通过 | 7 | pass | — |
 | reduced-motion | 无非必要动效 | 系统偏好态 | 浏览器偏好匹配与媒体查询通过 | 7-8 | pass | — |
 | 外部媒体回退 | 视频失败仍可访问来源 | 成片证据卡 | 媒体加载 36.153s，固定提交链接可达 | 8 | pass | — |
-| 工程交付 | 静态资源与链接有效 | 文件、HTML、JS | HTML、JS、链接与 diff 检查通过 | 9 | pass | — |
+| 工程交付 | 静态资源与链接有效 | 文件、HTML、JS | JS 语法、diff 与浏览器错误检查通过 | 9 | pass | — |
