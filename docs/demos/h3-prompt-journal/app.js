@@ -300,6 +300,8 @@ const realSamples = {
     duration: 15,
     aspect: "9:16",
     sound: "气流跟随镜头横穿立体声场，布料近身掠过、靴子落石与统一室内混响共同表达微型摄影机速度。",
+    promptVersion: "V1",
+    result: { anchor: "case-003-result", title: "已接入 V1 真实有声成片", detail: "上方保留三张姿态输入、9:16 原始 MP4，以及“结构目标通过、审美与微型飞行目标失败”的分层诊断。" },
     images: [
       ["picture-1-start-pose.png", "Picture 1", "身份 + 起始姿态"],
       ["picture-2-transition-pose.png", "Picture 2", "中间运动路标"],
