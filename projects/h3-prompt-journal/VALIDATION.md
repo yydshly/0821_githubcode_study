@@ -316,4 +316,11 @@ Validation date: 2026-08-21 (Asia/Shanghai)
 - 演示 HTML 共识别 72 个 `id`，重复数量为 `0`。
 - revision 13 改动没有新增构建步骤、后端、API、密钥或第三方运行依赖。
 
-远端 PR、Actions 与公开 GitHub Pages 证据在发布后补入设计契约的远端交付行；本节不以本地成功代替公网发布结论。
+### 远端发布证据
+
+- [PR #15](https://github.com/yydshly/0821_githubcode_study/pull/15) 以 merge commit `c3e8bae7aa4ecfb1a3938e37eed6b49a3dec2e84` 合并；合并前 GitHub 判定 `MERGEABLE`，无状态检查、评论、review 或未解决线程。
+- [GitHub Pages run 32469033127](https://github.com/yydshly/0821_githubcode_study/actions/runs/32469033127) 在约 33 秒内完成，部署 job 所有步骤通过；只有 Actions 依赖的 Node 20 弃用提醒，不影响本次站点结果。
+- 公开归档页在 `1440×1000` 浅色与 `390×844` 深色真实 Chromium 中均返回 HTTP `200`，标题、首屏结论、6 张判定卡、历史实验台、6 个视频和 12 个输入节点存在，横向溢出为 `0`，无浏览器错误。
+- 公开展厅卡显示 `ARCHIVED · 6 REAL OUTPUTS` 与“H3 Prompt Journal 阶段性结项”。六个 MP4 的 `Range: bytes=0-0` 请求均返回 `206`，并报告与仓库文件一致的总长度。
+
+revision 13 的本地与远端交付行均已关闭，不再存在待执行的 `continue` 项。

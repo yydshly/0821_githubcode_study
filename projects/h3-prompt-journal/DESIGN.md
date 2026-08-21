@@ -69,4 +69,4 @@ Observable completion criteria: 首屏在进入模板前说明阶段性归档、
 | 研究总结 | 六案例总判定、仓库价值、后期使用流程和停止条件完整 | 独立结项文档、项目 README | 文件核对、链接检查与内容审阅 | 3、9 | pass | — |
 | 索引状态 | 总仓库、项目目录和展厅统一标记 archived | 根 README、projects README、docs 首页 | 文本与链接检查、展厅浏览器截图 | 3、7、9 | pass | — |
 | 历史保留 | 原有实验台、双语下载、输入图与六份 MP4 不因归档总结受损 | 六案例、主题、下载、播放器 | 交互回归、资源状态与媒体元数据 | 5-9 | pass | — |
-| 远端交付 | 独立分支和 PR 合并，Pages 展示归档版 | GitHub PR、Actions、公开 URL | PR 状态、检查结果、Pages DOM | 9 | continue | 本地验收通过后发布并核验 |
+| 远端交付 | 独立分支和 PR 合并，Pages 展示归档版 | GitHub PR、Actions、公开 URL | PR #15 merged；Pages run 32469033127 success；公开桌面与移动 DOM、6 个视频 range 请求通过 | 9 | pass | — |
