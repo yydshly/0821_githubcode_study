@@ -1555,12 +1555,28 @@ pre {
   object-fit: cover;
 }
 
+.case-004-input-grid .verified-mini-input img {
+  aspect-ratio: 4 / 5;
+  object-fit: contain;
+  background: #ebe9df;
+}
+
 .verified-output-pane video {
   display: block;
   width: 100%;
   aspect-ratio: 16 / 9;
   object-fit: cover;
   background: #000;
+}
+
+.is-vertical-output .verified-output-pane {
+  width: min(100%, 360px);
+  margin-inline: auto;
+}
+
+.is-vertical-output .verified-output-pane video {
+  aspect-ratio: 9 / 16;
+  object-fit: contain;
 }
 
 .verified-player figcaption {
@@ -2398,8 +2414,16 @@ footer a {
     grid-template-columns: 1fr;
   }
 
+  .verified-input-grid.case-004-input-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
   .verified-mini-input img {
     aspect-ratio: 16 / 9;
+  }
+
+  .case-004-input-grid .verified-mini-input img {
+    aspect-ratio: 3 / 4;
   }
 
   .sample-guidance {

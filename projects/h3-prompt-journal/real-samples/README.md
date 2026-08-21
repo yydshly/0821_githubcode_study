@@ -29,7 +29,7 @@
 | CASE 004 | 多参考帆板时尚 MV 入场段 | 3 | 15s | 9:16 | 风、帆、横杆、板和水声与画面接触同步 |
 | CASE 005 | 水上闯关综艺喜剧 | 1 | 15s | 16:9 | 三句普通话、主持、观众与落水声不重叠 |
 
-CASE 001 与 CASE 005 已返回外部真实成片并接入页面；CASE 002–004 仍等待外部结果。CASE 001 的通过项、偏差与提示词归因见 [`case-001/README.md`](case-001/README.md)；CASE 005 的 V1 因果失败与待验证 V2 见 [`case-005/README.md`](case-005/README.md)。
+CASE 001、CASE 004 与 CASE 005 已返回外部真实成片并接入页面；CASE 002–003 仍等待外部结果。CASE 001 的通过项、偏差与提示词归因见 [`case-001/README.md`](case-001/README.md)；CASE 004 的三参考职责与装备物理审计见 [`case-004/README.md`](case-004/README.md)；CASE 005 的 V1 因果失败与待验证 V2 见 [`case-005/README.md`](case-005/README.md)。
 
 ## 素材位置
 

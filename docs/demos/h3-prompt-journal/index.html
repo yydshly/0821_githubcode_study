@@ -302,10 +302,10 @@
       <section class="section real-sample" id="real-sample" aria-labelledby="real-sample-title">
         <header class="section-heading">
           <div>
-            <p class="section-number">03 / 3 VERIFIED OUTPUTS + 3 READY INPUTS</p>
-            <h2 id="real-sample-title">三份真实结果，<br />三套待测输入。</h2>
+            <p class="section-number">03 / 4 VERIFIED OUTPUTS + 2 READY INPUTS</p>
+            <h2 id="real-sample-title">四份真实结果，<br />两套待测输入。</h2>
           </div>
-          <p>CASE 001、CASE 005 与 CASE 006 已接入外部返回的真实有声成片，并保留输入、通过项和失败证据；CASE 002–004 仍是可直接调度的待测输入包。</p>
+          <p>CASE 001、CASE 004、CASE 005 与 CASE 006 已接入外部返回的真实有声成片，并保留输入、通过项和偏差证据；CASE 002–003 仍是可直接调度的待测输入包。</p>
         </header>
         <article class="verified-output" id="case-001-result" aria-labelledby="case-001-result-title">
           <div class="verified-output-copy">
@@ -378,6 +378,67 @@
               </video>
             </div>
             <figcaption>三张输入图始终保留；下方视频是本次真实输出。建议重点观察约 4 秒、7 秒和 10 秒附近的遮挡交接。</figcaption>
+          </figure>
+        </article>
+        <article class="verified-output" id="case-004-result" aria-labelledby="case-004-result-title">
+          <div class="verified-output-copy">
+            <span class="verified-badge">REAL EXTERNAL OUTPUT · CASE 004</span>
+            <h3 id="case-004-result-title">参考分工生效，<br />装备物理仍漂移。</h3>
+            <p>使用本站三张输入图与当时的 V1 英文生产 Prompt，在外部 MiniMax H3 以 <code>15s / 768P / 9:16</code> 生成。它证明“人物 / 装备 / 摄影”分岗可以控制整体视觉，但不能自动保证帆板的细部运动学。</p>
+            <dl class="verified-metadata">
+              <div><dt>实际时长</dt><dd>15.083 秒</dd></div>
+              <div><dt>画面</dt><dd>768×1344 · H.264 · 24fps</dd></div>
+              <div><dt>音轨</dt><dd>AAC · 32kHz · Stereo</dd></div>
+              <div><dt>响度检查</dt><dd>平均 -16.0 dB · 峰值 -0.4 dB</dd></div>
+            </dl>
+            <div class="result-audit">
+              <div class="result-pass"><span>观察通过</span><p>青橙运动服、深色束发、橙色帆和青色板均稳定可辨；低水位、逆光、大浪与喷雾明显继承摄影参考；音频能量在约 10 秒显著抬升，和提示词要求的主峰值基本一致。</p></div>
+              <div class="result-drift"><span>观察偏差</span><p>人物始终较远，无法严谨核验脸部身份；横杆多次变成不合理的环状结构，手—杆关系与帆内外层级不稳定；约 8–11 秒板头呈悬浮式抬升，装备更像视觉变形而非可解释的帆板动作。</p></div>
+            </div>
+            <div class="causal-audit" aria-label="CASE 004 三张参考图职责执行审计">
+              <span>参考岗位 → 实际执行 · ROLE → OBSERVED</span>
+              <ol>
+                <li><time>PICTURE 1</time><p><b>人物：</b>服装配色、体型与发型进入成片；远景比例使脸部相似度无法可靠判断。</p></li>
+                <li><time>PICTURE 2</time><p><b>装备：</b>帆与板的颜色、轮廓大体保留；横杆、桅杆连接和脚部接触发生结构漂移。</p></li>
+                <li><time>PICTURE 3</time><p><b>摄影：</b>贴近水面的广角逆光最稳定，说明摄影图没有明显污染人物或装备外观。</p></li>
+                <li><time>EDIT</time><p><b>镜头：</b>约 3.92、9.67、12.71 秒出现明显切换，结果是四镜头运动时尚剪辑，并非一条连续 carve。</p></li>
+                <li><time>AUDIO</time><p><b>声音：</b>立体声音轨连续、未检测到对白或歌声；信号分析能确认 10 秒能量峰值，不能单独证明每一种风浪与器材声都准确同步。</p></li>
+              </ol>
+            </div>
+            <div class="result-diagnosis">
+              <span>归因判断 · ROLE ARCHITECTURE WORKS / KINEMATICS UNDER-SPECIFIED</span>
+              <p><strong>这次不能简单归结为“套模板失败”。</strong>模板最核心的参考职责分离已经生效，粗粒度视觉结果是成功的；问题出在 V1 只写了“保持可信的手、横杆、帆、板与站姿”，却没有把可信拆成逐帧不可破坏的接触规则。</p>
+              <p>下一轮应明确：双手始终抓住同一根连续横杆；桅杆脚连接点固定在板面；非腾空动作中板底持续受水面支撑；脚不穿过板面或帆；摄影图只控制高度、焦段与光向，不复刻同一构图。即使补齐这些规则，复杂装备几何和水体受力仍是视频模型的能力边界，需要多轮抽样验证。</p>
+            </div>
+            <div class="sample-downloads">
+              <a class="button quiet" href="./assets/case-004-real-test/picture-1-athlete.png" download>输入图 1 · 人物</a>
+              <a class="button quiet" href="./assets/case-004-real-test/picture-2-rig.png" download>输入图 2 · 装备</a>
+              <a class="button quiet" href="./assets/case-004-real-test/picture-3-camera-language.png" download>输入图 3 · 摄影</a>
+              <a class="button quiet" href="#sample-case-004">下方 V1 双语 Prompt</a>
+              <a class="button primary" href="./assets/case-004-real-test/result-video.mp4" download>下载真实 MP4</a>
+            </div>
+          </div>
+          <figure class="verified-player is-vertical-output">
+            <div class="verified-player-label"><span>3 ROLE-LOCKED INPUTS → OUTPUT</span><strong>EXTERNAL H3 · WITH AUDIO</strong></div>
+            <div class="verified-input-grid case-004-input-grid" aria-label="CASE 004 三张输入图">
+              <a class="verified-mini-input" href="./assets/case-004-real-test/picture-1-athlete.png" target="_blank" rel="noreferrer">
+                <span>PICTURE 1</span><img src="./assets/case-004-real-test/picture-1-athlete.png" alt="CASE 004 Picture 1：青橙运动服帆板运动员" loading="lazy" /><small>IDENTITY / OUTFIT</small>
+              </a>
+              <a class="verified-mini-input" href="./assets/case-004-real-test/picture-2-rig.png" target="_blank" rel="noreferrer">
+                <span>PICTURE 2</span><img src="./assets/case-004-real-test/picture-2-rig.png" alt="CASE 004 Picture 2：橙色帆与青色帆板装备" loading="lazy" /><small>RIG CONSTRUCTION</small>
+              </a>
+              <a class="verified-mini-input" href="./assets/case-004-real-test/picture-3-camera-language.png" target="_blank" rel="noreferrer">
+                <span>PICTURE 3</span><img src="./assets/case-004-real-test/picture-3-camera-language.png" alt="CASE 004 Picture 3：低水位逆光海浪摄影参考" loading="lazy" /><small>CAMERA LANGUAGE</small>
+              </a>
+            </div>
+            <div class="verified-media-pane verified-output-pane">
+              <span class="verified-media-title">输出 · V1 H3 VIDEO</span>
+              <video controls playsinline preload="metadata" poster="./assets/case-004-real-test/result-poster.jpg">
+                <source src="./assets/case-004-real-test/result-video.mp4" type="video/mp4" />
+                当前浏览器无法播放此 MP4，请使用“下载真实 MP4”。
+              </video>
+            </div>
+            <figcaption>三张输入图始终保留；下方为 9:16 真实输出。建议重点对照横杆几何、双手接触、板底受水关系，以及约 10 秒的动作与声音峰值。</figcaption>
           </figure>
         </article>
         <article class="verified-output has-sticky-evidence" id="case-005-result" aria-labelledby="case-005-result-title">
