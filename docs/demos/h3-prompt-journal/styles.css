@@ -1179,6 +1179,34 @@ pre {
   line-height: 1.55;
 }
 
+.result-diagnosis {
+  margin-bottom: 24px;
+  padding: 16px;
+  border: 1px solid color-mix(in srgb, var(--accent) 55%, transparent);
+  background: color-mix(in srgb, var(--accent) 8%, transparent);
+}
+
+.result-diagnosis > span {
+  display: block;
+  margin-bottom: 8px;
+  color: var(--accent);
+  font-family: ui-monospace, SFMono-Regular, Consolas, monospace;
+  font-size: 0.64rem;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+}
+
+.result-diagnosis p {
+  margin: 0;
+  color: color-mix(in srgb, var(--paper) 76%, transparent);
+  font-size: 0.76rem;
+  line-height: 1.6;
+}
+
+.result-diagnosis p + p {
+  margin-top: 9px;
+}
+
 .verified-output .button.quiet {
   color: var(--paper);
   border-color: color-mix(in srgb, var(--paper) 55%, transparent);
@@ -1247,6 +1275,43 @@ pre {
   width: 100%;
   height: 100%;
   object-fit: contain;
+}
+
+.verified-input-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 8px;
+  margin-bottom: 10px;
+}
+
+.verified-mini-input {
+  min-width: 0;
+  overflow: hidden;
+  color: #f3f0e6;
+  text-decoration: none;
+  border: 1px solid color-mix(in srgb, #f3f0e6 24%, transparent);
+  background: #11130f;
+}
+
+.verified-mini-input span,
+.verified-mini-input small {
+  display: block;
+  padding: 7px 8px;
+  font-family: ui-monospace, SFMono-Regular, Consolas, monospace;
+  font-size: 0.55rem;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+}
+
+.verified-mini-input small {
+  color: color-mix(in srgb, #f3f0e6 62%, transparent);
+}
+
+.verified-mini-input img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
 }
 
 .verified-output-pane video {
@@ -1565,6 +1630,16 @@ pre {
   margin: 0;
   color: var(--muted);
   font-size: 0.78rem;
+}
+
+.output-slot.is-verified {
+  border-style: solid;
+  border-color: var(--accent);
+}
+
+.output-slot a {
+  color: currentColor;
+  font-weight: 750;
 }
 
 .media-copy > p:not(.section-number) {
@@ -2053,6 +2128,14 @@ footer a {
 
   .verified-input-link {
     max-height: 320px;
+  }
+
+  .verified-input-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .verified-mini-input img {
+    aspect-ratio: 16 / 9;
   }
 
   .sample-guidance {

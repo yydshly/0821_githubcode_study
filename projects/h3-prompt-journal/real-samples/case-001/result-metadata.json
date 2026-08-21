@@ -1,0 +1,65 @@
+{
+  "case": "001",
+  "received_date": "2026-08-21",
+  "source_filename": "video_1787292798992.mp4",
+  "generation": {
+    "reported_model": "MiniMax-H3",
+    "mode": "external Ref2VA scheduling",
+    "reference_images": [
+      "picture-1-subject-a-gallery.png",
+      "picture-2-subject-b.png",
+      "picture-3-subject-c.png"
+    ],
+    "prompt": "CASE 001 English production prompt from the page default state",
+    "requested_duration_seconds": 15,
+    "requested_resolution": "768P",
+    "requested_aspect_ratio": "16:9"
+  },
+  "observed_media": {
+    "duration_seconds": 15.083333,
+    "width": 1344,
+    "height": 768,
+    "frame_rate": 24,
+    "video_codec": "h264",
+    "audio_codec": "aac",
+    "audio_sample_rate_hz": 32000,
+    "audio_channels": 2,
+    "audio_layout": "stereo",
+    "mean_volume_db": -19.0,
+    "max_volume_db": -6.3,
+    "silence_over_one_second_below_minus_50_db": false,
+    "hard_scene_change_over_0_25_detected": false,
+    "scene_score_events_over_0_10_seconds": [4.0, 4.041667, 7.041667, 10.0],
+    "file_size_bytes": 4222424
+  },
+  "display_evidence": {
+    "all_input_images_remain_visible_with_video": true,
+    "video_poster": "result-poster.jpg",
+    "video_poster_source_time_seconds": 12.0,
+    "video_poster_is_input_image": false
+  },
+  "visual_observation": {
+    "passed": [
+      "the three identities and their black suit, cobalt jacket, and cream dress remain recognizable",
+      "the gallery environment and light direction remain broadly coherent",
+      "no obvious hard cut was detected and the MP4 contains a continuous stereo audio stream",
+      "the final three-person composition is reached"
+    ],
+    "deviation": [
+      "future subjects become visible before the preceding foreground occlusion is complete",
+      "SUBJECT_B and SUBJECT_C do not each receive a clearly readable independent orbital pass",
+      "the camera behavior reads more like subjects crossing close foreground than a strict occlusion-linked orbital chain",
+      "multi-person framing begins earlier than the requested final group reveal"
+    ]
+  },
+  "diagnosis": {
+    "conclusion": "Prompt design contributed materially, but the template format alone is not the root cause.",
+    "primary_causes": [
+      "task overload: three complete orbits, two occlusion transitions, and a final group composition were requested inside fifteen seconds",
+      "the prompt did not quantify occluder frame coverage or the exact moment when the next subject may become visible",
+      "the three subjects had no explicit room coordinates or one-direction camera route"
+    ],
+    "model_boundary": "Maintaining three referenced identities, one environment, a continuous camera path, and two precise occlusion reveals is intrinsically difficult and still requires repeated tests after prompt optimization.",
+    "recommended_next_test": "Use three short approximately ninety-degree arcs, require at least ninety percent frame coverage at each transition, keep future subjects fully off-screen until their reveal point, and reserve the final four seconds for the pullback group composition."
+  }
+}
