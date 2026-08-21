@@ -1,0 +1,518 @@
+<!doctype html>
+<html lang="zh-CN" data-theme="light">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="color-scheme" content="light dark">
+    <meta name="description" content="Moovie 核心技术路线的可重复研究演示：豆瓣元数据、AppleCMS 资源、媒体匹配和播放换线。">
+    <title>Moovie 核心技术路线实验室</title>
+    <link rel="stylesheet" href="./styles.css">
+    <script>
+      window.__consoleErrors = [];
+      window.addEventListener('error', function (event) {
+        window.__consoleErrors.push(String(event.message || event.error || 'unknown error'));
+      });
+    </script>
+  </head>
+  <body>
+    <a class="skip-link" href="#research-main">跳到研究主流程</a>
+
+    <header class="site-header">
+      <div class="header-inner">
+        <a class="brand" href="./" aria-label="Moovie 研究实验室首页">
+          <span class="brand-mark" aria-hidden="true">M</span>
+          <span>
+            <strong>Moovie 技术路线实验室</strong>
+            <small>固定上游提交 8e15a52</small>
+          </span>
+        </a>
+        <button class="icon-button" id="theme-toggle" type="button" aria-pressed="false" aria-label="切换深色主题">
+          <span aria-hidden="true" id="theme-icon">◐</span>
+          <span id="theme-label">深色</span>
+        </button>
+      </div>
+    </header>
+
+    <main id="research-main">
+      <section class="hero" aria-labelledby="page-title">
+        <div class="hero-copy">
+          <p class="eyebrow">可重复 · 公开版权片源 · 源码可追溯</p>
+          <h1 id="page-title">一条播放地址，经过了哪些技术环节？</h1>
+          <p class="hero-lead">从豆瓣样式的元数据开始，经过 AppleCMS 资源解析、媒体身份匹配，最终把排名候选交给 Hls.js 真实解码和失败换线。每一站都明确展示<strong>来源、能力、效果</strong>。</p>
+          <div class="hero-actions">
+            <button class="primary-button" id="run-all" type="button">
+              <span aria-hidden="true">▶</span>
+              运行当前示例
+            </button>
+            <button class="secondary-button" id="reset-lab" type="button">重置实验</button>
+          </div>
+          <p class="current-scenario" id="current-scenario-label"><span aria-hidden="true">●</span> 当前示例：雾港档案</p>
+          <p class="safety-note"><span aria-hidden="true">◆</span> 不访问未知影视源；公开目录只调用 IA、Wikimedia、LOC、NASA 官方 API，并逐条展示版权条件。</p>
+        </div>
+
+        <aside class="hero-summary" aria-label="研究范围摘要">
+          <div class="summary-heading">
+            <span>研究纵切面</span>
+            <span class="live-dot">4 站</span>
+          </div>
+          <dl class="summary-metrics">
+            <div><dt>元数据</dt><dd id="summary-metadata">豆瓣命中</dd></div>
+            <div><dt>资源输入</dt><dd id="summary-resource-input">3 个演示源</dd></div>
+            <div><dt>播放状态</dt><dd id="summary-play-candidate">2 条同集 HLS</dd></div>
+            <div><dt>目录状态</dt><dd id="summary-risk">已确认</dd></div>
+          </dl>
+          <div class="summary-boundary">
+            <strong>本轮不验证</strong>
+            <span>真实接口稳定性、版权授权、生产数据库和部署。</span>
+          </div>
+        </aside>
+      </section>
+
+      <section class="search-lab" aria-labelledby="search-title">
+        <div class="search-heading">
+          <div>
+            <p class="eyebrow">Interactive catalog probe</p>
+            <h2 id="search-title">直接搜索，观察不同来源分支</h2>
+            <p>这里搜索的是可重复研究样例。结果会明确告诉你：豆瓣有没有、是否回退到其他元数据源、资源是否存在，以及能否进入自动播放。</p>
+          </div>
+          <span class="fixture-badge">5 个可验证样例 · 1 个官方外部流</span>
+        </div>
+
+        <form class="search-form" id="catalog-search" role="search">
+          <label class="sr-only" for="catalog-query">输入片名或来源场景</label>
+          <span class="search-icon" aria-hidden="true">⌕</span>
+          <input id="catalog-query" name="q" type="search" autocomplete="off" placeholder="搜索“雾港档案”“豆瓣没有”“无资源”…">
+          <button class="search-submit" type="submit">搜索</button>
+          <button class="search-clear" id="search-clear" type="button">清除</button>
+        </form>
+
+        <div class="example-queries" aria-label="示例搜索词">
+          <span>试一试：</span>
+          <button type="button" data-example-query="雾港档案">豆瓣命中</button>
+          <button type="button" data-example-query="荒原来信">豆瓣没有</button>
+          <button type="button" data-example-query="青石巷短剧">资源反向建档</button>
+          <button type="button" data-example-query="孤岛样片">暂无视频资源</button>
+        </div>
+
+        <div class="search-feedback" id="search-feedback" aria-live="polite">
+          输入片名后，结果会显示元数据来源和播放资源状态。
+        </div>
+        <div class="search-results" id="search-results"></div>
+      </section>
+
+      <section class="public-catalog-lab" id="public-catalog-lab" aria-labelledby="public-catalog-title">
+        <div class="public-catalog-heading">
+          <div>
+            <p class="eyebrow">Live public media providers</p>
+            <h2 id="public-catalog-title">公开版权电影：真实搜索并直接播放</h2>
+            <p>这不是固定演示数据。查询由本机网关并发请求四个官方公开 API；每条结果都保留原项目页、许可证、署名和版权闸门。</p>
+          </div>
+          <span class="live-catalog-badge"><i aria-hidden="true"></i> 真实公网</span>
+        </div>
+
+        <div class="provider-strip" aria-label="已接入来源">
+          <article><strong>Internet Archive</strong><span>PD / CC · MP4</span><small>开放许可才放行</small></article>
+          <article><strong>Wikimedia Commons</strong><span>PD / CC · WebM</span><small>读取文件级许可</small></article>
+          <article><strong>Library of Congress</strong><span>MP4 / HLS</span><small>无权利声明则禁播</small></article>
+          <article><strong>NASA</strong><span>官方视频 · MP4</span><small>教育/信息用途条件</small></article>
+        </div>
+
+        <form class="public-catalog-form" id="public-catalog-search" role="search">
+          <label for="public-catalog-query">片名或主题</label>
+          <div class="public-search-control">
+            <input id="public-catalog-query" name="q" type="search" autocomplete="off" value="Big Buck Bunny" placeholder="例如 Big Buck Bunny、Sintel、Apollo 11">
+            <select id="public-provider" name="provider" aria-label="选择公开来源">
+              <option value="all">全部四个来源</option>
+              <option value="internet_archive">Internet Archive</option>
+              <option value="wikimedia">Wikimedia Commons</option>
+              <option value="loc">Library of Congress</option>
+              <option value="nasa">NASA</option>
+            </select>
+            <button class="primary-button" type="submit">真实搜索</button>
+          </div>
+          <div class="public-query-examples" aria-label="公开目录示例查询">
+            <span>可直接试：</span>
+            <button type="button" data-public-query="Big Buck Bunny">开放动画电影</button>
+            <button type="button" data-public-query="Sintel">CC BY 短片</button>
+            <button type="button" data-public-query="Apollo 11">NASA 纪录影像</button>
+            <button type="button" data-public-query="silent film">LOC 权利闸门</button>
+          </div>
+        </form>
+
+        <div class="public-catalog-status" id="public-catalog-status" role="status" aria-live="polite">
+          <strong>等待真实搜索</strong><span>搜索后会显示每个官方 API 的返回状态和结果数量。</span>
+        </div>
+        <div class="public-provider-status" id="public-provider-status" aria-label="Provider 请求状态"></div>
+        <div class="public-catalog-results" id="public-catalog-results"></div>
+
+        <article class="public-player" id="public-player" aria-labelledby="public-player-title">
+          <div class="public-video-stage">
+            <video id="public-video" controls muted playsinline preload="metadata" aria-label="公开版权视频播放器"></video>
+            <div class="public-video-placeholder" id="public-video-placeholder">
+              <span aria-hidden="true">▶</span>
+              <strong>选择“可播放”结果</strong>
+              <small>播放器支持 MP4、WebM，以及有明确权利声明的 HLS。</small>
+            </div>
+            <span class="public-play-state" id="public-play-state">IDLE</span>
+          </div>
+          <div class="public-player-detail">
+            <p class="eyebrow">Selected public item</p>
+            <h3 id="public-player-title">尚未选择影片</h3>
+            <p id="public-player-description">搜索结果的来源、许可、署名和使用限制会在这里完整显示。</p>
+            <dl>
+              <div><dt>来源</dt><dd id="public-player-provider">—</dd></div>
+              <div><dt>许可</dt><dd id="public-player-license">—</dd></div>
+              <div><dt>署名</dt><dd id="public-player-attribution">—</dd></div>
+              <div><dt>播放格式</dt><dd id="public-player-format">—</dd></div>
+            </dl>
+            <p class="public-rights-note" id="public-player-rights">开放许可不等于无条件：请按项目页要求署名，并复核商标、肖像、隐私及所在司法辖区。</p>
+            <a class="secondary-button public-source-link" id="public-player-source" href="#public-catalog-lab" target="_blank" rel="noreferrer">打开官方项目页</a>
+          </div>
+        </article>
+      </section>
+
+      <section class="fault-lab" id="fault-lab" aria-labelledby="fault-lab-title">
+        <div class="fault-heading">
+          <div>
+            <p class="eyebrow">Live localhost fault lab</p>
+            <h2 id="fault-lab-title">真实本地请求：看见超时、熔断和 HLS 换线</h2>
+            <p>浏览器会向本机假 AppleCMS 发出真实 HTTP 请求。所有响应和“视频分片”都是本地 fixture，不接触公网资源。</p>
+          </div>
+          <div class="server-state" id="fault-server-state" role="status">
+            <span aria-hidden="true"></span>
+            <strong>正在检查 4174 服务</strong>
+          </div>
+        </div>
+
+        <div class="fault-boundary">
+          <strong>验证边界</strong>
+          <span>这里证明请求分类、健康状态和 HLS 清单/首分片传输；<b>不证明分片可被真实解码播放</b>。</span>
+        </div>
+
+        <div class="fault-grid">
+          <article class="fault-panel" aria-labelledby="source-probe-title">
+            <header>
+              <span class="fault-index">A</span>
+              <div><small>AppleCMS request probe</small><h3 id="source-probe-title">来源故障与熔断</h3></div>
+            </header>
+            <p>选择假源行为，再观察同一个请求适配器如何把 HTTP 结果转换成系统状态。</p>
+            <div class="fault-choice" role="group" aria-label="选择 AppleCMS 故障">
+              <button type="button" class="is-selected" data-fault-mode="healthy">200 正常</button>
+              <button type="button" data-fault-mode="rate_limit">429 限流</button>
+              <button type="button" data-fault-mode="server_error">500 错误</button>
+              <button type="button" data-fault-mode="invalid_json">异常 JSON</button>
+              <button type="button" data-fault-mode="timeout">请求超时</button>
+            </div>
+            <div class="fault-actions">
+              <button class="primary-button compact-action" id="run-source-probe" type="button">发送真实请求</button>
+              <button class="secondary-button compact-action" id="run-breaker-demo" type="button">演示熔断与恢复</button>
+              <button class="quiet-button" id="reset-fault-probe" type="button">重置</button>
+            </div>
+            <div class="probe-result" id="source-probe-result" aria-live="polite">
+              <strong>等待请求</strong><span>将显示 HTTP 状态、耗时和故障分类。</span>
+            </div>
+            <dl class="circuit-meter">
+              <div><dt>线路状态</dt><dd id="circuit-state">CLOSED</dd></div>
+              <div><dt>连续失败</dt><dd id="circuit-failures">0 / 3</dd></div>
+              <div><dt>请求超时</dt><dd>650 ms</dd></div>
+            </dl>
+            <ol class="fault-log" id="source-probe-log" aria-label="来源探针事件">
+              <li><span>准备</span><strong>等待真实本地请求</strong></li>
+            </ol>
+          </article>
+
+          <article class="fault-panel" aria-labelledby="hls-probe-title">
+            <header>
+              <span class="fault-index">B</span>
+              <div><small>HLS transport probe</small><h3 id="hls-probe-title">清单、首分片与换线</h3></div>
+            </header>
+            <p>先请求 <code>.m3u8</code>，解析首个分片 URL，再请求分片；两层故障分别记录。</p>
+            <div class="fault-choice" role="group" aria-label="选择 HLS 传输场景">
+              <button type="button" class="is-selected" data-hls-mode="healthy">健康线路</button>
+              <button type="button" data-hls-mode="manifest-error">清单 503</button>
+              <button type="button" data-hls-mode="segment-error">分片 503</button>
+              <button type="button" data-hls-mode="failover">坏 A → 好 B</button>
+            </div>
+            <div class="fault-actions">
+              <button class="primary-button compact-action" id="run-hls-probe" type="button">运行 HLS 传输探针</button>
+            </div>
+            <div class="probe-result" id="hls-probe-result" aria-live="polite">
+              <strong>等待探针</strong><span>成功仅表示清单和首分片可传输。</span>
+            </div>
+            <div class="transport-path" aria-label="HLS 探测路径">
+              <span>manifest.m3u8</span><b>→</b><span>解析 URI</span><b>→</b><span>segment0.ts</span>
+            </div>
+            <ol class="fault-log" id="hls-probe-log" aria-label="HLS 探针事件">
+              <li><span>准备</span><strong>等待清单请求</strong></li>
+            </ol>
+          </article>
+
+          <article class="fault-panel real-hls-panel" aria-labelledby="real-hls-title">
+            <header>
+              <span class="fault-index">C</span>
+              <div><small>Hls.js decode &amp; playback</small><h3 id="real-hls-title">真实 HLS 解码、首帧与进度保留换线</h3></div>
+            </header>
+            <p>使用固定上游提交内的 Hls.js 1.4.12，播放 FFmpeg 本地生成的 12 秒测试图。故障实验在线路 A 的中段分片返回 503，再重建播放器切到健康线路 B。</p>
+            <div class="real-hls-layout">
+              <div class="real-hls-stage">
+                <video id="real-hls-video" muted controls playsinline preload="metadata" aria-label="本地合成 HLS 真实解码播放器"></video>
+                <div class="decode-badge" id="decode-badge">HLS.JS · 等待运行</div>
+              </div>
+              <div class="real-hls-console">
+                <div class="fault-actions real-hls-actions">
+                  <button class="primary-button compact-action" id="run-real-hls" type="button">播放健康 HLS</button>
+                  <button class="secondary-button compact-action" id="run-real-hls-failover" type="button">播放并制造中段故障</button>
+                  <button class="quiet-button" id="stop-real-hls" type="button">停止</button>
+                </div>
+                <div class="probe-result" id="real-hls-result" aria-live="polite">
+                  <strong>等待真实解码</strong><span>运行后将显示清单、首帧、currentTime 和换线恢复事件。</span>
+                </div>
+                <dl class="circuit-meter real-hls-metrics">
+                  <div><dt>当前线路</dt><dd id="real-hls-line">—</dd></div>
+                  <div><dt>播放时间</dt><dd id="real-hls-time">0.00 s</dd></div>
+                  <div><dt>首帧耗时</dt><dd id="real-hls-first-frame">—</dd></div>
+                  <div><dt>恢复位置</dt><dd id="real-hls-resume">—</dd></div>
+                </dl>
+                <ol class="fault-log real-hls-log" id="real-hls-log" aria-label="真实 HLS 播放事件">
+                  <li><span>准备</span><strong>等待 Hls.js 初始化</strong></li>
+                </ol>
+              </div>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <nav class="route-map" aria-label="研究步骤">
+        <button type="button" data-jump="station-metadata" data-route-step="1">
+          <span class="route-index">01</span><span><strong>豆瓣元数据</strong><small>内容身份</small></span>
+        </button>
+        <span class="route-arrow" aria-hidden="true">→</span>
+        <button type="button" data-jump="station-resources" data-route-step="2">
+          <span class="route-index">02</span><span><strong>外部资源</strong><small>播放候选</small></span>
+        </button>
+        <span class="route-arrow" aria-hidden="true">→</span>
+        <button type="button" data-jump="station-matching" data-route-step="3">
+          <span class="route-index">03</span><span><strong>身份匹配</strong><small>正确内容</small></span>
+        </button>
+        <span class="route-arrow" aria-hidden="true">→</span>
+        <button type="button" data-jump="station-playback" data-route-step="4">
+          <span class="route-index">04</span><span><strong>播放换线</strong><small>可用体验</small></span>
+        </button>
+      </nav>
+
+      <div class="global-progress" aria-hidden="true"><span id="global-progress-bar"></span></div>
+
+      <section class="station" id="station-metadata" data-station="1" aria-labelledby="metadata-title">
+        <header class="station-header">
+          <div class="station-number">01</div>
+          <div class="station-title">
+            <p>Catalog / Identity</p>
+            <h2 id="metadata-title">元数据入口：建立“这是什么内容”</h2>
+          </div>
+          <span class="station-status status-idle" data-status-for="1">等待运行</span>
+          <button class="station-run" type="button" data-run-step="1">单独运行</button>
+        </header>
+
+        <div class="station-grid">
+          <article class="evidence-card source-card">
+            <div class="card-label"><span>来源</span><code>INPUT</code></div>
+            <h3 id="metadata-source-title">可替换的 MetadataProvider</h3>
+            <p id="metadata-source-copy">当前示例使用豆瓣字段形状；搜索其他示例可以观察 TMDB 回退和资源反向建档。</p>
+            <pre id="metadata-source">等待载入脱敏响应…</pre>
+            <a class="code-link" id="metadata-code-link" href="../upstream/v4.0.0/internal/catalog/douban.go">查看上游证据：catalog/douban.go <span>↗</span></a>
+          </article>
+
+          <article class="evidence-card ability-card">
+            <div class="card-label"><span>能力</span><code>PROCESS</code></div>
+            <h3>提供方适配、回退、内部规范化</h3>
+            <ul class="ability-list">
+              <li><span>01</span><span class="ability-copy">外部字段映射为内部 <code>Media</code></span></li>
+              <li><span>02</span><span class="ability-copy">可用外部 ID 保留为强匹配证据</span></li>
+              <li><span>03</span><span class="ability-copy">单一提供方缺失不阻断内容建档</span></li>
+            </ul>
+            <div class="formula">external response → <strong>Media</strong></div>
+          </article>
+
+          <article class="evidence-card result-card">
+            <div class="card-label"><span>效果</span><code>OUTPUT</code></div>
+            <h3>一个与提供方解耦的规范媒体</h3>
+            <div class="empty-result" id="metadata-output">运行后显示内部媒体身份、评分和外部 ID。</div>
+          </article>
+        </div>
+      </section>
+
+      <section class="station" id="station-resources" data-station="2" aria-labelledby="resources-title">
+        <header class="station-header">
+          <div class="station-number">02</div>
+          <div class="station-title">
+            <p>Resource Adapter</p>
+            <h2 id="resources-title">AppleCMS 资源：获得“有哪些地址”</h2>
+          </div>
+          <span class="station-status status-idle" data-status-for="2">等待运行</span>
+          <button class="station-run" type="button" data-run-step="2">单独运行</button>
+        </header>
+
+        <div class="station-grid">
+          <article class="evidence-card source-card">
+            <div class="card-label"><span>来源</span><code>INPUT</code></div>
+            <h3>管理员配置的 AppleCMS v10 API</h3>
+            <p>项目不发现资源网站，只调用已配置来源的搜索和详情接口。</p>
+            <pre id="resources-source">GET {source_api}?ac=videolist&amp;pg=1&amp;wd=…
+GET {source_api}?ac=detail&amp;ids=…</pre>
+            <a class="code-link" href="../upstream/v4.0.0/internal/search/applecms.go">查看上游证据：search/applecms.go <span>↗</span></a>
+          </article>
+
+          <article class="evidence-card ability-card">
+            <div class="card-label"><span>能力</span><code>PROCESS</code></div>
+            <h3>多源搜索、播放串拆解、安全过滤</h3>
+            <ul class="ability-list">
+              <li><span>01</span><span class="ability-copy"><code>$$$</code> 分线路，<code>#</code> 分集，<code>$</code> 分标题和 URL</span></li>
+              <li><span>02</span><span class="ability-copy">剧集标签归一为 <code>S01E03</code></span></li>
+              <li><span>03</span><span class="ability-copy">当前聚合主链只保留 <code>.m3u8</code></span></li>
+            </ul>
+            <div class="formula">AppleCMS payload → <strong>ResourceCandidate[]</strong></div>
+          </article>
+
+          <article class="evidence-card result-card">
+            <div class="card-label"><span>效果</span><code>OUTPUT</code></div>
+            <h3>异构来源变成统一候选</h3>
+            <div class="empty-result" id="resources-output">运行后显示资源数、HLS 候选和被过滤格式。</div>
+          </article>
+        </div>
+      </section>
+
+      <section class="station" id="station-matching" data-station="3" aria-labelledby="matching-title">
+        <header class="station-header">
+          <div class="station-number">03</div>
+          <div class="station-title">
+            <p>Media Identity</p>
+            <h2 id="matching-title">资源匹配：确认“地址对应正确内容”</h2>
+          </div>
+          <span class="station-status status-idle" data-status-for="3">等待运行</span>
+          <button class="station-run" type="button" data-run-step="3">单独运行</button>
+        </header>
+
+        <div class="station-grid">
+          <article class="evidence-card source-card">
+            <div class="card-label"><span>来源</span><code>INPUT</code></div>
+            <h3>规范媒体 + 三个外部资源</h3>
+            <p>一个资源有相同豆瓣 ID，一个只有标题/年份，另一个是同名旧版。</p>
+            <div class="comparison-input" id="matching-source">
+              <span>Media: 等待上一步</span>
+              <span>Resources: 3</span>
+            </div>
+            <a class="code-link" href="../upstream/v4.0.0/internal/mediaidentity/match_score.go">查看上游证据：match_score.go <span>↗</span></a>
+          </article>
+
+          <article class="evidence-card ability-card">
+            <div class="card-label"><span>能力</span><code>PROCESS</code></div>
+            <h3>强证据优先，冲突先拒绝</h3>
+            <ol class="decision-stack">
+              <li><strong>1.00</strong><span>外部 ID 精确</span></li>
+              <li><strong>0.95</strong><span>标题 + 年份 + 类型</span></li>
+              <li><strong>拒绝</strong><span>年份 / 类型 / 季冲突</span></li>
+            </ol>
+            <div class="formula">evidence + conflicts → <strong>MatchDecision</strong></div>
+          </article>
+
+          <article class="evidence-card result-card wide-result">
+            <div class="card-label"><span>效果</span><code>OUTPUT</code></div>
+            <h3>每个结论都能解释</h3>
+            <div class="empty-result" id="matching-output">运行后显示自动接受、启发式接受和拒绝原因。</div>
+          </article>
+        </div>
+      </section>
+
+      <section class="station playback-station" id="station-playback" data-station="4" aria-labelledby="playback-title">
+        <header class="station-header">
+          <div class="station-number">04</div>
+          <div class="station-title">
+            <p>Playback Orchestration</p>
+            <h2 id="playback-title">播放与换线：让“正确地址持续可用”</h2>
+          </div>
+          <span class="station-status status-idle" data-status-for="4">等待运行</span>
+          <button class="station-run" type="button" data-run-step="4">单独运行</button>
+        </header>
+
+        <div class="playback-layout">
+          <div class="player-shell" aria-label="匹配候选驱动的真实 HLS 播放器">
+            <video id="safe-video" muted autoplay playsinline aria-label="匹配候选驱动的 Hls.js 播放器"></video>
+            <canvas id="stream-canvas" width="960" height="540" hidden></canvas>
+            <div class="player-fallback" id="player-fallback" aria-hidden="true"></div>
+            <div class="player-topline">
+              <span class="stream-pill" id="stream-status">WAITING FOR MATCHED HLS</span>
+              <span id="player-unit">S01E03 · 第 3 集</span>
+            </div>
+            <div class="player-center">
+              <div class="player-state-icon" id="player-state-icon" aria-hidden="true">◇</div>
+              <strong id="player-state">等待候选线路</strong>
+              <span id="player-detail">匹配完成后将候选交给真实 Hls.js</span>
+            </div>
+            <div class="player-controls" aria-hidden="true">
+              <span id="player-time">00:00</span>
+              <div class="player-progress"><span id="player-progress-bar"></span></div>
+              <span id="player-duration">--:--</span>
+              <span class="quality-badge">HLS</span>
+            </div>
+          </div>
+
+          <div class="playback-evidence">
+            <div class="evidence-card compact-card">
+              <div class="card-label"><span>来源</span><code>INPUT</code></div>
+              <h3>同一 MediaUnit 的候选线路</h3>
+              <div id="candidate-list" class="candidate-list"><p>等待匹配结果…</p></div>
+            </div>
+            <div class="evidence-card compact-card">
+              <div class="card-label"><span>能力</span><code>PROCESS</code></div>
+              <h3>质量排序 + 最多两次同集换线</h3>
+              <div class="formula formula-block">
+                <span>0.85 × 播放健康度</span>
+                <span>+ 0.15 × 匹配置信度</span>
+              </div>
+              <a class="code-link" href="../upstream/v4.0.0/internal/playback/health.go">查看上游证据：playback/health.go <span>↗</span></a>
+            </div>
+          </div>
+        </div>
+
+        <div class="playback-result">
+          <div class="result-heading">
+            <div><span class="mini-label">效果 / OUTPUT</span><h3>播放事件与换线轨迹</h3></div>
+            <span class="result-verdict" id="playback-verdict">等待实验</span>
+          </div>
+          <ol class="event-log" id="event-log" aria-live="polite">
+            <li class="event-empty">运行后观察匹配候选如何进入真实 Hls.js，以及线路 B 如何在同一集接管。</li>
+          </ol>
+        </div>
+      </section>
+
+      <section class="research-conclusion" aria-labelledby="conclusion-title">
+        <div>
+          <p class="eyebrow">Research decision</p>
+          <h2 id="conclusion-title">真正值得复用的是编排，不是某个“免费地址”</h2>
+        </div>
+        <div class="conclusion-grid">
+          <article><span>01</span><h3>目录可替换</h3><p>豆瓣是提供方，内部 Media 才是稳定身份。</p></article>
+          <article><span>02</span><h3>资源需准入</h3><p>AppleCMS 是适配协议，不是版权或稳定性保证。</p></article>
+          <article><span>03</span><h3>正确性优先</h3><p>先证明同片同集，再讨论哪条线路更快。</p></article>
+          <article><span>04</span><h3>效果靠闭环</h3><p>首帧、卡顿和失败事件决定后续线路排序。</p></article>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <p>Moovie 核心技术路线研究演示 · 所有业务数据均为脱敏 fixture</p>
+      <a href="../README.md">阅读完整分析</a>
+    </footer>
+
+    <div class="sr-only" id="live-announcer" aria-live="assertive"></div>
+    <noscript><div class="noscript">本研究演示需要 JavaScript 才能运行；静态来源与能力说明仍可阅读。</div></noscript>
+    <script src="./fixtures.js"></script>
+    <script src="./pipeline.js"></script>
+    <script src="./fault-lab.js"></script>
+    <script src="./fault-lab-ui.js"></script>
+    <script src="../upstream/v4.0.0/web/static/js/hls.min.js"></script>
+    <script src="./real-hls-player.js"></script>
+    <script src="./public-catalog.js"></script>
+    <script src="./app.js"></script>
+  </body>
+</html>

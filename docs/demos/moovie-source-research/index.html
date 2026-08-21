@@ -1,0 +1,208 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="Moovie 视频聚合研究归档：核心技术要点是来源资源配置，以及来源可靠性、丰富度、匹配和换源。"
+    />
+    <title>Moovie 来源资源配置研究归档</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <a class="skip-link" href="#main">跳到主要内容</a>
+
+    <header class="site-header">
+      <a class="brand" href="../../" aria-label="返回 GitHub 能力研究实验室">
+        <span class="brand-mark" aria-hidden="true">08·21</span>
+        <span>能力研究实验室</span>
+      </a>
+      <nav aria-label="页面导航">
+        <a href="#source-map">来源地图</a>
+        <a href="#scorecard">评价体系</a>
+        <a class="repo-link" href="https://github.com/yydshly/0821_githubcode_study/tree/main/projects/moovie-video-playback">
+          完整归档 <span aria-hidden="true">↗</span>
+        </a>
+      </nav>
+    </header>
+
+    <main id="main">
+      <section class="hero" aria-labelledby="page-title">
+        <div class="hero-copy">
+          <p class="eyebrow"><span>ARCHIVED</span> · MOOVIE SOURCE RESEARCH</p>
+          <h1 id="page-title">来源，决定视频平台的<span>能力上限。</span></h1>
+          <p class="hero-lede">
+            搜索、排序、播放和推荐都建立在来源供给之上。这个方向真正需要持续建设的是：来源资源配置、可靠性评估、覆盖丰富度、内容匹配与失败换源。
+          </p>
+          <div class="hero-actions">
+            <a class="button primary" href="#conclusion">阅读核心结论</a>
+            <a class="button secondary" href="https://github.com/yydshly/0821_githubcode_study/blob/main/projects/moovie-video-playback/ARCHIVE.md">
+              查看技术档案
+            </a>
+          </div>
+        </div>
+
+        <aside class="thesis-card" aria-label="核心关系">
+          <p class="card-label">PLATFORM EQUATION</p>
+          <div class="equation" aria-label="来源供给乘以有效资源率乘以覆盖丰富度等于平台能力">
+            <span>来源供给</span>
+            <b aria-hidden="true">×</b>
+            <span>有效资源率</span>
+            <b aria-hidden="true">×</b>
+            <span>覆盖丰富度</span>
+            <b aria-hidden="true">=</b>
+            <strong>平台能力</strong>
+          </div>
+          <p>播放器只消费最终地址；它不会创造内容，也不会补足缺失的来源。</p>
+        </aside>
+      </section>
+
+      <section class="conclusion" id="conclusion" aria-labelledby="conclusion-title">
+        <div class="section-intro">
+          <p class="section-number">01 / CONCLUSION</p>
+          <h2 id="conclusion-title">把四个概念彻底分开</h2>
+        </div>
+        <div class="role-grid">
+          <article>
+            <span class="role-index">01</span>
+            <h3>元数据不是片源</h3>
+            <p>豆瓣、TMDB提供标题、年份、封面、评分和身份线索，但不提供电影媒体流。</p>
+          </article>
+          <article>
+            <span class="role-index">02</span>
+            <h3>播放器不是片源</h3>
+            <p>Hls.js、ArtPlayer只负责消费 MP4、HLS、DASH 或官方嵌入地址。</p>
+          </article>
+          <article>
+            <span class="role-index">03</span>
+            <h3>分发不是发现</h3>
+            <p>CDN和P2P可以加速已有媒体，但不能回答第一个视频从哪里进入系统。</p>
+          </article>
+          <article class="role-primary">
+            <span class="role-index">04</span>
+            <h3>来源才是供给</h3>
+            <p>管理员配置源、公开目录、合作API与自有媒体库共同决定可搜索和可播放的内容。</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="pipeline" aria-labelledby="pipeline-title">
+        <div class="section-intro inverse">
+          <p class="section-number">02 / PIPELINE</p>
+          <h2 id="pipeline-title">从来源配置到实际播放</h2>
+        </div>
+        <ol class="pipeline-list">
+          <li>
+            <span>01</span>
+            <div><strong>来源注册</strong><small>配置 API、媒体库、M3U 或平台官方接入</small></div>
+          </li>
+          <li>
+            <span>02</span>
+            <div><strong>并发搜索</strong><small>调用启用来源，保留来源身份和原始证据</small></div>
+          </li>
+          <li>
+            <span>03</span>
+            <div><strong>统一匹配</strong><small>按外部 ID、标题、年份、季集和主创去重</small></div>
+          </li>
+          <li>
+            <span>04</span>
+            <div><strong>播放检测</strong><small>验证地址、首帧、持续播放和最近健康状态</small></div>
+          </li>
+          <li>
+            <span>05</span>
+            <div><strong>排序换源</strong><small>同一媒体单元内选择最佳线路，失败后安全切换</small></div>
+          </li>
+        </ol>
+      </section>
+
+      <section class="source-map" id="source-map" aria-labelledby="source-map-title">
+        <div class="section-heading">
+          <div>
+            <p class="section-number">03 / SOURCE MAP</p>
+            <h2 id="source-map-title">两类核心供给</h2>
+          </div>
+          <p>来源既可以由管理员配置，也可以由系统内置公开适配器；点播与直播共享同一套注册、探测和健康度模型。</p>
+        </div>
+
+        <div class="source-columns">
+          <article class="source-panel vod-panel">
+            <div class="panel-heading">
+              <span>VOD</span>
+              <h3>点播来源</h3>
+            </div>
+            <ul>
+              <li><strong>AppleCMS / 合作 API</strong><span>影片、剧集、m3u8</span></li>
+              <li><strong>公开目录适配器</strong><span>MP4、WebM、HLS</span></li>
+              <li><strong>平台官方接入</strong><span>搜索 API、oEmbed</span></li>
+              <li><strong>自有媒体库</strong><span>上传、转码、对象存储</span></li>
+            </ul>
+          </article>
+
+          <article class="source-panel live-panel">
+            <div class="panel-heading">
+              <span>LIVE</span>
+              <h3>直播来源</h3>
+            </div>
+            <ul>
+              <li><strong>管理员配置直播</strong><span>HLS、DASH、M3U</span></li>
+              <li><strong>官方直播平台</strong><span>频道 API、官方嵌入</span></li>
+              <li><strong>合作直播源</strong><span>鉴权地址、EPG节目单</span></li>
+              <li><strong>自建直播服务</strong><span>RTMP/SRT 输入与转封装</span></li>
+            </ul>
+          </article>
+        </div>
+      </section>
+
+      <section class="scorecard" id="scorecard" aria-labelledby="scorecard-title">
+        <div class="section-heading">
+          <div>
+            <p class="section-number">04 / SCORECARD</p>
+            <h2 id="scorecard-title">来源数量，不等于有效资源</h2>
+          </div>
+          <p>平台应持续测量从“搜索命中”到“稳定播放”的完整漏斗，而不是只展示接口返回了多少条记录。</p>
+        </div>
+
+        <div class="funnel" aria-label="有效资源验证漏斗">
+          <span>搜索命中</span><i aria-hidden="true">→</i>
+          <span>内容匹配</span><i aria-hidden="true">→</i>
+          <span>地址可用</span><i aria-hidden="true">→</i>
+          <span>首帧成功</span><i aria-hidden="true">→</i>
+          <strong>稳定播放</strong>
+        </div>
+
+        <div class="metric-grid">
+          <article><b>01</b><h3>丰富度</h3><p>独有影片、剧集完整度、频道数量、长尾命中和更新速度。</p></article>
+          <article><b>02</b><h3>可靠性</h3><p>API成功率、超时率、地址失效率、首帧时间和恢复时间。</p></article>
+          <article><b>03</b><h3>准确性</h3><p>片名、年份、类型、季数和集数是否属于同一规范内容。</p></article>
+          <article><b>04</b><h3>可替代性</h3><p>同一内容拥有多少独立备用线路，以及故障时能否安全换源。</p></article>
+        </div>
+
+        <div class="formula">
+          <span>有效资源率</span>
+          <strong>匹配正确且可稳定播放的候选数</strong>
+          <i aria-hidden="true"></i>
+          <strong>搜索返回候选总数</strong>
+        </div>
+      </section>
+
+      <section class="decision" aria-labelledby="decision-title">
+        <p class="section-number">05 / DECISION</p>
+        <div>
+          <h2 id="decision-title">下一阶段：先建设来源实验室</h2>
+          <p>
+            优先完成点播源与直播源注册、真实请求证据、批量探测、有效资源率、健康度排序和严格同集换源；推荐、社区、弹幕和P2P分发放在来源供给稳定之后。
+          </p>
+        </div>
+        <a class="button primary" href="https://github.com/yydshly/0821_githubcode_study/tree/main/projects/moovie-video-playback/lab">
+          查看可复现实验
+        </a>
+      </section>
+    </main>
+
+    <footer>
+      <p>Moovie Source Research · Archived 2026-08-21</p>
+      <a href="https://github.com/yydshly/0821_githubcode_study">GitHub 能力研究实验室</a>
+    </footer>
+  </body>
+</html>
