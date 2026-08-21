@@ -1,0 +1,304 @@
+<!doctype html>
+<html lang="zh-CN" data-theme="light">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="H3 Prompt Journal 能力分析、案例拆解与提示词结构演示。" />
+    <meta name="color-scheme" content="light dark" />
+    <title>H3 Prompt Journal · 能力研究实验台</title>
+    <link rel="stylesheet" href="./styles.css" />
+    <script src="./app.js" defer></script>
+  </head>
+  <body>
+    <a class="skip-link" href="#main">跳到主要内容</a>
+
+    <header class="site-header">
+      <a class="brand" href="../../">
+        <span class="brand-index">R·001</span>
+        <span>GitHub 能力研究实验室</span>
+      </a>
+      <nav aria-label="页面导航">
+        <a href="#capabilities">能力</a>
+        <a href="#lab">实验台</a>
+        <a href="#scenarios">场景</a>
+        <a href="#roadmap">扩展</a>
+      </nav>
+      <button class="theme-toggle" id="theme-toggle" type="button" aria-label="切换深色主题" aria-pressed="false">
+        <span aria-hidden="true">◐</span>
+        <span class="theme-label">深色</span>
+      </button>
+    </header>
+
+    <main id="main">
+      <section class="hero" aria-labelledby="hero-title">
+        <div class="hero-copy">
+          <p class="eyebrow">CASE STUDY / MINIMAX H3 / 2026.08.21</p>
+          <h1 id="hero-title">提示词不是咒语，<br />是对视频<em>物理</em>的编排。</h1>
+          <p class="lede">我们拆解了 6 个 H3 生成案例，寻找它们如何把“连贯、快速、自然、好笑”这些模糊要求，转换成模型能够执行的参考职责、时间规则和运动逻辑。</p>
+          <div class="hero-actions">
+            <a class="button primary" href="#lab">进入提示词实验台</a>
+            <a class="button quiet" href="https://github.com/LoveRain1997/h3-prompt-journal/tree/0c7b4882dad8a302c304fe9be40f0b8b1b098b26" target="_blank" rel="noreferrer">查看上游快照 ↗</a>
+          </div>
+        </div>
+
+        <aside class="diagnosis-card" aria-label="仓库诊断">
+          <div class="stamp">REPO DIAGNOSIS</div>
+          <dl>
+            <div><dt>真实形态</dt><dd>经验案例库</dd></div>
+            <div><dt>不是</dt><dd>自动生成器</dd></div>
+            <div><dt>案例数量</dt><dd>06</dd></div>
+            <div><dt>可执行代码</dt><dd>00</dd></div>
+            <div><dt>许可证</dt><dd>MIT</dd></div>
+            <div><dt>研究快照</dt><dd><code>0c7b488</code></dd></div>
+          </dl>
+          <p>价值在于保存“失败 → 策略 → 最终 Prompt”的设计推理；自动反推能力位于配套的 <a href="https://github.com/LoveRain1997/video-to-h3-prompt" target="_blank" rel="noreferrer">video-to-h3-prompt</a>。</p>
+        </aside>
+      </section>
+
+      <section class="evidence-strip" aria-label="研究证据边界">
+        <span class="evidence-label source">源码事实</span>
+        <p>6 份案例 README + 6 份完整 Prompt + 部分媒体资产。</p>
+        <span class="evidence-label reported">作者经验</span>
+        <p>突破策略与结果描述，尚无重复率或 A/B 数据。</p>
+        <span class="evidence-label inference">研究推断</span>
+        <p>网页中的能力模型与扩展优先级。</p>
+      </section>
+
+      <section class="section capabilities" id="capabilities" aria-labelledby="capability-title">
+        <header class="section-heading">
+          <div>
+            <p class="section-number">01 / CAPABILITY MAP</p>
+            <h2 id="capability-title">它真正沉淀了什么？</h2>
+          </div>
+          <p>六个案例看似题材不同，本质都在解决同一件事：如何把审美意图翻译为可维持的生成规则。</p>
+        </header>
+
+        <div class="capability-grid">
+          <article class="capability-card featured">
+            <span class="cap-index">A</span>
+            <h3>参考图职责分离</h3>
+            <p>为每张图声明“控制什么 / 不控制什么”，避免身份、环境、装备与构图互相争夺。</p>
+            <div class="micro-diagram" aria-label="参考图分工示例">
+              <span>图 1<br /><small>身份</small></span><i>+</i><span>图 2<br /><small>装备</small></span><i>+</i><span>图 3<br /><small>摄影</small></span>
+            </div>
+          </article>
+          <article class="capability-card">
+            <span class="cap-index">B</span>
+            <h3>连续物理逻辑</h3>
+            <p>不只禁止切镜，还描述遮挡、绕行、惯性与下一主体如何从真实空间中出现。</p>
+          </article>
+          <article class="capability-card">
+            <span class="cap-index">C</span>
+            <h3>时间与比例锚点</h3>
+            <p>用 3:1 动作数、毫秒笑点、音乐重音和分段时间线代替“更快”“更有节奏”。</p>
+          </article>
+          <article class="capability-card">
+            <span class="cap-index">D</span>
+            <h3>锁定 / 放权预算</h3>
+            <p>精密镜头写清物理细节；综艺表演只锁故事节点，并明确授权模型决定执行。</p>
+          </article>
+          <article class="capability-card">
+            <span class="cap-index">E</span>
+            <h3>身份级媒介保护</h3>
+            <p>把“2D 平面”等关键属性写入角色身份，用封闭式否定清单对抗强道具先验。</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="section lab-section" id="lab" aria-labelledby="lab-title">
+        <header class="section-heading lab-heading">
+          <div>
+            <p class="section-number">02 / INTERACTIVE LAB</p>
+            <h2 id="lab-title">从失败模式，组装控制策略。</h2>
+          </div>
+          <p>选择案例并调整约束。右侧骨架用于展示 Prompt 的结构逻辑，不调用 H3，也不替代上游完整提示词。</p>
+        </header>
+
+        <div class="lab-shell">
+          <aside class="case-rail" aria-label="选择研究案例">
+            <div class="case-rail-head">
+              <span>实验档案</span>
+              <span>6 CASES</span>
+            </div>
+            <div id="case-list" class="case-list" role="listbox" aria-label="H3 案例">
+              <button class="case-button is-active" type="button" role="option" aria-selected="true" data-case="001">
+                <span>001</span><strong>遮挡衔接长镜头</strong><small>CONTINUITY</small>
+              </button>
+              <button class="case-button" type="button" role="option" aria-selected="false" data-case="002">
+                <span>002</span><strong>3:1 差速双人舞</strong><small>RATIO</small>
+              </button>
+              <button class="case-button" type="button" role="option" aria-selected="false" data-case="003">
+                <span>003</span><strong>三姿态锚点飞行</strong><small>ANCHOR FLOW</small>
+              </button>
+              <button class="case-button" type="button" role="option" aria-selected="false" data-case="004">
+                <span>004</span><strong>多参考帆板 MV</strong><small>REFERENCE ROLES</small>
+              </button>
+              <button class="case-button" type="button" role="option" aria-selected="false" data-case="005">
+                <span>005</span><strong>剧情锚点综艺</strong><small>FREEDOM BUDGET</small>
+              </button>
+              <button class="case-button" type="button" role="option" aria-selected="false" data-case="006">
+                <span>006</span><strong>贴纸混合媒介</strong><small>MEDIUM LOCK</small>
+              </button>
+            </div>
+          </aside>
+
+          <div class="case-workbench">
+            <section class="case-overview" aria-live="polite">
+              <div class="case-meta">
+                <span id="case-number">CASE 001</span>
+                <span id="case-duration">20 秒</span>
+                <span id="case-input">3 张参考图</span>
+              </div>
+              <h3 id="case-title">三人遮挡衔接环绕长镜头</h3>
+              <p id="case-summary">让三个人在同一空间里依次完成近距离环绕，并用人物身体形成前景遮挡，物理地揭示下一位主体。</p>
+              <div class="logic-pair">
+                <div>
+                  <span>默认失败</span>
+                  <p id="case-problem">“去往下一个人”被模型理解为切镜、瞬移、交叉淡化或身份变形。</p>
+                </div>
+                <div>
+                  <span>突破策略</span>
+                  <p id="case-breakthrough">不描述飞向谁，而是描述镜头绕过肩膀、头发或背部，让下一个人从遮挡后自然出现。</p>
+                </div>
+              </div>
+            </section>
+
+            <section class="anatomy-panel" aria-labelledby="anatomy-title">
+              <div class="panel-heading">
+                <h4 id="anatomy-title">Prompt anatomy</h4>
+                <span>结构拆解</span>
+              </div>
+              <div class="anatomy-columns">
+                <div>
+                  <h5>参考职责</h5>
+                  <div id="reference-roles" class="role-list"></div>
+                </div>
+                <div>
+                  <h5>时间 / 事件轴</h5>
+                  <ol id="timeline" class="timeline"></ol>
+                </div>
+              </div>
+            </section>
+
+            <section class="composer" aria-labelledby="composer-title">
+              <div class="panel-heading">
+                <div>
+                  <h4 id="composer-title">约束组合器</h4>
+                  <p>开关一个约束，观察提示词骨架如何变化。</p>
+                </div>
+                <span>DEMO ONLY</span>
+              </div>
+              <div id="constraint-list" class="constraint-list"></div>
+              <div class="prompt-preview">
+                <div class="prompt-toolbar">
+                  <span>STRUCTURAL PROMPT PREVIEW</span>
+                  <button id="copy-prompt" type="button">复制骨架</button>
+                </div>
+                <pre tabindex="0"><code id="prompt-output"></code></pre>
+                <p id="copy-status" class="copy-status" role="status" aria-live="polite"></p>
+              </div>
+              <div class="source-actions">
+                <a id="case-source" class="text-link" href="https://github.com/LoveRain1997/h3-prompt-journal/tree/0c7b4882dad8a302c304fe9be40f0b8b1b098b26/case-studies/2026-08-three-person-orbital-long-take" target="_blank" rel="noreferrer">阅读上游完整案例 ↗</a>
+                <span id="case-evidence">证据：README + Prompt，未附结果媒体</span>
+              </div>
+            </section>
+          </div>
+        </div>
+      </section>
+
+      <section class="section media-section" aria-labelledby="media-title">
+        <div class="media-copy">
+          <p class="section-number">03 / REAL OUTPUT</p>
+          <h2 id="media-title">仓库中唯一附带的成片证据。</h2>
+          <p>案例 004 提供了 4 张参考图与 1 个结果视频。README 描述的生产方案是 3×15 秒、45 秒成片，但附件在浏览器中的媒体时长约为 36 秒；仓库也没有同时保存失败版本、生成参数或重复测试，因此它是案例证据，不是性能基准。</p>
+          <div class="evidence-note">
+            <span class="evidence-label source">源码事实</span>
+            <p>媒体直接从固定提交读取，不复制进本研究库。若预览失败，可前往上游文件。</p>
+          </div>
+          <a class="text-link" href="https://github.com/LoveRain1997/h3-prompt-journal/blob/0c7b4882dad8a302c304fe9be40f0b8b1b098b26/case-studies/2026-08-furina-windsurfing-fashion-mv/result-video.mp4" target="_blank" rel="noreferrer">打开上游成片 ↗</a>
+        </div>
+        <div class="video-frame">
+          <div class="video-label"><span>CASE 004</span><span>ATTACHED FILE · ≈36S</span></div>
+          <video controls preload="metadata" poster="https://raw.githubusercontent.com/LoveRain1997/h3-prompt-journal/0c7b4882dad8a302c304fe9be40f0b8b1b098b26/case-studies/2026-08-furina-windsurfing-fashion-mv/picture-1-character-key-visual.png">
+            <source src="https://raw.githubusercontent.com/LoveRain1997/h3-prompt-journal/0c7b4882dad8a302c304fe9be40f0b8b1b098b26/case-studies/2026-08-furina-windsurfing-fashion-mv/result-video.mp4" type="video/mp4" />
+            当前浏览器无法播放视频。请使用旁边的上游成片链接。
+          </video>
+        </div>
+      </section>
+
+      <section class="section scenarios" id="scenarios" aria-labelledby="scenario-title">
+        <header class="section-heading">
+          <div>
+            <p class="section-number">04 / WHERE IT FITS</p>
+            <h2 id="scenario-title">什么时候值得打开这个仓库？</h2>
+          </div>
+          <p>它更像一本“故障模式手册”，适合遇到具体生成问题时按症状查策略，而不是从空白需求一键出片。</p>
+        </header>
+        <div class="scenario-grid">
+          <article><span>PRECISION</span><h3>精密连续镜头</h3><p>多人物环绕、姿态间连续飞行、需要可解释的镜头物理。</p><small>从 CASE 001 / 003 开始</small></article>
+          <article><span>TEMPORAL</span><h3>差速与时间节拍</h3><p>双人不同步、音乐峰值、毫秒级笑点或明确事件顺序。</p><small>从 CASE 002 / 004 / 006 开始</small></article>
+          <article><span>PERFORMANCE</span><h3>综艺与自然表演</h3><p>剧情必须可控，但具体动作、机位和反应需要保留即兴感。</p><small>从 CASE 005 开始</small></article>
+          <article><span>MIXED MEDIA</span><h3>媒介与道具先验</h3><p>2D 角色进入真人世界，或某种道具默认形态会破坏剧情。</p><small>从 CASE 006 开始</small></article>
+        </div>
+        <div class="not-fit">
+          <strong>不适合直接承担</strong>
+          <p>一键生成平台 · 定量模型基准 · API 批处理 · 自动回归测试 · 团队模板管理</p>
+        </div>
+      </section>
+
+      <section class="section audit" aria-labelledby="audit-title">
+        <div class="audit-title-wrap">
+          <p class="section-number">05 / EVIDENCE AUDIT</p>
+          <h2 id="audit-title">有启发，<br />但还不是基准。</h2>
+        </div>
+        <div class="audit-stack">
+          <article class="audit-level strongest"><span>01 · 可确认</span><h3>结构与资产</h3><p>六套 README/Prompt、MIT 许可证、部分参考图，以及 CASE 004 的结果视频。</p></article>
+          <article class="audit-level"><span>02 · 作者报告</span><h3>策略有效性</h3><p>比例、命名语法、身份级媒介锁与显式放权改善了对应结果。</p></article>
+          <article class="audit-level weakest"><span>03 · 尚未证明</span><h3>稳定性与泛化</h3><p>缺少模型版本、种子、参数、失败输出、重复成功率和 A/B 对照。</p></article>
+          <aside class="compatibility-alert">
+            <span>COMPATIBILITY FLAG</span>
+            <p>当前官方写作技能写明 4–15 秒；CASE 001 / 005 使用 20 秒。生产复用前应按当前 H3 能力重新验证。</p>
+            <a href="https://github.com/MiniMax-AI/MiniMax-H3/blob/d21241f0a4b3acbb34c97dae47fa417b7065e438/skills/h3-prompt-writing/SKILL.md" target="_blank" rel="noreferrer">查看官方快照 ↗</a>
+          </aside>
+        </div>
+      </section>
+
+      <section class="section roadmap" id="roadmap" aria-labelledby="roadmap-title">
+        <header class="section-heading">
+          <div>
+            <p class="section-number">06 / EXTENSION ROADMAP</p>
+            <h2 id="roadmap-title">从经验日志，到可验证系统。</h2>
+          </div>
+          <p>扩展重点不是继续堆更多长 Prompt，而是先把经验变成结构化数据，再建立生成与评估闭环。</p>
+        </header>
+        <ol class="roadmap-list">
+          <li><span>P0</span><div><h3>实验可复现</h3><p>记录模型版本、模式、分辨率、时长、种子、成本、失败样本与重复成功率。</p></div><small>现在最值得做</small></li>
+          <li><span>P1</span><div><h3>参数化策略模块</h3><p>统一参考职责、时间线、锁定项、自由项、物理逻辑、负面约束与音频 schema。</p></div><small>从复制走向组合</small></li>
+          <li><span>P2</span><div><h3>自动评估与回归</h3><p>抽帧、镜头边界、身份一致性、时间锚点和媒介漂移检测，形成版本回归报告。</p></div><small>从经验走向证据</small></li>
+          <li><span>P3</span><div><h3>生产工作台</h3><p>把需求、策略选择、反推、生成、结果评估和迭代谱系连接起来；真实 API 留在独立后端。</p></div><small>从仓库走向产品</small></li>
+        </ol>
+      </section>
+
+      <section class="sources" aria-labelledby="source-title">
+        <div>
+          <p class="section-number">SOURCES</p>
+          <h2 id="source-title">可追溯，而不是凭印象。</h2>
+        </div>
+        <ul>
+          <li><a href="https://github.com/LoveRain1997/h3-prompt-journal/tree/0c7b4882dad8a302c304fe9be40f0b8b1b098b26" target="_blank" rel="noreferrer">h3-prompt-journal @ 0c7b488 ↗</a></li>
+          <li><a href="https://github.com/MiniMax-AI/MiniMax-H3/blob/d21241f0a4b3acbb34c97dae47fa417b7065e438/skills/h3-prompt-writing/SKILL.md" target="_blank" rel="noreferrer">官方 h3-prompt-writing @ d21241f ↗</a></li>
+          <li><a href="https://github.com/LoveRain1997/video-to-h3-prompt/tree/31bed0dfd69157cd14894c555b23e3baf5f44b31" target="_blank" rel="noreferrer">video-to-h3-prompt @ 31bed0d ↗</a></li>
+          <li><a href="https://github.com/yydshly/0821_githubcode_study/tree/main/projects/h3-prompt-journal" target="_blank" rel="noreferrer">本研究的完整分析与验收记录 ↗</a></li>
+        </ul>
+      </section>
+    </main>
+
+    <footer>
+      <a href="../../">← 返回研究展厅</a>
+      <p>Research 001 · H3 Prompt Journal</p>
+      <p>Observe · Reproduce · Explain</p>
+    </footer>
+
+    <noscript><p class="noscript">交互实验台需要 JavaScript；其余分析内容仍可正常阅读。</p></noscript>
+  </body>
+</html>

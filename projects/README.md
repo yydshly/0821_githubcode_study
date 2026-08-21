@@ -4,7 +4,9 @@
 
 ## 当前项目
 
-尚未添加研究项目。创建第一个项目时，请同步更新根目录 `README.md` 的研究索引。
+| 项目 | 状态 | 研究记录 | 在线演示 |
+| --- | --- | --- | --- |
+| H3 Prompt Journal | `validated` | [能力分析](h3-prompt-journal/) | [交互实验台](https://yydshly.github.io/0821_githubcode_study/demos/h3-prompt-journal/) |
 
 ## 推荐布局
 
