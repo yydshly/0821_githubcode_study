@@ -111,7 +111,7 @@
             <p class="section-number">02 / INTERACTIVE LAB</p>
             <h2 id="lab-title">从失败模式，组装控制策略。</h2>
           </div>
-          <p>选择案例并调整约束。右侧骨架用于展示 Prompt 的结构逻辑，不调用 H3，也不替代上游完整提示词。</p>
+          <p>选择一种经过案例验证的控制策略，再把你的主体、场景与素材职责填进去。工作台会生成完整结构，但不会调用 H3 或上传素材。</p>
         </header>
 
         <div class="lab-shell">
@@ -183,16 +183,97 @@
             <section class="composer" aria-labelledby="composer-title">
               <div class="panel-heading">
                 <div>
-                  <h4 id="composer-title">约束组合器</h4>
-                  <p>开关一个约束，观察提示词骨架如何变化。</p>
+                  <h4 id="composer-title">生产 Prompt 设计器</h4>
+                  <p>填写你的项目，套用当前策略，生成可粘贴到 H3 的六段式 Ref2VA Prompt。</p>
                 </div>
-                <span>DEMO ONLY</span>
+                <span>LOCAL · NO UPLOAD</span>
               </div>
-              <div id="constraint-list" class="constraint-list"></div>
+
+              <div class="designer-notice">
+                <strong>怎么用</strong>
+                <p>左侧选择策略 → 修改项目与参考职责 → 保留必要约束 → 校验通过后复制。文本在浏览器本地生成，不会上传素材。</p>
+              </div>
+
+              <form id="prompt-form" novalidate>
+                <fieldset class="designer-group">
+                  <legend><span>01</span> 项目基础</legend>
+                  <div class="field-grid">
+                    <label class="field field-wide">
+                      <span>主体 / 身份描述 <b>必填</b></span>
+                      <textarea id="subject" name="subject" rows="3" required></textarea>
+                    </label>
+                    <label class="field">
+                      <span>场景 / 环境 <b>必填</b></span>
+                      <textarea id="scene" name="scene" rows="3" required></textarea>
+                    </label>
+                    <label class="field">
+                      <span>目标动作 / 结果 <b>必填</b></span>
+                      <textarea id="action" name="action" rows="3" required></textarea>
+                    </label>
+                    <label class="field">
+                      <span>视觉风格 <b>必填</b></span>
+                      <input id="style" name="style" type="text" required />
+                    </label>
+                    <label class="field compact-field">
+                      <span>时长（4–15 秒） <b>必填</b></span>
+                      <input id="duration" name="duration" type="number" min="4" max="15" step="1" required />
+                    </label>
+                    <label class="field compact-field">
+                      <span>画幅</span>
+                      <select id="aspect" name="aspect">
+                        <option value="16:9">16:9 横屏</option>
+                        <option value="9:16">9:16 竖屏</option>
+                        <option value="1:1">1:1 方形</option>
+                      </select>
+                    </label>
+                  </div>
+                </fieldset>
+
+                <fieldset class="designer-group">
+                  <legend><span>02</span> 参考图职责</legend>
+                  <p class="group-help">字段名必须与上传顺序一致。高潮模板可能主动移除 Picture 3。</p>
+                  <div id="role-editor" class="role-editor"></div>
+                </fieldset>
+
+                <fieldset class="designer-group">
+                  <legend><span>03</span> 当前策略参数</legend>
+                  <div id="strategy-fields" class="field-grid"></div>
+                </fieldset>
+
+                <fieldset class="designer-group">
+                  <legend><span>04</span> 必要约束</legend>
+                  <p class="group-help">这些是模板的控制核心。至少保留一项；取消会扩大模型自由度。</p>
+                  <div id="constraint-list" class="constraint-list"></div>
+                </fieldset>
+
+                <fieldset class="designer-group">
+                  <legend><span>05</span> 声音</legend>
+                  <div class="field-grid">
+                    <label class="field">
+                      <span>场内声景 <b>必填</b></span>
+                      <textarea id="soundscape" name="soundscape" rows="3" required></textarea>
+                    </label>
+                    <label class="field">
+                      <span>画外音乐 <b>必填</b></span>
+                      <textarea id="music" name="music" rows="3" required></textarea>
+                    </label>
+                  </div>
+                </fieldset>
+              </form>
+
+              <div id="validation-panel" class="validation-panel" role="status" aria-live="polite">
+                <span class="validation-dot" aria-hidden="true"></span>
+                <div><strong id="validation-title">正在检查</strong><p id="validation-message"></p></div>
+              </div>
+
               <div class="prompt-preview">
                 <div class="prompt-toolbar">
-                  <span>STRUCTURAL PROMPT PREVIEW</span>
-                  <button id="copy-prompt" type="button">复制骨架</button>
+                  <span><b>H3 REF2VA PROMPT</b><small id="prompt-stats">0 字符</small></span>
+                  <div class="prompt-actions">
+                    <button id="reset-prompt" class="toolbar-quiet" type="button">恢复模板</button>
+                    <button id="download-prompt" class="toolbar-quiet" type="button">下载 .txt</button>
+                    <button id="copy-prompt" type="button">复制 Prompt</button>
+                  </div>
                 </div>
                 <pre tabindex="0"><code id="prompt-output"></code></pre>
                 <p id="copy-status" class="copy-status" role="status" aria-live="polite"></p>
