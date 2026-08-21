@@ -15,6 +15,7 @@
 | 英文 Prompt | [`prompt.txt`](prompt.txt) |
 | 中文 Prompt | [`prompt.zh.txt`](prompt.zh.txt) |
 | 最终输出 | [`result-video.mp4`](../../../../docs/demos/h3-prompt-journal/assets/case-006-real-test/result-video.mp4) · 已由使用者在外部 H3 生成并于 2026-08-21 返回 |
+| 输出封面 | [`result-poster.jpg`](../../../../docs/demos/h3-prompt-journal/assets/case-006-real-test/result-poster.jpg) · 从真实成片 1.0 秒处抽取，不使用输入图冒充输出画面 |
 
 Picture 1 由 Codex 内置图像生成工具创建，尺寸为 `1254×1254`、RGBA，透明通道范围为 `0–255`，文件约 `890 KB`。角色为原创柠檬贴纸，不依赖外部版权人物；生成规格保存在 [`image-generation-spec.txt`](image-generation-spec.txt)。
 
@@ -54,3 +55,5 @@ python projects/h3-prompt-journal/real-samples/case-006/run_h3.py --dry-run
 - 观察偏差：盐罐附近仍生成了圆形盖子，违反“场景任何位置都不存在盖子”的封闭式否定
 
 机器可读记录见 [`result-metadata.json`](result-metadata.json)。该成片证明方法部分有效，但不能作为“全部约束均成功”的证据。
+
+演示页持续并列显示 Picture 1 与真实视频：播放视频不会移除输入图。后续案例返回成片时沿用同一输入证据保留规则。
