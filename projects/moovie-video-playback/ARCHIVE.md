@@ -212,7 +212,8 @@ Observable completion criteria: 页面静态可加载、核心结论位于首屏
 | 交付项 | 证据 | 状态 |
 | --- | --- | --- |
 | 核心结论归档 | `ARCHIVE.md` | `pass` |
-| 仓库研究索引 | 根 README 与 `projects/README.md` | `continue`，等待提交验证 |
-| Pages 静态研究页 | `docs/demos/moovie-source-research/` | `continue`，等待浏览器验证 |
-| 桌面与手机阅读 | 浏览器截图/DOM观察 | `continue`，等待浏览器验证 |
-| GitHub 远端与 Pages | Git push 与 Actions | `continue`，等待远端验证 |
+| 仓库研究索引 | 根 README 与 `projects/README.md`；提交 `653d6c6` | `pass` |
+| Pages 静态研究页 | `docs/demos/moovie-source-research/`；HTTP 200 | `pass` |
+| 桌面与手机阅读 | `lab/evidence/source-archive-desktop.png`、`source-archive-mobile.png`；1440/390 px 无横向溢出 | `pass` |
+| 键盘与静态回退 | 首个焦点为 `#main` 跳转；无 JavaScript/后端依赖 | `pass` |
+| GitHub 远端与 Pages | Actions `32487301303`；[公开归档页](https://yydshly.github.io/0821_githubcode_study/demos/moovie-source-research/) | `pass` |
