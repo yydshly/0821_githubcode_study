@@ -1207,6 +1207,84 @@ pre {
   margin-top: 9px;
 }
 
+.case-use-cases {
+  margin-bottom: 24px;
+  padding: 18px;
+  border: 1px solid color-mix(in srgb, var(--paper) 24%, transparent);
+  background: color-mix(in srgb, var(--paper) 5%, transparent);
+}
+
+.case-use-cases-heading > span {
+  display: block;
+  margin-bottom: 8px;
+  color: var(--accent);
+  font-family: ui-monospace, SFMono-Regular, Consolas, monospace;
+  font-size: 0.64rem;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+}
+
+.case-use-cases-heading h4 {
+  margin: 0 0 7px;
+  font-family: Georgia, "Noto Serif SC", serif;
+  font-size: 1.22rem;
+  font-weight: 500;
+  line-height: 1.2;
+}
+
+.case-use-cases-heading p,
+.case-use-cases-boundary p {
+  margin: 0;
+  color: color-mix(in srgb, var(--paper) 72%, transparent);
+  font-size: 0.75rem;
+  line-height: 1.58;
+}
+
+.case-use-cases-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.35fr) minmax(190px, 0.65fr);
+  gap: 10px;
+  margin-top: 16px;
+}
+
+.case-use-cases-grid > div {
+  padding: 14px;
+  background: color-mix(in srgb, var(--paper) 6%, transparent);
+  border-top: 3px solid var(--accent);
+}
+
+.case-use-cases-grid .case-use-cases-boundary {
+  border-top-color: var(--orange);
+}
+
+.case-use-cases-grid strong {
+  color: var(--accent);
+  font-size: 0.72rem;
+}
+
+.case-use-cases-grid .case-use-cases-boundary strong {
+  color: var(--orange);
+}
+
+.case-use-cases-fit ul {
+  margin: 10px 0 0;
+  padding-left: 18px;
+  color: color-mix(in srgb, var(--paper) 78%, transparent);
+}
+
+.case-use-cases-fit li {
+  font-size: 0.73rem;
+  line-height: 1.5;
+}
+
+.case-use-cases-fit li + li {
+  margin-top: 7px;
+}
+
+.case-use-cases-boundary p {
+  margin-top: 10px;
+}
+
 .verified-output .button.quiet {
   color: var(--paper);
   border-color: color-mix(in srgb, var(--paper) 55%, transparent);
@@ -2115,6 +2193,10 @@ footer a {
   }
 
   .verified-metadata {
+    grid-template-columns: 1fr;
+  }
+
+  .case-use-cases-grid {
     grid-template-columns: 1fr;
   }
 
