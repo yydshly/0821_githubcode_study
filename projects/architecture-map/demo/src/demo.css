@@ -1,0 +1,37 @@
+:root {
+  --am-surface: #fbfcff;
+  --am-border: #dfe5ef;
+  --am-structure: #8d98a8;
+  --am-ink-primary: #172033;
+  --am-ink-secondary: #4b566b;
+  --am-ink-tertiary: #778196;
+  --am-accent: #e95026;
+  --am-accent-wash: #ffeadf;
+  --am-font-title: Georgia, "Noto Serif SC", serif;
+  --am-font-body: Inter, "Noto Sans SC", "Microsoft YaHei", sans-serif;
+  --am-font-mono: "SFMono-Regular", Consolas, monospace;
+  color-scheme: light;
+}
+
+* { box-sizing: border-box; }
+html, body, #root { width: 100%; height: 100%; margin: 0; }
+body { overflow: hidden; }
+button { color: inherit; }
+
+@media (max-width: 980px) {
+  body::before {
+    content: "建议在桌面宽屏查看完整的街区、流程与说明面板";
+    position: fixed;
+    z-index: 20;
+    right: 12px;
+    bottom: 38px;
+    max-width: 260px;
+    padding: 8px 12px;
+    color: #172033;
+    background: #fff6d9;
+    border: 1px solid #e5ca6d;
+    border-radius: 4px;
+    font: 12px/1.5 Inter, "Microsoft YaHei", sans-serif;
+    pointer-events: none;
+  }
+}

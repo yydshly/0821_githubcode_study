@@ -11,6 +11,7 @@
 | H3 Prompt Journal | MiniMax H3 提示词工程、参考图分工、时间与物理约束 | `archived` | [上游仓库](https://github.com/LoveRain1997/h3-prompt-journal) | [结项档案](projects/h3-prompt-journal/ARCHIVE.md) | [归档演示](https://yydshly.github.io/0821_githubcode_study/demos/h3-prompt-journal/) |
 | ZhuLink | 私人 RSS 阅读、公共内容推荐、透明热度排序 | `archived` | [上游仓库](https://github.com/TwoThreeWang/zhulink) | [案例整理](projects/zhulink-community-aggregation/) | 暂无 |
 | Moovie | 点播/直播来源配置、可靠性、丰富度、资源匹配与换源 | `archived` | [上游仓库](https://github.com/TwoThreeWang/Moovie) | [来源研究归档](projects/moovie-video-playback/ARCHIVE.md) | [原研究实验室](https://yydshly.github.io/0821_githubcode_study/demos/moovie-video-playback/) · [归档结论页](https://yydshly.github.io/0821_githubcode_study/demos/moovie-source-research/) |
+| Architecture Map | AI 辅助代码库理解、交互式架构逻辑地图、文档漂移检测 | `validated` | [上游仓库](https://github.com/almendili/skills) | [研究记录](projects/architecture-map/) · [扩展方向](projects/architecture-map/EXTENSIONS.md) | [独立实现演示](https://yydshly.github.io/0821_githubcode_study/demos/architecture-map/) |
 
 状态统一使用 `planned`、`researching`、`validated`、`archived`，方便快速判断研究进度。
 

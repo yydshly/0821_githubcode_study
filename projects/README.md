@@ -9,6 +9,7 @@
 | H3 Prompt Journal | `archived` | [结项档案](h3-prompt-journal/ARCHIVE.md) · [能力分析](h3-prompt-journal/) | [归档演示](https://yydshly.github.io/0821_githubcode_study/demos/h3-prompt-journal/) |
 | ZhuLink：RSS 与公共资讯社区 | `archived` | [案例分析](zhulink-community-aggregation/) | 暂无 |
 | Moovie：视频与直播来源研究 | `archived` | [来源研究归档](moovie-video-playback/ARCHIVE.md) · [完整分析](moovie-video-playback/) | [原研究实验室](https://yydshly.github.io/0821_githubcode_study/demos/moovie-video-playback/) · [归档结论页](https://yydshly.github.io/0821_githubcode_study/demos/moovie-source-research/) |
+| Architecture Map：交互式项目架构地图 | `validated` | [研究记录](architecture-map/) · [扩展方向](architecture-map/EXTENSIONS.md) | [独立实现演示](https://yydshly.github.io/0821_githubcode_study/demos/architecture-map/) |
 
 ## 推荐布局
 

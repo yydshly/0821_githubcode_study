@@ -1,0 +1,23 @@
+{
+  "name": "architecture-map-research-demo",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "scripts": {
+    "sync": "node upstream/architecture-map/scripts/architecture-sync.mjs",
+    "check:map": "node upstream/architecture-map/scripts/architecture-sync.mjs --check",
+    "dev": "npm run sync && vite demo --config demo/vite.config.mjs",
+    "build": "npm run sync && tsc -p demo/tsconfig.json --noEmit && vite build demo --config demo/vite.config.mjs",
+    "preview": "vite preview demo --config demo/vite.config.mjs"
+  },
+  "dependencies": {
+    "react": "19.2.0",
+    "react-dom": "19.2.0"
+  },
+  "devDependencies": {
+    "@types/react": "19.2.2",
+    "@types/react-dom": "19.2.2",
+    "typescript": "5.9.2",
+    "vite": "7.3.6"
+  }
+}

@@ -1,0 +1,35 @@
+{
+  "$note": "节点直接认领 GitHub 能力研究实验室中的真实文档、实验代码和发布配置。",
+  "governance": { "owns": ["../../README.md", "../../CONTRIBUTING.md", "../README.md"] },
+  "proposals": { "owns": ["../../.github/ISSUE_TEMPLATE/**", "../../.github/PULL_REQUEST_TEMPLATE.md"] },
+  "template": { "owns": ["../_template/**"] },
+  "h3": { "owns": ["../h3-prompt-journal/**"] },
+  "zhulink": { "owns": ["../zhulink-community-aggregation/**"] },
+  "moovie": {
+    "owns": [
+      "../moovie-video-playback/README.md",
+      "../moovie-video-playback/ARCHIVE.md",
+      "../moovie-video-playback/DESIGN.md",
+      "../moovie-video-playback/NOTES.md"
+    ]
+  },
+  "moovie-lab": { "owns": ["../moovie-video-playback/lab/**"] },
+  "architecture-map": {
+    "owns": [
+      "../architecture-map/README.md",
+      "EXTENSIONS.md",
+      "NOTES.md",
+      "package.json",
+      "package-lock.json",
+      "architecture.config.json",
+      "demo/**",
+      "../../docs/demos/architecture-map/**"
+    ]
+  },
+  "h3-demo": { "owns": ["../../docs/demos/h3-prompt-journal/**"] },
+  "moovie-report": { "owns": ["../../docs/demos/moovie-source-research/**"] },
+  "gallery": { "owns": ["../../docs/index.html", "../../docs/styles.css"] },
+  "pages-pipeline": { "owns": ["../../.github/workflows/pages.yml"] },
+  "upstream-github": { "owns": [] },
+  "public-site": { "owns": [] }
+}

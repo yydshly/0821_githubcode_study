@@ -1,0 +1,23 @@
+{
+  "coverage": "demo/architecture/coverage.json",
+  "output": "demo/src/measured.generated.ts",
+  "sources": [
+    "../../*.md",
+    "../../.github/**/*.{md,yml,yaml}",
+    "../README.md",
+    "../*/README.md",
+    "../_template/**/*.md",
+    "../h3-prompt-journal/**/*.{md,json,py,txt}",
+    "../zhulink-community-aggregation/**/*.md",
+    "../moovie-video-playback/*.md",
+    "../moovie-video-playback/lab/**/*.{md,js,cjs,html,css,ps1}",
+    "../../docs/**/*.{html,css,js,md,txt}",
+    "EXTENSIONS.md",
+    "NOTES.md",
+    "package.json",
+    "package-lock.json",
+    "architecture.config.json",
+    "demo/**/*.{html,json,mjs,ts,tsx,css}"
+  ],
+  "ignore": ["demo/src/measured.generated.ts"]
+}

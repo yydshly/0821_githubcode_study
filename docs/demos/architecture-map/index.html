@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="以真实研究仓库为原型的交互式项目架构逻辑地图。" />
+    <title>Architecture Map · GitHub 能力研究实验室</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <a class="skip-link" href="#map-stage">跳到架构地图</a>
+    <header class="topbar">
+      <a class="brand" href="../../" aria-label="返回研究展厅">
+        <span class="brand-mark">AM</span>
+        <span><small>RESEARCH LAB</small>Architecture Map</span>
+      </a>
+      <dl class="stats" aria-label="地图统计">
+        <div><dt>模块</dt><dd>14</dd></div>
+        <div><dt>街区</dt><dd>5</dd></div>
+        <div><dt>关系</dt><dd>16</dd></div>
+        <div><dt>流程</dt><dd>4</dd></div>
+      </dl>
+      <a class="repo-link" href="https://github.com/yydshly/0821_githubcode_study/tree/main/projects/architecture-map">研究记录 <span aria-hidden="true">↗</span></a>
+    </header>
+
+    <main class="workspace">
+      <aside class="control-rail" aria-label="理解入口与流程">
+        <div class="rail-intro">
+          <p class="eyebrow">HOW TO READ</p>
+          <h1>从一个问题<br />进入项目。</h1>
+          <p>地图不是装饰。选择入口后，它会突出相关建筑、道路和真实源码证据。</p>
+        </div>
+
+        <section aria-labelledby="lens-title">
+          <h2 id="lens-title" class="section-label">理解入口</h2>
+          <div class="lens-switch" role="group" aria-label="选择理解方式">
+            <button class="lens-button is-active" type="button" data-lens="visual" aria-pressed="true">
+              <span>01</span><strong>地图表现</strong><small>颜色 · 建筑 · 关系</small>
+            </button>
+            <button class="lens-button" type="button" data-lens="understanding" aria-pressed="false">
+              <span>02</span><strong>项目理解</strong><small>入口 · 证据 · 流程</small>
+            </button>
+          </div>
+        </section>
+
+        <section aria-labelledby="flow-title">
+          <div class="section-heading">
+            <h2 id="flow-title" class="section-label">真实流程</h2>
+            <span>点击播放</span>
+          </div>
+          <div id="flow-list" class="flow-list"></div>
+        </section>
+
+        <section class="legend-section" aria-labelledby="legend-title">
+          <h2 id="legend-title" class="section-label">语义街区</h2>
+          <div id="group-legend" class="group-legend"></div>
+        </section>
+      </aside>
+
+      <section id="map-stage" class="stage" aria-label="项目架构地图">
+        <div class="stage-header">
+          <div>
+            <p class="eyebrow">LIVE ARCHITECTURE</p>
+            <h2 id="stage-title">GitHub 能力研究实验室</h2>
+          </div>
+          <div class="transport" role="group" aria-label="流程播放控制">
+            <button id="play-button" type="button" disabled>播放</button>
+            <button id="clear-button" type="button">清除选择</button>
+          </div>
+        </div>
+        <div class="map-frame">
+          <svg id="architecture-map" viewBox="0 0 1040 650" role="application" aria-labelledby="stage-title map-description" tabindex="0">
+            <title>GitHub 能力研究实验室项目架构地图</title>
+            <desc id="map-description">五个彩色街区包含十四个真实研究模块，连接线表示研究与发布关系。</desc>
+            <defs>
+              <pattern id="grid" width="24" height="12" patternUnits="userSpaceOnUse" patternTransform="skewY(26.565)">
+                <path d="M 24 0 L 0 0 0 12" fill="none" stroke="#dbe4ef" stroke-width="0.7" />
+              </pattern>
+              <filter id="soft-shadow" x="-30%" y="-30%" width="160%" height="180%">
+                <feDropShadow dx="0" dy="5" stdDeviation="5" flood-color="#334155" flood-opacity="0.12" />
+              </filter>
+              <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse">
+                <path d="M 0 0 L 10 5 L 0 10 z" fill="context-stroke" />
+              </marker>
+            </defs>
+            <rect class="map-background" x="0" y="0" width="1040" height="650" rx="24" />
+            <rect class="map-grid" x="20" y="20" width="1000" height="610" rx="18" />
+            <g id="district-layer"></g>
+            <g id="edge-layer"></g>
+            <g id="building-layer"></g>
+            <g id="label-layer"></g>
+            <g id="flow-layer" aria-hidden="true"></g>
+          </svg>
+          <div class="map-hint">选择流程 · 空格播放/暂停 · Esc 清除</div>
+        </div>
+      </section>
+
+      <aside class="detail-panel" aria-live="polite">
+        <div id="detail-content"></div>
+        <section class="extension-note" aria-labelledby="extension-title">
+          <p class="eyebrow">NEXT LAYER</p>
+          <h2 id="extension-title">两个扩展方向</h2>
+          <div class="extension-grid">
+            <article><span>表现</span><p>让颜色、形状、层级和动画稳定表达架构语义。</p></article>
+            <article><span>理解</span><p>让问题入口、源码证据和流程驱动带着用户阅读项目。</p></article>
+          </div>
+          <a href="https://github.com/yydshly/0821_githubcode_study/blob/main/projects/architecture-map/EXTENSIONS.md">阅读完整扩展说明 <span aria-hidden="true">→</span></a>
+        </section>
+      </aside>
+    </main>
+
+    <noscript>
+      <section class="noscript-panel">
+        <h1>Architecture Map</h1>
+        <p>这是 GitHub 能力研究实验室的项目架构逻辑地图。地图包含研究规则、H3、ZhuLink、Moovie、实验归档和 GitHub Pages 发布流程。</p>
+        <p>启用 JavaScript 可以选择模块并播放真实研究流程。</p>
+      </section>
+    </noscript>
+
+    <script src="./app.js" defer></script>
+  </body>
+</html>

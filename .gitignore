@@ -37,3 +37,7 @@ venv/
 # Local build artifacts
 build/
 out/
+
+# Upstream snapshot has no license in the pinned revision; keep it local until clarified.
+projects/architecture-map/upstream/
+projects/architecture-map/evidence/
