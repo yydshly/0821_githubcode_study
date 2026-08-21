@@ -326,6 +326,8 @@ const realSamples = {
     duration: 15,
     aspect: "16:9",
     sound: "包含三句不重叠的普通话对白、画外主持、观众笑声与欢呼、机械声、脚步、碰撞和同步落水声；配乐遇对白自动降低。",
+    promptVersion: "V1",
+    result: { anchor: "case-005-result", title: "已接入 V1 真实有声成片", detail: "上方保留输入图、真实 MP4、失败因果诊断，以及独立且待验证的 V2 双语修复稿。" },
     images: [["picture-1-contestant.png", "Picture 1", "参赛者身份与服装"]]
   }
 };
@@ -685,8 +687,8 @@ function renderSampleGallery() {
           </dl>
           <div class="sample-sound"><span>SOUND PLAN</span><p>${sample.sound}</p></div>
           <div class="sample-downloads">
-            <button class="button primary" type="button" data-sample-prompt="en" data-sample-case="${caseId}">下载英文 Prompt</button>
-            <button class="button quiet" type="button" data-sample-prompt="zh" data-sample-case="${caseId}">下载中文 Prompt</button>
+            <button class="button primary" type="button" data-sample-prompt="en" data-sample-case="${caseId}">下载${sample.promptVersion ? ` ${sample.promptVersion}` : ""} 英文 Prompt</button>
+            <button class="button quiet" type="button" data-sample-prompt="zh" data-sample-case="${caseId}">下载${sample.promptVersion ? ` ${sample.promptVersion}` : ""} 中文 Prompt</button>
             <button class="button quiet" type="button" data-sample-load="${caseId}">载入上方编辑器</button>
           </div>
           <p class="sample-feedback" data-sample-feedback="${caseId}" aria-live="polite">Prompt 与上方恢复默认后的内容完全一致。</p>
@@ -695,6 +697,20 @@ function renderSampleGallery() {
         <div class="sample-visuals count-${sample.images.length}">${images}</div>
       </article>`;
   }).join("");
+}
+
+async function hydratePromptPreviews() {
+  const previews = [...document.querySelectorAll("[data-prompt-preview]")];
+  await Promise.all(previews.map(async (details) => {
+    const pre = details.querySelector("pre");
+    try {
+      const response = await fetch(details.dataset.promptPreview);
+      if (!response.ok) throw new Error(`HTTP ${response.status}`);
+      pre.textContent = await response.text();
+    } catch {
+      pre.textContent = "修复 Prompt 预览加载失败，请使用上方下载按钮获取完整文本。";
+    }
+  }));
 }
 
 function validate() {
@@ -864,7 +880,8 @@ elements.sampleGallery?.addEventListener("click", (event) => {
     const value = buildPresetPrompt(caseId, language);
     downloadTextFile(value, `h3-real-sample-case-${caseId}.${language}.txt`);
     const feedback = document.querySelector(`[data-sample-feedback="${caseId}"]`);
-    if (feedback) feedback.textContent = `已下载 CASE ${caseId} ${language === "zh" ? "中文理解版" : "英文生产版"}；请同时下载卡片中的全部 Picture。`;
+    const version = realSamples[caseId]?.promptVersion ? `${realSamples[caseId].promptVersion} ` : "";
+    if (feedback) feedback.textContent = `已下载 CASE ${caseId} ${version}${language === "zh" ? "中文理解版" : "英文生产版"}；请同时下载卡片中的全部 Picture。`;
     return;
   }
   const loadButton = event.target.closest("[data-sample-load]");
@@ -896,3 +913,4 @@ elements.theme.addEventListener("click", () => {
 
 renderSampleGallery();
 renderCase(activeCase);
+hydratePromptPreviews();

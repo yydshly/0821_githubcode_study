@@ -302,10 +302,10 @@
       <section class="section real-sample" id="real-sample" aria-labelledby="real-sample-title">
         <header class="section-heading">
           <div>
-            <p class="section-number">03 / 2 VERIFIED OUTPUTS + 4 READY INPUTS</p>
-            <h2 id="real-sample-title">两份真实结果，<br />四套待测输入。</h2>
+            <p class="section-number">03 / 3 VERIFIED OUTPUTS + 3 READY INPUTS</p>
+            <h2 id="real-sample-title">三份真实结果，<br />三套待测输入。</h2>
           </div>
-          <p>CASE 001 与 CASE 006 已接入外部返回的真实有声成片，并保留输入、通过项和失败证据；CASE 002–005 仍是可直接调度的待测输入包。</p>
+          <p>CASE 001、CASE 005 与 CASE 006 已接入外部返回的真实有声成片，并保留输入、通过项和失败证据；CASE 002–004 仍是可直接调度的待测输入包。</p>
         </header>
         <article class="verified-output" id="case-001-result" aria-labelledby="case-001-result-title">
           <div class="verified-output-copy">
@@ -378,6 +378,96 @@
               </video>
             </div>
             <figcaption>三张输入图始终保留；下方视频是本次真实输出。建议重点观察约 4 秒、7 秒和 10 秒附近的遮挡交接。</figcaption>
+          </figure>
+        </article>
+        <article class="verified-output has-sticky-evidence" id="case-005-result" aria-labelledby="case-005-result-title">
+          <div class="verified-output-copy">
+            <span class="verified-badge">REAL EXTERNAL OUTPUT · CASE 005</span>
+            <h3 id="case-005-result-title">节点基本都有，<br />因果链断了。</h3>
+            <p>使用本站 Picture 1 与当时的 V1 英文生产 Prompt，在外部 MiniMax H3 以 <code>15s / 768P / 16:9</code> 生成。视频完成了多数剧情节点和三句普通话，但“机关为什么导致落水”没有被画面证明。</p>
+            <dl class="verified-metadata">
+              <div><dt>实际时长</dt><dd>15.083 秒</dd></div>
+              <div><dt>画面</dt><dd>1344×768 · H.264 · 24fps</dd></div>
+              <div><dt>音轨</dt><dd>AAC · 32kHz · Stereo</dd></div>
+              <div><dt>响度检查</dt><dd>平均 -21.9 dB · 峰值 -5.5 dB</dd></div>
+            </dl>
+            <div class="result-audit">
+              <div class="result-pass"><span>观察通过</span><p>人物身份与黄蓝运动服基本可辨认；问候、滚筒打滑与恢复、爬高墙、水花、出水反应均有出现；三句普通话按预定顺序可识别，MP4 含连续双声道音轨。</p></div>
+              <div class="result-drift"><span>观察偏差</span><p>滚筒通过与鱼骨摔倒被合并成一次滚筒摔倒；侧面机关没有清楚启动或接触人物；约 11.9 秒从爬墙直接切到水花，缺少“机关 → 接触 → 失衡 → 入水”的连续物理证据。</p></div>
+            </div>
+            <div class="causal-audit" aria-label="CASE 005 预期剧情与实际结果对照">
+              <span>预期 → 实际 · EXPECTED → OBSERVED</span>
+              <ol>
+                <li><time>0–4s</time><p><b>开场问候：</b>完成，但占用接近四秒。</p></li>
+                <li><time>4–9s</time><p><b>滚筒 + 鱼骨：</b>被压缩为滚筒上的一次摔倒和恢复。</p></li>
+                <li><time>9–11.9s</time><p><b>高墙假胜利：</b>基本完成，人物接近墙顶。</p></li>
+                <li><time>≈11.9s</time><p><b>机关反转：</b>未形成可读触发，画面直接跳到水花。</p></li>
+                <li><time>12–15s</time><p><b>出水笑话：</b>完成，湿发反应和结尾对白可辨认。</p></li>
+              </ol>
+            </div>
+            <div class="result-diagnosis">
+              <span>归因判断 · PROMPT / TASK DESIGN IS PRIMARY</span>
+              <p><strong>这次主要不是模板框架错，而是把默认模板直接当成了最终导演稿。</strong>V1 在 15 秒里安排 7 个剧情节点和 3 句对白，同时把动作、机位与剪辑节奏广泛放权；它要求“出现机关反转”，却没有定义机关在哪里、如何接触人物，以及必须用什么镜头证明落水原因。</p>
+              <p>模型于是用最省时的办法保住节点清单：合并两个障碍、省略机关过程，再用切镜跳到水花。H3 的执行方差仍然存在，但本次首先应修复任务密度、空间几何、因果镜头和放权边界。</p>
+            </div>
+            <section class="repair-prompt" aria-labelledby="case-005-repair-title">
+              <header>
+                <span>V2 修复稿 · READY TO TEST · NOT YET VERIFIED</span>
+                <h4 id="case-005-repair-title">不是继续堆细节，而是锁定关键因果。</h4>
+                <p>V2 是下一轮可直接调度的生产稿，尚未得到外部 H3 成片验证；上方视频仍只对应 V1，二者不会混为同一份证据。</p>
+              </header>
+              <div class="repair-principles">
+                <article><b>01 · 缩减剧情</b><p>从 7 个节点减为 5 段，只保留滚筒和高墙机关，删除独立鱼骨障碍。</p></article>
+                <article><b>02 · 锁定因果镜头</b><p>机关启动、接触、失衡、空中轨迹和入水必须在同一条侧面大全景内连续可见。</p></article>
+                <article><b>03 · 分层放权</b><p>只放权细小步法、表情和观众反应；障碍数量、空间、触发方式、对白和时间窗全部锁定。</p></article>
+              </div>
+              <ol class="repair-timeline" aria-label="CASE 005 V2 五段时间线">
+                <li><time>0–2.5s</time><span>开场问候</span></li>
+                <li><time>2.5–5.5s</time><span>穿越四根滚筒，打滑但恢复</span></li>
+                <li><time>5.5–9.0s</time><span>爬高墙，形成“即将成功”</span></li>
+                <li><time>9.0–11.5s</time><span>机关接触到入水，全程禁止切镜</span></li>
+                <li><time>11.5–15s</time><span>出水、看镜头、说结尾笑话</span></li>
+              </ol>
+              <div class="sample-downloads">
+                <a class="button primary" href="./assets/case-005-real-test/prompt-v2.en.txt" download>下载 V2 英文生产 Prompt</a>
+                <a class="button quiet" href="./assets/case-005-real-test/prompt-v2.zh.txt" download>下载 V2 中文理解版</a>
+                <a class="button quiet" href="#sample-case-005">保留查看 V1 双语 Prompt</a>
+              </div>
+              <div class="repair-prompt-previews">
+                <details open data-prompt-preview="./assets/case-005-real-test/prompt-v2.zh.txt">
+                  <summary>查看 V2 中文理解版完整内容</summary>
+                  <pre tabindex="0">正在载入中文修复 Prompt…</pre>
+                </details>
+                <details data-prompt-preview="./assets/case-005-real-test/prompt-v2.en.txt">
+                  <summary>查看 V2 英文生产版完整内容</summary>
+                  <pre tabindex="0">Loading English production Prompt…</pre>
+                </details>
+              </div>
+            </section>
+            <div class="sample-downloads">
+              <a class="button quiet" href="./assets/case-005-real-test/picture-1-contestant.png" download>下载输入图</a>
+              <a class="button quiet" href="#sample-case-005">下方 V1 双语 Prompt</a>
+              <a class="button primary" href="./assets/case-005-real-test/result-video.mp4" download>下载真实 MP4</a>
+            </div>
+          </div>
+          <figure class="verified-player">
+            <div class="verified-player-label"><span>INPUT → V1 OUTPUT</span><strong>EXTERNAL H3 · WITH AUDIO</strong></div>
+            <div class="verified-media-pair">
+              <div class="verified-media-pane verified-input-pane">
+                <span class="verified-media-title">输入 · PICTURE 1</span>
+                <a class="verified-input-link is-landscape" href="./assets/case-005-real-test/picture-1-contestant.png" target="_blank" rel="noreferrer" aria-label="查看 CASE 005 原始输入图">
+                  <img src="./assets/case-005-real-test/picture-1-contestant.png" alt="CASE 005 输入图：穿黄色背心和蓝色运动服的水上闯关参赛者" />
+                </a>
+              </div>
+              <div class="verified-media-pane verified-output-pane">
+                <span class="verified-media-title">输出 · V1 H3 VIDEO</span>
+                <video controls playsinline preload="metadata" poster="./assets/case-005-real-test/result-poster.jpg">
+                  <source src="./assets/case-005-real-test/result-video.mp4" type="video/mp4" />
+                  当前浏览器无法播放此 MP4，请使用“下载真实 MP4”。
+                </video>
+              </div>
+            </div>
+            <figcaption>左侧输入图始终保留；右侧是 V1 真实输出。重点观察约 11.9 秒：人物仍在爬墙，下一镜已直接变成水花，机关因果没有被展示。</figcaption>
           </figure>
         </article>
         <article class="verified-output" id="case-006-result" aria-labelledby="case-006-result-title">

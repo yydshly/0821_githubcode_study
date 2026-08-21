@@ -1207,6 +1207,160 @@ pre {
   margin-top: 9px;
 }
 
+.causal-audit {
+  margin-bottom: 24px;
+  padding: 16px;
+  border: 1px solid color-mix(in srgb, var(--paper) 22%, transparent);
+  background: color-mix(in srgb, var(--paper) 5%, transparent);
+}
+
+.causal-audit > span {
+  display: block;
+  margin-bottom: 10px;
+  color: var(--blue);
+  font-family: ui-monospace, SFMono-Regular, Consolas, monospace;
+  font-size: 0.64rem;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+}
+
+.causal-audit ol,
+.repair-timeline {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.causal-audit li {
+  display: grid;
+  grid-template-columns: 68px minmax(0, 1fr);
+  gap: 10px;
+  padding: 8px 0;
+  border-top: 1px solid color-mix(in srgb, var(--paper) 13%, transparent);
+}
+
+.causal-audit time,
+.repair-timeline time {
+  color: var(--accent);
+  font-family: ui-monospace, SFMono-Regular, Consolas, monospace;
+  font-size: 0.66rem;
+  font-weight: 800;
+}
+
+.causal-audit p {
+  margin: 0;
+  color: color-mix(in srgb, var(--paper) 74%, transparent);
+  font-size: 0.73rem;
+  line-height: 1.5;
+}
+
+.repair-prompt {
+  margin-bottom: 24px;
+  padding: 18px;
+  border: 1px solid color-mix(in srgb, var(--accent) 65%, transparent);
+  background: color-mix(in srgb, var(--accent) 7%, transparent);
+}
+
+.repair-prompt header > span {
+  display: block;
+  margin-bottom: 8px;
+  color: var(--accent);
+  font-family: ui-monospace, SFMono-Regular, Consolas, monospace;
+  font-size: 0.62rem;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+}
+
+.repair-prompt h4 {
+  margin: 0 0 8px;
+  font-family: Georgia, "Noto Serif SC", serif;
+  font-size: 1.25rem;
+  font-weight: 500;
+  line-height: 1.2;
+}
+
+.repair-prompt header p,
+.repair-principles p {
+  margin: 0;
+  color: color-mix(in srgb, var(--paper) 74%, transparent);
+  font-size: 0.75rem;
+  line-height: 1.58;
+}
+
+.repair-principles {
+  display: grid;
+  gap: 8px;
+  margin-top: 16px;
+}
+
+.repair-principles article {
+  display: grid;
+  grid-template-columns: 112px minmax(0, 1fr);
+  gap: 12px;
+  padding: 12px;
+  background: color-mix(in srgb, var(--paper) 6%, transparent);
+  border-left: 3px solid var(--accent);
+}
+
+.repair-principles b {
+  color: var(--accent);
+  font-size: 0.68rem;
+}
+
+.repair-timeline {
+  margin-top: 16px;
+  border-top: 1px solid color-mix(in srgb, var(--paper) 18%, transparent);
+}
+
+.repair-timeline li {
+  display: grid;
+  grid-template-columns: 90px minmax(0, 1fr);
+  gap: 10px;
+  padding: 9px 0;
+  border-bottom: 1px solid color-mix(in srgb, var(--paper) 18%, transparent);
+}
+
+.repair-timeline span {
+  color: color-mix(in srgb, var(--paper) 78%, transparent);
+  font-size: 0.72rem;
+}
+
+.repair-prompt .sample-downloads {
+  margin-top: 18px;
+}
+
+.repair-prompt-previews {
+  display: grid;
+  gap: 8px;
+  margin-top: 16px;
+}
+
+.repair-prompt-previews details {
+  border: 1px solid color-mix(in srgb, var(--paper) 24%, transparent);
+  background: #0b0d0b;
+}
+
+.repair-prompt-previews summary {
+  padding: 12px 14px;
+  color: #f3f0e6;
+  cursor: pointer;
+  font-size: 0.73rem;
+  font-weight: 800;
+}
+
+.repair-prompt-previews pre {
+  max-height: 390px;
+  margin: 0;
+  padding: 15px;
+  overflow: auto;
+  color: #d7ded4;
+  background: #080a08;
+  border-top: 1px solid color-mix(in srgb, var(--paper) 18%, transparent);
+  font-size: 0.64rem;
+  line-height: 1.55;
+  white-space: pre-wrap;
+}
+
 .case-use-cases {
   margin-bottom: 24px;
   padding: 18px;
@@ -1353,6 +1507,15 @@ pre {
   width: 100%;
   height: 100%;
   object-fit: contain;
+}
+
+.verified-input-link.is-landscape {
+  aspect-ratio: 16 / 9;
+  padding: 0;
+}
+
+.verified-input-link.is-landscape img {
+  object-fit: cover;
 }
 
 .verified-input-grid {
@@ -1546,6 +1709,15 @@ pre {
   gap: 3px;
   padding: 9px 2px 2px;
   color: var(--paper);
+}
+
+.verified-output.has-sticky-evidence {
+  align-items: start;
+}
+
+.has-sticky-evidence .verified-player {
+  position: sticky;
+  top: 94px;
 }
 
 .sample-reference figcaption b {
@@ -2031,6 +2203,11 @@ footer a {
     grid-template-columns: 1fr;
   }
 
+  .has-sticky-evidence .verified-player {
+    position: static;
+    order: -1;
+  }
+
   .verified-player {
     width: min(100%, 760px);
   }
@@ -2198,6 +2375,11 @@ footer a {
 
   .case-use-cases-grid {
     grid-template-columns: 1fr;
+  }
+
+  .repair-principles article {
+    grid-template-columns: 1fr;
+    gap: 6px;
   }
 
   .verified-player {

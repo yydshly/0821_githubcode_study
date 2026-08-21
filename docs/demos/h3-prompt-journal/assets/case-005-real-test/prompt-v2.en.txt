@@ -1,0 +1,53 @@
+subject_definitions:
+PRIMARY_SUBJECT: One charismatic adult contestant whose identity, face, hairstyle, yellow training vest, blue shirt, navy shorts, black leggings, aqua shoes, and body proportions are defined by Picture 1. Keep this identity and outfit unchanged throughout the video.
+
+Picture 1 controls only the contestant's identity and appearance. It does not control the course, obstacle design, camera, framing, or background.
+
+COURSE_GEOGRAPHY: One coherent outdoor television water-obstacle course running from left to right. Use only two physical challenges: a short lane of four rotating padded rollers, followed immediately by a tall blue climbing wall built at the edge of one clearly visible pool. Keep this geography and travel direction unchanged across every shot.
+
+SIDE_PADDLE: A single blue-and-yellow padded mechanical paddle is mounted on camera-left of the climbing wall at the contestant's waist height. It is already visible and stationary before it moves. When activated, it sweeps inward once, makes gentle visible contact with the contestant's padded side, causes loss of grip, and sends the contestant sideways into the pool below.
+
+summary:
+[reference generation] Generate one 15-second, 16:9 MiniMax H3 Ref2VA sports-variety comedy with native stereo audio. The contestant greets the audience, crosses the rollers with one recoverable slip, nearly conquers the high wall, is visibly knocked off balance by the side paddle, falls into the pool through one unbroken cause-and-effect shot, resurfaces, and delivers a Mandarin punchline. The tone is bright live television, playful rather than harmful, with clear physical geography and readable comic timing.
+
+retention_analysis:
+Picture 1: fully_preserved — preserve the contestant's face, hairstyle, clothing colors and layers, body proportions, and overall adult identity. Do not copy the blue studio background from Picture 1.
+
+The course, crowd, wall, rollers, pool, side paddle, camera, lighting, and performance blocking are generated from text. Never add another contestant, change wardrobe, swap identity, or make the contestant wet before the water impact.
+
+detailed_description:
+GLOBAL DIRECTION: Maintain one left-to-right course, one contestant, two obstacles, and one stable pool position. The contestant starts dry. The contestant becomes visibly wet only after the body enters the pool. Motivated television cuts are allowed between major beats, but the mechanism activation, contact, loss of balance, airborne fall, water impact, and splash must be shown in one continuous uninterrupted wide side shot.
+
+[Shot 1 · 00:00.000–00:02.500]
+Medium frontal shot on the start platform. The dry contestant waves once, looks into camera, and says clearly in Mandarin: “大家好，我今天一定一次过关！” Keep the line natural and finish it by 00:02.300. Establish the rollers, high wall, side paddle, and pool in the same left-to-right course behind the contestant.
+
+[Shot 2 · 00:02.500–00:05.500]
+Cut to a readable side-tracking shot. The contestant crosses the four rotating padded rollers from left to right. One foot slips once; one hand briefly touches a roller; the contestant regains balance and continues forward without falling into water. During this recoverable slip, the off-screen host says once in Mandarin: “稳住——还有机会！” Do not introduce a fishbone obstacle or any additional challenge.
+
+[Shot 3 · 00:05.500–00:09.000]
+Continue in the same travel direction to the tall blue wall. The pool below the wall and the stationary blue-and-yellow side paddle remain visible in the composition. The contestant climbs close to the top and pauses for a short near-victory expression. The paddle has not moved yet. No dialogue occurs here.
+
+[Shot 4 · 00:09.000–00:11.500 · CAUSAL SHOT — NO CUT]
+Use one continuous wide side shot that contains the contestant's full body, the upper wall, the complete side paddle, and the pool surface at the same time. At about 00:09.500 the side paddle begins one clearly readable mechanical rotation. At about 00:10.200 its padded end makes gentle visible contact with the contestant's side. Show the exact causal chain without any cut, obstruction, dissolve, teleport, or missing body phase: paddle moves → padded contact occurs → hands lose grip → body separates from wall → body travels through open air → body enters the visible pool at about 00:11.300 → one synchronized large splash. Do not cut from climbing directly to a splash. Do not create a splash before the body touches the water.
+
+[Shot 5 · 00:11.500–00:15.000]
+A cut is allowed only after the body has visibly entered the water. The same contestant resurfaces with clearly wet hair and wet clothing, catches breath, looks directly into camera with disappointed comic dignity, and says clearly in Mandarin between 00:12.500 and 00:14.500: “我只是下来降个温。” Hold the reaction briefly after the line. Do not repeat any dialogue.
+
+CAUSALITY LOCK:
+- Use exactly two obstacles: four rotating rollers, then one high wall with one side paddle. No fishbone obstacle, bonus obstacle, second mechanism, or alternate route.
+- Preserve the wall–paddle–pool geometry from the start of Shot 3 through the end of Shot 4.
+- The side paddle must be visible before activation, must visibly move, and must visibly contact the contestant before the fall.
+- The contestant must remain fully visible from contact through water impact. No edit may hide or replace the physical cause.
+- The final splash is caused only by the contestant's visible body entering the pool.
+
+FREEDOM BUDGET:
+The model may improvise small footwork, facial expressions, safe arm reactions, subtle handheld camera energy, crowd timing, and post-splash comic acting. The model may not change obstacle count or order, course geography, travel direction, paddle trigger, contact point, causal-shot continuity, dialogue wording, dialogue order, or the five time windows.
+
+SAFETY AND CONTINUITY:
+Keep impacts padded and playful, never painful. Preserve identity, anatomy, wardrobe, crowd scale, daylight direction, and broadcast color across cuts. No morphing, duplicate contestant, costume exchange, sudden wetness, off-screen fall, spontaneous splash, reverse travel, or unexplained scene change.
+
+overall_soundscape:
+Native stereo live-television mix. Use spatial crowd reactions, roller mechanisms, aqua-shoe steps, one soft slip impact, wall hand contacts, a brief servo sound as the side paddle starts, one padded contact sound exactly when it touches the contestant, a short falling whoosh, one large splash exactly at water impact, water movement, and wet breathing. The three Mandarin lines must be clean, spoken once, and never overlap. Keep the host off-screen and spatially separate from the contestant. Do not let crowd noise or music mask the causal paddle contact or the punchline.
+
+non_diegetic_music:
+Light playful sports-variety instrumental bed with no vocals, lyrics, chanting, or humming. Duck the music beneath all three Mandarin lines, the recoverable slip, the paddle contact, and the final splash. Build gently toward the near-victory at 00:09, stop briefly on the paddle contact, then resume softly under the final reaction.
