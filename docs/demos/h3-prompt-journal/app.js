@@ -313,6 +313,8 @@ const realSamples = {
     duration: 15,
     aspect: "9:16",
     sound: "原生风压、帆布张力、横杆吱声、板面拍水与水雾保持可听；电子器乐在 10 秒到达峰值但不遮住物理动作声。",
+    promptVersion: "V1",
+    result: { anchor: "case-004-result", title: "已接入 V1 真实有声成片", detail: "上方保留三张职责分离的输入图、9:16 原始 MP4，以及人物、装备、摄影、剪辑和音轨的分层审计。" },
     images: [
       ["picture-1-athlete.png", "Picture 1", "人物身份与服装"],
       ["picture-2-rig.png", "Picture 2", "帆板装备结构"],

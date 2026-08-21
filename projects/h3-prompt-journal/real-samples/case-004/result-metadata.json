@@ -1,0 +1,27 @@
+{
+  "case": "004",
+  "prompt_version": "V1",
+  "source_filename": "video_1787297878588.mp4",
+  "source_sha256": "9A35887A150300E078E02D3CE5A70CA338D7CD812ABED170693EA862BF27FB5A",
+  "received_at": "2026-08-21",
+  "video": {
+    "codec": "h264",
+    "width": 768,
+    "height": 1344,
+    "fps": 24,
+    "duration_seconds": 15.083333
+  },
+  "audio": {
+    "codec": "aac",
+    "sample_rate_hz": 32000,
+    "channels": 2,
+    "layout": "stereo",
+    "mean_volume_db": -16.0,
+    "max_volume_db": -0.4,
+    "speech_or_vocals_detected": false,
+    "speech_detection_note": "Local faster-whisper small with VAD returned no segments; this does not identify or verify each individual physical sound source."
+  },
+  "observed_scene_changes_seconds": [3.91667, 9.66667, 12.7083],
+  "observed_audio_energy_peak": "The half-second RMS envelope rises sharply at 10.0–11.5 seconds, consistent with the requested 00:10 main accent.",
+  "evidence_boundary": "Visual findings come from one-second and four-frames-per-second contact sheets plus transition detection. Face identity cannot be rigorously verified because the performer remains small in frame."
+}
