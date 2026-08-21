@@ -1,0 +1,46 @@
+name: 研究选题
+description: 提议一个值得复现、验证或拆解的开源项目能力
+title: "[Study]: "
+labels:
+  - research
+body:
+  - type: input
+    id: source
+    attributes:
+      label: 原项目或资料
+      description: 提供 GitHub、X 或其他公开来源链接。
+      placeholder: https://github.com/owner/repository
+    validations:
+      required: true
+
+  - type: textarea
+    id: value
+    attributes:
+      label: 为什么值得研究？
+      description: 说明它解决的问题、独特之处以及预期收获。
+    validations:
+      required: true
+
+  - type: textarea
+    id: questions
+    attributes:
+      label: 核心研究问题
+      description: 列出希望通过实验回答的问题，以及成功判断标准。
+    validations:
+      required: true
+
+  - type: textarea
+    id: output
+    attributes:
+      label: 预期产物
+      placeholder: 复现代码、研究笔记、性能对比、静态在线演示……
+    validations:
+      required: true
+
+  - type: textarea
+    id: risks
+    attributes:
+      label: 许可、数据与运行风险
+      description: 记录许可证、密钥、付费服务、硬件或大文件等限制；没有则填写“暂无”。
+    validations:
+      required: true
