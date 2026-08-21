@@ -262,6 +262,31 @@ html[data-theme='dark'] .primary-button { color: #10151f; border-color: #f0f4f8;
 .summary-boundary strong { font-size: 0.82rem; }
 .summary-boundary span { margin-top: 3px; font-size: 0.76rem; }
 
+.runtime-mode-banner {
+  width: min(calc(100% - 40px), var(--content));
+  margin: 18px auto 0;
+  padding: 16px 18px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  border: 1px solid color-mix(in srgb, var(--accent) 36%, var(--line));
+  border-radius: var(--radius-md);
+  background: color-mix(in srgb, var(--accent-soft) 70%, var(--surface));
+}
+.runtime-mode-banner[hidden] { display: none; }
+.runtime-mode-banner div { min-width: 0; }
+.runtime-mode-banner strong, .runtime-mode-banner span { display: block; }
+.runtime-mode-banner strong { margin: 2px 0 4px; color: var(--text); }
+.runtime-mode-banner span { color: var(--text-soft); font-size: 0.8rem; line-height: 1.55; }
+.runtime-mode-banner nav { flex: 0 0 auto; display: flex; gap: 8px; }
+.runtime-mode-banner a { padding: 9px 11px; border: 1px solid var(--line); border-radius: 9px; background: var(--surface); font-size: 0.76rem; font-weight: 800; text-decoration: none; white-space: nowrap; }
+html[data-runtime="static-pages"] .public-catalog-form,
+html[data-runtime="static-pages"] .fault-panel.is-gateway-only { opacity: 0.72; }
+html[data-runtime="static-pages"] button:disabled,
+html[data-runtime="static-pages"] input:disabled,
+html[data-runtime="static-pages"] select:disabled { cursor: not-allowed; }
+
 .search-lab {
   margin: 0 0 34px;
   padding: clamp(22px, 3.5vw, 38px);
@@ -696,6 +721,9 @@ footer a { color: var(--input); font-weight: 700; }
 
 @media (max-width: 720px) {
   .header-inner, main, footer { width: min(calc(100% - 24px), var(--content)); }
+  .runtime-mode-banner { width: min(calc(100% - 24px), var(--content)); align-items: flex-start; flex-direction: column; gap: 13px; }
+  .runtime-mode-banner nav { width: 100%; flex-wrap: wrap; }
+  .runtime-mode-banner a { flex: 1 1 190px; text-align: center; }
   .brand small { display: none; }
   .hero { min-height: 0; padding: 52px 0 44px; }
   .hero h1 { font-size: clamp(2.2rem, 12vw, 3.2rem); }

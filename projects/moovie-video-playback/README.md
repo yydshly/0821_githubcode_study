@@ -21,6 +21,8 @@ Moovie 对我们开发视频播放网站有研究价值，但价值不是“免�
 
 ## 可运行研究演示
 
+[打开 GitHub Pages 原研究实验室](https://yydshly.github.io/0821_githubcode_study/demos/moovie-video-playback/) · [阅读来源研究归档](./ARCHIVE.md)
+
 可搜索的核心纵向实验已经完成：[`lab/`](./lab/) 可以搜索五类样例并逐站运行“元数据 → AppleCMS 形状资源 → 身份匹配 → 真实播放”。第三轮增加本地 HTTP/HLS 故障；第四轮验证真实解码；第五轮把排序候选直接交给上方播放器；第六轮新增 Apple Developer 官方 `Bip Bop` 外部 HLS，通过固定域名与路径白名单代理验证真实公网清单、首帧和连续播放。仍不访问真实豆瓣或未知影视源。
 
 - [运行说明](./lab/README.md)

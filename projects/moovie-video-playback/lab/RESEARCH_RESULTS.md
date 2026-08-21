@@ -1,5 +1,15 @@
 # 第六轮研究结果：官方外部 HLS 来源真实播放
 
+## GitHub Pages 原实验室交付修订
+
+原研究实验室现作为同一套 `lab/` 源码部署，不再由重新整合的结论页代替。Pages 模式已验证：
+
+- 1440px 桌面和 390px 手机均能完成默认四站旅程，无横向溢出；
+- 固定 Hls.js 1.4.12 可解码仓库内 640×360 合成 HLS；
+- 线路 A 请求故意缺失的中段分片后，自动切换到健康线路 B，并恢复播放位置；
+- 公共目录实时搜索、Apple 外部流代理与 A/B 故障探针明确显示为 `4174` 本地增强能力，不在 Pages 伪造接口结果；
+- 浏览器证据为 `evidence/pages-lab-desktop.png`、`evidence/pages-lab-mobile.png`，自动化入口为 `tests/pages-static-browser-check.cjs`。
+
 ## 本轮回答的问题
 
 我们已经用一个完全可控的实验回答：

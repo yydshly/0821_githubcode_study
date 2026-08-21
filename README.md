@@ -10,7 +10,7 @@
 | --- | --- | --- | --- | --- | --- |
 | H3 Prompt Journal | MiniMax H3 提示词工程、参考图分工、时间与物理约束 | `archived` | [上游仓库](https://github.com/LoveRain1997/h3-prompt-journal) | [结项档案](projects/h3-prompt-journal/ARCHIVE.md) | [归档演示](https://yydshly.github.io/0821_githubcode_study/demos/h3-prompt-journal/) |
 | ZhuLink | 私人 RSS 阅读、公共内容推荐、透明热度排序 | `archived` | [上游仓库](https://github.com/TwoThreeWang/zhulink) | [案例整理](projects/zhulink-community-aggregation/) | 暂无 |
-| Moovie | 点播/直播来源配置、可靠性、丰富度、资源匹配与换源 | `archived` | [上游仓库](https://github.com/TwoThreeWang/Moovie) | [来源研究归档](projects/moovie-video-playback/ARCHIVE.md) | [归档结论页](https://yydshly.github.io/0821_githubcode_study/demos/moovie-source-research/) |
+| Moovie | 点播/直播来源配置、可靠性、丰富度、资源匹配与换源 | `archived` | [上游仓库](https://github.com/TwoThreeWang/Moovie) | [来源研究归档](projects/moovie-video-playback/ARCHIVE.md) | [原研究实验室](https://yydshly.github.io/0821_githubcode_study/demos/moovie-video-playback/) · [归档结论页](https://yydshly.github.io/0821_githubcode_study/demos/moovie-source-research/) |
 
 状态统一使用 `planned`、`researching`、`validated`、`archived`，方便快速判断研究进度。
 
@@ -33,7 +33,7 @@
    └─ workflows/pages.yml     # Pages 自动部署
 ```
 
-每个研究对象放在 `projects/<project-slug>/` 中，保持代码、实验记录和结论自包含；需要在线展示时，将可直接发布的静态内容放到 `docs/demos/<project-slug>/`，再从本页和展厅同时建立入口。
+每个研究对象放在 `projects/<project-slug>/` 中，保持代码、实验记录和结论自包含；普通静态页面放到 `docs/demos/<project-slug>/`。像 Moovie 这样需要保留原实验代码的页面，由 Pages 工作流从项目目录组装到发布工件，避免另建一份脱离原内容的替代实现。
 
 ## 开始一个研究项目
 

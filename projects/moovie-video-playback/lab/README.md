@@ -2,6 +2,10 @@
 
 这是 Moovie 研究子项目的可搜索纵向演示和故障实验室。它不是视频网站，不访问真实豆瓣或未知影视源；公网请求只覆盖文档明确列出的 Apple Developer 测试流，以及 Internet Archive、Wikimedia、NASA、Library of Congress 等公开目录适配器。
 
+在线原研究实验室：<https://yydshly.github.io/0821_githubcode_study/demos/moovie-video-playback/>
+
+在线地址运行在 GitHub Pages 静态模式：五类样例、四站管线、内置合成 HLS、真实解码和同集换线可以直接运行。公开目录实时 API、Apple 外部 HLS 白名单代理、AppleCMS 故障/熔断与 HLS 传输探针需要下方的本地 4174 增强服务。页面会自动识别运行环境并明确显示这个边界。
+
 ## 演示内容
 
 可以直接搜索并选择五类场景：
@@ -90,9 +94,14 @@ node --test lab/tests/pipeline.test.cjs lab/tests/fault-lab.test.cjs lab/tests/p
 $env:CODEX_BUNDLED_NODE_MODULES='<workspace dependency node_modules>'
 node lab/tests/browser-check.cjs
 node lab/tests/public-browser-check.cjs
+$env:MOOVIE_LAB_URL='http://127.0.0.1:4173/lab/?runtime=pages'
+node lab/tests/pages-static-browser-check.cjs
 ```
 
 测试覆盖：
+
+- GitHub Pages 静态运行模式的边界提示、禁用态、桌面/手机布局与键盘路径；
+- Pages 内置合成 HLS 的真实首帧、中段缺失分片、同集换线与进度恢复；
 
 - 豆瓣字段到内部媒体的规范化；
 - 六种常见季集标签；

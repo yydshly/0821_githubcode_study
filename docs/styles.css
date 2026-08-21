@@ -194,6 +194,8 @@ h2 {
 }
 
 .empty-card > a { font-weight: 700; text-decoration: none; }
+.card-actions { display: flex; align-items: flex-end; flex-direction: column; gap: 9px; }
+.card-actions a { font-size: 0.88rem; font-weight: 700; text-decoration: none; text-align: right; }
 
 .empty-card + .empty-card { margin-top: 24px; }
 
@@ -230,6 +232,8 @@ footer {
   .principle-grid article { min-height: auto; }
   .principle-grid article > span { margin-bottom: 34px; }
   .section-heading, .empty-card { align-items: start; grid-template-columns: 1fr; }
+  .card-actions { align-items: flex-start; }
+  .card-actions a { text-align: left; }
   .section-heading { flex-direction: column; }
 }
 

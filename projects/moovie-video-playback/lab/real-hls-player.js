@@ -1,6 +1,7 @@
 (function () {
   'use strict';
 
+  var runtime = window.MoovieLabRuntime || { isStaticArchive: false, resolveHlsUrl: function (url) { return url; } };
   var baseUrl = 'http://127.0.0.1:4174/hls/';
   var video = document.getElementById('real-hls-video');
   var runHealthyButton = document.getElementById('run-real-hls');
@@ -26,6 +27,11 @@
   var playedMilestoneRecorded = false;
   var switching = false;
   var events = [];
+
+  function hlsUrl(kind) {
+    if (runtime.isStaticArchive) return kind === 'decodable-faulty' ? runtime.faultyHlsUrl : runtime.healthyHlsUrl;
+    return baseUrl + kind + '/index.m3u8';
+  }
 
   function escapeHtml(value) {
     return String(value == null ? '' : value)
@@ -120,7 +126,8 @@
         try { video.currentTime = pendingResume; } catch (error) {}
         addEvent('SEEK', '请求恢复到 ' + pendingResume.toFixed(2) + ' s', 'warning');
       }
-      video.play().catch(function () {
+      video.play().catch(function (error) {
+        if (error && error.name === 'AbortError') return;
         setResult('等待用户播放', '浏览器阻止自动播放；可使用视频控制条继续。', 'fail');
         setBusy(false);
       });
@@ -139,7 +146,7 @@
         badge.textContent = 'HLS.JS · A 失败，切换 B';
         setResult('线路 A 播放中故障', '正在重建 Hls.js，并在健康线路 B 恢复进度。', 'running');
         window.setTimeout(function () {
-          if (token === runId) loadLine('B', baseUrl + 'decodable-healthy/index.m3u8', savedTime, token);
+          if (token === runId) loadLine('B', hlsUrl('decodable-healthy'), savedTime, token);
         }, 80);
         return;
       }
@@ -162,7 +169,7 @@
     setResult('正在初始化 Hls.js', nextMode === 'failover' ? '线路 A 将在中段分片失败，随后切换 B。' : '加载健康 VOD 并等待真实首帧。', 'running');
     if (typeof Hls === 'undefined' || !Hls.isSupported()) return failUnsupported();
     addEvent('INITIALIZED', 'Hls.js ' + Hls.version + ' · MSE available', 'neutral');
-    loadLine('A', baseUrl + (nextMode === 'failover' ? 'decodable-faulty' : 'decodable-healthy') + '/index.m3u8', 0, token);
+    loadLine('A', hlsUrl(nextMode === 'failover' ? 'decodable-faulty' : 'decodable-healthy'), 0, token);
   }
 
   video.addEventListener('playing', function () {
@@ -307,7 +314,7 @@
         session.hls = localHls;
         emit(index === 0 ? 'decoder_handoff' : 'attempt_started', { position: resumeAt || 0 });
         localHls.on(Hls.Events.MEDIA_ATTACHED, function () {
-          if (!session.cancelled && localHls === session.hls) localHls.loadSource(candidate.url);
+          if (!session.cancelled && localHls === session.hls) localHls.loadSource(runtime.resolveHlsUrl(candidate.url));
         });
         localHls.on(Hls.Events.MANIFEST_PARSED, function () {
           if (session.cancelled || localHls !== session.hls) return;
@@ -315,7 +322,10 @@
           if (resumeAt > 0) {
             try { session.video.currentTime = resumeAt; } catch (error) {}
           }
-          session.video.play().catch(fail);
+          session.video.play().catch(function (error) {
+            if (error && error.name === 'AbortError') return;
+            fail(error);
+          });
         });
         localHls.on(Hls.Events.ERROR, function (event, data) {
           if (session.cancelled || localHls !== session.hls || !data || !data.fatal) return;

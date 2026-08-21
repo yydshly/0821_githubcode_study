@@ -21,6 +21,7 @@
   var playState = document.getElementById('public-play-state');
   var activeHls = null;
   var activeRequest = null;
+  var staticArchive = Boolean(window.MoovieLabRuntime && window.MoovieLabRuntime.isStaticArchive);
 
   function escapeHtml(value) {
     return String(value || '').replace(/[&<>"']/g, function (character) {
@@ -39,6 +40,17 @@
   function setStatus(title, copy, tone) {
     status.className = 'public-catalog-status' + (tone ? ' is-' + tone : '');
     status.innerHTML = '<strong>' + escapeHtml(title) + '</strong><span>' + escapeHtml(copy) + '</span>';
+  }
+
+  if (staticArchive) {
+    var liveBadge = document.querySelector('.live-catalog-badge');
+    if (liveBadge) liveBadge.innerHTML = '<i aria-hidden="true"></i> 本地增强';
+    form.querySelectorAll('input, select, button').forEach(function (control) { control.disabled = true; });
+    setStatus('Pages 保留已验证结果', '实时四源搜索依赖本机 4174 适配网关；完整代码、状态设计和浏览器证据仍在本页与仓库中。', 'loading');
+    results.innerHTML = '<div class="public-empty"><strong>在线静态模式不伪造实时接口</strong><span>可查看下方播放器结构，或打开已验证截图；在本地增强模式中可重新搜索 IA、Wikimedia、LOC 与 NASA。</span><a href="./evidence/public-catalog-complete.png" target="_blank">查看公开目录实测截图 →</a></div>';
+    providerStatus.innerHTML = '<span><b>运行边界</b>需要 4174 网关</span>';
+    window.MooviePublicCatalog = { search: function () { return Promise.reject(new Error('local_gateway_required')); }, stop: stopVideo };
+    return;
   }
 
   function renderProviderStatus(entries) {

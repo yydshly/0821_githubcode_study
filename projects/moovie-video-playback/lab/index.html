@@ -33,6 +33,18 @@
       </div>
     </header>
 
+    <aside class="runtime-mode-banner" id="runtime-mode-banner" aria-labelledby="runtime-mode-title" hidden>
+      <div>
+        <p class="eyebrow">GitHub Pages · 原研究实验室</p>
+        <strong id="runtime-mode-title">当前是在线静态研究模式</strong>
+        <span>五类样例、四站管线、内置 HLS 解码与同集换线可以直接运行；公开目录实时搜索、Apple 外部流代理和 A/B 故障探针需要本机 4174 增强服务。</span>
+      </div>
+      <nav aria-label="运行模式相关链接">
+        <a href="https://github.com/yydshly/0821_githubcode_study/blob/main/projects/moovie-video-playback/lab/README.md">本地增强运行说明</a>
+        <a href="../moovie-source-research/">查看归档结论</a>
+      </nav>
+    </aside>
+
     <main id="research-main">
       <section class="hero" aria-labelledby="page-title">
         <div class="hero-copy">
@@ -105,7 +117,7 @@
           <div>
             <p class="eyebrow">Live public media providers</p>
             <h2 id="public-catalog-title">公开版权电影：真实搜索并直接播放</h2>
-            <p>这不是固定演示数据。查询由本机网关并发请求四个官方公开 API；每条结果都保留原项目页、许可证、署名和版权闸门。</p>
+            <p>本地增强模式下，查询由本机网关并发请求四个官方公开 API；每条结果都保留原项目页、许可证、署名和版权闸门。Pages 静态模式保留已验证界面和证据入口。</p>
           </div>
           <span class="live-catalog-badge"><i aria-hidden="true"></i> 真实公网</span>
         </div>
@@ -252,7 +264,7 @@
               <span class="fault-index">C</span>
               <div><small>Hls.js decode &amp; playback</small><h3 id="real-hls-title">真实 HLS 解码、首帧与进度保留换线</h3></div>
             </header>
-            <p>使用固定上游提交内的 Hls.js 1.4.12，播放 FFmpeg 本地生成的 12 秒测试图。故障实验在线路 A 的中段分片返回 503，再重建播放器切到健康线路 B。</p>
+            <p>使用固定上游提交内的 Hls.js 1.4.12，播放 FFmpeg 生成的 12 秒测试图。本地增强模式在线路 A 的中段分片返回 503；Pages 静态模式请求一个故意缺失的中段分片，两种模式都会重建播放器并切到健康线路 B。</p>
             <div class="real-hls-layout">
               <div class="real-hls-stage">
                 <video id="real-hls-video" muted controls playsinline preload="metadata" aria-label="本地合成 HLS 真实解码播放器"></video>
@@ -501,7 +513,7 @@ GET {source_api}?ac=detail&amp;ids=…</pre>
 
     <footer>
       <p>Moovie 核心技术路线研究演示 · 所有业务数据均为脱敏 fixture</p>
-      <a href="../README.md">阅读完整分析</a>
+      <a id="analysis-link" href="../README.md">阅读完整分析</a>
     </footer>
 
     <div class="sr-only" id="live-announcer" aria-live="assertive"></div>
@@ -509,6 +521,7 @@ GET {source_api}?ac=detail&amp;ids=…</pre>
     <script src="./fixtures.js"></script>
     <script src="./pipeline.js"></script>
     <script src="./fault-lab.js"></script>
+    <script src="./runtime-mode.js"></script>
     <script src="./fault-lab-ui.js"></script>
     <script src="../upstream/v4.0.0/web/static/js/hls.min.js"></script>
     <script src="./real-hls-player.js"></script>

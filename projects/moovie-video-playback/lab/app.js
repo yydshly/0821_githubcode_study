@@ -401,6 +401,22 @@
     }
   }
 
+  function renderStaticGatewayBoundary() {
+    stopSafeStream();
+    var shell = document.querySelector('.player-shell');
+    shell.classList.remove('is-success');
+    shell.classList.add('is-error');
+    document.getElementById('player-state-icon').textContent = '↗';
+    document.getElementById('player-state').textContent = '需要本地增强服务';
+    document.getElementById('player-detail').textContent = 'Apple 官方外部 HLS 依赖固定白名单代理；Pages 不伪造该实时能力。';
+    document.getElementById('player-fallback').hidden = false;
+    document.getElementById('stream-status').textContent = 'LOCAL GATEWAY REQUIRED';
+    var verdict = document.getElementById('playback-verdict');
+    verdict.className = 'result-verdict is-review';
+    verdict.textContent = '边界明确：请按 README 启动 4174 后复验';
+    document.getElementById('event-log').innerHTML = '<li class="event-switch"><strong>local_gateway_required</strong><span>Pages 静态模式 · 已保留历史实测证据</span></li>';
+  }
+
   async function runStage(step, token) {
     setStatus(step, 'running', '处理中');
     announce('第 ' + step + ' 站开始运行');
@@ -415,6 +431,9 @@
       if (currentScenario.expectedOutcome === 'manual_review' || currentScenario.expectedOutcome === 'no_resources') {
         await wait(280, token);
         renderPlaybackTerminal(currentScenario.expectedOutcome);
+      } else if (window.MoovieLabRuntime && window.MoovieLabRuntime.isStaticArchive && currentScenario.externalSource) {
+        await wait(280, token);
+        renderStaticGatewayBoundary();
       } else {
         stopSafeStream();
         document.getElementById('player-fallback').hidden = true;

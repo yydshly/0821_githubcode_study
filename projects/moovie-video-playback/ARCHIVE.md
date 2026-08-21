@@ -192,6 +192,8 @@ Hls.js 从外部媒体服务器/CDN加载媒体分片
 
 ## GitHub Pages 交付契约
 
+> 2026-08-21 修订：最初只把重新整合的结论页发布到 Pages，导致原研究实验室虽然在 GitHub 源码中，却没有在线入口。修订后的交付同时保留两个独立页面：`moovie-video-playback/` 是原实验室，`moovie-source-research/` 是最终结论归档。Pages 无法运行 Node 4174，因此原实验室使用明确标识的静态模式承载样例管线和内置 HLS 换线，实时公共目录与故障网关仍通过本地增强模式复验。
+
 ```text
 Entry mode: brief-led
 Target user and context: 阅读研究结论的产品、研发和运营人员

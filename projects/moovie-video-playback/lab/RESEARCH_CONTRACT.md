@@ -1,5 +1,34 @@
 # 核心技术路线研究演示契约
 
+## 交付修订：原实验室进入 GitHub Pages
+
+```text
+Entry mode: Revision-led repair
+Request revision: 8 — 不再只发布重新整合的结论页，必须发布原研究实验室
+Target user and context: 在 GitHub Pages 直接回看中间研究过程与可运行样例
+Desired first impression: 这是原实验室，不是替代摘要；当前能力边界一眼可见
+Visual ambition: Functional
+Experience architecture: Editorial Flow
+Visual constraints: 保留现有页面、层级、主题和响应式布局，只增加运行模式提示
+Information constraints: 清楚区分 Pages 可运行能力、4174 本地增强能力和历史实测证据
+Operation constraints: 五类样例、四站管线、合成 HLS 解码与同集换线在 Pages 可操作
+State constraints: 实时公共目录、Apple 代理和 A/B 故障探针在 Pages 禁用并解释，不伪造成功态
+Environment constraints: GitHub Pages；桌面 1440px；手机 390px；键盘；reduced-motion
+Primary journey: 打开原实验室 → 运行默认样例 → 观察 HLS 故障与同集换线 → 阅读能力边界
+Required artifacts: 原 lab Pages 路由、运行模式提示、静态故障 HLS、浏览器测试、远端入口和部署记录
+Autonomy authorization: 用户明确说“继续”，承接已授权的归档、提交与远端部署修正
+User-decision boundary: 不新增外部后端、账号、密钥或第三方部署服务
+Observable completion criteria: 远端 200；原页面完整；默认样例真实解码并换线；桌面/手机无溢出；键盘可达；无意外控制台错误
+```
+
+| 用户要求 / 交付物 | 表面 / 状态 | 证据 | 阶段 | 状态 |
+| --- | --- | --- | --- | --- |
+| 发布原研究网页 | Pages 原实验室路由 | 远端 HTTP 与浏览器标题/正文 | 1 / 9 | `continue` |
+| 保留可运行核心旅程 | 默认样例 + 静态 HLS 换线 | `pages-static-browser-check.cjs` | 5 / 6 | `pass` |
+| 解释 4174 边界 | 公共目录、Apple 代理、A/B 故障探针 | 运行模式横幅与禁用态 | 4 / 6 | `pass` |
+| 多表面验收 | 1440px、390px、键盘、reduced-motion | 浏览器截图与 DOM 断言 | 7 | `pass` |
+| GitHub 交付 | 工作流、索引、README、Pages | Actions 与远端 URL | 9 | `continue` |
+
 ## Design contract
 
 ```text

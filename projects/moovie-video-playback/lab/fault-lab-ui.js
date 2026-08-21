@@ -21,6 +21,7 @@
   var runBreakerButton = document.getElementById('run-breaker-demo');
   var resetButton = document.getElementById('reset-fault-probe');
   var runHlsButton = document.getElementById('run-hls-probe');
+  var staticArchive = Boolean(window.MoovieLabRuntime && window.MoovieLabRuntime.isStaticArchive);
 
   var kindLabels = {
     success: 'AppleCMS 响应有效',
@@ -192,6 +193,19 @@
       serverState.className = 'server-state is-offline';
       serverState.innerHTML = '<span aria-hidden="true"></span><strong>4174 未启动 · 按 README 启动</strong>';
     }
+  }
+
+  if (staticArchive) {
+    serverState.className = 'server-state';
+    serverState.innerHTML = '<span aria-hidden="true"></span><strong>Pages 静态模式 · A/B 需本地 4174</strong>';
+    document.querySelectorAll('.fault-panel:not(.real-hls-panel)').forEach(function (panel) {
+      panel.classList.add('is-gateway-only');
+      panel.querySelectorAll('button').forEach(function (button) { button.disabled = true; });
+    });
+    sourceResult.innerHTML = '<strong>本地增强功能</strong><span>启动 4174 服务后可验证 AppleCMS 超时、限流和熔断恢复。</span>';
+    hlsResult.innerHTML = '<strong>本地增强功能</strong><span>A/B 传输探针依赖故障可控的 4174 服务；下方 C 面板可在 Pages 直接真实解码和换线。</span>';
+    renderCircuit();
+    return;
   }
 
   document.querySelectorAll('[data-fault-mode]').forEach(function (button) {

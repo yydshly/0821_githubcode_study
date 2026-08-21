@@ -5,6 +5,9 @@ on:
     branches: [main]
     paths:
       - "docs/**"
+      - "projects/moovie-video-playback/lab/**"
+      - "projects/moovie-video-playback/upstream"
+      - ".gitmodules"
       - ".github/workflows/pages.yml"
   workflow_dispatch:
 
@@ -26,6 +29,16 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+        with:
+          submodules: recursive
+
+      - name: Assemble Pages artifact
+        shell: bash
+        run: |
+          mkdir -p _site/demos/moovie-video-playback _site/demos/upstream
+          cp -R docs/. _site/
+          cp -R projects/moovie-video-playback/lab/. _site/demos/moovie-video-playback/
+          cp -R projects/moovie-video-playback/upstream/v4.0.0 _site/demos/upstream/v4.0.0
 
       - name: Configure Pages
         uses: actions/configure-pages@v5
@@ -33,7 +46,7 @@ jobs:
       - name: Upload static site
         uses: actions/upload-pages-artifact@v3
         with:
-          path: docs
+          path: _site
 
       - name: Deploy to GitHub Pages
         id: deployment
