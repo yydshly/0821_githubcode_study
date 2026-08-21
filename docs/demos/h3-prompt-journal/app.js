@@ -236,6 +236,39 @@ const designerPresets = {
   }
 };
 
+const designerPresetsZh = {
+  "001": {
+    common: { subject: "三位身份彼此独立的成年表演者：SUBJECT_A 穿黑色西装，SUBJECT_B 穿钴蓝夹克，SUBJECT_C 穿米白连衣裙。分别保持三人的脸、发型、服装和身体比例。", scene: "同一个现代画廊空间，暖色实景灯光、抛光混凝土地面，并且只有一套稳定的空间坐标。", action: "使用真实前景遮挡依次揭示三位表演者，以一个连续近距离环绕镜头完成拍摄，最后短暂形成三人合影。", style: "电影感时尚短片、自然皮肤质感、受控的手持能量", duration: 15, aspect: "16:9", soundscape: "自然室内底噪、轻微脚步、布料摩擦和镜头近身运动声；声音不能暗示场景发生变化。", music: "低速极简器乐节拍，音量低于室内环境声；不要人声。" },
+    roles: ["控制 SUBJECT_A 的身份、外观、环境、灯光，并作为唯一空间坐标来源。", "只控制 SUBJECT_B 的身份和外观；不能控制环境或构图。", "只控制 SUBJECT_C 的身份和外观；不能控制环境或构图。"],
+    fields: { names: "SUBJECT_A、SUBJECT_B、SUBJECT_C", occluders: "肩膀、头发和背部贴近前景形成遮挡", ending: "镜头真实后退一小段，形成短暂三人中远景合影" }
+  },
+  "002": {
+    common: { subject: "Picture 1 中的两位成年舞者：左侧 FAST_SUBJECT，右侧 SLOW_SUBJECT。保持两人的身份、服装、脸和左右位置关系。", scene: "干净的排练室，反光地板和柔和的侧向日光。", action: "两人在同一连续镜头中完成轻盈蝴蝶步，同时始终保持明显的动作数量差。", style: "精致舞蹈排练影像、清晰全身动作、自然节奏", duration: 12, aspect: "16:9", soundscape: "轻微鞋底触地、布料运动和安静排练室环境声；不要对白或角色人声。", music: "只使用器乐节奏，不要歌词、歌唱或哼唱。" },
+    roles: ["控制 FAST_SUBJECT 与 SLOW_SUBJECT 的身份、服装、比例和初始左右位置。"],
+    fields: { fast: "FAST_SUBJECT", slow: "SLOW_SUBJECT", ratio: 3 }
+  },
+  "003": {
+    common: { subject: "三张图片展示同一位成年表演者。所有图片都是同一身份、服装、发型和身体比例，只是姿态锚点不同。", scene: "具有强烈视差层次、石材纹理和冷色光束的巨大极简室内空间。", action: "让微型不可见摄影机连续穿过三个姿态路标；人物持续运动，禁止像幻灯片一样在姿态上停住。", style: "高能微型摄影机时尚飞行、广角视差、电影级真实感", duration: 15, aspect: "9:16", soundscape: "高速空间气流、近距离掠过布料、脚步和统一的室内混响。", music: "推动力强的器乐电子配乐；重音加强运动，但不能让姿态冻结。" },
+    roles: ["控制同一人物身份、精确外观和起始姿态锚点。", "控制同一人物的中间姿态路标；不能成为静止终点。", "控制同一人物的最终姿态路标和英雄画面。"],
+    fields: { anchors: "脚部低位进入 → 沿躯干侧面上升环绕 → 面部高度英雄式拉远", intensity: "controlled", proximity: "从鞋、手、布料和头发数厘米外掠过，但不能发生碰撞" }
+  },
+  "004": {
+    common: { subject: "单一运动时尚表演者；Picture 1 定义脸、发型、身体比例和服装，Picture 2 定义帆板装备结构。", scene: "黄金时刻的开阔海面，浪形清楚、风吹水雾、地平线干净。", action: "制作一段能量逐步上升的竖屏帆板时尚 MV，保持帆板、帆、横杆、手和身体之间可信的物理关系。", style: "高级运动时尚 MV、动态水雾、英雄式自然光", duration: 15, aspect: "9:16", soundscape: "风压、帆面张力、板面撞击、水雾和海浪运动，具有明确空间真实感。", music: "器乐时尚电子配乐；动作峰值对齐重音，音乐释放时镜头缓和。" },
+    roles: ["控制身份、脸、头发、服装和开场外观；不控制摄影编排。", "只控制身体与装备结构；禁止复刻三视图排版。", "只为入场/推进段提供镜头语言与构图；高潮段移除 Picture 3。"],
+    fields: { segment: "entry", peak: 10, energy: "高速入场 → 受控切浪 → 水雾峰值 → 自信释放" }
+  },
+  "005": {
+    common: { subject: "一位有亲和力的成年闯关选手；Picture 1 定义身份、脸、头发、服装和身体比例。", scene: "连续的户外电视水上闯关场地，包含起点、旋转滚筒、鱼骨障碍、高墙和清楚可见的水池。", action: "按顺序完成紧凑的体育综艺喜剧节点，同时允许模型自然决定动作、机位和反应。", style: "明亮电视直播综艺、轻松肢体喜剧、动作清楚", duration: 15, aspect: "16:9", soundscape: "中文现场解说、观众反应、障碍机械声、脚步、碰撞和最终落水声。", music: "轻松活泼的体育综艺器乐垫乐；对白和肢体动作出现时降低音量。" },
+    roles: ["只控制参赛者身份和外观；场地、障碍、摄影和表演执行由文字控制。"],
+    fields: { beats: "问候 → 通过滚筒 → 鱼骨处可恢复摔倒 → 高墙假胜利 → 侧面机关反转 → 落水 → 湿发反应", freedom: "具体编舞、机位、剪辑节奏、面部表演、观众时机和恢复细节", punchline: "重新浮出水面后短暂失望地看向镜头，湿发但保持喜剧尊严" }
+  },
+  "006": {
+    common: { subject: "Picture 1 中的小型平面 2D 贴纸角色。把精确轮廓、颜色、印刷明暗、比例和明显平面材质作为不可改变的身份属性。", scene: "照片级真人家庭厨房，包含炒锅、厨具、永久敞口盐罐和真人手。", action: "制作无对白混合媒介喜剧：贴纸把锅弄得过咸、受到玩笑式反击、品尝成品，并按精确时间倒下。", style: "照片级厨房实拍底板、清晰平面 2D 贴纸合成、可触摸的实景灯光", duration: 10, aspect: "16:9", soundscape: "只使用自然厨房底噪、煎炒、厨具轻敲、盐移动和小碰撞；不要说话或人声。", music: "不使用画外音乐。" },
+    roles: ["控制贴纸身份、精确比例、颜色、轮廓和永久平面 2D 媒介；绝不能变成 3D 角色。"],
+    fields: { medium: "扁平印刷 2D 贴纸，没有厚度、体积、真实皮肤或 3D 重解释", forbidden: "盐罐没有盖子、帽、软木塞、覆盖物、铰链或可拆卸顶部；场景任何地方都不存在这类物体。", anchors: "00:03.000 反击；00:05.000 品尝反应；00:08.000 倒下" }
+  }
+};
+
 const elements = {
   caseButtons: [...document.querySelectorAll(".case-button")], number: document.querySelector("#case-number"),
   durationMeta: document.querySelector("#case-duration"), inputMeta: document.querySelector("#case-input"),
@@ -250,21 +283,33 @@ const elements = {
   validation: document.querySelector("#validation-panel"), validationTitle: document.querySelector("#validation-title"),
   validationMessage: document.querySelector("#validation-message"), source: document.querySelector("#case-source"),
   evidence: document.querySelector("#case-evidence"), theme: document.querySelector("#theme-toggle"),
-  themeLabel: document.querySelector(".theme-label")
+  themeLabel: document.querySelector(".theme-label"), languageZh: document.querySelector("#language-zh"),
+  languageEn: document.querySelector("#language-en"), languageHelp: document.querySelector("#language-help"),
+  promptLanguageLabel: document.querySelector("#prompt-language-label")
 };
 
 const fieldIds = ["subject", "scene", "action", "style", "duration", "aspect", "soundscape", "music"];
 const states = new Map();
 let activeCase = "001";
+let activeLanguage = "zh";
 
 function clonePreset(caseId) {
   const preset = designerPresets[caseId];
-  return { common: { ...preset.common }, roles: [...preset.roles], fields: Object.fromEntries(preset.fields.map((field) => [field.id, field.value])), constraints: new Set(cases[caseId].constraints.map(([id]) => id)) };
+  const presetZh = designerPresetsZh[caseId];
+  return {
+    en: { common: { ...preset.common }, roles: [...preset.roles], fields: Object.fromEntries(preset.fields.map((field) => [field.id, field.value])) },
+    zh: { common: { ...presetZh.common }, roles: [...presetZh.roles], fields: { ...presetZh.fields } },
+    constraints: new Set(cases[caseId].constraints.map(([id]) => id))
+  };
 }
 
 function stateFor(caseId) {
   if (!states.has(caseId)) states.set(caseId, clonePreset(caseId));
   return states.get(caseId);
+}
+
+function editableState(caseId = activeCase) {
+  return stateFor(caseId)[activeLanguage];
 }
 
 function makeElement(tag, className, text) {
@@ -295,7 +340,7 @@ function renderTimeline(item) {
 }
 
 function renderRoleEditor() {
-  const state = stateFor(activeCase);
+  const state = editableState();
   const fragment = document.createDocumentFragment();
   state.roles.forEach((value, index) => {
     const label = makeElement("label", "field role-field");
@@ -341,7 +386,7 @@ function createStrategyControl(field, value) {
 
 function renderStrategyFields() {
   const preset = designerPresets[activeCase];
-  const state = stateFor(activeCase);
+  const state = editableState();
   elements.strategyFields.replaceChildren(...preset.fields.map((field) => createStrategyControl(field, state.fields[field.id])));
 }
 
@@ -387,6 +432,19 @@ function strategyDirection(state) {
   return directions[activeCase];
 }
 
+function strategyDirectionZh(state) {
+  const f = state.fields;
+  const directions = {
+    "001": `始终保持 ${f.names} 身份彼此独立。使用 ${f.occluders} 完成有物理动机的前景衔接。最后形成 ${f.ending}。`,
+    "002": `${f.fast} 每完成 ${f.ratio} 个清楚动作，${f.slow} 只完成 1 个。${f.slow} 必须先观察再模仿，绝不能追上或重新同步。`,
+    "003": `姿态路径：${f.anchors}。相机强度：${f.intensity}。最近路径规则：${f.proximity}。`,
+    "004": `当前生成 ${f.segment} 段。能量弧线：${f.energy}。主要动作峰值放在 ${formatTime(f.peak)}。${f.segment === "climax" ? "高潮段有意不提供 Picture 3，让文字独占摄影控制。" : "Picture 3 只指导摄影语言，不能控制身份或装备。"}`,
+    "005": `必须按顺序发生：${f.beats}。明确允许模型自由决定：${f.freedom}。结尾笑点：${f.punchline}。`,
+    "006": `媒介锁定：${f.medium}。封闭世界道具规则：${f.forbidden}。笑点时间锚：${f.anchors}。`
+  };
+  return directions[activeCase];
+}
+
 function shotPlan(state) {
   const duration = Number(state.common.duration);
   const t1 = formatTime(duration * 0.28);
@@ -403,13 +461,24 @@ function shotPlan(state) {
   return plans[activeCase].map((text, index) => `${index === 0 ? "[Shot 1]" : `[Shot ${index + 1}] At ${[t1, t2, t3][index - 1]},`} ${text}`).join("\n\n");
 }
 
-function buildPrompt() {
+function shotPlanZh(state) {
+  const duration = Number(state.common.duration);
+  const times = [formatTime(duration * 0.28), formatTime(duration * 0.62), formatTime(duration * 0.84)];
   const item = cases[activeCase];
-  const state = stateFor(activeCase);
+  const details = activeCase === "004"
+    ? ["人物与完整帆板装备已经建立可信连接，立即交代方向、浪高、风压和身份。", "通过清楚的切浪动作提升速度；Picture 2 只控制结构，禁止出现三视图、拼贴或分镜排版。", "摄影机能量、身体动作和水雾共同推向设定峰值，同时保持身份、服装、装备和地平线稳定。", "从峰值释放到自信结束动作，画面可与相邻片段剪辑连接，不增加无关场景或装备变形。"]
+    : item.timeline.map(([, detail]) => `${detail}。保持主体身份、空间关系和动作因果连续。`);
+  return details.map((text, index) => `${index === 0 ? "[Shot 1]" : `[Shot ${index + 1}] At ${times[index - 1]},`} ${text}`).join("\n\n");
+}
+
+function buildPromptEn() {
+  const item = cases[activeCase];
+  const rootState = stateFor(activeCase);
+  const state = rootState.en;
   const roles = activeRoles(state);
   const roleDefinitions = roles.map((role, index) => `Picture ${index + 1}: ${role}`).join("\n");
   const retention = roles.map((role, index) => `Picture ${index + 1}: fully_preserved — ${role}`).join("\n");
-  const constraints = item.constraints.filter(([id]) => state.constraints.has(id)).map(([, , , line]) => `- ${line}`).join("\n");
+  const constraints = item.constraints.filter(([id]) => rootState.constraints.has(id)).map(([, , , line]) => `- ${line}`).join("\n");
   const dropNote = activeCase === "004" && state.fields.segment === "climax" ? "\nPicture 3: weak_reference — intentionally not supplied for this climax prompt." : "";
   return `subject_definitions:
 PRIMARY_SUBJECT: ${state.common.subject}
@@ -440,8 +509,60 @@ non_diegetic_music:
 ${state.common.music}`;
 }
 
+function buildPromptZh() {
+  const item = cases[activeCase];
+  const rootState = stateFor(activeCase);
+  const state = rootState.zh;
+  const roles = activeRoles(state);
+  const roleDefinitions = roles.map((role, index) => `Picture ${index + 1}: ${role}`).join("\n");
+  const retention = roles.map((role, index) => `Picture ${index + 1}: fully_preserved — ${role}`).join("\n");
+  const constraints = item.constraints
+    .filter(([id]) => rootState.constraints.has(id))
+    .map(([, label, hint]) => `- [${label}] ${hint}。`)
+    .join("\n");
+  const dropNote = activeCase === "004" && state.fields.segment === "climax" ? "\nPicture 3: weak_reference — 高潮段有意不提供这张摄影参考图。" : "";
+  return `subject_definitions:
+【主体定义】
+PRIMARY_SUBJECT: ${state.common.subject}
+【参考图职责】
+${roleDefinitions}
+
+summary:
+【摘要】
+[reference generation] 使用 ${item.control} 策略生成 ${state.common.duration} 秒、${state.common.aspect} 视频。场景：${state.common.scene} 视觉处理：${state.common.style}。目标：${state.common.action}
+
+retention_analysis:
+【参考保留分析】
+${retention}${dropNote}
+主体标签、身份边界、参考职责和媒介属性必须在所有段落与镜头中保持一致。
+
+detailed_description:
+【详细镜头描述】
+全局方向：${strategyDirectionZh(state)}
+
+${shotPlanZh(state)}
+
+【连续性与控制规则】
+${constraints || "- 当前没有启用策略约束；生产使用前至少启用一项控制规则。"}
+
+完整视频必须在一次 ${state.common.duration} 秒生成内完成。保持动作因果、主体身份、空间关系和 ${state.common.aspect} 构图清楚。不得推断与以上定义冲突的额外参考职责、道具、身份、场景变化或转场。
+
+overall_soundscape:
+【整体声景】
+${state.common.soundscape}
+
+non_diegetic_music:
+【画外音乐】
+${state.common.music}`;
+}
+
+function buildPrompt() {
+  return activeLanguage === "zh" ? buildPromptZh() : buildPromptEn();
+}
+
 function validate() {
-  const state = stateFor(activeCase);
+  const rootState = stateFor(activeCase);
+  const state = rootState[activeLanguage];
   const issues = [];
   const required = ["subject", "scene", "action", "style", "soundscape", "music"];
   required.forEach((id) => {
@@ -456,13 +577,13 @@ function validate() {
   durationControl.setAttribute("aria-invalid", String(durationInvalid));
   if (durationInvalid) issues.push("时长必须是 4–15 秒");
   if (activeRoles(state).some((role) => !role.trim())) issues.push("每张使用中的参考图都需要明确职责");
-  if (state.constraints.size === 0) issues.push("至少保留一项策略约束");
+  if (rootState.constraints.size === 0) issues.push("至少保留一项策略约束");
 
   const ready = issues.length === 0;
   elements.validation.classList.toggle("is-ready", ready);
   elements.validation.classList.toggle("has-error", !ready);
   elements.validationTitle.textContent = ready ? "可复制到 H3" : `还需处理 ${issues.length} 项`;
-  elements.validationMessage.textContent = ready ? `CASE ${activeCase} 已通过结构检查：六段顺序完整、时长有效、参考职责明确。` : issues.join("；");
+  elements.validationMessage.textContent = ready ? `CASE ${activeCase} · ${activeLanguage === "zh" ? "中文理解版" : "英文生产版"}已通过结构检查：六段顺序完整、时长有效、参考职责明确。` : issues.join("；");
   elements.copy.disabled = !ready;
   elements.download.disabled = !ready;
   return ready;
@@ -471,13 +592,14 @@ function validate() {
 function renderPrompt() {
   const prompt = buildPrompt();
   elements.prompt.textContent = prompt;
-  elements.stats.textContent = `${prompt.length.toLocaleString("zh-CN")} 字符 · 6 段`;
+  elements.stats.textContent = `${prompt.length.toLocaleString("zh-CN")} 字符 · 6 段 · ${activeLanguage.toUpperCase()}`;
+  elements.promptLanguageLabel.textContent = activeLanguage === "zh" ? "中文理解版 · REF2VA" : "ENGLISH PRODUCTION · REF2VA";
   elements.copyStatus.textContent = "";
   validate();
 }
 
 function populateCommonFields() {
-  const common = stateFor(activeCase).common;
+  const common = editableState().common;
   fieldIds.forEach((id) => { document.querySelector(`#${id}`).value = common[id]; });
 }
 
@@ -524,7 +646,7 @@ elements.caseButtons.forEach((button, index) => {
 });
 
 function updateFormState(event) {
-  const state = stateFor(activeCase);
+  const state = editableState();
   const target = event.target;
   if (fieldIds.includes(target.id)) state.common[target.id] = target.type === "number" ? Number(target.value) : target.value;
   if (target.dataset.roleIndex !== undefined) state.roles[Number(target.dataset.roleIndex)] = target.value;
@@ -538,9 +660,9 @@ elements.form.addEventListener("change", updateFormState);
 elements.constraints.addEventListener("change", (event) => {
   const target = event.target;
   if (!target.dataset.constraint) return;
-  const state = stateFor(activeCase);
-  if (target.checked) state.constraints.add(target.dataset.constraint);
-  else state.constraints.delete(target.dataset.constraint);
+  const rootState = stateFor(activeCase);
+  if (target.checked) rootState.constraints.add(target.dataset.constraint);
+  else rootState.constraints.delete(target.dataset.constraint);
   renderPrompt();
 });
 
@@ -549,7 +671,7 @@ async function copyPrompt() {
   const value = elements.prompt.textContent;
   try {
     await navigator.clipboard.writeText(value);
-    elements.copyStatus.textContent = "已复制完整 Prompt，可前往 H3 粘贴并上传对应参考图。";
+    elements.copyStatus.textContent = `已复制${activeLanguage === "zh" ? "中文理解版" : "英文生产版"} Prompt，可与对应参考图一起交给外部 H3 调度。`;
   } catch {
     const fallback = document.createElement("textarea");
     fallback.value = value;
@@ -570,12 +692,12 @@ function downloadPrompt() {
   const link = document.createElement("a");
   const url = URL.createObjectURL(blob);
   link.href = url;
-  link.download = `h3-prompt-case-${activeCase}.txt`;
+  link.download = `h3-prompt-case-${activeCase}.${activeLanguage}.txt`;
   document.body.append(link);
   link.click();
   link.remove();
   URL.revokeObjectURL(url);
-  elements.copyStatus.textContent = `已下载 h3-prompt-case-${activeCase}.txt。`;
+  elements.copyStatus.textContent = `已下载 h3-prompt-case-${activeCase}.${activeLanguage}.txt。`;
 }
 
 elements.copy.addEventListener("click", copyPrompt);
@@ -585,6 +707,25 @@ elements.reset.addEventListener("click", () => {
   renderCase(activeCase);
   elements.copyStatus.textContent = "已恢复当前策略的示例模板。";
 });
+
+function setLanguage(language) {
+  activeLanguage = language;
+  const zh = language === "zh";
+  elements.languageZh.classList.toggle("is-active", zh);
+  elements.languageEn.classList.toggle("is-active", !zh);
+  elements.languageZh.setAttribute("aria-pressed", String(zh));
+  elements.languageEn.setAttribute("aria-pressed", String(!zh));
+  elements.languageHelp.textContent = zh
+    ? "中文理解版：用于阅读和修改；英文生产版更符合官方写作规范。"
+    : "English production: recommended for H3. Switch back to Chinese whenever you need to understand a section.";
+  populateCommonFields();
+  renderRoleEditor();
+  renderStrategyFields();
+  renderPrompt();
+}
+
+elements.languageZh.addEventListener("click", () => setLanguage("zh"));
+elements.languageEn.addEventListener("click", () => setLanguage("en"));
 
 function applyTheme(theme) {
   document.documentElement.dataset.theme = theme;

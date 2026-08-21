@@ -3,8 +3,8 @@
 ## 可复现环境
 
 ```text
-Start command: python -m http.server 8042 --directory docs
-Canonical local URL: http://127.0.0.1:8042/demos/h3-prompt-journal/
+Start command: python -m http.server 8043 --directory docs
+Canonical local URL: http://127.0.0.1:8043/demos/h3-prompt-journal/
 Browser runner: agent-browser 0.27.0
 Validation date: 2026-08-21 (Asia/Shanghai)
 ```
@@ -18,6 +18,9 @@ Validation date: 2026-08-21 (Asia/Shanghai)
 | 1440×900 桌面 | 浅色 | 首屏、能力地图、完整生产表单、六段预览、操作栏、其余研究内容 | pass |
 | 768×1024 平板 | 深色 + reduced-motion | 双列卡、三列案例选择、表单、媒体、页面宽度 | pass |
 | 390×844 手机 | 浅色 | 单列案例、单列表单、参考职责、策略参数、约束、预览 | pass |
+| 1440×900 桌面 | 浅色 | 中英切换、真实样例输入图、参数与三个下载入口 | pass |
+| 768×1024 平板 | 深色 + reduced-motion | 样例单列布局、透明图棋盘格、中文标题扩展 | pass |
+| 390×844 手机 | 浅色 | 双语按钮、中文长字段、样例图片与下载区域 | pass |
 
 三个视口的 `scrollWidth - innerWidth` 均为 `-15`（垂直滚动条宽度），不存在页面级横向溢出；Prompt 预览宽度未超过工作台容器。
 
@@ -34,6 +37,18 @@ Validation date: 2026-08-21 (Asia/Shanghai)
 - 首次 Tab 聚焦“跳到主要内容”，位置为页面顶部；Enter 后 URL hash 为 `#main`。
 - 方向键从 CASE 001 切换到 CASE 002，再用左方向键返回 CASE 001，焦点与选中态同步。
 - `prefers-reduced-motion: reduce` 浏览器模拟结果为 `true`，页面存在对应降级样式。
+
+## 双语与真实前置信息（revision 3）
+
+- 页面默认进入“中文理解版”；CASE 001 的主体、场景、动作、参考职责、策略参数、声景和六段 Prompt 均为中文。
+- 点击或键盘 Enter 切换 `English · H3` 后，表单和预览同步切换为英文，`aria-pressed=true`；切回中文同样通过。
+- 在英文版把主体改为 `EN TEST SUBJECT` 后，切换中文仍保留中文预设；返回英文仍保留英文编辑值，证明两版独立保存。恢复模板后两版均回到对应默认值。
+- CASE 002–006 的中文默认态逐一真实点击，全部显示“可复制到 H3”。
+- CASE 006 英文下载反馈为 `h3-prompt-case-006.en.txt`；中文复制反馈明确写明“中文理解版”。
+- 真实样例图片在浏览器报告 `naturalWidth=1254`，三个下载地址分别指向 Picture 1、`prompt.en.txt`、`prompt.zh.txt`。
+- CASE 006 本地输入为 `1254×1254 / RGBA / alpha 0–255 / 890,093 bytes`；API 运行器 dry-run 验证 Prompt `3170` 字符，未发送请求、未消耗额度。
+- 桌面、平板和 390px 手机的新增区域均为 `scrollWidth - innerWidth = -15`，不存在本地化导致的页面级横向溢出。
+- 浏览器未报告页面错误；错误覆盖层检查为 `OK`，正文非空检查为 `HAS_CONTENT`。
 
 ## 媒体与回退
 

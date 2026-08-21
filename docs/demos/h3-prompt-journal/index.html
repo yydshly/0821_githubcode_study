@@ -20,6 +20,7 @@
       <nav aria-label="页面导航">
         <a href="#capabilities">能力</a>
         <a href="#lab">实验台</a>
+        <a href="#real-sample">样例</a>
         <a href="#scenarios">场景</a>
         <a href="#roadmap">扩展</a>
       </nav>
@@ -191,7 +192,18 @@
 
               <div class="designer-notice">
                 <strong>怎么用</strong>
-                <p>左侧选择策略 → 修改项目与参考职责 → 保留必要约束 → 校验通过后复制。文本在浏览器本地生成，不会上传素材。</p>
+                <p>左侧选择策略 → 先用中文理解 → 分别调整中英字段 → 保留必要约束 → 复制对应版本。两份内容独立保存在浏览器本次会话中，不会上传素材。</p>
+              </div>
+
+              <div class="language-switch" role="group" aria-label="编辑与预览语言">
+                <div>
+                  <strong>编辑与预览语言</strong>
+                  <small id="language-help">中文理解版：用于阅读和修改；英文生产版更符合官方写作规范。</small>
+                </div>
+                <div class="language-buttons">
+                  <button id="language-zh" class="is-active" type="button" aria-pressed="true">中文理解版</button>
+                  <button id="language-en" type="button" aria-pressed="false">English · H3</button>
+                </div>
               </div>
 
               <form id="prompt-form" novalidate>
@@ -268,7 +280,7 @@
 
               <div class="prompt-preview">
                 <div class="prompt-toolbar">
-                  <span><b>H3 REF2VA PROMPT</b><small id="prompt-stats">0 字符</small></span>
+                  <span><b id="prompt-language-label">中文理解版 · REF2VA</b><small id="prompt-stats">0 字符</small></span>
                   <div class="prompt-actions">
                     <button id="reset-prompt" class="toolbar-quiet" type="button">恢复模板</button>
                     <button id="download-prompt" class="toolbar-quiet" type="button">下载 .txt</button>
@@ -287,9 +299,48 @@
         </div>
       </section>
 
+      <section class="section real-sample" id="real-sample" aria-labelledby="real-sample-title">
+        <header class="section-heading">
+          <div>
+            <p class="section-number">03 / READY-TO-RUN SAMPLE</p>
+            <h2 id="real-sample-title">不是模板，<br />是一套真实输入。</h2>
+          </div>
+          <p>CASE 006 已固定参考图、双语 Prompt 和 H3 参数。你可以下载前置信息，在外部 MiniMax H3 中直接调度生成最终视频。</p>
+        </header>
+        <div class="sample-shell">
+          <figure class="sample-image-card">
+            <div class="sample-status"><span>PICTURE 1</span><strong>CODEX GENERATED · RGBA</strong></div>
+            <div class="checkerboard"><img src="./assets/case-006-real-test/picture-1-lemon-sticker.png" alt="原创柠檬贴纸角色，透明背景，穿红色围裙" /></div>
+            <figcaption>1254 × 1254 · PNG · 透明背景 · 原创角色</figcaption>
+          </figure>
+          <div class="sample-instructions">
+            <span class="evidence-label source">前置信息已完成</span>
+            <h3>柠檬贴纸 × 真人厨房</h3>
+            <p>把图片作为 <code>reference_image</code>，再使用英文生产版或中文理解版 Prompt。生成结果由你在外部 H3 调度，本页不会把待生成内容冒充成实测视频。</p>
+            <dl class="sample-params">
+              <div><dt>模型</dt><dd>MiniMax-H3</dd></div>
+              <div><dt>模式</dt><dd>Reference-to-Video</dd></div>
+              <div><dt>时长</dt><dd>10 秒</dd></div>
+              <div><dt>分辨率</dt><dd>768P</dd></div>
+              <div><dt>画幅</dt><dd>16:9</dd></div>
+            </dl>
+            <div class="sample-downloads">
+              <a class="button primary" href="./assets/case-006-real-test/picture-1-lemon-sticker.png" download>下载 Picture 1</a>
+              <a class="button quiet" href="./assets/case-006-real-test/prompt.en.txt" download>英文 Prompt</a>
+              <a class="button quiet" href="./assets/case-006-real-test/prompt.zh.txt" download>中文 Prompt</a>
+            </div>
+            <div class="output-slot">
+              <span>OUTPUT SLOT</span>
+              <strong>等待外部 H3 生成结果</strong>
+              <p>生成后将 MP4 放入此样例目录，即可升级为输入 / 输出真实对照。</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
       <section class="section media-section" aria-labelledby="media-title">
         <div class="media-copy">
-          <p class="section-number">03 / REAL OUTPUT</p>
+          <p class="section-number">04 / UPSTREAM OUTPUT</p>
           <h2 id="media-title">仓库中唯一附带的成片证据。</h2>
           <p>案例 004 提供了 4 张参考图与 1 个结果视频。README 描述的生产方案是 3×15 秒、45 秒成片，但附件在浏览器中的媒体时长约为 36 秒；仓库也没有同时保存失败版本、生成参数或重复测试，因此它是案例证据，不是性能基准。</p>
           <div class="evidence-note">
@@ -310,7 +361,7 @@
       <section class="section scenarios" id="scenarios" aria-labelledby="scenario-title">
         <header class="section-heading">
           <div>
-            <p class="section-number">04 / WHERE IT FITS</p>
+            <p class="section-number">05 / WHERE IT FITS</p>
             <h2 id="scenario-title">什么时候值得打开这个仓库？</h2>
           </div>
           <p>它更像一本“故障模式手册”，适合遇到具体生成问题时按症状查策略，而不是从空白需求一键出片。</p>
@@ -329,7 +380,7 @@
 
       <section class="section audit" aria-labelledby="audit-title">
         <div class="audit-title-wrap">
-          <p class="section-number">05 / EVIDENCE AUDIT</p>
+          <p class="section-number">06 / EVIDENCE AUDIT</p>
           <h2 id="audit-title">有启发，<br />但还不是基准。</h2>
         </div>
         <div class="audit-stack">
@@ -347,7 +398,7 @@
       <section class="section roadmap" id="roadmap" aria-labelledby="roadmap-title">
         <header class="section-heading">
           <div>
-            <p class="section-number">06 / EXTENSION ROADMAP</p>
+            <p class="section-number">07 / EXTENSION ROADMAP</p>
             <h2 id="roadmap-title">从经验日志，到可验证系统。</h2>
           </div>
           <p>扩展重点不是继续堆更多长 Prompt，而是先把经验变成结构化数据，再建立生成与评估闭环。</p>

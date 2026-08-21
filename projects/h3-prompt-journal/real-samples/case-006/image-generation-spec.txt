@@ -1,0 +1,10 @@
+Use case: stylized-concept
+Asset type: MiniMax H3 reference image for a real mixed-media video test
+Primary request: create one original flat 2D sticker character, a cheerful lemon-shaped kitchen helper with a compact rounded body, two short arms, two short legs, large oval black eyes, tiny orange cheek dots, and a small red apron. The character must look like a physically printed die-cut sticker, not a 3D toy.
+Scene/backdrop: genuinely transparent background with clean alpha; no floor, no shadow, no environment
+Subject: one full-body character, front-facing three-quarter pose, all limbs fully visible, centered
+Style/medium: crisp flat 2D vector-like illustration, thick consistent charcoal outline, solid lemon-yellow fill, minimal printed cel shading, strong readable silhouette
+Composition/framing: square canvas, character fills about 72% of the frame with generous transparent padding
+Lighting/mood: neutral printed appearance, playful and friendly
+Color palette: lemon yellow, charcoal black, small red apron, tiny orange cheek accents
+Constraints: genuinely transparent background; preserve visibly planar sticker identity; no thickness, no 3D volume, no realistic skin, no text, no logo, no watermark, no duplicate character, no kitchen props, no salt jar
