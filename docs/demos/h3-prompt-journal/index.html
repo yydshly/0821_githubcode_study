@@ -302,11 +302,62 @@
       <section class="section real-sample" id="real-sample" aria-labelledby="real-sample-title">
         <header class="section-heading">
           <div>
-            <p class="section-number">03 / 1 VERIFIED OUTPUT + 5 READY INPUTS</p>
-            <h2 id="real-sample-title">一份真实结果，<br />五套待测输入。</h2>
+            <p class="section-number">03 / 2 VERIFIED OUTPUTS + 4 READY INPUTS</p>
+            <h2 id="real-sample-title">两份真实结果，<br />四套待测输入。</h2>
           </div>
-          <p>CASE 006 已接入外部返回的真实有声成片；CASE 001–005 均已配好原创参考图、与上方默认模板完全一致的双语 Prompt、固定参数和原生立体声方案，可继续交给外部 MiniMax H3 调度。</p>
+          <p>CASE 001 与 CASE 006 已接入外部返回的真实有声成片，并保留输入、通过项和失败证据；CASE 002–005 仍是可直接调度的待测输入包。</p>
         </header>
+        <article class="verified-output" id="case-001-result" aria-labelledby="case-001-result-title">
+          <div class="verified-output-copy">
+            <span class="verified-badge">REAL EXTERNAL OUTPUT · CASE 001</span>
+            <h3 id="case-001-result-title">身份基本保住了，<br />遮挡衔接失真。</h3>
+            <p>使用三张本站输入图与当时的英文生产 Prompt，在外部 MiniMax H3 以 <code>15s / 768P / 16:9</code> 生成。原始 MP4 与三张输入图均保留，以下判断来自逐秒抽帧和转场邻帧，而不是只看最终合影。</p>
+            <dl class="verified-metadata">
+              <div><dt>实际时长</dt><dd>15.083 秒</dd></div>
+              <div><dt>画面</dt><dd>1344×768 · H.264 · 24fps</dd></div>
+              <div><dt>音轨</dt><dd>AAC · 32kHz · Stereo</dd></div>
+              <div><dt>响度检查</dt><dd>平均 -19.0 dB · 峰值 -6.3 dB</dd></div>
+            </dl>
+            <div class="result-audit">
+              <div class="result-pass"><span>观察通过</span><p>三人的脸、发型与黑色西装 / 钴蓝夹克 / 米白连衣裙均可辨认；画廊环境和光向基本统一；未检测到明显硬切，MP4 含连续双声道音轨。</p></div>
+              <div class="result-drift"><span>观察偏差</span><p>下一人物会在遮挡完成前提前入画，第二、第三人物没有分别完成清楚的独立环绕；镜头更像人物依次从前景走过，并过早进入多人同框。</p></div>
+            </div>
+            <div class="result-diagnosis">
+              <span>归因判断 · PROMPT CONTRIBUTED MATERIALLY</span>
+              <p><strong>是，提示词设计对失败有明显贡献，但不是“模板格式”本身导致。</strong>主要问题是把三次完整环绕、两次交接和最终合影塞进 15 秒，同时没有规定人物站位、遮挡必须覆盖多少画面，以及下一人物何时才允许出现。</p>
+              <p>下一轮应改成三段约 90° 的短弧线，不再要求三次完整环绕；在两次交接中让肩膀或背部覆盖至少 90% 画面，并明确“未来人物在各自揭示点之前完全位于画外”。即使这样，三身份 + 单镜头 + 精确遮挡仍属于模型的高难任务，需要重复测试。</p>
+            </div>
+            <div class="sample-downloads">
+              <a class="button quiet" href="./assets/case-001-real-test/picture-1-subject-a-gallery.png" download>输入图 1</a>
+              <a class="button quiet" href="./assets/case-001-real-test/picture-2-subject-b.png" download>输入图 2</a>
+              <a class="button quiet" href="./assets/case-001-real-test/picture-3-subject-c.png" download>输入图 3</a>
+              <a class="button quiet" href="#sample-case-001">下方双语 Prompt</a>
+              <a class="button primary" href="./assets/case-001-real-test/result-video.mp4" download>下载真实 MP4</a>
+            </div>
+          </div>
+          <figure class="verified-player">
+            <div class="verified-player-label"><span>3 INPUTS → OUTPUT</span><strong>EXTERNAL H3 · WITH AUDIO</strong></div>
+            <div class="verified-input-grid" aria-label="CASE 001 三张输入图">
+              <a class="verified-mini-input" href="./assets/case-001-real-test/picture-1-subject-a-gallery.png" target="_blank" rel="noreferrer">
+                <span>PICTURE 1</span><img src="./assets/case-001-real-test/picture-1-subject-a-gallery.png" alt="CASE 001 Picture 1：黑色西装人物与画廊环境" loading="lazy" /><small>SUBJECT_A + ENV</small>
+              </a>
+              <a class="verified-mini-input" href="./assets/case-001-real-test/picture-2-subject-b.png" target="_blank" rel="noreferrer">
+                <span>PICTURE 2</span><img src="./assets/case-001-real-test/picture-2-subject-b.png" alt="CASE 001 Picture 2：钴蓝夹克人物" loading="lazy" /><small>SUBJECT_B</small>
+              </a>
+              <a class="verified-mini-input" href="./assets/case-001-real-test/picture-3-subject-c.png" target="_blank" rel="noreferrer">
+                <span>PICTURE 3</span><img src="./assets/case-001-real-test/picture-3-subject-c.png" alt="CASE 001 Picture 3：米白连衣裙人物" loading="lazy" /><small>SUBJECT_C</small>
+              </a>
+            </div>
+            <div class="verified-media-pane verified-output-pane">
+              <span class="verified-media-title">输出 · H3 VIDEO</span>
+              <video controls playsinline preload="metadata" poster="./assets/case-001-real-test/result-poster.jpg">
+                <source src="./assets/case-001-real-test/result-video.mp4" type="video/mp4" />
+                当前浏览器无法播放此 MP4，请使用“下载真实 MP4”。
+              </video>
+            </div>
+            <figcaption>三张输入图始终保留；下方视频是本次真实输出。建议重点观察约 4 秒、7 秒和 10 秒附近的遮挡交接。</figcaption>
+          </figure>
+        </article>
         <article class="verified-output" id="case-006-result" aria-labelledby="case-006-result-title">
           <div class="verified-output-copy">
             <span class="verified-badge">REAL EXTERNAL OUTPUT · CASE 006</span>

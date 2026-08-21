@@ -277,6 +277,7 @@ const realSamples = {
     duration: 15,
     aspect: "16:9",
     sound: "画廊底噪、三人不同位置的脚步、近身布料掠过声与低音量无歌词器乐；声音连续，不制造换场错觉。",
+    result: { anchor: "case-001-result", title: "已接入真实有声成片", detail: "上方保留三张输入图、原始 MP4、通过项、失败项和提示词归因诊断。" },
     images: [
       ["picture-1-subject-a-gallery.png", "Picture 1", "SUBJECT_A + 唯一环境"],
       ["picture-2-subject-b.png", "Picture 2", "仅 SUBJECT_B 身份"],
@@ -657,6 +658,17 @@ function renderSampleGallery() {
         </a>
         <figcaption><b>${label}</b><small>${role}</small></figcaption>
       </figure>`).join("");
+    const outputState = sample.result
+      ? `<div class="output-slot is-verified">
+          <span>REAL OUTPUT</span>
+          <strong>${sample.result.title}</strong>
+          <p>${sample.result.detail} <a href="#${sample.result.anchor}">查看真实输出审计 ↑</a></p>
+        </div>`
+      : `<div class="output-slot">
+          <span>OUTPUT SLOT</span>
+          <strong>等待外部 H3 生成带声音的视频</strong>
+          <p>返回 MP4 后再补输入 / 输出真实对照，不用模拟视频代替。</p>
+        </div>`;
     return `
       <article class="sample-pack" id="sample-case-${caseId}">
         <div class="sample-pack-copy">
@@ -678,11 +690,7 @@ function renderSampleGallery() {
             <button class="button quiet" type="button" data-sample-load="${caseId}">载入上方编辑器</button>
           </div>
           <p class="sample-feedback" data-sample-feedback="${caseId}" aria-live="polite">Prompt 与上方恢复默认后的内容完全一致。</p>
-          <div class="output-slot">
-            <span>OUTPUT SLOT</span>
-            <strong>等待外部 H3 生成带声音的视频</strong>
-            <p>返回 MP4 后再补输入 / 输出真实对照，不用模拟视频代替。</p>
-          </div>
+          ${outputState}
         </div>
         <div class="sample-visuals count-${sample.images.length}">${images}</div>
       </article>`;
