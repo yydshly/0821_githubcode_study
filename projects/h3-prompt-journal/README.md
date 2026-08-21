@@ -39,6 +39,8 @@ h3-prompt-writing   video-to-h3-prompt   h3-prompt-journal
 
 页面另提供 CASE 001–005 的五套真实前置信息：Codex 内置 ImageGen 生成的 11 张原创参考图、与上方默认模板完全一致的动态双语 Prompt、`MiniMax-H3 / Ref2VA / 12–15s / 768P` 参数，以及逐套原生立体声方案。最终视频由使用者在外部 H3 调度；在 MP4 返回前，页面明确显示“等待外部生成”，不把输入包冒充成实测结果。完整素材说明见 [`real-samples/`](real-samples/README.md)。
 
+CASE 006 的外部 H3 成片已于 2026-08-21 返回并接入页面：`10.125s / 1344×768 / H.264 / AAC stereo`。画面保留了 2D 贴纸身份和主要喜剧节点，但盐罐旁仍出现圆形盖子，因此页面同时展示成功项与约束偏差，不把单次结果包装成完全成功。
+
 ## 来源
 
 - 研究仓库快照：[`h3-prompt-journal@0c7b488`](https://github.com/LoveRain1997/h3-prompt-journal/tree/0c7b4882dad8a302c304fe9be40f0b8b1b098b26)

@@ -14,7 +14,7 @@
 | Picture 1 | [`picture-1-lemon-sticker.png`](../../../../docs/demos/h3-prompt-journal/assets/case-006-real-test/picture-1-lemon-sticker.png) |
 | 英文 Prompt | [`prompt.txt`](prompt.txt) |
 | 中文 Prompt | [`prompt.zh.txt`](prompt.zh.txt) |
-| 最终输出 | 由使用者在外部 H3 调度；生成后可写入 `result-video.mp4` |
+| 最终输出 | [`result-video.mp4`](../../../../docs/demos/h3-prompt-journal/assets/case-006-real-test/result-video.mp4) · 已由使用者在外部 H3 生成并于 2026-08-21 返回 |
 
 Picture 1 由 Codex 内置图像生成工具创建，尺寸为 `1254×1254`、RGBA，透明通道范围为 `0–255`，文件约 `890 KB`。角色为原创柠檬贴纸，不依赖外部版权人物；生成规格保存在 [`image-generation-spec.txt`](image-generation-spec.txt)。
 
@@ -45,4 +45,12 @@ python projects/h3-prompt-journal/real-samples/case-006/run_h3.py
 python projects/h3-prompt-journal/real-samples/case-006/run_h3.py --dry-run
 ```
 
-只有你把 H3 实际返回的 `result-video.mp4` 放回样例目录后，网页才会把该案例升级为“实测输出”。
+## 返回结果核验
+
+- 实际时长：`10.125s`
+- 画面：`1344×768 / H.264 / 24fps`
+- 声音：`AAC / 32kHz / stereo`；平均响度 `-29.0 dB`，峰值 `-0.2 dB`，未检测到超过 1 秒的 `-50 dB` 静音段
+- 观察通过：倒盐、轻敲、喂食和倒下四个节点可辨认；贴纸保持明显平面媒介；MP4 含连续双声道音轨
+- 观察偏差：盐罐附近仍生成了圆形盖子，违反“场景任何位置都不存在盖子”的封闭式否定
+
+机器可读记录见 [`result-metadata.json`](result-metadata.json)。该成片证明方法部分有效，但不能作为“全部约束均成功”的证据。

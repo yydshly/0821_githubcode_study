@@ -1,0 +1,39 @@
+{
+  "case": "006",
+  "received_date": "2026-08-21",
+  "source_filename": "video_1787289612484.mp4",
+  "generation": {
+    "reported_model": "MiniMax-H3",
+    "mode": "external Ref2VA scheduling",
+    "reference_image": "picture-1-lemon-sticker.png",
+    "prompt": "prompt.txt",
+    "requested_duration_seconds": 10,
+    "requested_resolution": "768P",
+    "requested_aspect_ratio": "16:9"
+  },
+  "observed_media": {
+    "duration_seconds": 10.125,
+    "width": 1344,
+    "height": 768,
+    "frame_rate": 24,
+    "video_codec": "h264",
+    "audio_codec": "aac",
+    "audio_sample_rate_hz": 32000,
+    "audio_channels": 2,
+    "audio_layout": "stereo",
+    "mean_volume_db": -29.0,
+    "max_volume_db": -0.2,
+    "silence_over_one_second_below_minus_50_db": false,
+    "file_size_bytes": 1329029
+  },
+  "visual_observation": {
+    "passed": [
+      "flat sticker medium remains visually readable",
+      "salt pour, utensil tap, tasting, and collapse beats are visible",
+      "the returned MP4 contains a continuous stereo audio stream"
+    ],
+    "deviation": [
+      "a round lid remains visible near the salt jar despite the closed-world no-lid constraint"
+    ]
+  }
+}

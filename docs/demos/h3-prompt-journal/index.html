@@ -302,11 +302,42 @@
       <section class="section real-sample" id="real-sample" aria-labelledby="real-sample-title">
         <header class="section-heading">
           <div>
-            <p class="section-number">03 / FIVE READY-TO-RUN SAMPLES</p>
-            <h2 id="real-sample-title">五种效果，<br />五套真实输入。</h2>
+            <p class="section-number">03 / 1 VERIFIED OUTPUT + 5 READY INPUTS</p>
+            <h2 id="real-sample-title">一份真实结果，<br />五套待测输入。</h2>
           </div>
-          <p>CASE 001–005 均已配好原创参考图、与上方默认模板完全一致的双语 Prompt、固定参数和原生立体声方案。下载后可直接交给外部 MiniMax H3 调度。</p>
+          <p>CASE 006 已接入外部返回的真实有声成片；CASE 001–005 均已配好原创参考图、与上方默认模板完全一致的双语 Prompt、固定参数和原生立体声方案，可继续交给外部 MiniMax H3 调度。</p>
         </header>
+        <article class="verified-output" id="case-006-result" aria-labelledby="case-006-result-title">
+          <div class="verified-output-copy">
+            <span class="verified-badge">REAL EXTERNAL OUTPUT · CASE 006</span>
+            <h3 id="case-006-result-title">柠檬贴纸样例，<br />真实成片已返回。</h3>
+            <p>使用本站提供的 Picture 1、英文生产 Prompt 与 <code>10s / 768P / 16:9</code> 参数，在外部 MiniMax H3 生成。这里展示的是返回的原始 MP4，不是页面模拟动画。</p>
+            <dl class="verified-metadata">
+              <div><dt>实际时长</dt><dd>10.125 秒</dd></div>
+              <div><dt>画面</dt><dd>1344×768 · H.264 · 24fps</dd></div>
+              <div><dt>音轨</dt><dd>AAC · 32kHz · Stereo</dd></div>
+              <div><dt>响度检查</dt><dd>平均 -29.0 dB · 峰值 -0.2 dB</dd></div>
+            </dl>
+            <div class="result-audit">
+              <div class="result-pass"><span>观察通过</span><p>倒盐、轻敲、喂食和星星倒下均可辨认；角色保持平面贴纸观感；MP4 含连续双声道音轨。</p></div>
+              <div class="result-drift"><span>观察偏差</span><p>盐罐旁仍出现圆形盖子，说明“场景任何位置都不存在盖子”的封闭式否定未完全生效。</p></div>
+            </div>
+            <div class="sample-downloads">
+              <a class="button quiet" href="./assets/case-006-real-test/picture-1-lemon-sticker.png" download>下载输入图</a>
+              <a class="button quiet" href="./assets/case-006-real-test/prompt.en.txt" download>英文 Prompt</a>
+              <a class="button quiet" href="./assets/case-006-real-test/prompt.zh.txt" download>中文 Prompt</a>
+              <a class="button primary" href="./assets/case-006-real-test/result-video.mp4" download>下载真实 MP4</a>
+            </div>
+          </div>
+          <figure class="verified-player">
+            <div class="verified-player-label"><span>INPUT → OUTPUT</span><strong>EXTERNAL H3 · WITH AUDIO</strong></div>
+            <video controls playsinline preload="metadata" poster="./assets/case-006-real-test/picture-1-lemon-sticker.png">
+              <source src="./assets/case-006-real-test/result-video.mp4" type="video/mp4" />
+              当前浏览器无法播放此 MP4，请使用“下载真实 MP4”。
+            </video>
+            <figcaption>请开启播放器声音；本页不自动播放，避免静音策略掩盖真实音轨。</figcaption>
+          </figure>
+        </article>
         <aside class="sample-guidance" aria-label="样例使用说明">
           <strong>每套的正确使用方式</strong>
           <span>下载全部 Picture → 下载英文生产 Prompt → 按卡片参数调用 Ref2VA → 获得带原生立体声的视频。</span>
