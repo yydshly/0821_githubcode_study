@@ -291,6 +291,8 @@ const realSamples = {
     duration: 12,
     aspect: "16:9",
     sound: "脚步也遵守 3:1 数量感，保留布料声与排练室短混响；器乐节拍压低，不能把两人重新吸回同拍。",
+    promptVersion: "V1",
+    result: { anchor: "case-002-result", title: "已接入 V1 真实失败成片", detail: "上方保留输入图、12 秒原始 MP4、不可观察性证据，以及不覆盖 V1 的轻量 V2 双语修复稿。" },
     images: [["picture-1-duo-dancers.png", "Picture 1", "双人身份、服装与左右位置"]]
   },
   "003": {
