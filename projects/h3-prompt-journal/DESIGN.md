@@ -4,7 +4,7 @@
 
 ```text
 Entry mode: revision-led implementation
-Request revision: 3
+Request revision: 4
 Target user and context: 想评估、学习或复用 MiniMax H3 提示词方法的内容创作者、提示词工程师和研究者
 Desired first impression: 这是一个既能理解六种策略、又能当场产出可用 H3 Prompt 的生产工作台
 Visual ambition: Functional + Editorial
@@ -16,10 +16,10 @@ State constraints: 六个案例选择态、公共字段与策略字段编辑态�
 Environment constraints: GitHub Pages 子路径；桌面、平板、390px 手机；外部视频失败时保留上游链接作为回退
 Primary journey: 选择策略模板 → 用中文理解每段含义 → 填写项目与参考图职责 → 调整策略专属参数 → 通过校验 → 切换英文生产版并复制或下载 → 在 H3 中配合参考图使用
 User-defined phases: 分析能力；演示能力；说明使用场景；提出可扩展方向
-Required artifacts: 项目研究 README、分析文档、中英双版本生产 Prompt 设计器、CASE 006 真实测试包、总索引入口、浏览器验收记录
+Required artifacts: 项目研究 README、分析文档、中英双版本生产 Prompt 设计器、CASE 001–005 五套真实测试包与 11 张参考图、逐套原生立体声方案、总索引入口、浏览器验收记录
 Autonomy authorization: 用户明确要求以网页方式完成分析与演示，可自主进行可逆的页面结构和视觉决策
 User-decision boundary: 不调用真实 MiniMax 服务；不添加账号、后端、付费接口；不上传或保存用户素材；不复制整套上游提示词和大型媒体文件
-Observable completion criteria: 六种模板均能切换英文生产版与中文理解版；两版保持相同六段顺序和案例参数；复制/下载文件名标明语言；时长与必填项可校验；三个视口不因中文标签扩展而溢出；真实测试包不得在缺少 H3 输出时冒充实测
+Observable completion criteria: 六种模板均能切换英文生产版与中文理解版；CASE 001–005 样例 Prompt 与对应模板恢复默认后的输出逐字一致；11 张参考图均可加载和下载；每套明确原生立体声、动作声、音乐或对白关系；复制/下载文件名标明语言；三个视口不溢出；缺少 H3 输出时不得冒充实测
 ```
 
 ## 设计方向
@@ -45,7 +45,8 @@ Observable completion criteria: 六种模板均能切换英文生产版与中文
 | 生产能力 | 4–15 秒与必填项校验 | 错误摘要、字段内提示、就绪状态 | 20 秒拦截与恢复 15 秒通过 | 7 | pass | — |
 | 生产能力 | 复制、下载与重置闭环 | 操作按钮、状态反馈 | 剪贴板、txt 文件名和恢复默认通过 | 7 | pass | — |
 | 本地化 | 英文生产版与中文理解版 | 语言切换、预览、复制、下载 | 六案例中文就绪；CASE 001/006 双向切换、独立编辑、语言文件名通过 | 4-7 | pass | — |
-| 真实样例 | CASE 006 固定输入图、双语 Prompt、参数与可选 API 运行器 | 测试包与页面证据状态 | 1254px RGBA 输入加载；三下载地址与 dry-run 通过 | 8-9 | pass | 用户外部生成后再补真实 MP4，不作为本次前置信息交付阻塞 |
+| 真实样例 | CASE 001–005 共 11 张输入图、动态双语 Prompt 与参数 | 五张样例卡、图片下载、Prompt 下载 | 11 图浏览器加载与 HTTP 200；10 个按钮存在；中英文均与默认模板逐字一致 | 5-9 | pass | 用户外部生成后再补真实 MP4，不作为前置信息交付阻塞 |
+| 原生声音 | 五套分别定义声源、空间、同步、音乐与对白关系 | Prompt 声景段、样例 SOUND PLAN | 五套中英文均含原生立体声；CASE 005 三句普通话与不重叠要求通过 | 6-9 | pass | 外部成片返回后核对实际音轨与同步 |
 | 使用场景 | 场景与适用边界清楚 | 内容区 | 三视口截图与文本核对通过 | 3 | pass | — |
 | 可扩展方向 | 分层路线图与优先级 | 内容区 | P0–P3 路线完整渲染 | 3 | pass | — |
 | 证据边界 | 区分事实、经验、推断 | 首屏、审计区 | 标签、审计层级与固定来源通过 | 3 | pass | — |

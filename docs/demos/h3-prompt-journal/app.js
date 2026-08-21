@@ -181,7 +181,7 @@ const cases = {
 
 const designerPresets = {
   "001": {
-    common: { subject: "Three distinct adult performers: SUBJECT_A in a black tailored suit, SUBJECT_B in a cobalt jacket, and SUBJECT_C in a cream dress. Preserve each face, hairstyle, clothing, and body proportion independently.", scene: "One coherent modern gallery with warm practical lighting, polished concrete, and a single stable spatial coordinate system.", action: "Complete one continuous close orbital pass around all three performers, using physical foreground occlusion to reveal each next subject, then finish on a brief group composition.", style: "cinematic fashion film, natural skin texture, controlled handheld energy", duration: 15, aspect: "16:9", soundscape: "Natural room tone, subtle footsteps, fabric movement, and camera proximity; no sound may imply a location change.", music: "Minimal low-tempo instrumental pulse, mixed below the room ambience; no vocals." },
+    common: { subject: "Three distinct adult performers: SUBJECT_A in a black tailored suit, SUBJECT_B in a cobalt jacket, and SUBJECT_C in a cream dress. Preserve each face, hairstyle, clothing, and body proportion independently.", scene: "One coherent modern gallery with warm practical lighting, polished concrete, and a single stable spatial coordinate system.", action: "Complete one continuous close orbital pass around all three performers, using physical foreground occlusion to reveal each next subject, then finish on a brief group composition.", style: "cinematic fashion film, natural skin texture, controlled handheld energy", duration: 15, aspect: "16:9", soundscape: "Native stereo audio: natural gallery room tone, spatial footsteps, close fabric swishes, and subtle camera-proximity air movement; pan each pass coherently and never let sound imply a location change.", music: "Minimal low-tempo instrumental pulse, mixed quietly beneath the room ambience; no vocals, lyrics, or humming." },
     roles: ["Identity, appearance, environment, lighting, and the sole spatial coordinate source for SUBJECT_A.", "Identity and appearance of SUBJECT_B only; it must not control environment or framing.", "Identity and appearance of SUBJECT_C only; it must not control environment or framing."],
     fields: [
       { id: "names", label: "主体标签", value: "SUBJECT_A, SUBJECT_B, SUBJECT_C" },
@@ -190,7 +190,7 @@ const designerPresets = {
     ]
   },
   "002": {
-    common: { subject: "Two adult dancers in Picture 1: FAST_SUBJECT on the left and SLOW_SUBJECT on the right. Preserve both identities, outfits, faces, and left-right relationship.", scene: "A clean rehearsal studio with a reflective floor and soft directional daylight.", action: "Maintain an unmistakable action-count speed contrast while both dancers perform light butterfly-step footwork in the same continuous shot.", style: "polished dance rehearsal film, crisp full-body motion, natural timing", duration: 12, aspect: "16:9", soundscape: "Light shoe impacts, cloth movement, and quiet studio ambience; no dialogue or character vocalizations.", music: "Instrumental rhythmic track only, with no lyrics, singing, or humming." },
+    common: { subject: "Two adult dancers in Picture 1: FAST_SUBJECT on the left and SLOW_SUBJECT on the right. Preserve both identities, outfits, faces, and left-right relationship.", scene: "A clean rehearsal studio with a reflective floor and soft directional daylight.", action: "Maintain an unmistakable action-count speed contrast while both dancers perform light butterfly-step footwork in the same continuous shot.", style: "polished dance rehearsal film, crisp full-body motion, natural timing", duration: 12, aspect: "16:9", soundscape: "Native stereo audio: distinct shoe impacts for each dancer, light cloth movement, breathing-free quiet studio ambience, and a short room reverb; the fast subject produces roughly three footfall phrases for each one from the slow subject; no dialogue or character vocalizations.", music: "Instrumental rhythmic track only, mixed beneath the footwork; its beat must not pull the dancers back into synchronization; no lyrics, singing, or humming." },
     roles: ["Identity, clothing, proportions, and initial left-right placement of FAST_SUBJECT and SLOW_SUBJECT."],
     fields: [
       { id: "fast", label: "快者标签", value: "FAST_SUBJECT" },
@@ -199,7 +199,7 @@ const designerPresets = {
     ]
   },
   "003": {
-    common: { subject: "One adult performer shown across three pictures. All pictures represent the same identity, clothing, hairstyle, and body proportions at different pose anchors.", scene: "A monumental minimal interior with strong parallax layers, textured stone, and shafts of cool light.", action: "Fly a tiny invisible camera through three pose waypoints while the performer moves continuously; never stop on an anchor like a slideshow.", style: "high-energy miniature-camera fashion flight, wide-angle parallax, cinematic realism", duration: 15, aspect: "9:16", soundscape: "Fast spatial air movement, close fabric passes, footsteps, and a coherent interior reverb.", music: "Driving instrumental electronic score whose accents increase motion without freezing poses." },
+    common: { subject: "One adult performer shown across three pictures. All pictures represent the same identity, clothing, hairstyle, and body proportions at different pose anchors.", scene: "A monumental minimal interior with strong parallax layers, textured stone, and shafts of cool light.", action: "Fly a tiny invisible camera through three pose waypoints while the performer moves continuously; never stop on an anchor like a slideshow.", style: "high-energy miniature-camera fashion flight, wide-angle parallax, cinematic realism", duration: 15, aspect: "9:16", soundscape: "Native stereo audio follows the camera path: fast air movement sweeps through the stereo field, close fabric passes move left-to-right, boots strike stone with one coherent interior reverb, and proximity rises near hands and hair.", music: "Driving instrumental electronic score whose accents increase motion without freezing poses; no vocals or lyrics." },
     roles: ["Same identity, exact appearance, and starting pose anchor.", "Intermediate pose waypoint for the same identity; never a static destination.", "Final pose waypoint and hero composition for the same identity."],
     fields: [
       { id: "anchors", label: "姿态路径", type: "textarea", value: "low foot-level entry → torso-side rising orbit → face-level hero pullback" },
@@ -208,7 +208,7 @@ const designerPresets = {
     ]
   },
   "004": {
-    common: { subject: "A single athletic fashion performer whose face, hairstyle, body proportions, and outfit are defined by Picture 1; windsurfing equipment construction is defined by Picture 2.", scene: "Open ocean at golden hour with large readable waves, wind-driven spray, and a clean horizon.", action: "Create one self-contained vertical segment of a rising-energy windsurfing fashion film with credible board, sail, boom, hand, and body mechanics.", style: "luxury sports-fashion music video, kinetic spray, heroic natural light", duration: 15, aspect: "9:16", soundscape: "Wind pressure, sail tension, board impacts, water spray, and wave movement with strong spatial realism.", music: "Instrumental fashion-electronic score; align action peaks to accents and relax the camera on musical releases." },
+    common: { subject: "A single athletic fashion performer whose face, hairstyle, body proportions, and outfit are defined by Picture 1; windsurfing equipment construction is defined by Picture 2.", scene: "Open ocean at golden hour with large readable waves, wind-driven spray, and a clean horizon.", action: "Create one self-contained vertical segment of a rising-energy windsurfing fashion film with credible board, sail, boom, hand, and body mechanics.", style: "luxury sports-fashion music video, kinetic spray, heroic natural light", duration: 15, aspect: "9:16", soundscape: "Native stereo audio: directional wind pressure, sail-cloth tension, subtle boom creaks, board slaps, close water spray, and rolling waves; all impacts must match visible contact and camera distance.", music: "Instrumental fashion-electronic score; align the main action peak to the accent at 00:10.000, relax the camera on musical releases, and keep wind and board impacts audible; no vocals." },
     roles: ["Identity, face, hair, outfit, and opening appearance; not camera choreography.", "Body and equipment construction only; never reproduce a turnaround-sheet layout.", "Camera language and composition guide for entry/build segments only; omit it in the climax segment."],
     fields: [
       { id: "segment", label: "本次分段", type: "select", options: [["entry", "入场段"], ["build", "推进段"], ["climax", "高潮段（移除 Picture 3）"]], value: "entry" },
@@ -217,7 +217,7 @@ const designerPresets = {
     ]
   },
   "005": {
-    common: { subject: "One charismatic adult contestant whose identity, face, hair, clothing, and body proportions are defined by Picture 1.", scene: "A coherent outdoor television water-obstacle course with a start platform, rotating rollers, a fishbone obstacle, a high wall, and a visible pool.", action: "Deliver a compact sports-variety comedy arc with mandatory story beats in order while allowing natural improvised movement, camera choices, and reactions.", style: "bright live television variety show, playful physical comedy, readable action", duration: 15, aspect: "16:9", soundscape: "Live Mandarin commentary, audience reactions, obstacle mechanisms, footsteps, impacts, and a final water splash.", music: "Light playful sports-variety instrumental bed, ducked beneath dialogue and physical action." },
+    common: { subject: "One charismatic adult contestant whose identity, face, hair, clothing, and body proportions are defined by Picture 1.", scene: "A coherent outdoor television water-obstacle course with a start platform, rotating rollers, a fishbone obstacle, a high wall, and a visible pool.", action: "Deliver a compact sports-variety comedy arc with mandatory story beats in order while allowing natural improvised movement, camera choices, and reactions.", style: "bright live television variety show, playful physical comedy, readable action", duration: 15, aspect: "16:9", soundscape: "Native stereo audio for a live television mix. At the start the contestant says in Mandarin, ‘大家好，我今天一定一次过关！’ During the recoverable fall, an off-screen host says, ‘稳住——还有机会！’ After resurfacing, the contestant looks to camera and says, ‘我只是下来降个温。’ Add spatial audience laughter and cheers, obstacle mechanisms, footsteps, soft comic impacts, and a large synchronized final splash. Keep every spoken line clear and do not overlap dialogue.", music: "Light playful sports-variety instrumental bed, ducked automatically beneath every Mandarin line and physical impact; no sung vocals." },
     roles: ["Contestant identity and appearance only; the course, obstacles, camera, and performance execution remain text-driven."],
     fields: [
       { id: "beats", label: "必须剧情节点", type: "textarea", value: "greeting → roller crossing → recoverable fishbone fall → high-wall near victory → side mechanism reversal → splash → wet-haired reaction" },
@@ -238,27 +238,27 @@ const designerPresets = {
 
 const designerPresetsZh = {
   "001": {
-    common: { subject: "三位身份彼此独立的成年表演者：SUBJECT_A 穿黑色西装，SUBJECT_B 穿钴蓝夹克，SUBJECT_C 穿米白连衣裙。分别保持三人的脸、发型、服装和身体比例。", scene: "同一个现代画廊空间，暖色实景灯光、抛光混凝土地面，并且只有一套稳定的空间坐标。", action: "使用真实前景遮挡依次揭示三位表演者，以一个连续近距离环绕镜头完成拍摄，最后短暂形成三人合影。", style: "电影感时尚短片、自然皮肤质感、受控的手持能量", duration: 15, aspect: "16:9", soundscape: "自然室内底噪、轻微脚步、布料摩擦和镜头近身运动声；声音不能暗示场景发生变化。", music: "低速极简器乐节拍，音量低于室内环境声；不要人声。" },
+    common: { subject: "三位身份彼此独立的成年表演者：SUBJECT_A 穿黑色西装，SUBJECT_B 穿钴蓝夹克，SUBJECT_C 穿米白连衣裙。分别保持三人的脸、发型、服装和身体比例。", scene: "同一个现代画廊空间，暖色实景灯光、抛光混凝土地面，并且只有一套稳定的空间坐标。", action: "使用真实前景遮挡依次揭示三位表演者，以一个连续近距离环绕镜头完成拍摄，最后短暂形成三人合影。", style: "电影感时尚短片、自然皮肤质感、受控的手持能量", duration: 15, aspect: "16:9", soundscape: "原生立体声：自然画廊底噪、具有空间位置的脚步、近身布料掠过声和轻微镜头气流；声像跟随人物经过，但绝不能暗示换了场景。", music: "低速极简器乐节拍，安静地混在环境声下方；不要人声、歌词或哼唱。" },
     roles: ["控制 SUBJECT_A 的身份、外观、环境、灯光，并作为唯一空间坐标来源。", "只控制 SUBJECT_B 的身份和外观；不能控制环境或构图。", "只控制 SUBJECT_C 的身份和外观；不能控制环境或构图。"],
     fields: { names: "SUBJECT_A、SUBJECT_B、SUBJECT_C", occluders: "肩膀、头发和背部贴近前景形成遮挡", ending: "镜头真实后退一小段，形成短暂三人中远景合影" }
   },
   "002": {
-    common: { subject: "Picture 1 中的两位成年舞者：左侧 FAST_SUBJECT，右侧 SLOW_SUBJECT。保持两人的身份、服装、脸和左右位置关系。", scene: "干净的排练室，反光地板和柔和的侧向日光。", action: "两人在同一连续镜头中完成轻盈蝴蝶步，同时始终保持明显的动作数量差。", style: "精致舞蹈排练影像、清晰全身动作、自然节奏", duration: 12, aspect: "16:9", soundscape: "轻微鞋底触地、布料运动和安静排练室环境声；不要对白或角色人声。", music: "只使用器乐节奏，不要歌词、歌唱或哼唱。" },
+    common: { subject: "Picture 1 中的两位成年舞者：左侧 FAST_SUBJECT，右侧 SLOW_SUBJECT。保持两人的身份、服装、脸和左右位置关系。", scene: "干净的排练室，反光地板和柔和的侧向日光。", action: "两人在同一连续镜头中完成轻盈蝴蝶步，同时始终保持明显的动作数量差。", style: "精致舞蹈排练影像、清晰全身动作、自然节奏", duration: 12, aspect: "16:9", soundscape: "原生立体声：分别可辨的鞋底触地、轻微布料运动和短促排练室混响；快者约产生三组脚步，慢者只产生一组；不要对白、喘息或角色人声。", music: "只使用器乐节奏并压在脚步声下方；节拍不能把两人重新拉回同步；不要歌词、歌唱或哼唱。" },
     roles: ["控制 FAST_SUBJECT 与 SLOW_SUBJECT 的身份、服装、比例和初始左右位置。"],
     fields: { fast: "FAST_SUBJECT", slow: "SLOW_SUBJECT", ratio: 3 }
   },
   "003": {
-    common: { subject: "三张图片展示同一位成年表演者。所有图片都是同一身份、服装、发型和身体比例，只是姿态锚点不同。", scene: "具有强烈视差层次、石材纹理和冷色光束的巨大极简室内空间。", action: "让微型不可见摄影机连续穿过三个姿态路标；人物持续运动，禁止像幻灯片一样在姿态上停住。", style: "高能微型摄影机时尚飞行、广角视差、电影级真实感", duration: 15, aspect: "9:16", soundscape: "高速空间气流、近距离掠过布料、脚步和统一的室内混响。", music: "推动力强的器乐电子配乐；重音加强运动，但不能让姿态冻结。" },
+    common: { subject: "三张图片展示同一位成年表演者。所有图片都是同一身份、服装、发型和身体比例，只是姿态锚点不同。", scene: "具有强烈视差层次、石材纹理和冷色光束的巨大极简室内空间。", action: "让微型不可见摄影机连续穿过三个姿态路标；人物持续运动，禁止像幻灯片一样在姿态上停住。", style: "高能微型摄影机时尚飞行、广角视差、电影级真实感", duration: 15, aspect: "9:16", soundscape: "原生立体声跟随镜头路径：高速气流横穿声场，近距离布料声从左向右掠过，靴子落在石面并共享统一混响，靠近手和头发时增强贴近感。", music: "推动力强的器乐电子配乐；重音加强运动但不能让姿态冻结；不要人声或歌词。" },
     roles: ["控制同一人物身份、精确外观和起始姿态锚点。", "控制同一人物的中间姿态路标；不能成为静止终点。", "控制同一人物的最终姿态路标和英雄画面。"],
     fields: { anchors: "脚部低位进入 → 沿躯干侧面上升环绕 → 面部高度英雄式拉远", intensity: "controlled", proximity: "从鞋、手、布料和头发数厘米外掠过，但不能发生碰撞" }
   },
   "004": {
-    common: { subject: "单一运动时尚表演者；Picture 1 定义脸、发型、身体比例和服装，Picture 2 定义帆板装备结构。", scene: "黄金时刻的开阔海面，浪形清楚、风吹水雾、地平线干净。", action: "制作一段能量逐步上升的竖屏帆板时尚 MV，保持帆板、帆、横杆、手和身体之间可信的物理关系。", style: "高级运动时尚 MV、动态水雾、英雄式自然光", duration: 15, aspect: "9:16", soundscape: "风压、帆面张力、板面撞击、水雾和海浪运动，具有明确空间真实感。", music: "器乐时尚电子配乐；动作峰值对齐重音，音乐释放时镜头缓和。" },
+    common: { subject: "单一运动时尚表演者；Picture 1 定义脸、发型、身体比例和服装，Picture 2 定义帆板装备结构。", scene: "黄金时刻的开阔海面，浪形清楚、风吹水雾、地平线干净。", action: "制作一段能量逐步上升的竖屏帆板时尚 MV，保持帆板、帆、横杆、手和身体之间可信的物理关系。", style: "高级运动时尚 MV、动态水雾、英雄式自然光", duration: 15, aspect: "9:16", soundscape: "原生立体声：有方向的风压、帆布张力、轻微横杆吱声、板面拍水、近距离水雾和滚动海浪；所有冲击声必须对应可见接触和镜头距离。", music: "器乐时尚电子配乐；主要动作峰值对齐 00:10.000 重音，音乐释放时镜头缓和，同时保留风声和板面冲击；不要人声。" },
     roles: ["控制身份、脸、头发、服装和开场外观；不控制摄影编排。", "只控制身体与装备结构；禁止复刻三视图排版。", "只为入场/推进段提供镜头语言与构图；高潮段移除 Picture 3。"],
     fields: { segment: "entry", peak: 10, energy: "高速入场 → 受控切浪 → 水雾峰值 → 自信释放" }
   },
   "005": {
-    common: { subject: "一位有亲和力的成年闯关选手；Picture 1 定义身份、脸、头发、服装和身体比例。", scene: "连续的户外电视水上闯关场地，包含起点、旋转滚筒、鱼骨障碍、高墙和清楚可见的水池。", action: "按顺序完成紧凑的体育综艺喜剧节点，同时允许模型自然决定动作、机位和反应。", style: "明亮电视直播综艺、轻松肢体喜剧、动作清楚", duration: 15, aspect: "16:9", soundscape: "中文现场解说、观众反应、障碍机械声、脚步、碰撞和最终落水声。", music: "轻松活泼的体育综艺器乐垫乐；对白和肢体动作出现时降低音量。" },
+    common: { subject: "一位有亲和力的成年闯关选手；Picture 1 定义身份、脸、头发、服装和身体比例。", scene: "连续的户外电视水上闯关场地，包含起点、旋转滚筒、鱼骨障碍、高墙和清楚可见的水池。", action: "按顺序完成紧凑的体育综艺喜剧节点，同时允许模型自然决定动作、机位和反应。", style: "明亮电视直播综艺、轻松肢体喜剧、动作清楚", duration: 15, aspect: "16:9", soundscape: "原生立体声电视现场。开场选手用普通话说：“大家好，我今天一定一次过关！”发生可恢复摔倒时，画外主持人说：“稳住——还有机会！”重新浮出水面后，选手看向镜头说：“我只是下来降个温。”加入有空间位置的观众笑声与欢呼、障碍机械声、脚步、柔和喜剧碰撞和同步的大落水声。每句对白必须清楚，不能互相重叠。", music: "轻松活泼的体育综艺器乐垫乐；每句普通话对白和肢体冲击出现时自动降低音量；不要歌唱人声。" },
     roles: ["只控制参赛者身份和外观；场地、障碍、摄影和表演执行由文字控制。"],
     fields: { beats: "问候 → 通过滚筒 → 鱼骨处可恢复摔倒 → 高墙假胜利 → 侧面机关反转 → 落水 → 湿发反应", freedom: "具体编舞、机位、剪辑节奏、面部表演、观众时机和恢复细节", punchline: "重新浮出水面后短暂失望地看向镜头，湿发但保持喜剧尊严" }
   },
@@ -266,6 +266,66 @@ const designerPresetsZh = {
     common: { subject: "Picture 1 中的小型平面 2D 贴纸角色。把精确轮廓、颜色、印刷明暗、比例和明显平面材质作为不可改变的身份属性。", scene: "照片级真人家庭厨房，包含炒锅、厨具、永久敞口盐罐和真人手。", action: "制作无对白混合媒介喜剧：贴纸把锅弄得过咸、受到玩笑式反击、品尝成品，并按精确时间倒下。", style: "照片级厨房实拍底板、清晰平面 2D 贴纸合成、可触摸的实景灯光", duration: 10, aspect: "16:9", soundscape: "只使用自然厨房底噪、煎炒、厨具轻敲、盐移动和小碰撞；不要说话或人声。", music: "不使用画外音乐。" },
     roles: ["控制贴纸身份、精确比例、颜色、轮廓和永久平面 2D 媒介；绝不能变成 3D 角色。"],
     fields: { medium: "扁平印刷 2D 贴纸，没有厚度、体积、真实皮肤或 3D 重解释", forbidden: "盐罐没有盖子、帽、软木塞、覆盖物、铰链或可拆卸顶部；场景任何地方都不存在这类物体。", anchors: "00:03.000 反击；00:05.000 品尝反应；00:08.000 倒下" }
+  }
+};
+
+const realSamples = {
+  "001": {
+    kicker: "CONTINUITY · 3 PICTURES",
+    title: "三人物遮挡衔接长镜头",
+    description: "Picture 1 同时负责 SUBJECT_A 与唯一画廊空间，Picture 2/3 只锁定另外两位人物。镜头必须借肩膀、头发或背部真实遮挡完成无切镜交接。",
+    duration: 15,
+    aspect: "16:9",
+    sound: "画廊底噪、三人不同位置的脚步、近身布料掠过声与低音量无歌词器乐；声音连续，不制造换场错觉。",
+    images: [
+      ["picture-1-subject-a-gallery.png", "Picture 1", "SUBJECT_A + 唯一环境"],
+      ["picture-2-subject-b.png", "Picture 2", "仅 SUBJECT_B 身份"],
+      ["picture-3-subject-c.png", "Picture 3", "仅 SUBJECT_C 身份"]
+    ]
+  },
+  "002": {
+    kicker: "RATIO · 1 PICTURE",
+    title: "双人 3:1 差速蝴蝶步",
+    description: "同一张图锁定两位舞者和左右关系。快者每完成三个清楚动作，慢者只完成一个，慢者始终先看再模仿，结尾也不能重新同步。",
+    duration: 12,
+    aspect: "16:9",
+    sound: "脚步也遵守 3:1 数量感，保留布料声与排练室短混响；器乐节拍压低，不能把两人重新吸回同拍。",
+    images: [["picture-1-duo-dancers.png", "Picture 1", "双人身份、服装与左右位置"]]
+  },
+  "003": {
+    kicker: "ANCHOR FLOW · 3 PICTURES",
+    title: "同一人物三姿态微型飞行",
+    description: "三张图是同一人物的运动路标，不是三个人，也不是幻灯片终点。微型不可见摄影机近距离绕过鞋、手、布料与头发，连续穿过三个姿态。",
+    duration: 15,
+    aspect: "9:16",
+    sound: "气流跟随镜头横穿立体声场，布料近身掠过、靴子落石与统一室内混响共同表达微型摄影机速度。",
+    images: [
+      ["picture-1-start-pose.png", "Picture 1", "身份 + 起始姿态"],
+      ["picture-2-transition-pose.png", "Picture 2", "中间运动路标"],
+      ["picture-3-hero-pose.png", "Picture 3", "最终英雄姿态"]
+    ]
+  },
+  "004": {
+    kicker: "REFERENCE ROLES · 3 PICTURES",
+    title: "多参考帆板时尚 MV",
+    description: "人物、装备结构和摄影语言各自只有一个岗位。本样例先生成 15 秒入场段；如制作完整 MV，再分别生成推进段和移除 Picture 3 的高潮段。",
+    duration: 15,
+    aspect: "9:16",
+    sound: "原生风压、帆布张力、横杆吱声、板面拍水与水雾保持可听；电子器乐在 10 秒到达峰值但不遮住物理动作声。",
+    images: [
+      ["picture-1-athlete.png", "Picture 1", "人物身份与服装"],
+      ["picture-2-rig.png", "Picture 2", "帆板装备结构"],
+      ["picture-3-camera-language.png", "Picture 3", "低水位摄影语言"]
+    ]
+  },
+  "005": {
+    kicker: "STORY BEATS · 1 PICTURE",
+    title: "水上闯关综艺喜剧",
+    description: "单图只锁定参赛者，场地、障碍、机位和表演由文字生成。七个剧情节点顺序固定，但动作细节和观众反应保留自然即兴空间。",
+    duration: 15,
+    aspect: "16:9",
+    sound: "包含三句不重叠的普通话对白、画外主持、观众笑声与欢呼、机械声、脚步、碰撞和同步落水声；配乐遇对白自动降低。",
+    images: [["picture-1-contestant.png", "Picture 1", "参赛者身份与服装"]]
   }
 };
 
@@ -285,7 +345,8 @@ const elements = {
   evidence: document.querySelector("#case-evidence"), theme: document.querySelector("#theme-toggle"),
   themeLabel: document.querySelector(".theme-label"), languageZh: document.querySelector("#language-zh"),
   languageEn: document.querySelector("#language-en"), languageHelp: document.querySelector("#language-help"),
-  promptLanguageLabel: document.querySelector("#prompt-language-label")
+  promptLanguageLabel: document.querySelector("#prompt-language-label"),
+  sampleGallery: document.querySelector("#sample-gallery")
 };
 
 const fieldIds = ["subject", "scene", "action", "style", "duration", "aspect", "soundscape", "music"];
@@ -560,6 +621,74 @@ function buildPrompt() {
   return activeLanguage === "zh" ? buildPromptZh() : buildPromptEn();
 }
 
+function buildPresetPrompt(caseId, language) {
+  const previousCase = activeCase;
+  const hadState = states.has(caseId);
+  const previousState = states.get(caseId);
+  states.set(caseId, clonePreset(caseId));
+  activeCase = caseId;
+  const value = language === "zh" ? buildPromptZh() : buildPromptEn();
+  activeCase = previousCase;
+  if (hadState) states.set(caseId, previousState);
+  else states.delete(caseId);
+  return value;
+}
+
+function downloadTextFile(value, filename) {
+  const blob = new Blob([value], { type: "text/plain;charset=utf-8" });
+  const link = document.createElement("a");
+  const url = URL.createObjectURL(blob);
+  link.href = url;
+  link.download = filename;
+  document.body.append(link);
+  link.click();
+  link.remove();
+  URL.revokeObjectURL(url);
+}
+
+function renderSampleGallery() {
+  if (!elements.sampleGallery) return;
+  elements.sampleGallery.innerHTML = Object.entries(realSamples).map(([caseId, sample]) => {
+    const images = sample.images.map(([filename, label, role]) => `
+      <figure class="sample-reference">
+        <a class="sample-reference-frame" href="./assets/case-${caseId}-real-test/${filename}" download aria-label="下载 CASE ${caseId} ${label}：${role}">
+          <img src="./assets/case-${caseId}-real-test/${filename}" alt="CASE ${caseId} ${label}，${role}" loading="lazy" />
+          <span>DOWNLOAD</span>
+        </a>
+        <figcaption><b>${label}</b><small>${role}</small></figcaption>
+      </figure>`).join("");
+    return `
+      <article class="sample-pack" id="sample-case-${caseId}">
+        <div class="sample-pack-copy">
+          <span class="sample-kicker">CASE ${caseId} · ${sample.kicker}</span>
+          <h3>${sample.title}</h3>
+          <p>${sample.description}</p>
+          <dl class="sample-params">
+            <div><dt>模型</dt><dd>MiniMax-H3</dd></div>
+            <div><dt>模式</dt><dd>Ref2VA</dd></div>
+            <div><dt>时长</dt><dd>${sample.duration} 秒</dd></div>
+            <div><dt>分辨率</dt><dd>768P</dd></div>
+            <div><dt>画幅</dt><dd>${sample.aspect}</dd></div>
+            <div><dt>输出</dt><dd>视频 + 原生立体声</dd></div>
+          </dl>
+          <div class="sample-sound"><span>SOUND PLAN</span><p>${sample.sound}</p></div>
+          <div class="sample-downloads">
+            <button class="button primary" type="button" data-sample-prompt="en" data-sample-case="${caseId}">下载英文 Prompt</button>
+            <button class="button quiet" type="button" data-sample-prompt="zh" data-sample-case="${caseId}">下载中文 Prompt</button>
+            <button class="button quiet" type="button" data-sample-load="${caseId}">载入上方编辑器</button>
+          </div>
+          <p class="sample-feedback" data-sample-feedback="${caseId}" aria-live="polite">Prompt 与上方恢复默认后的内容完全一致。</p>
+          <div class="output-slot">
+            <span>OUTPUT SLOT</span>
+            <strong>等待外部 H3 生成带声音的视频</strong>
+            <p>返回 MP4 后再补输入 / 输出真实对照，不用模拟视频代替。</p>
+          </div>
+        </div>
+        <div class="sample-visuals count-${sample.images.length}">${images}</div>
+      </article>`;
+  }).join("");
+}
+
 function validate() {
   const rootState = stateFor(activeCase);
   const state = rootState[activeLanguage];
@@ -688,15 +817,7 @@ async function copyPrompt() {
 
 function downloadPrompt() {
   if (!validate()) return;
-  const blob = new Blob([elements.prompt.textContent], { type: "text/plain;charset=utf-8" });
-  const link = document.createElement("a");
-  const url = URL.createObjectURL(blob);
-  link.href = url;
-  link.download = `h3-prompt-case-${activeCase}.${activeLanguage}.txt`;
-  document.body.append(link);
-  link.click();
-  link.remove();
-  URL.revokeObjectURL(url);
+  downloadTextFile(elements.prompt.textContent, `h3-prompt-case-${activeCase}.${activeLanguage}.txt`);
   elements.copyStatus.textContent = `已下载 h3-prompt-case-${activeCase}.${activeLanguage}.txt。`;
 }
 
@@ -727,6 +848,27 @@ function setLanguage(language) {
 elements.languageZh.addEventListener("click", () => setLanguage("zh"));
 elements.languageEn.addEventListener("click", () => setLanguage("en"));
 
+elements.sampleGallery?.addEventListener("click", (event) => {
+  const promptButton = event.target.closest("[data-sample-prompt]");
+  if (promptButton) {
+    const caseId = promptButton.dataset.sampleCase;
+    const language = promptButton.dataset.samplePrompt;
+    const value = buildPresetPrompt(caseId, language);
+    downloadTextFile(value, `h3-real-sample-case-${caseId}.${language}.txt`);
+    const feedback = document.querySelector(`[data-sample-feedback="${caseId}"]`);
+    if (feedback) feedback.textContent = `已下载 CASE ${caseId} ${language === "zh" ? "中文理解版" : "英文生产版"}；请同时下载卡片中的全部 Picture。`;
+    return;
+  }
+  const loadButton = event.target.closest("[data-sample-load]");
+  if (!loadButton) return;
+  const caseId = loadButton.dataset.sampleLoad;
+  states.set(caseId, clonePreset(caseId));
+  renderCase(caseId);
+  document.querySelector("#composer-title")?.scrollIntoView({ behavior: "smooth", block: "start" });
+  const feedback = document.querySelector(`[data-sample-feedback="${caseId}"]`);
+  if (feedback) feedback.textContent = `CASE ${caseId} 已恢复默认并载入上方；当前显示${activeLanguage === "zh" ? "中文理解版" : "英文生产版"}。`;
+});
+
 function applyTheme(theme) {
   document.documentElement.dataset.theme = theme;
   const dark = theme === "dark";
@@ -744,4 +886,5 @@ elements.theme.addEventListener("click", () => {
   try { localStorage.setItem("h3-research-theme", next); } catch { /* Session theme still works. */ }
 });
 
+renderSampleGallery();
 renderCase(activeCase);
