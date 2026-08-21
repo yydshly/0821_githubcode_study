@@ -302,10 +302,10 @@
       <section class="section real-sample" id="real-sample" aria-labelledby="real-sample-title">
         <header class="section-heading">
           <div>
-            <p class="section-number">03 / 4 VERIFIED OUTPUTS + 2 READY INPUTS</p>
-            <h2 id="real-sample-title">四份真实结果，<br />两套待测输入。</h2>
+            <p class="section-number">03 / 5 VERIFIED OUTPUTS + 1 READY INPUT</p>
+            <h2 id="real-sample-title">五份真实结果，<br />一套待测输入。</h2>
           </div>
-          <p>CASE 001、CASE 004、CASE 005 与 CASE 006 已接入外部返回的真实有声成片，并保留输入、通过项和偏差证据；CASE 002–003 仍是可直接调度的待测输入包。</p>
+          <p>CASE 001、CASE 003–006 已接入外部返回的真实有声成片，并保留输入、通过项和偏差证据；目前只有 CASE 002 仍是可直接调度的待测输入包。</p>
         </header>
         <article class="verified-output" id="case-001-result" aria-labelledby="case-001-result-title">
           <div class="verified-output-copy">
@@ -378,6 +378,83 @@
               </video>
             </div>
             <figcaption>三张输入图始终保留；下方视频是本次真实输出。建议重点观察约 4 秒、7 秒和 10 秒附近的遮挡交接。</figcaption>
+          </figure>
+        </article>
+        <article class="verified-output" id="case-003-result" aria-labelledby="case-003-result-title">
+          <div class="verified-output-copy">
+            <span class="verified-badge">REAL EXTERNAL OUTPUT · CASE 003</span>
+            <h3 id="case-003-result-title">结构通过了，<br />飞行感没有。</h3>
+            <p>使用本站三张姿态图与当时的 V1 英文生产 Prompt，在外部 MiniMax H3 以 <code>15s / 768P / 9:16</code> 生成。它成功避免了身份切换和幻灯片，但实际观感更像低机位的人体扫描与姿态巡检，而不是微型摄影机高速飞行。</p>
+            <dl class="verified-metadata">
+              <div><dt>实际时长</dt><dd>15.083 秒</dd></div>
+              <div><dt>画面</dt><dd>768×1344 · H.264 · 24fps</dd></div>
+              <div><dt>音轨</dt><dd>AAC · 32kHz · Stereo</dd></div>
+              <div><dt>响度检查</dt><dd>平均 -16.1 dB · 峰值 -1.2 dB</dd></div>
+            </dl>
+            <div class="result-audit">
+              <div class="result-pass"><span>观察通过</span><p>同一张脸、灰黑短发、酒红外套、黑裤和短靴全程稳定；三个姿态按起始 → 过渡 → 英雄姿态依次出现；相邻帧显示动作和摄影机连续，没有发现身份变形、淡化或明确硬切。</p></div>
+              <div class="result-drift"><span>观察偏差</span><p>前约 5 秒被贴近鞋、腿和手的低位动作占满，人物为了配合镜头长期蹲低；缺少能证明“微型尺度”的穿越门洞、遮挡物和强视差；约 10.4 秒进入英雄姿态后，人物基本保持到结尾，只剩一次突兀的贴脸推拉。</p></div>
+            </div>
+            <div class="causal-audit" aria-label="CASE 003 V1 时间线执行审计">
+              <span>提示词时间线 → 实际执行 · EXPECTED → OBSERVED</span>
+              <ol>
+                <li><time>0–2s</time><p><b>低位进入：</b>从全身迅速靠近靴子，起始姿态只承担入口。</p></li>
+                <li><time>2–5s</time><p><b>鞋与手近景：</b>镜头持续贴地，人物蹲低伸手，更像配合摄影的人体扫描。</p></li>
+                <li><time>5–9.7s</time><p><b>过渡姿态：</b>人物起身并经过 Picture 2，摄影机普通上升跟随，缺少高速绕行。</p></li>
+                <li><time>9.7–10.4s</time><p><b>转向英雄姿态：</b>转身举臂进入 Picture 3，顺序正确但变化很短。</p></li>
+                <li><time>10.4–15s</time><p><b>英雄停留：</b>人物大部分时间静止；约 12.7 秒贴脸再退回，无法替代持续飞行路线。</p></li>
+              </ol>
+            </div>
+            <div class="result-diagnosis">
+              <span>归因判断 · TEMPLATE GOAL PASSED / AESTHETIC GOAL MISALIGNED</span>
+              <p><strong>你的判断成立：以“成片是否更好看”为标准，这套默认模板确实可能不如不套模板。</strong>它原本解决的是“三张姿态不要变成三页幻灯片”，所以把鞋、手、身体近距绕行、三个姿态路标和最终英雄画面全部写成检查项。模型保住了检查项，却把表演压缩成“蹲下 → 伸手 → 起身 → 举臂”。</p>
+              <p>三张输入本来就是同一人物、同一服装、同一空间，身份和场景风险并不高；此时继续堆叠微型摄影机、厘米级贴近、频繁避让和姿态锚点，会让镜头任务凌驾于叙事与动作。模板不是普遍增强器，它只适合对应失败模式；目标从“避免幻灯片”变成“做一条好看的动作短片”后，应重新设计任务，而不是默认沿用全部模板规则。</p>
+            </div>
+            <section class="case-use-cases" aria-labelledby="case-003-choice-title">
+              <div class="case-use-cases-heading">
+                <span>下一轮选择 · TWO DIFFERENT GOALS</span>
+                <h4 id="case-003-choice-title">先决定要好看，还是要验证微型飞行。</h4>
+              </div>
+              <div class="case-use-cases-grid">
+                <div class="case-use-cases-fit">
+                  <strong>优先追求成片效果</strong>
+                  <p>不套完整模板。三张图只提供身份和动作灵感，改用一个连续舞蹈目标、三次明确镜头节拍和一个情绪高潮；删除厘米级身体扫描、姿态逐项打卡与长时间英雄停留。</p>
+                </div>
+                <div class="case-use-cases-boundary">
+                  <strong>专门验证微型飞行</strong>
+                  <p>保留策略，但必须加入可见尺度门槛：从靴底与地面缝隙穿过、绕过外套下摆、穿过肘部与躯干形成的窗口，并限制任何姿态停留不超过 0.4 秒。</p>
+                </div>
+              </div>
+            </section>
+            <div class="sample-downloads">
+              <a class="button quiet" href="./assets/case-003-real-test/picture-1-start-pose.png" download>输入图 1 · 起始</a>
+              <a class="button quiet" href="./assets/case-003-real-test/picture-2-transition-pose.png" download>输入图 2 · 过渡</a>
+              <a class="button quiet" href="./assets/case-003-real-test/picture-3-hero-pose.png" download>输入图 3 · 英雄</a>
+              <a class="button quiet" href="#sample-case-003">下方 V1 双语 Prompt</a>
+              <a class="button primary" href="./assets/case-003-real-test/result-video.mp4" download>下载真实 MP4</a>
+            </div>
+          </div>
+          <figure class="verified-player is-vertical-output">
+            <div class="verified-player-label"><span>3 POSE INPUTS → OUTPUT</span><strong>EXTERNAL H3 · WITH AUDIO</strong></div>
+            <div class="verified-input-grid case-003-input-grid" aria-label="CASE 003 三张姿态输入图">
+              <a class="verified-mini-input" href="./assets/case-003-real-test/picture-1-start-pose.png" target="_blank" rel="noreferrer">
+                <span>PICTURE 1</span><img src="./assets/case-003-real-test/picture-1-start-pose.png" alt="CASE 003 Picture 1：同一人物的低位起始姿态" loading="lazy" /><small>START POSE</small>
+              </a>
+              <a class="verified-mini-input" href="./assets/case-003-real-test/picture-2-transition-pose.png" target="_blank" rel="noreferrer">
+                <span>PICTURE 2</span><img src="./assets/case-003-real-test/picture-2-transition-pose.png" alt="CASE 003 Picture 2：同一人物的交叉步过渡姿态" loading="lazy" /><small>WAYPOINT</small>
+              </a>
+              <a class="verified-mini-input" href="./assets/case-003-real-test/picture-3-hero-pose.png" target="_blank" rel="noreferrer">
+                <span>PICTURE 3</span><img src="./assets/case-003-real-test/picture-3-hero-pose.png" alt="CASE 003 Picture 3：同一人物的举臂英雄姿态" loading="lazy" /><small>HERO POSE</small>
+              </a>
+            </div>
+            <div class="verified-media-pane verified-output-pane">
+              <span class="verified-media-title">输出 · V1 H3 VIDEO</span>
+              <video controls playsinline preload="metadata" poster="./assets/case-003-real-test/result-poster.jpg">
+                <source src="./assets/case-003-real-test/result-video.mp4" type="video/mp4" />
+                当前浏览器无法播放此 MP4，请使用“下载真实 MP4”。
+              </video>
+            </div>
+            <figcaption>三张姿态图始终保留；下方为 9:16 真实输出。建议重点观察前 5 秒的贴鞋 / 贴手巡检，以及约 10.4 秒后人物动作密度是否明显归零。</figcaption>
           </figure>
         </article>
         <article class="verified-output" id="case-004-result" aria-labelledby="case-004-result-title">

@@ -1,0 +1,35 @@
+{
+  "case": "003",
+  "prompt_version": "V1",
+  "source_filename": "video_1787299397694.mp4",
+  "source_sha256": "0578D3887BBC08E78172722508326C066D6A53C5583F5072C81DBC4332A2B72E",
+  "received_at": "2026-08-21",
+  "video": {
+    "codec": "h264",
+    "width": 768,
+    "height": 1344,
+    "fps": 24,
+    "duration_seconds": 15.083333
+  },
+  "audio": {
+    "codec": "aac",
+    "sample_rate_hz": 32000,
+    "channels": 2,
+    "layout": "stereo",
+    "mean_volume_db": -16.1,
+    "max_volume_db": -1.2,
+    "speech_or_vocals_detected": false,
+    "left_right_correlation": 0.986726,
+    "difference_to_signal_ratio": 0.163001,
+    "evidence_note": "Local faster-whisper small with VAD returned no speech segments. Half-second left/right RMS differs by no more than 0.4 dB, so the signal provides little evidence of a strong camera-following lateral sweep; this is not a substitute for a perceptual sound-mix review."
+  },
+  "automated_scene_threshold_hits_seconds": [2.04167, 3.0, 3.08333, 3.125, 3.20833, 4.0, 4.125, 9.70833, 9.75, 12.9583],
+  "scene_review": "High-frequency contact sheets around every threshold hit show continuous body and camera movement, occlusion, and exposure change rather than a clear hard cut or crossfade.",
+  "observed_pose_timing": {
+    "low_entry_and_boot_hand_scan": "0–5s",
+    "transition_pose": "5–9.7s",
+    "turn_to_hero_pose": "9.7–10.4s",
+    "hero_pose_hold_with_one_face_push_pull": "10.4–15s"
+  },
+  "evidence_boundary": "Findings come from one-second and four-frames-per-second contact sheets plus 12-frames-per-second review around automated scene hits. One returned sample cannot establish repeatability."
+}
