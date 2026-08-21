@@ -10,6 +10,8 @@
 - 公共目录实时搜索、Apple 外部流代理与 A/B 故障探针明确显示为 `4174` 本地增强能力，不在 Pages 伪造接口结果；
 - 浏览器证据为 `evidence/pages-lab-desktop.png`、`evidence/pages-lab-mobile.png`，自动化入口为 `tests/pages-static-browser-check.cjs`。
 
+远端交付：提交 `4d82bd4`，GitHub Actions `32489932843`；<https://yydshly.github.io/0821_githubcode_study/demos/moovie-video-playback/> 返回 HTTP 200，并在远端浏览器完成桌面与手机端到端换线验收。
+
 ## 本轮回答的问题
 
 我们已经用一个完全可控的实验回答：

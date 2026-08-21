@@ -23,11 +23,11 @@ Observable completion criteria: 远端 200；原页面完整；默认样例真�
 
 | 用户要求 / 交付物 | 表面 / 状态 | 证据 | 阶段 | 状态 |
 | --- | --- | --- | --- | --- |
-| 发布原研究网页 | Pages 原实验室路由 | 远端 HTTP 与浏览器标题/正文 | 1 / 9 | `continue` |
+| 发布原研究网页 | Pages 原实验室路由 | HTTP 200；远端标题与正文；提交 `4d82bd4` | 1 / 9 | `pass` |
 | 保留可运行核心旅程 | 默认样例 + 静态 HLS 换线 | `pages-static-browser-check.cjs` | 5 / 6 | `pass` |
 | 解释 4174 边界 | 公共目录、Apple 代理、A/B 故障探针 | 运行模式横幅与禁用态 | 4 / 6 | `pass` |
 | 多表面验收 | 1440px、390px、键盘、reduced-motion | 浏览器截图与 DOM 断言 | 7 | `pass` |
-| GitHub 交付 | 工作流、索引、README、Pages | Actions 与远端 URL | 9 | `continue` |
+| GitHub 交付 | 工作流、索引、README、Pages | Actions `32489932843`；远端浏览器端到端通过 | 9 | `pass` |
 
 ## Design contract
 

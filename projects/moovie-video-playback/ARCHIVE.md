@@ -219,3 +219,4 @@ Observable completion criteria: 页面静态可加载、核心结论位于首屏
 | 桌面与手机阅读 | `lab/evidence/source-archive-desktop.png`、`source-archive-mobile.png`；1440/390 px 无横向溢出 | `pass` |
 | 键盘与静态回退 | 首个焦点为 `#main` 跳转；无 JavaScript/后端依赖 | `pass` |
 | GitHub 远端与 Pages | Actions `32487301303`；[公开归档页](https://yydshly.github.io/0821_githubcode_study/demos/moovie-source-research/) | `pass` |
+| Pages 原研究实验室 | 提交 `4d82bd4`；Actions `32489932843`；[原实验室](https://yydshly.github.io/0821_githubcode_study/demos/moovie-video-playback/)；1440/390 px 真实 HLS 换线通过 | `pass` |
