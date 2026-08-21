@@ -1,0 +1,24 @@
+subject_definitions:
+STICKER_HELPER is the single lemon-shaped kitchen helper shown in Picture 1. Preserve its exact lemon-yellow body, green leaf, large oval black eyes, orange cheek dots, red apron, short limbs, charcoal outline, printed highlights, proportions, and friendly identity. Its visibly flat printed 2D sticker medium is an immutable identity property: it has no 3D volume, realistic skin, fur, clay, plastic, or toy-like thickness.
+
+summary:
+[reference generation] Create a 10-second 16:9 mixed-media visual comedy. Place STICKER_HELPER from Picture 1 inside a photoreal live-action home kitchen. The sticker mischievously pours too much salt into a frying pan, receives a playful utensil tap from a real human hand, tastes the result, and collapses with an exaggerated flat-animation reaction. Preserve a strong, readable contrast between the real kitchen and the planar illustrated character.
+
+retention_analysis:
+Picture 1: fully_preserved — the complete identity, silhouette, colors, face, apron, proportions, outline, printed shading, and permanently flat 2D medium of STICKER_HELPER. Use Picture 1 for the character only; it must not control the kitchen, camera, human hands, cookware, lighting, or framing.
+
+detailed_description:
+[Shot 1] A photoreal home kitchen is already active: a frying pan sizzles under warm practical light. STICKER_HELPER stands upright beside a clear salt jar that is permanently open. The sticker remains visibly planar, like a printed die-cut illustration composited into real space. It uses both short arms to lift and tilt the open jar, pouring an obviously excessive stream of salt into the pan. Real human hands continue cooking nearby. The jar has no lid, cap, cork, cover, hinge, removable top, or matching loose object anywhere in the scene.
+
+[Shot 2] At 00:03.000, one real hand quickly removes the salt jar while the other gives STICKER_HELPER one light, playful tap with a wooden spatula. The character squashes sideways for a moment using flat 2D deformation, then springs back to its exact Picture 1 silhouette. Do not convert it into a 3D object, change its face, or add thickness during contact.
+
+[Shot 3] At 00:05.000, the real hand offers a tiny taste from the pan. STICKER_HELPER tastes it and performs a readable silent reaction: eyes widen, cheeks tense, and the flat illustrated body ripples once as if overwhelmed by salt. Preserve the red apron, leaf, outline, colors, proportions, and planar identity without morphing.
+
+[Shot 4] At 00:08.000, STICKER_HELPER develops simple X-shaped eyes, falls backward as one flat piece, and lands with a small illustrated star-and-soul effect. Hold the final comic pose until 00:10.000. Maintain one coherent kitchen, causal object interaction, natural real-hand motion, and stable mixed-media compositing. No jar lid may appear at any time.
+
+overall_soundscape:
+Use native stereo kitchen ambience: gentle frying, a short salt pour, wooden utensil contact, subtle hand and fabric movement, one soft sticker-like tap, and a tiny final paper flutter. No dialogue, narration, singing, character voice, or spoken reaction.
+
+non_diegetic_music:
+No non-diegetic music.
+

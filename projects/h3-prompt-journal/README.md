@@ -33,9 +33,11 @@ h3-prompt-writing   video-to-h3-prompt   h3-prompt-journal
 
 ## 使用演示页
 
-页面把六个案例转化为六种可编辑策略模板。选择模板后，可以修改主体、场景、目标动作、视觉风格、4–15 秒时长、画幅、参考图职责、策略专属参数与声音设计；页面会按官方顺序生成 `subject_definitions`、`summary`、`retention_analysis`、`detailed_description`、`overall_soundscape`、`non_diegetic_music` 六段式 Prompt，并支持校验、复制、下载和恢复模板。
+页面把六个案例转化为六种可编辑策略模板。选择模板后，可以在“中文理解版”和“英文生产版”之间切换，分别修改主体、场景、目标动作、视觉风格、4–15 秒时长、画幅、参考图职责、策略专属参数与声音设计；两版都会按官方顺序生成 `subject_definitions`、`summary`、`retention_analysis`、`detailed_description`、`overall_soundscape`、`non_diegetic_music` 六段式 Prompt，并支持校验、复制、下载和恢复模板。
 
 生成器是本研究基于上游经验与官方结构做的参数化重组，不是上游 Prompt 原文。它只在浏览器本地处理文本，不上传素材，也不调用 MiniMax H3。使用时仍需在 H3 中按 `Picture 1/2/3` 顺序上传对应参考图，并根据实际模型结果迭代。
+
+页面另提供 CASE 006 的第一套真实前置信息：Codex 生成的原创透明贴纸 PNG、固定中英 Prompt、`MiniMax-H3 / Reference-to-Video / 10s / 768P / 16:9` 参数，以及可选 API 运行器。最终视频由使用者在外部 H3 调度；在 MP4 返回前，页面明确显示“等待外部生成”，不把输入包冒充成实测结果。
 
 ## 来源
 
