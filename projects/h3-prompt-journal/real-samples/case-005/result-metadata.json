@@ -1,0 +1,46 @@
+{
+  "source_file": "C:\\Users\\yun68\\Downloads\\video_1787295942513.mp4",
+  "published_file": "docs/demos/h3-prompt-journal/assets/case-005-real-test/result-video.mp4",
+  "sha256": "C1E05DE1FFD1C2790A37B257EAE9F274637AC977B082A2F37F7319B1C5D88D2D",
+  "container": {
+    "duration_seconds": 15.083333,
+    "size_bytes": 6714058,
+    "bit_rate": 3561047
+  },
+  "video": {
+    "codec": "h264",
+    "width": 1344,
+    "height": 768,
+    "frame_rate": 24
+  },
+  "audio": {
+    "codec": "aac",
+    "sample_rate": 32000,
+    "channels": 2,
+    "layout": "stereo",
+    "mean_volume_db": -21.9,
+    "max_volume_db": -5.5,
+    "silence_scan": "No silence interval longer than 0.5s at -50dB threshold"
+  },
+  "scene_changes_seconds": [4.0, 4.04167, 8.95833, 11.875, 11.9167],
+  "asr_zh": [
+    { "start": 0.0, "end": 0.96, "text": "大家好" },
+    { "start": 0.96, "end": 3.08, "text": "我今天一定一次过关" },
+    { "start": 4.52, "end": 13.37, "text": "稳住 还有机会", "note": "ASR segment boundary includes background bed and is not a precise syllable boundary" },
+    { "start": 13.37, "end": 14.93, "text": "我只是下来降个温" }
+  ],
+  "observed_passes": [
+    "Contestant identity and outfit remain broadly recognizable",
+    "Greeting, roller slip and recovery, wall climb, splash, resurfacing, and closing reaction are visible",
+    "All three planned Mandarin lines are detected in the intended order",
+    "Native stereo audio is present continuously"
+  ],
+  "observed_deviations": [
+    "The roller crossing and fishbone fall are collapsed into one roller fall",
+    "The side mechanism reversal is not shown as the cause of the fall",
+    "The edit jumps from wall climbing to a splash without a readable contact-to-impact chain",
+    "Seven beats and three dialogue lines overload the 15-second duration"
+  ],
+  "diagnosis": "Prompt and task design contributed materially: the V1 grants freedom over edit rhythm and choreography while leaving mechanism geometry and the causal proof shot underspecified. Model execution variance remains a secondary factor.",
+  "v2_status": "Designed for the next external test; not yet verified by an H3 output"
+}
