@@ -8,7 +8,7 @@
 
 | 项目 | 能力方向 | 状态 | 原项目 | 研究记录 | 在线演示 |
 | --- | --- | --- | --- | --- | --- |
-| 暂无 | 等待第一个研究项目 | `planned` | — | — | — |
+| H3 Prompt Journal | MiniMax H3 提示词工程、参考图分工、时间与物理约束 | `validated` | [上游仓库](https://github.com/LoveRain1997/h3-prompt-journal) | [完整分析](projects/h3-prompt-journal/) | [交互实验台](https://yydshly.github.io/0821_githubcode_study/demos/h3-prompt-journal/) |
 
 状态统一使用 `planned`、`researching`、`validated`、`archived`，方便快速判断研究进度。
 
@@ -23,7 +23,8 @@
 │  └─ _template/              # 新研究项目的文档模板
 ├─ docs/                      # GitHub Pages 展示站点
 │  ├─ index.html
-│  └─ styles.css
+│  ├─ styles.css
+│  └─ demos/                  # 各研究项目的在线演示
 └─ .github/
    ├─ ISSUE_TEMPLATE/         # 研究选题提案
    ├─ PULL_REQUEST_TEMPLATE.md
