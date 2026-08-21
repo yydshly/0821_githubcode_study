@@ -1,0 +1,27 @@
+CASE 002 V2 — OBSERVABLE 3:1 DUO FOOTWORK TEST
+READY TO TEST · NOT YET VERIFIED
+
+Create a 12-second, 16:9 realistic dance-rehearsal video with native stereo sound from Picture 1.
+
+REFERENCE ROLE
+Picture 1 locks only the two dancers' identities, faces, hairstyles, clothing, body proportions, rehearsal-studio environment, and initial left-right placement: FAST_SUBJECT in orange remains on screen-left; SLOW_SUBJECT in blue remains on screen-right. Do not copy the reference crop or exact pose.
+
+NON-NEGOTIABLE CAMERA AND VISIBILITY
+Use one unbroken static-tripod full-body two-shot for the entire 12 seconds. Keep both dancers visible from the top of the head to the soles of both shoes, with clear floor visible below every shoe and about 10% headroom at all times. Both pairs of feet must remain unobstructed and inside the frame in every frame. No cut, transition, orbit, pan, zoom, push-in, pullback, reframing, medium shot, close-up, or crop below the ankles. The camera never follows either dancer.
+
+ONE COUNTABLE ACTION UNIT
+One complete butterfly-style side-step cycle is: left foot steps outward → right foot crosses behind → right foot returns → left foot closes to a neutral two-foot stance. Arms only balance naturally and never hide the legs.
+
+CHOREOGRAPHY AND TIMING
+00:00–00:01 — Establish the full-body two-shot. Both dancers stand in neutral positions with all four shoes clearly visible.
+00:01–00:03.5 — FAST_SUBJECT completes cycle 1 at a brisk, even tempo. SLOW_SUBJECT stays still and visibly watches.
+00:03.5–00:06 — FAST_SUBJECT completes cycle 2. At 00:03.5, SLOW_SUBJECT begins one deliberately slow copy of the same cycle.
+00:06–00:08.5 — FAST_SUBJECT completes cycle 3. SLOW_SUBJECT continues and finishes that single slow cycle by 00:08.5.
+00:08.5–00:12 — FAST_SUBJECT has completed exactly three cycles; SLOW_SUBJECT has completed exactly one. They settle naturally without performing another step and without forming a synchronized ending pose.
+
+The final observable ratio is exactly 3 complete cycles by FAST_SUBJECT to 1 complete cycle by SLOW_SUBJECT. They never start together, finish together, exchange sides, catch up, or synchronize.
+
+NATIVE STEREO SOUND
+No music and no speech. Use quiet rehearsal-room ambience, light clothing movement, and clearly separated shoe contacts. FAST_SUBJECT produces three distinct brisk footstep clusters from screen-left; SLOW_SUBJECT produces one slower footstep cluster from screen-right. The audible 3:1 cluster count must match the visible cycles exactly.
+
+FAIL THE TAKE if either dancer's shoes leave the frame, any cut or camera move occurs, the dancers synchronize, or the visible and audible action count is not 3:1.

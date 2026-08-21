@@ -1,0 +1,33 @@
+{
+  "case": "002",
+  "version": "V1",
+  "source_file": "video_1787301805311.mp4",
+  "sha256": "4A4ADF33817A23034E265BED1C5688749245D4FD1C58BB6981B28DC96226CBC3",
+  "size_bytes": 2380574,
+  "duration_seconds": 12.25,
+  "video": {
+    "codec": "h264",
+    "width": 1344,
+    "height": 768,
+    "fps": 24,
+    "aspect_ratio": "16:9"
+  },
+  "audio": {
+    "codec": "aac",
+    "sample_rate_hz": 32000,
+    "channels": 2,
+    "channel_layout": "stereo",
+    "integrated_loudness_lufs": -26.7,
+    "true_peak_dbfs": -10.0
+  },
+  "observations": {
+    "sample_interval_seconds": 0.5,
+    "sampled_frames": 25,
+    "sampled_frames_with_both_pairs_of_shoes_visible": 0,
+    "detected_scene_changes_seconds": [3.20833, 9.70833],
+    "preview_blur_encoded_in_file": false,
+    "preview_watermark_encoded_in_file": false,
+    "core_ratio_observable": false
+  },
+  "verdict": "failed_test"
+}

@@ -302,10 +302,10 @@
       <section class="section real-sample" id="real-sample" aria-labelledby="real-sample-title">
         <header class="section-heading">
           <div>
-            <p class="section-number">03 / 5 VERIFIED OUTPUTS + 1 READY INPUT</p>
-            <h2 id="real-sample-title">五份真实结果，<br />一套待测输入。</h2>
+            <p class="section-number">03 / 6 VERIFIED OUTPUTS · 0 PLACEHOLDERS</p>
+            <h2 id="real-sample-title">六份真实结果，<br />没有待测占位。</h2>
           </div>
-          <p>CASE 001、CASE 003–006 已接入外部返回的真实有声成片，并保留输入、通过项和偏差证据；目前只有 CASE 002 仍是可直接调度的待测输入包。</p>
+          <p>CASE 001–006 均已接入外部返回的真实有声成片，并保留输入、通过项和偏差证据；失败样本不会伪装成成功案例，待验证修复稿也不会覆盖原始 V1。</p>
         </header>
         <article class="verified-output" id="case-001-result" aria-labelledby="case-001-result-title">
           <div class="verified-output-copy">
@@ -378,6 +378,97 @@
               </video>
             </div>
             <figcaption>三张输入图始终保留；下方视频是本次真实输出。建议重点观察约 4 秒、7 秒和 10 秒附近的遮挡交接。</figcaption>
+          </figure>
+        </article>
+        <article class="verified-output has-sticky-evidence" id="case-002-result" aria-labelledby="case-002-result-title">
+          <div class="verified-output-copy">
+            <span class="verified-badge">REAL EXTERNAL OUTPUT · CASE 002 · FAILED TEST</span>
+            <h3 id="case-002-result-title">画幅没坏，<br />测试本身失效了。</h3>
+            <p>使用本站 Picture 1 与当时的 V1 英文生产 Prompt，在外部 MiniMax H3 以 <code>12s / 768P / 16:9</code> 生成。下载文件本身没有预览中的模糊侧边和平台水印；真正的失败是全片没有展示双脚，因此无法判断蝴蝶步，更无法验证 3:1 动作比例。</p>
+            <dl class="verified-metadata">
+              <div><dt>实际时长</dt><dd>12.250 秒</dd></div>
+              <div><dt>画面</dt><dd>1344×768 · H.264 · 24fps</dd></div>
+              <div><dt>音轨</dt><dd>AAC · 32kHz · Stereo</dd></div>
+              <div><dt>响度检查</dt><dd>-26.7 LUFS · 峰值 -10.0 dBFS</dd></div>
+            </dl>
+            <div class="result-audit">
+              <div class="result-pass"><span>观察通过</span><p>原始 MP4 是正常 16:9，模糊侧边和 <code>@ChatArt</code> 水印没有写入文件；两人的身份、橙色 / 蓝色服装、初始左右位置和排练室环境基本稳定；双声道音轨存在。</p></div>
+              <div class="result-drift"><span>观察偏差</span><p>每 0.5 秒抽样一次的 25 个画面全部裁掉双脚；人物主要做腰部以上的小幅摆动与行走，无法计数蝴蝶步；约 3.21 秒和 9.71 秒出现明显切镜，违背同一连续镜头要求。</p></div>
+            </div>
+            <div class="causal-audit" aria-label="CASE 002 V1 可观察性审计">
+              <span>测试条件 → 实际执行 · TEST CONDITION → OBSERVED</span>
+              <ol>
+                <li><time>全片</time><p><b>双脚可见：</b>0 / 25 个均匀抽样画面显示完整双脚，核心动作没有进入证据范围。</p></li>
+                <li><time>0–3.21s</time><p><b>第一次构图：</b>腰部 / 大腿以上双人中景，以对视和手臂摆动为主。</p></li>
+                <li><time>≈3.21s</time><p><b>第一次切镜：</b>机位与人物尺寸突变，连续镜头条件失效。</p></li>
+                <li><time>3.21–9.71s</time><p><b>主体动作：</b>仍然看不到鞋与落脚点，不能确认快者三周期、慢者一周期。</p></li>
+                <li><time>≈9.71s</time><p><b>第二次切镜：</b>再次改变构图；结尾也没有提供可数的 3:1 完成状态。</p></li>
+              </ol>
+            </div>
+            <div class="result-diagnosis">
+              <span>归因判断 · PROMPT CONTRADICTION INVALIDATED THE TEST</span>
+              <p><strong>这是当前模板生成层的低级语义冲突，不应先归咎于模型。</strong>V1 一处要求“清晰全身动作”，另一处却要求“膝盖或腰部以上的近距离环绕、避免远景”。后者更具体，模型据此裁掉了双脚；现有网页校验器只确认六段齐全、时长有效和参考职责存在，没有检查摄影是否能展示核心动作。</p>
+              <p>模型没有形成清楚差速仍是第二层失败，但在双脚不可见时，测试已经失去判定基础。V2 因此不继续往完整模板中追加否定句，而是改成一个固定全身镜头和一个可数动作单位。</p>
+            </div>
+            <section class="repair-prompt" aria-labelledby="case-002-repair-title">
+              <header>
+                <span>V2 轻量修复稿 · READY TO TEST · NOT YET VERIFIED</span>
+                <h4 id="case-002-repair-title">先保证动作可见，再讨论 3:1 是否执行。</h4>
+                <p>V2 是下一轮可直接外部调度的专用测试稿，不沿用原来的完整六段式模板；上方视频仍只对应失败的 V1，V2 在新成片返回前不能宣称有效。</p>
+              </header>
+              <div class="repair-principles">
+                <article><b>01 · 固定全身景别</b><p>12 秒只用一个三脚架全身双人镜头，头顶到鞋底持续入画，每只鞋下方必须看到地板。</p></article>
+                <article><b>02 · 一个动作单位</b><p>把一个周期定义为“左脚外迈 → 右脚后交叉 → 右脚返回 → 左脚合拢”，避免用抽象的快慢形容词。</p></article>
+                <article><b>03 · 只测一次 3:1</b><p>快者完成且只完成三个周期；慢者观察后完成且只完成一个慢周期，不再叠加环绕与第二轮剧情。</p></article>
+                <article><b>04 · 声音成为计数证据</b><p>取消音乐，左侧产生三组快速鞋声、右侧产生一组慢速鞋声，声音组数必须对应画面周期。</p></article>
+              </div>
+              <ol class="repair-timeline" aria-label="CASE 002 V2 动作时间线">
+                <li><time>0–1s</time><span>固定全身双人构图，四只鞋全部可见</span></li>
+                <li><time>1–3.5s</time><span>快者周期 1；慢者保持静止并观察</span></li>
+                <li><time>3.5–6s</time><span>快者周期 2；慢者开始唯一慢周期</span></li>
+                <li><time>6–8.5s</time><span>快者周期 3；慢者完成唯一慢周期</span></li>
+                <li><time>8.5–12s</time><span>自然停稳，不增加动作，不形成同步结尾</span></li>
+              </ol>
+              <div class="sample-downloads">
+                <a class="button primary" href="./assets/case-002-real-test/prompt-v2.en.txt" download>下载 V2 英文生产 Prompt</a>
+                <a class="button quiet" href="./assets/case-002-real-test/prompt-v2.zh.txt" download>下载 V2 中文理解版</a>
+                <a class="button quiet" href="#sample-case-002">保留查看 V1 双语 Prompt</a>
+              </div>
+              <div class="repair-prompt-previews">
+                <details open data-prompt-preview="./assets/case-002-real-test/prompt-v2.zh.txt">
+                  <summary>查看 V2 中文理解版完整内容</summary>
+                  <pre tabindex="0">正在载入中文修复 Prompt…</pre>
+                </details>
+                <details data-prompt-preview="./assets/case-002-real-test/prompt-v2.en.txt">
+                  <summary>查看 V2 英文生产版完整内容</summary>
+                  <pre tabindex="0">Loading English production Prompt…</pre>
+                </details>
+              </div>
+            </section>
+            <div class="sample-downloads">
+              <a class="button quiet" href="./assets/case-002-real-test/picture-1-duo-dancers.png" download>下载输入图</a>
+              <a class="button quiet" href="#sample-case-002">下方 V1 双语 Prompt</a>
+              <a class="button primary" href="./assets/case-002-real-test/result-video.mp4" download>下载 V1 失败 MP4</a>
+            </div>
+          </div>
+          <figure class="verified-player">
+            <div class="verified-player-label"><span>INPUT → FAILED V1 OUTPUT</span><strong>EXTERNAL H3 · WITH AUDIO</strong></div>
+            <div class="verified-media-pair">
+              <div class="verified-media-pane verified-input-pane">
+                <span class="verified-media-title">输入 · PICTURE 1</span>
+                <a class="verified-input-link is-landscape" href="./assets/case-002-real-test/picture-1-duo-dancers.png" target="_blank" rel="noreferrer" aria-label="查看 CASE 002 原始双人输入图">
+                  <img src="./assets/case-002-real-test/picture-1-duo-dancers.png" alt="CASE 002 输入图：排练室中左侧橙衣舞者与右侧蓝衣舞者" />
+                </a>
+              </div>
+              <div class="verified-media-pane verified-output-pane">
+                <span class="verified-media-title">输出 · V1 FAILED TEST</span>
+                <video controls playsinline preload="metadata" poster="./assets/case-002-real-test/result-poster.jpg">
+                  <source src="./assets/case-002-real-test/result-video.mp4" type="video/mp4" />
+                  当前浏览器无法播放此 MP4，请使用“下载 V1 失败 MP4”。
+                </video>
+              </div>
+            </div>
+            <figcaption>左侧输入图始终保留；右侧是 V1 原始失败输出。文件本身为正常 16:9，但视频从未显示四只鞋，因此“3:1 脚步”无法被验证。</figcaption>
           </figure>
         </article>
         <article class="verified-output" id="case-003-result" aria-labelledby="case-003-result-title">
