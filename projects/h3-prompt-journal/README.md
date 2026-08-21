@@ -41,6 +41,8 @@ h3-prompt-writing   video-to-h3-prompt   h3-prompt-journal
 
 CASE 006 的外部 H3 成片已于 2026-08-21 返回并接入页面：`10.125s / 1344×768 / H.264 / AAC stereo`。画面保留了 2D 贴纸身份和主要喜剧节点，但盐罐旁仍出现圆形盖子，因此页面同时展示成功项与约束偏差，不把单次结果包装成完全成功。
 
+真实输出区采用持久的“输入图 → 输出视频”对照：加入视频后不删除或隐藏原始 Picture，视频封面从真实成片抽取。后续多参考图案例也必须保留全部输入证据，窄屏只调整排列方式。
+
 ## 来源
 
 - 研究仓库快照：[`h3-prompt-journal@0c7b488`](https://github.com/LoveRain1997/h3-prompt-journal/tree/0c7b4882dad8a302c304fe9be40f0b8b1b098b26)

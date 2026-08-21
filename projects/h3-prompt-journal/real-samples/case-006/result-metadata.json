@@ -26,6 +26,12 @@
     "silence_over_one_second_below_minus_50_db": false,
     "file_size_bytes": 1329029
   },
+  "display_evidence": {
+    "input_image_remains_visible_with_video": true,
+    "video_poster": "result-poster.jpg",
+    "video_poster_source_time_seconds": 1.0,
+    "video_poster_is_input_image": false
+  },
   "visual_observation": {
     "passed": [
       "flat sticker medium remains visually readable",
