@@ -1,0 +1,15 @@
+{
+  "name": "mechanical-deployables-research",
+  "private": true,
+  "version": "0.1.0",
+  "description": "Research and fleet-scale experiments for mechanical-deployables-treejs",
+  "scripts": {
+    "dev": "python -m http.server 8019",
+    "test": "node tests/tracked-vehicle-rules.test.mjs && node tests/fleet-scheduler.test.mjs && node tests/verify-browser.mjs",
+    "test:unit": "node tests/tracked-vehicle-rules.test.mjs && node tests/fleet-scheduler.test.mjs",
+    "test:browser": "node tests/verify-browser.mjs"
+  },
+  "devDependencies": {
+    "playwright": "1.62.1"
+  }
+}

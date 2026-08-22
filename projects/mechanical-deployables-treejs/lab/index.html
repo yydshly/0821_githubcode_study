@@ -1,0 +1,249 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Mechanical Deployables · Fleet Scale Lab</title>
+  <style>
+    :root {
+      color-scheme: dark;
+      --bg: #0c1015;
+      --panel: rgba(19, 25, 33, 0.94);
+      --line: #2b3644;
+      --text: #dce7f2;
+      --muted: #8291a2;
+      --cyan: #72d6ff;
+      --amber: #ffbd66;
+      font-family: Inter, ui-sans-serif, system-ui, sans-serif;
+    }
+    * { box-sizing: border-box; }
+    body { margin: 0; min-height: 100vh; background: var(--bg); color: var(--text); overflow: hidden; }
+    canvas { position: fixed; inset: 0; width: 100%; height: 100%; }
+    .shell { position: relative; z-index: 1; min-height: 100vh; pointer-events: none; }
+    header, aside { pointer-events: auto; }
+    header { position: absolute; top: 0; left: 0; padding: 24px 28px; max-width: 700px; }
+    .eyebrow { margin: 0 0 8px; color: var(--cyan); font: 700 11px/1.2 ui-monospace, monospace; letter-spacing: .16em; }
+    h1 { margin: 0; font-size: clamp(24px, 3vw, 42px); letter-spacing: -.04em; }
+    header p:last-child { max-width: 620px; color: var(--muted); line-height: 1.6; }
+    aside {
+      position: absolute; top: 20px; right: 20px; width: min(340px, calc(100vw - 40px));
+      padding: 18px; border: 1px solid var(--line); border-radius: 14px;
+      background: var(--panel); backdrop-filter: blur(14px); box-shadow: 0 20px 60px #0008;
+    }
+    h2 { margin: 0 0 14px; font-size: 14px; letter-spacing: .05em; }
+    .row { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 10px; }
+    label { display: grid; gap: 6px; color: var(--muted); font-size: 11px; }
+    select, button {
+      min-height: 36px; border: 1px solid var(--line); border-radius: 8px;
+      background: #18212c; color: var(--text); font: inherit;
+    }
+    button { cursor: pointer; padding: 0 12px; }
+    button:hover { border-color: var(--cyan); }
+    button.primary { background: var(--cyan); color: #071018; border-color: transparent; font-weight: 750; }
+    button.danger { color: #ff9a9a; }
+    .actions { display: grid; grid-template-columns: repeat(2, 1fr); gap: 8px; margin: 14px 0; }
+    .metrics { display: grid; grid-template-columns: repeat(2, 1fr); gap: 8px; }
+    .metric { padding: 10px; border: 1px solid var(--line); border-radius: 9px; background: #0e151d; }
+    .metric span { display: block; color: var(--muted); font-size: 10px; text-transform: uppercase; letter-spacing: .08em; }
+    .metric strong { display: block; margin-top: 4px; color: var(--cyan); font: 700 18px/1.1 ui-monospace, monospace; }
+    .note { margin: 12px 0 0; padding-top: 12px; border-top: 1px solid var(--line); color: var(--muted); font-size: 11px; line-height: 1.55; }
+    .note b { color: var(--amber); }
+    @media (max-width: 760px) {
+      header { padding: 18px; }
+      header p:last-child { display: none; }
+      aside { top: auto; bottom: 12px; left: 12px; right: 12px; width: auto; }
+      .metrics { grid-template-columns: repeat(4, 1fr); }
+      .metric { padding: 8px; }
+      .metric strong { font-size: 14px; }
+      .note { display: none; }
+    }
+  </style>
+  <script type="importmap">
+    {
+      "imports": {
+        "three": "https://cdn.jsdelivr.net/npm/three@0.180.0/build/three.module.js",
+        "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.180.0/examples/jsm/"
+      }
+    }
+  </script>
+</head>
+<body>
+  <canvas id="stage" aria-label="多实例机械部署性能实验场景"></canvas>
+  <div class="shell">
+    <header>
+      <p class="eyebrow">RESEARCH EXTENSION / FLEET RUNTIME</p>
+      <h1>机械部署舰队实验室</h1>
+      <p>把上游的单模型 Rig 放进多实例场景，验证错峰调度、活动对象更新与渲染质量开关。数字不是通用性能结论，而是当前设备、当前场景的即时证据。</p>
+    </header>
+    <aside>
+      <h2>规模与运行策略</h2>
+      <div class="row">
+        <label>实例数量
+          <select id="count">
+            <option value="1">1</option>
+            <option value="4">4</option>
+            <option value="9" selected>9</option>
+            <option value="16">16</option>
+            <option value="25">25</option>
+          </select>
+        </label>
+        <label>更新策略
+          <select id="mode">
+            <option value="active-only" selected>仅活动 Rig</option>
+            <option value="all">全部 Rig</option>
+          </select>
+        </label>
+      </div>
+      <div class="row">
+        <label>部署错峰
+          <select id="stagger">
+            <option value="0">同时</option>
+            <option value="0.08" selected>80 ms</option>
+            <option value="0.2">200 ms</option>
+          </select>
+        </label>
+        <label>渲染质量
+          <select id="quality">
+            <option value="lean" selected>轻量</option>
+            <option value="high">高质量阴影</option>
+          </select>
+        </label>
+      </div>
+      <div class="actions">
+        <button class="primary" id="deploy">部署舰队</button>
+        <button id="retract">收回舰队</button>
+        <button class="danger" id="destroy">摧毁</button>
+        <button id="reset">回到地下</button>
+      </div>
+      <div class="metrics">
+        <div class="metric"><span>FPS</span><strong id="fps">--</strong></div>
+        <div class="metric"><span>Draw calls</span><strong id="calls">--</strong></div>
+        <div class="metric"><span>Triangles</span><strong id="triangles">--</strong></div>
+        <div class="metric"><span>Active rigs</span><strong id="active">--</strong></div>
+      </div>
+      <p class="note"><b>已验证的缺口：</b>工厂每次创建独立 Geometry/Material，零件级 Mesh 会随实例线性增加。本实验先解决生命周期调度；下一步应做共享资源、静态合并或 Instancing。</p>
+    </aside>
+  </div>
+  <script type="module">
+    import * as THREE from 'three';
+    import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
+    import createWatchtower from '../upstream/lib/models/watchtower.js';
+    import { createFleetScheduler } from './fleet-scheduler.mjs';
+
+    const canvas = document.querySelector('#stage');
+    const renderer = new THREE.WebGLRenderer({ canvas, antialias: true });
+    renderer.outputColorSpace = THREE.SRGBColorSpace;
+    const scene = new THREE.Scene();
+    scene.background = new THREE.Color(0x0c1015);
+    scene.fog = new THREE.Fog(0x0c1015, 25, 80);
+
+    scene.add(new THREE.HemisphereLight(0xb9ddff, 0x293021, 1.7));
+    const sun = new THREE.DirectionalLight(0xffe8c2, 2.8);
+    sun.position.set(12, 18, 9);
+    sun.shadow.mapSize.set(1024, 1024);
+    sun.shadow.camera.left = sun.shadow.camera.bottom = -24;
+    sun.shadow.camera.right = sun.shadow.camera.top = 24;
+    scene.add(sun);
+
+    const ground = new THREE.Mesh(
+      new THREE.CircleGeometry(70, 64).rotateX(-Math.PI / 2),
+      new THREE.MeshStandardMaterial({ color: 0x30372f, roughness: 1 }),
+    );
+    ground.receiveShadow = true;
+    scene.add(ground, new THREE.PolarGridHelper(50, 16, 8, 64, 0x344153, 0x202a35));
+
+    const camera = new THREE.PerspectiveCamera(48, 1, 0.1, 160);
+    camera.position.set(18, 16, 24);
+    const controls = new OrbitControls(camera, canvas);
+    controls.enableDamping = true;
+    controls.target.set(0, 1.5, 0);
+
+    const scheduler = createFleetScheduler();
+    const fleetRoot = new THREE.Group();
+    scene.add(fleetRoot);
+    let rigs = [];
+
+    const $ = (selector) => document.querySelector(selector);
+    function applyQuality() {
+      const high = $('#quality').value === 'high';
+      renderer.shadowMap.enabled = high;
+      renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+      renderer.setPixelRatio(Math.min(devicePixelRatio, high ? 2 : 1.25));
+      sun.castShadow = high;
+      for (const rig of rigs) {
+        rig.root.traverse((object) => {
+          if (object.isMesh) object.castShadow = high;
+        });
+      }
+    }
+
+    function rebuildFleet() {
+      for (const rig of rigs) rig.dispose();
+      rigs = [];
+      scheduler.clear();
+      const count = Number($('#count').value);
+      const columns = Math.ceil(Math.sqrt(count));
+      const rows = Math.ceil(count / columns);
+      const gap = 6.4;
+      for (let index = 0; index < count; index += 1) {
+        const rig = createWatchtower({ THREE, speed: 1.5 });
+        const x = (index % columns - (columns - 1) / 2) * gap;
+        const z = (Math.floor(index / columns) - (rows - 1) / 2) * gap;
+        rig.root.position.set(x, 0, z);
+        rig.setTime('deploy', rig.duration('deploy'));
+        fleetRoot.add(rig.root);
+        rigs.push(rig);
+        scheduler.register(rig);
+      }
+      applyQuality();
+      const extent = Math.max(columns, rows) * gap;
+      camera.position.set(extent * 0.8, Math.max(11, extent * 0.7), extent * 1.05);
+      controls.target.set(0, 1.4, 0);
+      controls.update();
+    }
+
+    function play(clip) {
+      scheduler.play(clip, { stagger: Number($('#stagger').value) });
+    }
+    $('#deploy').onclick = () => play('deploy');
+    $('#retract').onclick = () => play('retract');
+    $('#destroy').onclick = () => play('destroyed');
+    $('#reset').onclick = () => scheduler.setTime('deploy', 0);
+    $('#count').onchange = rebuildFleet;
+    $('#mode').onchange = () => scheduler.setMode($('#mode').value);
+    $('#quality').onchange = applyQuality;
+
+    function resize() {
+      renderer.setSize(innerWidth, innerHeight, false);
+      camera.aspect = innerWidth / innerHeight;
+      camera.updateProjectionMatrix();
+    }
+    addEventListener('resize', resize);
+    resize();
+    rebuildFleet();
+
+    let last = performance.now();
+    let sampleStarted = last;
+    let sampleFrames = 0;
+    renderer.setAnimationLoop((now) => {
+      const dt = Math.min(0.05, (now - last) / 1000);
+      last = now;
+      scheduler.update(dt);
+      controls.update();
+      renderer.render(scene, camera);
+      sampleFrames += 1;
+      if (now - sampleStarted >= 400) {
+        const elapsed = (now - sampleStarted) / 1000;
+        $('#fps').textContent = Math.round(sampleFrames / elapsed);
+        $('#calls').textContent = renderer.info.render.calls.toLocaleString();
+        $('#triangles').textContent = Math.round(renderer.info.render.triangles).toLocaleString();
+        $('#active').textContent = `${scheduler.stats().active}/${rigs.length}`;
+        sampleStarted = now;
+        sampleFrames = 0;
+      }
+    });
+
+    window.fleetLab = { scheduler, rebuildFleet, rigs: () => rigs, renderer };
+  </script>
+</body>
+</html>

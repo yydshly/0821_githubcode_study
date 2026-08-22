@@ -16,6 +16,7 @@
 | ebook2audiobook | 多格式文档清洗、本地开源TTS调度与有声书生产 | `archived` | [上游仓库](https://github.com/DrewThomasson/ebook2audiobook) | [能力与技术归档](projects/ebook2audiobook/ARCHIVE.md) | 暂无 |
 | Public APIs Intelligence | 公共 API 发现、全量统计、接入准备度与统一接入建议 | `archived` | [上游仓库](https://github.com/public-apis/public-apis) | [归档档案](projects/public-apis-intelligence/ARCHIVE.md) · [研究记录](projects/public-apis-intelligence/) | [归档能力账本](https://yydshly.github.io/0821_githubcode_study/demos/public-apis-intelligence/) |
 | Procedural Terrains | GPU 地形、三种世界尺度、LOD、环境渲染与游戏地图选型 | `archived` | [上游仓库](https://github.com/ZyFou/ProceduralTerrains) | [归档结论](projects/procedural-terrains/ARCHIVE.md) · [能力图](projects/procedural-terrains/CAPABILITY_MAP.md) | [研究展厅](https://yydshly.github.io/0821_githubcode_study/demos/procedural-terrains/) · [RTS 技术原型](https://yydshly.github.io/0821_githubcode_study/demos/procedural-terrains/rts-map-profile/) |
+| Mechanical Deployables | 可审计机械部署动画、参数化对象族与生成式3D替代判断 | `archived` | [上游仓库](https://github.com/trungdq88/mechanical-deployables-treejs) | [归档结论](projects/mechanical-deployables-treejs/ARCHIVE.md) · [能力图](projects/mechanical-deployables-treejs/CAPABILITY_MAP.md) · [扩展方向](projects/mechanical-deployables-treejs/EXTENSIONS.md) | [研究展厅](https://yydshly.github.io/0821_githubcode_study/demos/mechanical-deployables-treejs/) · [上游演示](https://trungdq88.github.io/mechanical-deployables-treejs/) |
 
 状态统一使用 `planned`、`researching`、`validated`、`archived`，方便快速判断研究进度。
 

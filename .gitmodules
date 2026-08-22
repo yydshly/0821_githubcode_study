@@ -4,3 +4,6 @@
 [submodule "projects/procedural-terrains/upstream"]
 	path = projects/procedural-terrains/upstream
 	url = https://github.com/ZyFou/ProceduralTerrains.git
+[submodule "projects/mechanical-deployables-treejs/upstream"]
+	path = projects/mechanical-deployables-treejs/upstream
+	url = https://github.com/trungdq88/mechanical-deployables-treejs.git

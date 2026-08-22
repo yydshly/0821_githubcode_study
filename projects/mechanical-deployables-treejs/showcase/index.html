@@ -1,0 +1,170 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="从原作机械部署、技术解剖和产品故事，扩展到五大类程序化3D对象族。" />
+  <title>Mechanical Deployables · 机械对象生成实验室</title>
+  <link rel="stylesheet" href="./styles.css" />
+  <script type="importmap">
+    {
+      "imports": {
+        "three": "https://cdn.jsdelivr.net/npm/three@0.180.0/build/three.module.js",
+        "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.180.0/examples/jsm/"
+      }
+    }
+  </script>
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="#original" aria-label="Mechanical Deployables 研究演示首页">
+      <span class="brand-mark" aria-hidden="true"></span>
+      <span><b>MECHANICAL DEPLOYABLES</b><small>RESEARCH SHOWCASE</small></span>
+    </a>
+    <nav class="mode-nav" aria-label="演示模式">
+      <button type="button" data-mode="original" aria-pressed="true"><span>01</span> 原作演示</button>
+      <button type="button" data-mode="technical" aria-pressed="false"><span>02</span> 技术解剖</button>
+      <button type="button" data-mode="story" aria-pressed="false"><span>03</span> 产品故事</button>
+      <button type="button" data-mode="families" aria-pressed="false"><span>04</span> 对象族</button>
+    </nav>
+    <div class="top-status"><i></i><span id="top-status-text">上游原作运行中</span></div>
+  </header>
+
+  <main>
+    <section id="original-view" class="view original-view" aria-label="上游原作演示">
+      <iframe id="upstream-frame" src="../upstream/index.html" title="上游 Mechanical Deployables 原作交互演示"></iframe>
+      <div class="original-badge">
+        <p>UPSTREAM / UNMODIFIED</p>
+        <strong>11 个原始模型 · 完整时间轴与审计</strong>
+        <span>直接运行固定提交中的原始 <code>index.html</code></span>
+      </div>
+    </section>
+
+    <section id="spatial-view" class="view spatial-view is-hidden" aria-label="机械部署空间舞台">
+      <canvas id="stage" aria-label="机械部署三维场景"></canvas>
+
+      <div class="scene-copy" aria-live="polite">
+        <p id="scene-kicker">TECHNICAL ANATOMY</p>
+        <h1 id="scene-title">一台机器，如何从地下成立</h1>
+        <p id="scene-summary">拖动右侧步骤，查看几何来源、父子结构与时间轴如何共同制造可信部署。</p>
+      </div>
+
+      <aside id="technical-panel" class="control-panel" aria-label="技术解剖控制">
+        <div class="panel-head">
+          <p>02 / TECHNICAL ANATOMY</p>
+          <h2>部署不是视频，是可检查的状态</h2>
+        </div>
+        <div class="pipeline" aria-label="运行时数据流">
+          <span>Factory</span><i>→</i><span>Parts + Clips</span><i>→</i><span>createRig</span><i>→</i><span>Object3D</span>
+        </div>
+        <div id="tech-steps" class="step-tabs" role="tablist" aria-label="部署步骤"></div>
+        <article class="tech-detail">
+          <div class="detail-index" id="tech-index">01</div>
+          <div>
+            <p class="detail-kicker" id="tech-kicker">PHYSICAL PROVENANCE</p>
+            <h3 id="tech-title">地面先交出空间</h3>
+          </div>
+          <p id="tech-description"></p>
+          <dl>
+            <div><dt>目标零件</dt><dd id="tech-part"></dd></div>
+            <div><dt>时间 / 通道</dt><dd id="tech-channel"></dd></div>
+            <div><dt>扩展接口</dt><dd id="tech-extension"></dd></div>
+          </dl>
+        </article>
+        <div class="tech-actions">
+          <button type="button" id="tech-play" class="primary">播放完整部署</button>
+          <button type="button" id="tech-reset">回到起点</button>
+        </div>
+      </aside>
+
+      <aside id="story-panel" class="control-panel is-hidden" aria-label="产品故事控制">
+        <div class="panel-head">
+          <p>03 / PRODUCT STORY</p>
+          <h2>极夜前哨 · 自部署基础设施</h2>
+        </div>
+        <ol id="story-chapters" class="chapter-list"></ol>
+        <article class="story-detail">
+          <p class="detail-kicker" id="story-kicker">00 / STANDBY</p>
+          <h3 id="story-title">荒原仍在沉睡</h3>
+          <p id="story-description"></p>
+          <div class="outcome-row">
+            <span>产品结果</span><strong id="story-outcome"></strong>
+          </div>
+        </article>
+        <div class="story-progress" aria-label="故事播放进度"><i id="story-progress"></i></div>
+        <div class="story-actions">
+          <button type="button" id="story-play" class="primary">播放完整故事</button>
+          <button type="button" id="story-next">下一章</button>
+          <button type="button" id="story-reset">重置</button>
+        </div>
+      </aside>
+
+      <aside id="family-panel" class="control-panel family-panel is-hidden" aria-label="对象族生成演示控制">
+        <div class="panel-head family-head">
+          <div>
+            <p>04 / OBJECT FAMILY LAB</p>
+            <h2>从大类到小类，生成可运行对象</h2>
+          </div>
+          <strong>5 × 3</strong>
+        </div>
+        <div class="pipeline" aria-label="对象生成契约">
+          <span>Family</span><i>→</i><span>Archetype</span><i>→</i><span>Parts</span><i>→</i><span>Clip</span><i>→</i><span>State</span>
+        </div>
+        <div id="family-tabs" class="family-tabs" role="tablist" aria-label="对象大类"></div>
+        <div class="family-thesis">
+          <span id="family-code">GROUND</span>
+          <p id="family-thesis"></p>
+        </div>
+        <div id="family-items" class="family-items" aria-label="当前大类的小类对象"></div>
+        <article class="family-detail">
+          <div>
+            <p class="detail-kicker" id="family-object-code">SCOUT-CAR</p>
+            <h3 id="family-object-title">侦察车</h3>
+          </div>
+          <p id="family-capability"></p>
+          <dl>
+            <div class="family-static-row"><dt>共享契约</dt><dd>root · parts · demo clip · metadata</dd></div>
+            <div class="family-static-row"><dt>生成质量</dt><dd>程序化 L2 · 可检视结构与动作</dd></div>
+            <div id="family-parameters-row"><dt>生成参数</dt><dd id="family-parameters">等待参数化对象</dd></div>
+            <div id="family-validation-row"><dt>规则验证</dt><dd id="family-validation">等待规则校验</dd></div>
+            <div id="family-cycle-row"><dt>连续状态</dt><dd id="family-cycle">等待状态图</dd></div>
+          </dl>
+        </article>
+        <div id="family-state-strip" class="family-state-strip is-hidden" aria-label="连续状态周期">
+          <span data-phase="deploy">部署</span><span data-phase="work">工作</span><span data-phase="recover">复位</span><span data-phase="retract">收拢</span>
+        </div>
+        <div class="family-progress" aria-label="对象族演示进度"><i id="family-progress"></i></div>
+        <div class="family-actions">
+          <button type="button" id="family-play" class="primary">播放本类能力</button>
+          <button type="button" id="family-next">下一个大类</button>
+          <button type="button" id="family-reset">重置</button>
+        </div>
+      </aside>
+
+      <div class="scene-legend" aria-label="场景图例">
+        <span><i class="cyan"></i> 当前动作</span>
+        <span><i class="amber"></i> 产品结果</span>
+        <span id="scene-state">DEPLOY 0.00 / 4.65s</span>
+      </div>
+    </section>
+
+    <section id="fallback-view" class="fallback-view is-hidden" aria-labelledby="fallback-title">
+      <div>
+        <p class="fallback-kicker">READABLE FALLBACK</p>
+        <h1 id="fallback-title">机械部署仍然可以被理解</h1>
+        <p>当前使用无 WebGL 路径。核心内容没有藏在 Canvas 中：模型由零件层级、声明式 clips、逐帧插值与审计规则组成。</p>
+      </div>
+      <ol>
+        <li><b>原作能力</b><span>11 个程序化模型，支持 deploy、retract、destroy、时间轴和爆炸视图。</span></li>
+        <li><b>技术链路</b><span>Factory 创建 Object3D 零件，clips 描述 transform，createRig 在 update(dt) 中计算姿态。</span></li>
+        <li><b>产品故事</b><span>空场 → 侦察上线 → 通路恢复 → 防线升起 → 威胁响应 → 前哨在线。</span></li>
+        <li><b>对象族生成</b><span>5 个大类、15 个小类共享 root、parts、clip 与 metadata 契约。</span></li>
+        <li><b>规模扩展</b><span>宿主调度、共享资源、静止态合并、动画 LOD、GLB 资产适配与权威状态同步。</span></li>
+      </ol>
+    </section>
+  </main>
+
+  <noscript><p class="noscript">需要启用 JavaScript 才能运行交互演示；技术说明仍可在项目 README 中阅读。</p></noscript>
+  <script type="module" src="./showcase.mjs"></script>
+</body>
+</html>

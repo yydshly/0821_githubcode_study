@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="Mechanical Deployables 归档研究展厅：程序化机械动画、参数化对象族、生成式3D替代判断与后续方向。" />
+    <title>Mechanical Deployables · 研究归档</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <a class="skip" href="#conclusion">跳到结论</a>
+    <header class="topbar">
+      <a class="brand" href="../../index.html"><span>MD</span><strong>Mechanical Deployables</strong><small>ARCHIVED · 2026-08-22</small></a>
+      <nav aria-label="页面章节"><a href="#evidence">证据</a><a href="#decision">判断</a><a href="#ecosystem">相关库</a><a href="#future">后续</a></nav>
+      <a class="source" href="https://github.com/trungdq88/mechanical-deployables-treejs">上游仓库 ↗</a>
+    </header>
+
+    <main>
+      <section class="hero" id="conclusion">
+        <div class="boundary"><strong>研究已停止并归档。</strong><span>公开展厅不复制无许可证的上游源码；保留分析、截图、独立实验和固定提交引用。</span></div>
+        <p class="eyebrow">FINAL RESEARCH DECISION / 07</p>
+        <h1>外观会被生成，<br />规则仍需运行。</h1>
+        <p class="lead">手写基础几何不值得继续扩张。3D模型会替代大量外观生产，但部件语义、插槽、关节、状态、约束、物理、LOD和网络运行时不会随网格一起自动成立。</p>
+        <div class="actions">
+          <a class="primary" href="https://trungdq88.github.io/mechanical-deployables-treejs/">查看上游原作 ↗</a>
+          <a href="https://github.com/yydshly/0821_githubcode_study/blob/main/projects/mechanical-deployables-treejs/ARCHIVE.md">阅读完整归档 ↗</a>
+        </div>
+        <div class="metrics" aria-label="研究数据">
+          <article><strong>11</strong><span>上游模型</span></article>
+          <article><strong>133</strong><span>逻辑零件</span></article>
+          <article><strong>34</strong><span>动作 clips</span></article>
+          <article><strong>5 × 3</strong><span>对象族实验</span></article>
+        </div>
+      </section>
+
+      <section class="section" id="evidence">
+        <div class="section-title"><p>01 / VERIFIED EVIDENCE</p><h2>我们真正验证了什么</h2></div>
+        <div class="gallery">
+          <figure class="wide"><img src="./assets/showcase-families.png" alt="参数化履带车辆对象族研究展示" /><figcaption><strong>参数化对象族</strong><span>同一底盘规则生成坦克、雷达车与工程车；参数、规则和连续状态可见。</span></figcaption></figure>
+          <figure><img src="./assets/showcase-technical.png" alt="机械部署动画技术解剖页面" /><figcaption><strong>技术解剖</strong><span>把真实部署动作拆成零件、时间点和transform通道。</span></figcaption></figure>
+          <figure><img src="./assets/showcase-story.png" alt="极夜前哨产品故事场景" /><figcaption><strong>场景到故事</strong><span>五类设施编排为六章状态叙事，验证场景不等于产品。</span></figcaption></figure>
+        </div>
+        <div class="proof-grid">
+          <article><span>RIG CONTRACT</span><h3>可审计动画协议</h3><p><code>root + parts + clips + metadata</code> 足以描述低模机械部署、声音、FX与几何审计。</p></article>
+          <article><span>FLEET RUNTIME</span><h3>多实例只解决了一半</h3><p>活动调度能减少CPU更新；25个实例约702 draw calls，资源共享和批处理仍是主要瓶颈。</p></article>
+          <article><span>PARAMETRIC FAMILY</span><h3>代码能生成受约束母型</h3><p>共享底盘、差异载荷和连续状态成立，但视觉质量与适用范围受母型规则限制。</p></article>
+        </div>
+      </section>
+
+      <section class="section decision" id="decision">
+        <div class="section-title"><p>02 / REPLACE OR RETAIN</p><h2>哪些会被替代，哪些会留下</h2></div>
+        <div class="split">
+          <article class="replace"><span>HIGH REPLACEMENT</span><h3>交给生成模型</h3><ul><li>普通资产外观与风格变体</li><li>基础曲面、细节和材质候选</li><li>概念草模与场景填充物</li><li>部分分件、骨骼和蒙皮工作</li></ul></article>
+          <article class="retain"><span>LONG-TERM FOUNDATION</span><h3>保留为运行底座</h3><ul><li>部件语义、插槽与装配规则</li><li>关节范围、状态机与行为协议</li><li>碰撞、物理、LOD和性能预算</li><li>网络同步、存档与确定性验证</li></ul></article>
+        </div>
+        <div class="pipeline" aria-label="未来推荐流水线"><span>文本 / 图片</span><i>→</i><span>生成3D候选</span><i>→</i><span>分件与语义</span><i>→</i><strong>规则验证</strong><i>→</i><strong>游戏运行时</strong></div>
+      </section>
+
+      <section class="section" id="ecosystem">
+        <div class="section-title"><p>03 / OPEN ECOSYSTEM</p><h2>相关开源项目地图</h2></div>
+        <div class="stack-grid">
+          <article><span>运行时</span><h3>Three.js · Rapier · three-mesh-bvh</h3><p>负责场景、动画、碰撞和空间查询；不会自动赋予网格机械语义。</p><a href="https://github.com/mrdoob/three.js">Three.js ↗</a></article>
+          <article><span>代码CAD</span><h3>JSCAD · CadQuery · build123d</h3><p>适合参数化实体和可验证零件；需要额外游戏格式与运行时接入。</p><a href="https://github.com/jscad/OpenJSCAD.org">JSCAD ↗</a></article>
+          <article><span>生成资产</span><h3>TripoSR · Hunyuan3D · TRELLIS</h3><p>快速提供外观、网格和PBR候选；部件、关节和许可必须单独检查。</p><a href="https://github.com/VAST-AI-Research/TripoSR">TripoSR ↗</a></article>
+          <article><span>语言到CAD</span><h3>CAD-Coder · Chat3D · Text2CAD</h3><p>把自然语言或图片转为可执行CAD代码，当前更适合单体零件和研究验证。</p><a href="https://github.com/anniedoris/CAD-Coder">CAD-Coder ↗</a></article>
+          <article><span>结构化资产</span><h3>PartGen · UniRig · PAct</h3><p>生成研究正在吸收分件、骨骼、蒙皮和关节估计，这也是停止手写外观扩张的主要依据。</p><a href="https://github.com/VAST-AI-Research/UniRig">UniRig ↗</a></article>
+          <article><span>世界生成</span><h3>Infinigen</h3><p>证明程序化规则可生成大规模自然与室内世界，但它不是机械游戏运行时。</p><a href="https://github.com/princeton-vl/infinigen">Infinigen ↗</a></article>
+        </div>
+      </section>
+
+      <section class="section future" id="future">
+        <div class="section-title"><p>04 / RESTART CONDITIONS</p><h2>未来何时值得重启</h2></div>
+        <ol>
+          <li><span>01</span><div><h3>出现明确产品需求</h3><p>先确定是RTS、配置器、机器人仿真还是数字孪生，不能再以“模拟整个世界”作为模糊目标。</p></div></li>
+          <li><span>02</span><div><h3>几何来源可替换</h3><p>允许AI网格、CAD、GLB和程序化母型进入同一适配层，而不是绑定某一种建模方式。</p></div></li>
+          <li><span>03</span><div><h3>建立Mechanical DSL</h3><p>语言模型只生成受Schema约束的母型、插槽、关节、状态和约束；确定性工具负责执行与裁决。</p></div></li>
+          <li><span>04</span><div><h3>验证真实运行预算</h3><p>必须补齐LOD、instancing、物理、寻路、网络、存档和目标设备性能测试。</p></div></li>
+        </ol>
+        <details><summary>明确不继续的方向</summary><p>不继续扩大手写基础几何对象数量；不把当前演示包装成世界模拟器；不在缺少真实工程数据时宣称适用于工业或军工仿真；不公开部署无许可证的上游源码。</p></details>
+      </section>
+    </main>
+
+    <footer><span>Mechanical Deployables Research Archive</span><a href="../../index.html">返回研究实验室 ↑</a></footer>
+  </body>
+</html>

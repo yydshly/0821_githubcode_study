@@ -14,6 +14,7 @@
 | ebook2audiobook：电子书转有声书 | `archived` | [能力与技术归档](ebook2audiobook/ARCHIVE.md) · [研究记录](ebook2audiobook/) | 暂无 |
 | Public APIs Intelligence：公共 API 能力账本 | `archived` | [归档档案](public-apis-intelligence/ARCHIVE.md) · [研究记录](public-apis-intelligence/) | [归档演示](https://yydshly.github.io/0821_githubcode_study/demos/public-apis-intelligence/) |
 | Procedural Terrains：GPU 地形与游戏地图选型 | `archived` | [归档结论](procedural-terrains/ARCHIVE.md) · [能力图](procedural-terrains/CAPABILITY_MAP.md) | [研究展厅](https://yydshly.github.io/0821_githubcode_study/demos/procedural-terrains/) · [RTS 技术原型](https://yydshly.github.io/0821_githubcode_study/demos/procedural-terrains/rts-map-profile/) |
+| Mechanical Deployables：机械动画与生成式3D替代判断 | `archived` | [归档结论](mechanical-deployables-treejs/ARCHIVE.md) · [能力图](mechanical-deployables-treejs/CAPABILITY_MAP.md) · [扩展方向](mechanical-deployables-treejs/EXTENSIONS.md) | [研究展厅](https://yydshly.github.io/0821_githubcode_study/demos/mechanical-deployables-treejs/) · [上游演示](https://trungdq88.github.io/mechanical-deployables-treejs/) |
 
 ## 推荐布局
 
