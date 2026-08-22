@@ -14,6 +14,7 @@
 | Architecture Map | AI 辅助代码库理解、交互式架构逻辑地图、文档漂移检测 | `validated` | [上游仓库](https://github.com/almendili/skills) | [研究记录](projects/architecture-map/) · [扩展方向](projects/architecture-map/EXTENSIONS.md) | [独立实现演示](https://yydshly.github.io/0821_githubcode_study/demos/architecture-map/) |
 | Chinese Poetry | 古典诗词数据底座、可信化治理、现代生活场景与情绪价值产品 | `researching` | [上游仓库](https://github.com/chinese-poetry/chinese-poetry) | [基础底座与产品方向](projects/chinese-poetry-product-foundation/) | 暂无 |
 | ebook2audiobook | 多格式文档清洗、本地开源TTS调度与有声书生产 | `archived` | [上游仓库](https://github.com/DrewThomasson/ebook2audiobook) | [能力与技术归档](projects/ebook2audiobook/ARCHIVE.md) | 暂无 |
+| Public APIs Intelligence | 公共 API 发现、全量统计、接入准备度与统一接入建议 | `archived` | [上游仓库](https://github.com/public-apis/public-apis) | [归档档案](projects/public-apis-intelligence/ARCHIVE.md) · [研究记录](projects/public-apis-intelligence/) | [归档能力账本](https://yydshly.github.io/0821_githubcode_study/demos/public-apis-intelligence/) |
 
 状态统一使用 `planned`、`researching`、`validated`、`archived`，方便快速判断研究进度。
 

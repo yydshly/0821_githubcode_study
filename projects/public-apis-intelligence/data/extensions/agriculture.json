@@ -1,0 +1,152 @@
+{
+  "extension": "official-agriculture-apis",
+  "version": 1,
+  "verifiedAt": "2026-08-22",
+  "method": "Official documentation review; no production SLA or quota test",
+  "entries": [
+    {
+      "name": "NASA POWER Agroclimatology API",
+      "description": "Global agricultural climate time series for temperature, precipitation, humidity, solar radiation and wind; hourly, daily, monthly and climatology data",
+      "url": "https://power.larc.nasa.gov/docs/services/api/",
+      "officialDocs": "https://power.larc.nasa.gov/docs/services/api/temporal/",
+      "provider": "NASA POWER",
+      "auth": "No",
+      "https": "Yes",
+      "cors": "Unknown",
+      "coverage": "全球；气象数据最早约 1981 年至近实时，按数据集而异",
+      "limitations": "空间分辨率不是田块级；单次参数数和请求频率受限制"
+    },
+    {
+      "name": "Open-Meteo Agricultural Weather",
+      "description": "Keyless agricultural weather forecast with soil temperature, multi-layer soil moisture, reference evapotranspiration ET0, precipitation and solar radiation",
+      "url": "https://open-meteo.com/en/docs",
+      "officialDocs": "https://open-meteo.com/en/docs",
+      "provider": "Open-Meteo",
+      "auth": "No",
+      "https": "Yes",
+      "cors": "Yes",
+      "coverage": "全球；通常提供未来 7 天，部分模式可到 16 天",
+      "limitations": "模型格点不等于田间传感器；商用与高频使用需核对许可方案"
+    },
+    {
+      "name": "ISRIC SoilGrids REST API",
+      "description": "Global gridded soil properties by coordinate and depth including pH, organic carbon, clay, sand, silt, nitrogen and bulk density",
+      "url": "https://rest.isric.org/",
+      "officialDocs": "https://rest.isric.org/soilgrids/v2.0/docs",
+      "provider": "ISRIC — World Soil Information",
+      "auth": "No",
+      "https": "Yes",
+      "cors": "Unknown",
+      "coverage": "全球约 250 米格网，多土层预测值",
+      "limitations": "REST v2 仍为 beta；官方公平使用建议每分钟不超过 5 次调用"
+    },
+    {
+      "name": "USDA NRCS Soil Data Access",
+      "description": "United States soil survey tabular and spatial data through REST POST, WFS and WMS services for soil properties and land interpretations",
+      "url": "https://sdmdataaccess.nrcs.usda.gov/WebServiceHelp.aspx",
+      "officialDocs": "https://sdmdataaccess.nrcs.usda.gov/WebServiceHelp.aspx",
+      "provider": "USDA Natural Resources Conservation Service",
+      "auth": "No",
+      "https": "Yes",
+      "cors": "Unknown",
+      "coverage": "美国 Soil Survey Geographic 数据及解释",
+      "limitations": "REST 查询使用 POST 和 SQL；数据结构复杂，建议服务端封装"
+    },
+    {
+      "name": "USDA NASS Quick Stats API",
+      "description": "Official United States crop, livestock, farm economics, demographics, environmental and agricultural production statistics by commodity, location and time",
+      "url": "https://www.nass.usda.gov/developer/",
+      "officialDocs": "https://quickstats.nass.usda.gov/api",
+      "provider": "USDA National Agricultural Statistics Service",
+      "auth": "apiKey",
+      "https": "Yes",
+      "cors": "Unknown",
+      "coverage": "美国全国、州、县等层级；调查与农业普查数据",
+      "limitations": "需要申请 API Key；查询维度和结果量需要控制"
+    },
+    {
+      "name": "USDA MyMarketNews API",
+      "description": "Agricultural commodity market reports with prices, volume and trade data for livestock, dairy, grain, fruit and vegetables",
+      "url": "https://mymarketnews.ams.usda.gov/mymarketnews-api",
+      "officialDocs": "https://mymarketnews.ams.usda.gov/mars-api/getting-started",
+      "provider": "USDA Agricultural Marketing Service",
+      "auth": "apiKey",
+      "https": "Yes",
+      "cors": "No",
+      "coverage": "美国农业市场新闻与分品类报告",
+      "limitations": "官方说明不支持直接浏览器调用；通常按报告而非商品直接检索"
+    },
+    {
+      "name": "FAOSTAT API",
+      "description": "Global crop production, livestock, food balance, agricultural trade, prices, inputs, emissions and food security statistics",
+      "url": "https://faostat.fao.org/",
+      "officialDocs": "https://faostat.fao.org/",
+      "provider": "Food and Agriculture Organization of the United Nations",
+      "auth": "No",
+      "https": "Yes",
+      "cors": "Unknown",
+      "coverage": "245 个以上国家和地区；多数主题从 1961 年至最新可用年份",
+      "limitations": "不同主题更新时间与口径不同；使用前确认指标、单位和版本"
+    },
+    {
+      "name": "EPPO Data Services REST API",
+      "description": "Plant and crop pest taxonomy, EPPO codes, host plants, geographical distribution, quarantine status and plant protection data",
+      "url": "https://www.eppo.int/RESOURCES/eppo_databases/global_database",
+      "officialDocs": "https://data.eppo.int/",
+      "provider": "European and Mediterranean Plant Protection Organization",
+      "auth": "apiKey",
+      "https": "Yes",
+      "cors": "Unknown",
+      "coverage": "农业、林业与植物保护相关物种和检疫性有害生物；重点为 EPPO 区域",
+      "limitations": "需要免费注册；不同数据集和批量服务的访问条件可能不同"
+    },
+    {
+      "name": "Pl@ntNet Plant Identification API",
+      "description": "Image-based plant and crop species identification from leaf, flower, fruit or bark photos with confidence scores",
+      "url": "https://my.plantnet.org/doc",
+      "officialDocs": "https://my.plantnet.org/doc/api/identify",
+      "provider": "Pl@ntNet",
+      "auth": "apiKey",
+      "https": "Yes",
+      "cors": "Unknown",
+      "coverage": "多地区植物物种识别项目；支持选择 flora/project",
+      "limitations": "需要 API Key 和配额；单次最多 5 张同一植株图片，结果需人工复核"
+    },
+    {
+      "name": "Copernicus Data Space STAC API",
+      "description": "Satellite earth observation catalogue for Sentinel imagery used in crop monitoring, vegetation indices, field change and drought analysis",
+      "url": "https://documentation.dataspace.copernicus.eu/APIs/STAC.html",
+      "officialDocs": "https://documentation.dataspace.copernicus.eu/APIs/STAC.html",
+      "provider": "Copernicus Data Space Ecosystem",
+      "auth": "No",
+      "https": "Yes",
+      "cors": "Unknown",
+      "coverage": "全球 Sentinel-1/2/3 等地球观测产品目录",
+      "limitations": "STAC 主要用于检索影像元数据；下载、处理和生成 NDVI 可能需要额外认证与计算"
+    },
+    {
+      "name": "World Bank Indicators API",
+      "description": "Country agricultural land, cereal yield, rural population, food production, fertilizer, water and agriculture value-added indicators",
+      "url": "https://datahelpdesk.worldbank.org/knowledgebase/articles/889392",
+      "officialDocs": "https://datahelpdesk.worldbank.org/knowledgebase/articles/898581-api-basic-call-structures",
+      "provider": "World Bank",
+      "auth": "No",
+      "https": "Yes",
+      "cors": "Unknown",
+      "coverage": "全球国家和地区的长期发展指标时间序列",
+      "limitations": "并非田块或实时数据；必须选择正确指标代码并理解统计口径"
+    },
+    {
+      "name": "USDA ESMIS REST API",
+      "description": "Search agricultural economics publications, agencies and report releases from the USDA Economics, Statistics and Market Information System",
+      "url": "https://esmis.nal.usda.gov/api-documentation",
+      "officialDocs": "https://esmis.nal.usda.gov/api-documentation",
+      "provider": "USDA National Agricultural Library",
+      "auth": "No",
+      "https": "Yes",
+      "cors": "Unknown",
+      "coverage": "USDA 农业经济、市场和统计出版物及发布记录",
+      "limitations": "主要返回出版物与发布元数据，不等同于报告中的完整结构化统计值"
+    }
+  ]
+}

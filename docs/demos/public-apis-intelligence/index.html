@@ -1,0 +1,373 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="Public APIs Intelligence 阶段性研究档案：将公共 API 目录转成可查询、可解释的能力与接入准备度统计。" />
+    <title>Public APIs Intelligence · 公共 API 能力账本</title>
+    <link rel="stylesheet" href="./styles.css" />
+    <script src="./data/catalog-data.js" defer></script>
+    <script src="./app.js" defer></script>
+  </head>
+  <body>
+    <a class="skip-link" href="#explorer">跳到 API 筛选器</a>
+    <header class="topbar">
+      <a class="brand" href="../../">
+        <span class="brand-mark" aria-hidden="true">API</span>
+        <span>
+          <strong>Public APIs Intelligence</strong>
+          <small>公共 API 能力账本</small>
+        </span>
+      </a>
+      <nav aria-label="页面操作">
+        <a href="#research-process">研究过程</a>
+        <a href="#methodology">评分方法</a>
+        <a href="https://github.com/public-apis/public-apis" target="_blank" rel="noreferrer">上游仓库 ↗</a>
+        <button class="icon-button" id="theme-toggle" type="button" aria-label="切换深浅主题" aria-pressed="false">
+          <span aria-hidden="true">◐</span>
+        </button>
+      </nav>
+    </header>
+
+    <main>
+      <section class="hero" aria-labelledby="hero-title">
+        <div class="hero-copy">
+          <p class="eyebrow">FULL CATALOG · REPRODUCIBLE SNAPSHOT</p>
+          <h1 id="hero-title">把 API 清单，变成<br /><em>可判断的能力资产。</em></h1>
+          <p class="hero-intro">
+            全量解析 <code>public-apis</code>，并补充经官方文档核验的农业数据源，按能力域、场景和接入方式重新组织。
+            分数衡量目录信息所显示的接入准备度，不代表真实 SLA。
+          </p>
+          <div class="hero-actions">
+            <a class="button primary" href="#scenarios">按场景找 API</a>
+            <a class="button secondary" href="./data/apis.csv" download>下载全量 CSV</a>
+          </div>
+          <p class="snapshot" id="snapshot-meta">正在读取上游快照…</p>
+        </div>
+        <aside class="hero-note" aria-label="使用边界">
+          <span class="note-index">01 / BOUNDARY</span>
+          <h2>先发现，再验证。</h2>
+          <p>这里能回答“有哪些候选、如何接入”；不能替代存活率、延迟、额度、许可和数据质量实测。</p>
+          <a href="#methodology">查看评分依据 <span aria-hidden="true">→</span></a>
+        </aside>
+      </section>
+
+      <section class="metric-grid" aria-label="全量统计">
+        <article class="metric-card emphasis">
+          <span>API 条目</span>
+          <strong id="metric-apis">—</strong>
+          <small><b id="metric-upstream">—</b> 上游 · <b id="metric-extensions">—</b> 官方扩展</small>
+        </article>
+        <article class="metric-card">
+          <span>已识别细分场景</span>
+          <strong id="metric-scenarios">—</strong>
+          <small><b id="metric-categories">—</b> 个原始分类 · <b id="metric-groups">—</b> 个能力域</small>
+        </article>
+        <article class="metric-card positive">
+          <span>浏览器直连候选</span>
+          <strong id="metric-direct">—</strong>
+          <small>HTTPS + 无认证 + CORS Yes</small>
+        </article>
+        <article class="metric-card warning">
+          <span>CORS 状态未知</span>
+          <strong id="metric-cors-unknown">—</strong>
+          <small>需要真实浏览器探测</small>
+        </article>
+      </section>
+
+      <section class="overview" aria-labelledby="overview-title">
+        <div class="section-heading">
+          <div>
+            <p class="section-index">02 / LANDSCAPE</p>
+            <h2 id="overview-title">先看具体数据，再看怎么接</h2>
+          </div>
+          <p>“十大领域”只保留为内部导航。这里直接展开数据对象、常见字段、输入条件和能回答的问题。</p>
+        </div>
+        <div class="overview-grid">
+          <article class="panel chart-panel">
+            <div class="panel-heading">
+              <div>
+                <span>CONCRETE DATA CATALOG</span>
+                <h3>这里具体有哪些数据？</h3>
+              </div>
+              <small>点开查看字段与问题示例</small>
+            </div>
+            <div class="data-catalog" id="group-chart" aria-label="按数据对象展开的能力目录"></div>
+          </article>
+          <article class="panel chart-panel">
+            <div class="panel-heading">
+              <div>
+                <span>INTEGRATION MODE</span>
+                <h3>建议接入方式</h3>
+              </div>
+              <small>规则推断</small>
+            </div>
+            <div class="access-summary" id="access-summary"></div>
+            <div class="insight-box">
+              <strong id="backend-ratio">—</strong>
+              <p>的条目更适合由服务端代理或 OAuth 流程接入，而不是直接放进网页。</p>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="scenarios" id="scenarios" aria-labelledby="scenarios-title">
+        <div class="section-heading">
+          <div>
+            <p class="section-index">03 / USE CASES</p>
+            <h2 id="scenarios-title">你想完成什么？</h2>
+          </div>
+          <p>从具体任务出发：每个场景说明解决什么问题、适合什么产品、选型重点，以及目录里有哪些候选 API。</p>
+        </div>
+        <div class="scenario-boundary">
+          <strong id="scenario-coverage">—</strong>
+          <p>API 已按名称与目录描述匹配到明确场景；其余保留在“综合能力”中。农业候选是本项目按官方文档核验的扩展源，不属于 public-apis 上游；推荐仍不是在线可用性认证。</p>
+        </div>
+        <div class="scenario-toolbar">
+          <label class="scenario-search">
+            <span>搜索你要实现的任务</span>
+            <input id="scenario-search" type="search" placeholder="输入数据、字段或问题，例如：法定节假日、人口统计、会不会下雨…" autocomplete="off" />
+          </label>
+          <label>
+            <span>能力域</span>
+            <select id="scenario-group"><option value="">全部能力域</option></select>
+          </label>
+          <label>
+            <span>原始分类</span>
+            <select id="scenario-category"><option value="">全部分类</option></select>
+          </label>
+          <label class="scenario-specific-toggle">
+            <input id="scenario-specific" type="checkbox" checked />
+            <span>隐藏“综合能力”兜底项</span>
+          </label>
+        </div>
+        <div class="scenario-quick" aria-label="常用场景快捷入口">
+          <span>常用：</span>
+          <button type="button" data-scenario-query="天气预报">天气预报</button>
+          <button type="button" data-scenario-query="空气质量">空气质量</button>
+          <button type="button" data-scenario-query="股票行情">股票行情</button>
+          <button type="button" data-scenario-query="IP 定位">IP 定位</button>
+          <button type="button" data-scenario-query="新闻聚合">新闻聚合</button>
+          <button type="button" data-scenario-query="航班">航班状态</button>
+          <button type="button" data-scenario-query="农业">农业数据</button>
+        </div>
+        <p class="scenario-result" id="scenario-result" aria-live="polite">正在构建场景地图…</p>
+        <div class="scenario-grid" id="scenario-grid"></div>
+        <div class="empty-state scenario-empty" id="scenario-empty" hidden>
+          <strong>没有匹配的细分场景</strong>
+          <p>可以换成更宽泛的任务词，或取消“隐藏综合能力”。</p>
+        </div>
+        <button class="load-more" id="scenario-more" type="button" hidden>显示更多场景</button>
+      </section>
+
+      <section class="explorer" id="explorer" aria-labelledby="explorer-title">
+        <div class="section-heading explorer-heading">
+          <div>
+            <p class="section-index">04 / EXPLORER</p>
+            <h2 id="explorer-title">全量 API 探索器</h2>
+          </div>
+          <p id="result-summary" aria-live="polite">加载数据中…</p>
+        </div>
+
+        <form class="filters" id="filters">
+          <label class="search-field">
+            <span>搜索名称、描述、类型</span>
+            <input id="search" type="search" placeholder="例如 weather、土壤、作物产量、新闻…" autocomplete="off" />
+          </label>
+          <label>
+            <span>能力域</span>
+            <select id="group-filter"><option value="">全部能力域</option></select>
+          </label>
+          <label>
+            <span>原始分类</span>
+            <select id="category-filter"><option value="">全部分类</option></select>
+          </label>
+          <label>
+            <span>细分场景</span>
+            <select id="scenario-filter"><option value="">全部场景</option></select>
+          </label>
+          <label>
+            <span>建议方式</span>
+            <select id="mode-filter">
+              <option value="">全部方式</option>
+              <option>浏览器直连候选</option>
+              <option>后端代理</option>
+              <option>OAuth 集成</option>
+              <option>仅研究/寻找替代</option>
+            </select>
+          </label>
+          <label>
+            <span>接入等级</span>
+            <select id="tier-filter"><option value="">全部等级</option></select>
+          </label>
+          <label>
+            <span>认证方式</span>
+            <select id="auth-filter"><option value="">全部认证</option></select>
+          </label>
+          <label>
+            <span>数据来源</span>
+            <select id="source-filter">
+              <option value="">全部来源</option>
+              <option value="upstream">public-apis 上游</option>
+              <option value="curated-extension">官方核验扩展</option>
+            </select>
+          </label>
+          <label>
+            <span>排序</span>
+            <select id="sort-filter">
+              <option value="score-desc">准备度从高到低</option>
+              <option value="score-asc">准备度从低到高</option>
+              <option value="name">名称 A–Z</option>
+              <option value="category">分类 A–Z</option>
+            </select>
+          </label>
+          <button class="reset-button" id="reset-filters" type="button">清除筛选</button>
+        </form>
+
+        <div class="active-filter" id="active-filter" hidden></div>
+
+        <div class="table-shell" id="table-shell">
+          <table>
+            <thead>
+              <tr>
+                <th scope="col">API / 能力</th>
+                <th scope="col">类型</th>
+                <th scope="col">认证</th>
+                <th scope="col">HTTPS / CORS</th>
+                <th scope="col">接入建议</th>
+                <th scope="col">目录准备度</th>
+                <th scope="col"><span class="sr-only">查看</span></th>
+              </tr>
+            </thead>
+            <tbody id="api-table"></tbody>
+          </table>
+          <div class="empty-state" id="empty-state" hidden>
+            <strong>没有匹配的 API</strong>
+            <p>尝试减少筛选条件，或换一个更宽泛的关键词。</p>
+            <button class="button secondary" type="button" id="empty-reset">重置筛选</button>
+          </div>
+          <div class="error-state" id="error-state" hidden>
+            <strong>数据没有加载成功</strong>
+            <p>数据包可能缺失或尚未生成。请在子项目运行 <code>npm run sync:offline</code> 后刷新页面。</p>
+          </div>
+        </div>
+        <button class="load-more" id="load-more" type="button" hidden>显示更多结果</button>
+      </section>
+
+      <section class="methodology" id="methodology" aria-labelledby="method-title">
+        <div class="section-heading">
+          <div>
+            <p class="section-index">05 / METHOD</p>
+            <h2 id="method-title">分数能说明什么？</h2>
+          </div>
+          <p>它用于候选排序，不是服务质量认证。</p>
+        </div>
+        <div class="method-grid">
+          <article>
+            <span>30</span>
+            <h3>HTTPS</h3>
+            <p>是否具备现代生产接入的最低传输安全条件。</p>
+          </article>
+          <article>
+            <span>20</span>
+            <h3>CORS</h3>
+            <p>目录是否明确说明浏览器跨域支持；Unknown 只获得部分分。</p>
+          </article>
+          <article>
+            <span>20</span>
+            <h3>认证成本</h3>
+            <p>无认证更适合快速原型；API Key 与 OAuth 需要额外架构。</p>
+          </article>
+          <article>
+            <span>15</span>
+            <h3>文档链接</h3>
+            <p>文档入口是否使用 HTTPS；链接可达性仍需主动探测。</p>
+          </article>
+          <article>
+            <span>15</span>
+            <h3>描述完整度</h3>
+            <p>说明是否足以帮助初步判断能力，而非真实文档质量。</p>
+          </article>
+        </div>
+        <div class="missing-evidence">
+          <strong>仍缺少的生产证据</strong>
+          <ul id="missing-list"></ul>
+        </div>
+      </section>
+
+      <section class="research-process" id="research-process" aria-labelledby="research-process-title">
+        <div class="section-heading">
+          <div>
+            <p class="section-index">06 / RESEARCH ARCHIVE</p>
+            <h2 id="research-process-title">这项研究是怎样形成的？</h2>
+          </div>
+          <p>当前阶段已经归档：保留资源、方法、数据与演示，不进行无目标的第三方 API 全量实测。</p>
+        </div>
+
+        <div class="archive-status" role="note" aria-label="项目归档状态">
+          <div>
+            <span>STATUS · 2026-08-22</span>
+            <strong>ARCHIVED</strong>
+          </div>
+          <p>以后出现农业、环境、物种分布或公共统计等明确产品需求时，再从候选中选择 2–5 个 API 做真实核验、统一适配和二次开发。</p>
+        </div>
+
+        <ol class="process-timeline">
+          <li>
+            <span>01</span>
+            <div><strong>理解资源本质</strong><p>确认上游是人工维护的 API 资源索引，不是统一调用网关；目录负责发现，生产能力仍需验证。</p></div>
+          </li>
+          <li>
+            <span>02</span>
+            <div><strong>固定并解析快照</strong><p>保存 README、提交 SHA 与同步时间，将 1,695 个上游条目结构化为可复现的 JSON、CSV 和统计摘要。</p></div>
+          </li>
+          <li>
+            <span>03</span>
+            <div><strong>从分类走向场景</strong><p>建立数据对象、常见输入、字段示例与业务问题，把宏观分类转换成 324 个已有候选的具体使用场景。</p></div>
+          </li>
+          <li>
+            <span>04</span>
+            <div><strong>补充可追溯扩展</strong><p>以独立来源加入 12 个农业官方 API，明确区分 public-apis 上游事实与本项目官方文档复核结果。</p></div>
+          </li>
+          <li>
+            <span>05</span>
+            <div><strong>建立诚实边界</strong><p>准备度分数只反映 HTTPS、CORS、认证和目录说明；不把存活率、延迟、价格、许可或数据质量包装成已验证结论。</p></div>
+          </li>
+          <li>
+            <span>06</span>
+            <div><strong>阶段归档，按需重启</strong><p>保留同步、测试、搜索与来源模型；未来围绕具体产品垂直验证，而不是盲目调用全部 1,707 条记录。</p></div>
+          </li>
+        </ol>
+
+        <div class="archive-docs">
+          <div>
+            <span>HANDOFF</span>
+            <h3>文档、数据和恢复入口</h3>
+            <p>研究过程已沉淀在 GitHub。重新启用时，先阅读归档结论，再从场景搜索进入候选筛选。</p>
+          </div>
+          <nav aria-label="研究归档文档">
+            <a href="https://github.com/yydshly/0821_githubcode_study/blob/main/projects/public-apis-intelligence/ARCHIVE.md" target="_blank" rel="noreferrer">阶段归档与重启条件 ↗</a>
+            <a href="https://github.com/yydshly/0821_githubcode_study/blob/main/projects/public-apis-intelligence/NOTES.md" target="_blank" rel="noreferrer">完整研究日志 ↗</a>
+            <a href="https://github.com/yydshly/0821_githubcode_study/tree/main/projects/public-apis-intelligence" target="_blank" rel="noreferrer">代码、数据与同步脚本 ↗</a>
+          </nav>
+        </div>
+      </section>
+    </main>
+
+    <dialog class="detail-dialog" id="detail-dialog">
+      <div class="dialog-head">
+        <div>
+          <span id="detail-group">能力域</span>
+          <h2 id="detail-name">API 名称</h2>
+        </div>
+        <button class="dialog-close" id="dialog-close" type="button" aria-label="关闭详情">×</button>
+      </div>
+      <div id="detail-content"></div>
+    </dialog>
+
+    <footer>
+      <p>Public APIs Intelligence · 发现候选，不替代验证。</p>
+      <a href="../../">返回 GitHub 能力研究实验室</a>
+    </footer>
+  </body>
+</html>
