@@ -1,0 +1,10 @@
+{
+  "repository": "public-apis/public-apis",
+  "url": "https://github.com/public-apis/public-apis",
+  "defaultBranch": "master",
+  "commit": "c045a2eb505f0f8b7992bb4af53cc020f25003fd",
+  "commitUrl": "https://github.com/public-apis/public-apis/commit/c045a2eb505f0f8b7992bb4af53cc020f25003fd",
+  "committedAt": "2026-08-19T21:44:19Z",
+  "fetchedAt": "2026-08-21T16:28:29.008Z",
+  "license": "MIT"
+}

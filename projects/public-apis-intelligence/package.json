@@ -1,0 +1,12 @@
+{
+  "name": "public-apis-intelligence",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "demo": "node scripts/serve.mjs",
+    "sync": "node scripts/sync.mjs",
+    "sync:offline": "node scripts/sync.mjs --offline",
+    "test": "node scripts/test.mjs"
+  }
+}
