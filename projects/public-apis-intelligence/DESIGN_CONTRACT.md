@@ -1,8 +1,8 @@
 # Public APIs Intelligence 设计契约
 
 ```text
-Entry mode: brief-led implementation
-Request revision: 6
+Entry mode: revision-led extension
+Request revision: 7
 Target user and context: 需要盘点公共 API、做技术选型和统一接入设计的研究人员与工程师
 Desired first impression: 不需要理解抽象领域名，也能立刻看出“这里有哪些具体数据、能解决什么问题、该用哪个 API”
 Visual ambition: Functional
@@ -12,12 +12,12 @@ Information constraints: 必须区分 public-apis 上游事实、本项目外部
 Operation constraints: 静态 GitHub Pages；无框架、无后端、无密钥；搜索、组合筛选、排序和详情均在浏览器本地完成
 State constraints: 加载、成功、无结果和加载失败状态可辨认；详情抽屉支持关闭、Escape 与焦点返回
 Environment constraints: 现代桌面/平板/390px 手机浏览器；支持浅色/深色；尊重 reduced-motion
-Primary journey: 查看研究过程与归档边界 → 查看“有哪些具体数据” → 选择数据对象或描述业务问题 → 查看字段与使用例 → 比较候选 API → 阅读接入风险 → 打开原始文档
-User-defined phases: 获取上游；全量整理；类型/质量/建议统计；交互演示；过程归档；提交远端；GitHub Pages 部署
-Required artifacts: 可重复同步脚本、README 快照、JSON/CSV、统计摘要、测试、静态演示、研究记录、归档档案、过程网页、总索引、Git 提交与 Pages 部署
-Autonomy authorization: 用户明确要求沉淀研究过程与文档、提交到远端 GitHub，并将过程网页部署到 GitHub Pages；可直接完成范围内实现、提交、推送和部署验证
+Primary journey: 查看研究过程与归档边界 → 理解 API、数据集、OpenAPI、开源产品、MCP 与基础设施之间的关系 → 查看“有哪些具体数据” → 选择数据对象或描述业务问题 → 查看字段与使用例 → 比较候选 API → 阅读接入风险 → 打开原始文档
+User-defined phases: 获取上游；全量整理；类型/质量/建议统计；交互演示；过程归档；关联资源生态扩展；提交远端；GitHub Pages 部署
+Required artifacts: 可重复同步脚本、README 快照、JSON/CSV、统计摘要、测试、静态演示、研究记录、归档档案、相关资源清单、资源关系说明、过程网页、总索引、Git 提交与 Pages 部署
+Autonomy authorization: 用户明确要求把建议和扩展资源库适当整合进本研究并提交；此前已授权范围内实现、提交、推送和 Pages 部署验证
 User-decision boundary: 引入真实 API 密钥、批量调用第三方服务、付费订阅或生产网关不在本阶段授权范围
-Observable completion criteria: 全量条目可追溯到上游快照；统计总数自洽；筛选/排序/详情可用；研究过程、归档边界和重启条件在网页与文档中可见；桌面/手机无关键遮挡；相关文件独立提交到 main；Pages 工作流成功且线上 URL 可访问
+Observable completion criteria: 全量条目可追溯到上游快照；统计总数自洽；筛选/排序/详情可用；研究过程、归档边界、关联资源层次和后续子项目优先级在网页与文档中可见；扩展资源具有来源、类型、关系、波动性和验证边界；桌面/手机无关键遮挡；相关文件独立提交到 main；Pages 工作流成功且线上 URL 可访问
 ```
 
 ## 设计方向
@@ -63,6 +63,10 @@ Observable completion criteria: 全量条目可追溯到上游快照；统计总
 | 文档沉淀 | 归档结论、过程、数据和重启条件可追溯 | GitHub 项目目录 | README、NOTES、ARCHIVE、设计契约和生成数据 | 8 | pass | README、NOTES、ARCHIVE、契约、数据与脚本齐备 |
 | 远端提交 | 只提交 Public APIs Intelligence 相关资产 | Git 提交/main | 暂存清单、提交内容和远端 SHA | 9 | pass | 在独立 worktree 基于 `origin/main` 合入并推送；未带入工作区内其他项目改动 |
 | Pages 部署 | 过程网页与能力账本公开可访问 | GitHub Pages | Actions 成功状态、线上 URL 与 HTTP/DOM 检查 | 9 | pass | `https://yydshly.github.io/0821_githubcode_study/demos/public-apis-intelligence/` 返回 200；线上桌面与 390px 手机验收通过 |
+| 关联资源生态 | 将推荐库整理为可复用的结构化研究数据 | 数据/文档 | JSON 字段、来源链接、关系、优先级与验证边界 | 3 | pass | 15 条记录通过唯一 ID、GitHub 来源、必填关系和优先级自动测试 |
+| 关联资源生态 | 解释 API、数据集、OpenAPI、开源产品、MCP 与基础设施怎样组合 | 过程网页/桌面与手机 | 关系路径、分层卡片、垂直资源和子项目建议 | 3 | pass | 5 步关系路径、5 个子项目和 15 个来源在桌面/深色/390px 验收通过 |
+| 文档沉淀 | README、NOTES、ARCHIVE 记录扩展研究与后续调度方式 | GitHub 项目目录 | 文档内容与链接检查 | 8 | pass | README、NOTES、ARCHIVE、RELATED_RESOURCES 和结构化 JSON 已互相链接并保留验证边界 |
+| 增量交付 | 仅提交关联资源生态相关资产并更新 Pages | Git/main、GitHub Pages | 测试、提交 SHA、HTTP/DOM 与浏览器验收 | 9 | continue | 隔离其他工作区改动后提交并验证线上版本 |
 
 ## 修复记录：本地数据未显示
 

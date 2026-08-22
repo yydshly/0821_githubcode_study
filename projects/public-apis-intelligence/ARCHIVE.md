@@ -17,6 +17,8 @@
 - JSON、CSV、统计摘要和浏览器内嵌数据包；
 - 在线/离线同步脚本、数据守恒测试和无依赖静态演示；
 - 上游与本项目扩展来源的独立标识、覆盖范围与限制说明。
+- 15 个关联资源库的结构化清单，以及 API、数据集、OpenAPI、MCP、开源产品、基础设施和垂直资源之间的关系模型；
+- OpenAPI、开放数据、MCP、开源产品、农业与生态五个推荐后续子项目。
 
 ## 后期推荐启用方式
 
@@ -24,7 +26,8 @@
 
 ```text
 明确产品问题
-→ 在目录中检索候选 API
+→ 在目录中检索候选 API、数据集、规范、工具或开源产品
+→ 通过域名、仓库和官方文档关联同一资源
 → 选择 2–5 个供应商
 → 核验文档、许可、额度和地域覆盖
 → 使用授权密钥做真实调用
@@ -50,6 +53,8 @@
 - [`README.md`](README.md)：项目能力、统计和启动方式；
 - [`NOTES.md`](NOTES.md)：研究过程、边界和浏览器验收；
 - [`DESIGN_CONTRACT.md`](DESIGN_CONTRACT.md)：范围与可观察验收结果；
+- [`RELATED_RESOURCES.md`](RELATED_RESOURCES.md)：关联资源生态、关系规则和后续子项目；
+- [`data/research/related-resource-libraries.json`](data/research/related-resource-libraries.json)：15 个关联来源的结构化清单；
 - [`data/`](data/)：来源快照、扩展清单和生成数据；
 - [静态演示](../../docs/demos/public-apis-intelligence/)：当前可搜索能力账本。
 

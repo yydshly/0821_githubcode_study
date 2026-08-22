@@ -11,6 +11,7 @@ const projectDir = path.resolve(path.dirname(fileURLToPath(import.meta.url)), ".
 const markdown = await readFile(path.join(projectDir, "data", "source", "README.md"), "utf8");
 const upstream = JSON.parse(await readFile(path.join(projectDir, "data", "source", "upstream.json"), "utf8"));
 const agricultureExtension = JSON.parse(await readFile(path.join(projectDir, "data", "extensions", "agriculture.json"), "utf8"));
+const relatedResources = JSON.parse(await readFile(path.join(projectDir, "data", "research", "related-resource-libraries.json"), "utf8"));
 const generated = JSON.parse(await readFile(path.join(projectDir, "data", "generated", "apis.json"), "utf8"));
 const generatedSummary = JSON.parse(await readFile(path.join(projectDir, "data", "generated", "summary.json"), "utf8"));
 const browserBundle = await readFile(path.join(projectDir, "..", "..", "docs", "demos", "public-apis-intelligence", "data", "catalog-data.js"), "utf8");
@@ -58,5 +59,10 @@ const bundled = JSON.parse(browserBundle.slice(browserBundle.indexOf("{") , brow
 assert.equal(bundled.apis.length, entries.length, "Browser data bundle must contain the full catalog");
 assert.equal(bundled.summary.totals.apis, entries.length, "Browser summary must match the catalog");
 assert.equal(bundled.summary.totals.scenarios, scenarioSummary.totalScenarios, "Browser bundle must contain scenario navigation data");
+assert.equal(relatedResources.libraries.length, 15, "Related resource catalog should retain the reviewed source set");
+assert.equal(new Set(relatedResources.libraries.map((library) => library.id)).size, relatedResources.libraries.length, "Related resource IDs must be unique");
+assert.ok(relatedResources.libraries.every((library) => library.repository.startsWith("https://github.com/")), "Every related resource needs a GitHub source");
+assert.ok(relatedResources.libraries.every((library) => library.layer && library.assetTypes.length && library.relationToPublicApis && library.recommendedSubproject && library.boundary), "Every related resource must explain its layer, relationship, next project and validation boundary");
+assert.ok(relatedResources.libraries.filter((library) => library.priority === "P0").length >= 7, "The catalog should identify a focused first-priority research set");
 
-console.log(`PASS: ${entries.length} APIs (${parsedEntries.length} upstream + ${extensionEntries.length} agriculture extensions), ${allCategories.length} categories, ${scenarioSummary.totalScenarios} populated scenarios, ${scenarioSummary.specificApiCount} specific matches`);
+console.log(`PASS: ${entries.length} APIs (${parsedEntries.length} upstream + ${extensionEntries.length} agriculture extensions), ${allCategories.length} categories, ${scenarioSummary.totalScenarios} populated scenarios, ${scenarioSummary.specificApiCount} specific matches, ${relatedResources.libraries.length} related resource libraries`);

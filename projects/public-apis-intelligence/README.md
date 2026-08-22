@@ -15,6 +15,8 @@
 
 阶段性结论与重新启用条件见 [`ARCHIVE.md`](ARCHIVE.md)。当前保留演示、数据和同步能力，但不继续执行第三方 API 真实调用验证。
 
+关联资源生态、跨目录关系和后续五个推荐子项目见 [`RELATED_RESOURCES.md`](RELATED_RESOURCES.md)。该层把公共 API 与 OpenAPI 规范、开放数据集、MCP、开源产品、托管服务以及农业/生态资源连接起来。
+
 ## 已实现能力
 
 - 固定保存上游 README、提交 SHA、抓取时间和许可证信息；
@@ -29,6 +31,8 @@
 - 根据 HTTPS、CORS、认证、文档链接和描述完整度计算“目录接入准备度”；
 - 推断浏览器直连、后端代理、OAuth 集成、仅研究/寻找替代四种接入方式；
 - 为每条记录生成可解释的风险和下一步建议；
+- 结构化整理 15 个关联资源库，区分 API 规范、数据集、实时数据、MCP、开源产品、基础设施、知识资源和农业/生态垂直来源；
+- 形成从“需求 → API/数据 → 调用契约 → 工具/产品 → 验证与交付”的资源关系模型和五个后续子项目建议；
 - 提供搜索、组合筛选、排序、详情、CSV 下载、深浅主题与响应式演示。
 
 ## 当前全量统计
@@ -92,6 +96,8 @@ GitHub README 快照           农业官方文档核验清单
               接入规则评估
                      ↓
        JSON / CSV / Summary + 静态演示
+                     ↑
+  15 个关联资源库 → API / 数据 / OpenAPI / MCP / 产品生态
 ```
 
 上游仓库的核心数据集中在 README。为了让统计可复现，同时避免复制无关 Git 历史，本项目保存 README 快照和精确提交 SHA；`npm run sync` 可以随时获取新版本。
@@ -102,6 +108,7 @@ GitHub README 快照           农业官方文档核验清单
 public-apis-intelligence/
 ├─ DESIGN_CONTRACT.md          # 演示范围、体验和验收契约
 ├─ NOTES.md                    # 实验过程与边界
+├─ RELATED_RESOURCES.md        # 关联资源层次、关系与后续子项目
 ├─ lib/catalog.mjs             # Markdown 解析、能力映射、评分与统计
 ├─ lib/scenarios.mjs           # 全分类细分场景词典、匹配和候选排序
 ├─ scripts/
@@ -111,6 +118,7 @@ public-apis-intelligence/
 └─ data/
    ├─ source/                  # README 与上游提交信息
    ├─ extensions/              # 经官方文档复核的农业扩展清单
+   ├─ research/                # 关联资源库的结构化研究清单
    └─ generated/               # apis.json、apis.csv、summary.json
 ```
 

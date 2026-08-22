@@ -83,3 +83,12 @@
 - GitHub Pages 正式地址：`https://yydshly.github.io/0821_githubcode_study/demos/public-apis-intelligence/`。
 - 线上 HTTP 验证：状态码 200，页面包含 1,707 条总量、归档状态和研究过程。
 - 线上浏览器验证：1440×1000 与 390×844 均显示 6 个过程阶段、3 个文档入口，无横向溢出、无页面脚本异常；补充内嵌 favicon，避免站点根目录图标请求产生无关 404。
+
+## 2026-08-22：关联资源生态扩展
+
+- 将此前建议的 API 规范、开放数据、实时数据、MCP、自托管产品、运维、免费开发服务、学习资源、农业与生态目录整理为 15 条结构化研究记录。
+- 每条记录保留 GitHub 来源、资源层次、资产类型、目录格式、变化速度、与 public-apis 的关系、优先级、推荐子项目、产品机会和验证边界。
+- 明确这些库不是一个统一组织或天然互通的系统，而是产品交付链的不同切面：需求与场景 → API/数据发现 → OpenAPI 调用契约 → MCP/开源产品 → 托管、验证和交付。
+- 推荐后续按需启动 OpenAPI Intelligence、Open Data Intelligence、MCP Intelligence、Open-source Product Intelligence、Agriculture & Ecology Intelligence 五个子项目。
+- 网页新增“找到 API 之后，还缺什么？”章节，展示关系路径、五个优先研究方向、15 个来源入口和诚实验证边界。
+- 本次仍不安装全部项目、调用全部服务或下载全部数据集；相关资源只作为发现和调度入口，不作为安全、许可、可用性或生产质量认证。

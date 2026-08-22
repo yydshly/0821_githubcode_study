@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="description" content="Public APIs Intelligence 阶段性研究档案：将公共 API 目录转成可查询、可解释的能力与接入准备度统计。" />
+    <meta name="description" content="Public APIs Intelligence 阶段性研究档案：将公共 API 目录转成可查询、可解释的能力统计，并关联 OpenAPI、数据集、MCP、开源产品和农业生态资源。" />
     <title>Public APIs Intelligence · 公共 API 能力账本</title>
     <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23121e18'/%3E%3Ctext x='32' y='40' text-anchor='middle' font-size='24' font-family='Arial' font-weight='700' fill='white'%3EAPI%3C/text%3E%3C/svg%3E" />
     <link rel="stylesheet" href="./styles.css" />
@@ -21,6 +21,7 @@
         </span>
       </a>
       <nav aria-label="页面操作">
+        <a href="#resource-ecosystem">资源生态</a>
         <a href="#research-process">研究过程</a>
         <a href="#methodology">评分方法</a>
         <a href="https://github.com/public-apis/public-apis" target="_blank" rel="noreferrer">上游仓库 ↗</a>
@@ -296,10 +297,114 @@
         </div>
       </section>
 
+      <section class="resource-ecosystem" id="resource-ecosystem" aria-labelledby="resource-ecosystem-title">
+        <div class="section-heading">
+          <div>
+            <p class="section-index">06 / RELATED ECOSYSTEM</p>
+            <h2 id="resource-ecosystem-title">找到 API 之后，还缺什么？</h2>
+          </div>
+          <p>API、数据集、OpenAPI、开源产品、MCP 和托管服务不是六套孤立资源，而是同一条产品交付链的不同层。</p>
+        </div>
+
+        <ol class="ecosystem-path" aria-label="从需求到产品交付的资源关系">
+          <li><span>01</span><strong>需求与场景</strong><small>先说清要回答的问题</small></li>
+          <li><span>02</span><strong>API 与数据</strong><small>发现实时接口和批量资产</small></li>
+          <li><span>03</span><strong>调用契约</strong><small>解析路径、参数与返回模型</small></li>
+          <li><span>04</span><strong>工具与产品</strong><small>复用 MCP 或自托管系统</small></li>
+          <li><span>05</span><strong>验证与交付</strong><small>统一适配、监控和部署</small></li>
+        </ol>
+
+        <div class="ecosystem-thesis" role="note">
+          <div>
+            <span>RELATIONSHIP MODEL</span>
+            <strong>同一个资源，可以同时是数据集、API、SDK、开源产品和 Agent 工具。</strong>
+          </div>
+          <p>未来应通过名称、域名、仓库、官方文档和规范来源建立统一实体关系，而不是把每个目录简单拼接成更长的链接清单。</p>
+        </div>
+
+        <div class="ecosystem-programs">
+          <article>
+            <div class="ecosystem-card-head"><span>P0 · NEXT</span><small>调用定义层</small></div>
+            <h3>OpenAPI Intelligence</h3>
+            <p>把“有哪些 API”推进到路径、参数、请求体和返回模型，形成规范搜索、接口比较、SDK、Mock 与适配器脚手架。</p>
+            <div class="ecosystem-tags"><span>APIs.guru</span><span>机器可读</span><span>自动生成</span></div>
+            <a href="https://github.com/APIs-guru/openapi-directory" target="_blank" rel="noreferrer">查看 OpenAPI Directory ↗</a>
+          </article>
+          <article>
+            <div class="ecosystem-card-head"><span>P0</span><small>数据资产层</small></div>
+            <h3>Open Data Intelligence</h3>
+            <p>记录数据集的地区、时间、格式、规模、访问方式和许可证，区分适合批量分析、模型训练或实时查询的资源。</p>
+            <div class="ecosystem-tags"><span>公共数据</span><span>许可证</span><span>商用边界</span></div>
+            <a href="https://github.com/connu/awesome-datasets" target="_blank" rel="noreferrer">查看 Awesome Datasets ↗</a>
+          </article>
+          <article>
+            <div class="ecosystem-card-head"><span>P0</span><small>AI 工具层</small></div>
+            <h3>MCP Intelligence</h3>
+            <p>梳理 AI Agent 能调用哪些 API、数据库和本地工具，同时评估安装方式、权限、密钥、数据外传和维护风险。</p>
+            <div class="ecosystem-tags"><span>MCP Server</span><span>权限</span><span>安全审查</span></div>
+            <a href="https://github.com/punkpeye/awesome-mcp-servers" target="_blank" rel="noreferrer">查看 MCP Servers ↗</a>
+          </article>
+          <article>
+            <div class="ecosystem-card-head"><span>P0</span><small>产品复用层</small></div>
+            <h3>Open-source Product Intelligence</h3>
+            <p>判断需求是否已有可部署开源产品，并比较许可证、技术栈、部署复杂度、已有 API 与二次开发成本。</p>
+            <div class="ecosystem-tags"><span>自托管</span><span>技术栈</span><span>二次开发</span></div>
+            <a href="https://github.com/awesome-selfhosted/awesome-selfhosted" target="_blank" rel="noreferrer">查看 Awesome Self-hosted ↗</a>
+          </article>
+          <article class="ecosystem-program-wide">
+            <div class="ecosystem-card-head"><span>P0 · VERTICAL</span><small>农业与生态层</small></div>
+            <h3>Agriculture &amp; Ecology Intelligence</h3>
+            <p>把现有 12 个农业 API 扩展到数据集、基础模型、农场软件、遥感、软硬件，以及气候、植物、动物、物种分布、水和土壤等生态资源。</p>
+            <div class="ecosystem-tags"><span>农业</span><span>生物多样性</span><span>遥感</span><span>环境监测</span></div>
+            <a href="https://github.com/protontypes/open-sustainable-technology" target="_blank" rel="noreferrer">查看 Open Sustainable Technology ↗</a>
+          </article>
+        </div>
+
+        <div class="ecosystem-library-index">
+          <div class="ecosystem-index-head">
+            <div>
+              <span>15 SOURCES · 5 LAYERS</span>
+              <h3>本次纳入的关联资源库</h3>
+            </div>
+            <a href="https://github.com/yydshly/0821_githubcode_study/blob/main/projects/public-apis-intelligence/RELATED_RESOURCES.md" target="_blank" rel="noreferrer">阅读完整关系研究 ↗</a>
+          </div>
+          <div class="ecosystem-library-groups">
+            <article>
+              <span>API / DATA</span>
+              <a href="https://github.com/APIs-guru/openapi-directory" target="_blank" rel="noreferrer">APIs.guru OpenAPI Directory</a>
+              <a href="https://github.com/awesomedata/awesome-public-datasets" target="_blank" rel="noreferrer">Awesome Public Datasets</a>
+              <a href="https://github.com/connu/awesome-datasets" target="_blank" rel="noreferrer">Awesome Datasets</a>
+              <a href="https://github.com/bytewax/awesome-public-real-time-datasets" target="_blank" rel="noreferrer">Public Real-time Datasets</a>
+            </article>
+            <article>
+              <span>TOOLS / PRODUCT</span>
+              <a href="https://github.com/punkpeye/awesome-mcp-servers" target="_blank" rel="noreferrer">Awesome MCP Servers</a>
+              <a href="https://github.com/awesome-selfhosted/awesome-selfhosted" target="_blank" rel="noreferrer">Awesome Self-hosted</a>
+              <a href="https://github.com/awesome-foss/awesome-sysadmin" target="_blank" rel="noreferrer">Awesome Sysadmin</a>
+              <a href="https://github.com/ripienaar/free-for-dev" target="_blank" rel="noreferrer">Free for Developers</a>
+            </article>
+            <article>
+              <span>DISCOVERY / LEARNING</span>
+              <a href="https://github.com/sindresorhus/awesome" target="_blank" rel="noreferrer">Awesome Meta-directory</a>
+              <a href="https://github.com/codecrafters-io/build-your-own-x" target="_blank" rel="noreferrer">Build Your Own X</a>
+              <a href="https://github.com/EbookFoundation/free-programming-books" target="_blank" rel="noreferrer">Free Programming Books</a>
+            </article>
+            <article>
+              <span>AGRICULTURE / ECOLOGY</span>
+              <a href="https://github.com/protontypes/open-sustainable-technology" target="_blank" rel="noreferrer">Open Sustainable Technology</a>
+              <a href="https://github.com/brycejohnston/awesome-agriculture" target="_blank" rel="noreferrer">Awesome Agriculture</a>
+              <a href="https://github.com/geezacoleman/OpenSourceAgriculture" target="_blank" rel="noreferrer">Open Source Agriculture</a>
+              <a href="https://github.com/urban-toolkit/awesome-urban-datasets" target="_blank" rel="noreferrer">Awesome Urban Datasets</a>
+            </article>
+          </div>
+          <p class="ecosystem-boundary"><strong>验证边界：</strong>本次完成的是仓库公开说明层面的关联研究。收录不等于其中 API、数据集、MCP 或软件已经通过安装、调用、安全、许可和生产质量验证。</p>
+        </div>
+      </section>
+
       <section class="research-process" id="research-process" aria-labelledby="research-process-title">
         <div class="section-heading">
           <div>
-            <p class="section-index">06 / RESEARCH ARCHIVE</p>
+            <p class="section-index">07 / RESEARCH ARCHIVE</p>
             <h2 id="research-process-title">这项研究是怎样形成的？</h2>
           </div>
           <p>当前阶段已经归档：保留资源、方法、数据与演示，不进行无目标的第三方 API 全量实测。</p>
@@ -348,6 +453,7 @@
           </div>
           <nav aria-label="研究归档文档">
             <a href="https://github.com/yydshly/0821_githubcode_study/blob/main/projects/public-apis-intelligence/ARCHIVE.md" target="_blank" rel="noreferrer">阶段归档与重启条件 ↗</a>
+            <a href="https://github.com/yydshly/0821_githubcode_study/blob/main/projects/public-apis-intelligence/RELATED_RESOURCES.md" target="_blank" rel="noreferrer">关联资源生态研究 ↗</a>
             <a href="https://github.com/yydshly/0821_githubcode_study/blob/main/projects/public-apis-intelligence/NOTES.md" target="_blank" rel="noreferrer">完整研究日志 ↗</a>
             <a href="https://github.com/yydshly/0821_githubcode_study/tree/main/projects/public-apis-intelligence" target="_blank" rel="noreferrer">代码、数据与同步脚本 ↗</a>
           </nav>
