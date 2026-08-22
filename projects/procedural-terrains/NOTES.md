@@ -1,5 +1,14 @@
 # 实验日志
 
+## 2026-08-22 · GitHub Pages 正式发布
+
+- main 集成提交：[`726203e`](https://github.com/yydshly/0821_githubcode_study/commit/726203e381d341d42c54afaebd6f8f77226aad72)。
+- Pages 工作流：[`32549764057`](https://github.com/yydshly/0821_githubcode_study/actions/runs/32549764057)，结论 `success`。
+- 研究展厅：<https://yydshly.github.io/0821_githubcode_study/demos/procedural-terrains/>。
+- RTS 技术原型：<https://yydshly.github.io/0821_githubcode_study/demos/procedural-terrains/rts-map-profile/>。
+- 线上验收：桌面研究展厅、RTS Seed 12345 重生成与战略视图、390×844 移动抽屉、强制 Canvas fallback 均为 HTTP 200，未捕获控制台或页面错误。
+- 回滚点：发布前 main [`2491eff`](https://github.com/yydshly/0821_githubcode_study/commit/2491eff)。
+
 ## 2026-08-22 · 最终归档与选型修正
 
 - 研究状态由 `researching` 调整为 `archived`，不再继续扩展当前原型。
