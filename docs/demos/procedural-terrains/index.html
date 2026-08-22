@@ -1,0 +1,422 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Procedural Terrains 归档研究展厅：能力、技术原理、使用场景、扩展方向与 RTS 技术探索。"
+    />
+    <title>Procedural Terrains · 研究展厅</title>
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='32' fill='%23b8ef73'/%3E%3Cpath d='M13 43 28 19l8 13 5-8 10 19H13Z' fill='%23080b0b'/%3E%3C/svg%3E" />
+    <link rel="stylesheet" href="./styles.css" />
+    <script src="./app.js" defer></script>
+  </head>
+  <body>
+    <a class="skip-link" href="#capabilities">跳到主要内容</a>
+
+    <header class="site-header">
+      <a class="brand" href="../../index.html" aria-label="返回 GitHub 能力研究实验室">
+        <span class="brand-mark" aria-hidden="true">PT</span>
+        <span>
+          <strong>Procedural Terrains</strong>
+          <small>ARCHIVED · b378e0e2</small>
+        </span>
+      </a>
+      <nav class="chapter-nav" aria-label="研究章节">
+        <a href="#capabilities" aria-current="true"><span>01</span> 能力</a>
+        <a href="#principles"><span>02</span> 原理</a>
+        <a href="#scenarios"><span>03</span> 场景</a>
+        <a href="#extensions"><span>04</span> 扩展</a>
+      </nav>
+      <a
+        class="repo-link"
+        href="https://github.com/ZyFou/ProceduralTerrains/tree/b378e0e2df66678a44df4edc057dda05436f0b59"
+      >源码 ↗</a>
+    </header>
+
+    <main>
+      <section class="hero section" id="capabilities" data-chapter="capabilities">
+        <div class="boundary-box">
+          <strong>研究已归档：</strong>
+          <p>当前页面保留固定提交的能力证据和可运行技术原型，不再继续扩展。原型不是生产可用或竞技公平的 RTS 地图生成器；未来按游戏地图、地理地图或三维地形资产的明确需求重新选型。</p>
+        </div>
+        <div class="hero-copy">
+          <p class="section-kicker">01 / CAPABILITY SHOWCASE</p>
+          <h1>从一块地形，<br />到无边世界，<br /><em>再到一颗星球。</em></h1>
+          <p class="hero-lead">
+            Procedural Terrains 不是单个噪声 Demo，而是一套在浏览器中完成地形生成、环境塑造、探索和生产导出的创作工具链。
+          </p>
+          <div class="hero-actions">
+            <a class="button primary" href="https://terrains.zyfod.dev/">打开上游在线版本 ↗</a>
+            <a class="button ghost" data-rts-prototype href="./rts-map-profile/">运行 RTS 地图原型 ↗</a>
+            <a class="button ghost" href="#principles">理解技术原理 ↓</a>
+          </div>
+        </div>
+
+        <div class="evidence-strip" aria-label="本研究验证数据">
+          <article><strong>3</strong><span>世界模式</span></article>
+          <article><strong>452</strong><span>测试通过</span></article>
+          <article><strong>5</strong><span>生产导出预设</span></article>
+          <article><strong>WebGL2</strong><span>主渲染路径</span></article>
+        </div>
+
+        <div class="mode-lab" aria-labelledby="mode-lab-title">
+          <div class="lab-heading">
+            <div>
+              <p class="micro-label">LIVE EVIDENCE / LOCAL RUNTIME</p>
+              <h2 id="mode-lab-title">同一套地形语言，三种空间组织</h2>
+            </div>
+            <div class="mode-tabs" role="tablist" aria-label="世界模式">
+              <button
+                type="button"
+                role="tab"
+                id="mode-tab-tile"
+                aria-controls="mode-panel"
+                aria-selected="true"
+                data-mode="tile"
+              >Tile</button>
+              <button
+                type="button"
+                role="tab"
+                id="mode-tab-infinite"
+                aria-controls="mode-panel"
+                aria-selected="false"
+                tabindex="-1"
+                data-mode="infinite"
+              >Infinite World</button>
+              <button
+                type="button"
+                role="tab"
+                id="mode-tab-planet"
+                aria-controls="mode-panel"
+                aria-selected="false"
+                tabindex="-1"
+                data-mode="planet"
+              >Planet</button>
+            </div>
+          </div>
+
+          <div class="mode-panel" id="mode-panel" role="tabpanel" aria-labelledby="mode-tab-tile">
+            <figure class="mode-viewport">
+              <img
+                id="mode-image"
+                src="./assets/terrain-tile.png"
+                alt="Tile 模式中的 Mountain range 地形编辑器"
+                width="1280"
+                height="720"
+              />
+              <figcaption>固定提交 b378e0e2 · 本地 WebGL 运行时截图</figcaption>
+            </figure>
+            <aside class="mode-copy" aria-live="polite">
+              <p class="mode-index" id="mode-index">MODE 01</p>
+              <h3 id="mode-title">Tile · 可编辑地形板</h3>
+              <p id="mode-description">
+                固定分块、逐块 LOD、画笔、样条线、多 Tile 拼装与高质量导出集中在一个可控创作画布中。
+              </p>
+              <dl>
+                <div><dt>空间组织</dt><dd id="mode-space">固定 board + chunk LOD</dd></div>
+                <div><dt>核心任务</dt><dd id="mode-task">编辑、绘制、烘焙与导出</dd></div>
+                <div><dt>运行证据</dt><dd id="mode-evidence">46 FPS / Intel UHD / 44K triangles*</dd></div>
+              </dl>
+              <p class="evidence-note">* 单次本地浏览器取证，只证明该场景可运行，不代表通用性能基准。</p>
+            </aside>
+          </div>
+        </div>
+
+        <section class="sample-library" aria-labelledby="sample-library-title">
+          <div class="sample-heading">
+            <div>
+              <p class="micro-label">BUILT-IN STARTING POINTS / COMPLETE INVENTORY</p>
+              <h2 id="sample-library-title">原库自带样例，一个也不省略</h2>
+            </div>
+            <p>
+              以下对应上游首页与 Templates 页面中的完整创作入口。颜色、水体等微型 preset 不混入样例计数，避免把参数预设和项目起点混为一谈。
+            </p>
+          </div>
+
+          <div class="workflow-grid" aria-label="四种内置创作入口">
+            <article><span>01</span><h3>Procedural</h3><p>直接参数、Noise Layers，以及 Tile / Infinite World / Planet 三种世界流程。</p></article>
+            <article><span>02</span><h3>Nodes</h3><p>从可编译地形图出发，节点与颜色路径都能保存为项目数据。</p></article>
+            <article><span>03</span><h3>Manual Terrain</h3><p>在干净地形上拖放山体、山谷、山脊、台地和陨石坑并直接变换。</p></article>
+            <article><span>04</span><h3>Real Terrain</h3><p>选择真实位置，载入高程、影像与建筑，进入专门的地理工作区。</p></article>
+          </div>
+
+          <div class="sample-proof">
+            <figure>
+              <img
+                src="./assets/built-in-templates.png"
+                loading="lazy"
+                alt="上游 Templates 页面展示五个内置程序化模板"
+                width="1280"
+                height="630"
+              />
+              <figcaption>上游真实 Templates 页面 · Mountain range 预览</figcaption>
+            </figure>
+            <div class="sample-catalog">
+              <section aria-labelledby="procedural-samples-title">
+                <div class="catalog-title"><h3 id="procedural-samples-title">Procedural templates</h3><span>5 / 5</span></div>
+                <ol>
+                  <li><strong>Blank terrain</strong><span>干净地形画布</span></li>
+                  <li><strong>Island</strong><span>海洋、沙滩与核心山体</span></li>
+                  <li><strong>Mountain range</strong><span>尖峰、积雪与山谷</span></li>
+                  <li><strong>Geological Hybrid</strong><span>风化台地、扭曲山体与岩脊</span></li>
+                  <li><strong>Desert</strong><span>沙丘、干涸盆地与暖光</span></li>
+                </ol>
+              </section>
+              <section aria-labelledby="node-samples-title">
+                <div class="catalog-title"><h3 id="node-samples-title">Nodes recipes</h3><span>8 / 8</span></div>
+                <ol>
+                  <li><strong>Blank graph</strong><span>仅含 Terrain Output 的平面</span></li>
+                  <li><strong>Geological Hybrid</strong><span>可编辑混合地质配方</span></li>
+                  <li><strong>Alpine ridges</strong><span>山体、岩层、碎石坡与排水</span></li>
+                  <li><strong>Layered highlands</strong><span>宽阔高地、地层与热风化</span></li>
+                  <li><strong>Wind dunes</strong><span>非对称沙海、滑移面与砂纹</span></li>
+                  <li><strong>River canyon</strong><span>河道切槽、支沟与砂岩层</span></li>
+                  <li><strong>Crater basin</strong><span>玄武岩、火山渣与灰烬撞击盆地</span></li>
+                  <li><strong>River valleys</strong><span>主河道、汇流支流与洪泛平原</span></li>
+                </ol>
+              </section>
+            </div>
+          </div>
+          <p class="catalog-source">
+            来源：<a href="https://github.com/ZyFou/ProceduralTerrains/blob/b378e0e2df66678a44df4edc057dda05436f0b59/src/project/ProjectTemplates.js">ProjectTemplates.js ↗</a>
+            与 <a href="https://github.com/ZyFou/ProceduralTerrains/blob/b378e0e2df66678a44df4edc057dda05436f0b59/src/project/NodeProjectTemplates.js">NodeProjectTemplates.js ↗</a>；8 个节点配方均通过可达性、图校验与实时编译测试。
+          </p>
+        </section>
+
+        <div class="capability-grid">
+          <article class="capability-card wide">
+            <div>
+              <p class="micro-label">AUTHORING</p>
+              <h3>从参数滑杆到节点图，再到真实地形</h3>
+              <p>确定性噪声、手工画笔、样条线、节点配方与真实世界高程不是孤立功能，而是进入同一地形状态与渲染管线的多种入口。</p>
+            </div>
+            <div class="dual-proof">
+              <figure>
+                <img src="./assets/real-terrain.png" loading="lazy" alt="真实世界高程导入编辑器" width="1200" height="750" />
+                <figcaption>真实世界高程、影像与建筑入口</figcaption>
+              </figure>
+              <figure>
+                <img src="./assets/node-workspace.png" loading="lazy" alt="程序化地形节点工作区" width="1280" height="720" />
+                <figcaption>节点图把噪声与地形操作显式连接</figcaption>
+              </figure>
+            </div>
+          </article>
+
+          <article class="capability-card">
+            <p class="micro-label">ENVIRONMENT</p>
+            <h3>环境不是背景贴图</h3>
+            <p>水面反射、海岸与泡沫遮罩、水下效果、程序天空、昼夜、云和大气都参与实时场景。</p>
+            <ul class="tag-list" aria-label="环境能力">
+              <li>Water</li><li>Clouds</li><li>Atmosphere</li><li>Time of day</li>
+            </ul>
+          </article>
+
+          <article class="capability-card">
+            <p class="micro-label">PRODUCTION OUTPUT</p>
+            <h3>不止保存一张截图</h3>
+            <p>可输出 GLB/GLTF、OBJ、高度/颜色/法线纹理、生物群系 splat、碰撞网格和水体遮罩。</p>
+            <ul class="tag-list" aria-label="导出预设">
+              <li>Unity</li><li>Unreal</li><li>Godot</li><li>Blender</li><li>Three.js</li>
+            </ul>
+          </article>
+        </div>
+      </section>
+
+      <section class="section principles" id="principles" data-chapter="principles">
+        <div class="section-heading">
+          <div>
+            <p class="section-kicker">02 / TECHNICAL PRINCIPLES</p>
+            <h2>它为什么能实时变化？</h2>
+          </div>
+          <p>关键不在于“把一张高度图贴上去”，而在于让同一个确定性地形函数贯穿显示、LOD、绘制与导出。</p>
+        </div>
+
+        <div class="render-pipeline" aria-label="浏览器 GPU 地形渲染流程">
+          <article><span>01</span><strong>React / App</strong><p>处理面板、项目状态、撤销与参数输入</p></article>
+          <i aria-hidden="true">→</i>
+          <article><span>02</span><strong>Three.js Engine</strong><p>组织场景、相机、材质、chunk 与 uniform</p></article>
+          <i aria-hidden="true">→</i>
+          <article><span>03</span><strong>WebGL2</strong><p>把 draw call、buffer 和 Shader 交给浏览器 GPU</p></article>
+          <i aria-hidden="true">→</i>
+          <article><span>04</span><strong>GLSL / GPU</strong><p>并行计算顶点高度、像素法线和生物群系颜色</p></article>
+          <i aria-hidden="true">→</i>
+          <article><span>05</span><strong>Frame / Bake</strong><p>生成实时画面，也能烘焙高度、法线与导出资产</p></article>
+        </div>
+
+        <div class="principle-grid">
+          <article>
+            <span class="principle-number">P1</span>
+            <h3>确定性地形函数</h3>
+            <p>地形是 <code>(world XZ, seed, params)</code> 的纯函数。相同输入得到相同形状；相机只决定 LOD，不参与塑形。</p>
+            <a href="https://github.com/ZyFou/ProceduralTerrains/blob/b378e0e2df66678a44df4edc057dda05436f0b59/src/engine/terrain/terrainGLSL.js">查看 terrainGLSL.js ↗</a>
+          </article>
+          <article>
+            <span class="principle-number">P2</span>
+            <h3>噪声栈编译成 GLSL</h3>
+            <p>add、carve、replace 等可序列化噪声层先组成规则，再生成 Shader 代码；编辑参数多数只需更新 uniform。</p>
+            <a href="https://github.com/ZyFou/ProceduralTerrains/blob/b378e0e2df66678a44df4edc057dda05436f0b59/src/engine/terrain/noise/noiseStackCodegen.js">查看 codegen ↗</a>
+          </article>
+          <article>
+            <span class="principle-number">P3</span>
+            <h3>LOD 只减少几何，不牺牲函数</h3>
+            <p>不同分辨率 chunk 仍采样同一高度规则；skirt ring 向下延伸，用来遮住相邻 LOD 的边缘裂缝。</p>
+            <a href="https://github.com/ZyFou/ProceduralTerrains/blob/b378e0e2df66678a44df4edc057dda05436f0b59/src/engine/terrain/ChunkGeometry.js">查看 ChunkGeometry.js ↗</a>
+          </article>
+          <article>
+            <span class="principle-number">P4</span>
+            <h3>像素阶段重算法线</h3>
+            <p>fragment Shader 对高度函数做有限差分，远处即使几何较稀，光照细节仍可保持清晰；代价是每像素多次高度求值。</p>
+            <a href="https://github.com/ZyFou/ProceduralTerrains/blob/b378e0e2df66678a44df4edc057dda05436f0b59/src/engine/terrain/TerrainMaterial.js">查看 TerrainMaterial.js ↗</a>
+          </article>
+        </div>
+
+        <aside class="principle-callout">
+          <p class="micro-label">ARCHITECTURE BOUNDARY</p>
+          <h3>React 是产品界面，Engine 才是 3D 核心</h3>
+          <p>React 镜像参数和渲染面板；<code>src/engine/</code> 管理 renderer、scene、camera、世界模式和资源生命周期。两者通过 Engine 方法与 callbacks 通信，因此可复用边界比普通 Three.js Demo 更清楚。</p>
+        </aside>
+      </section>
+
+      <section class="section scenarios" id="scenarios" data-chapter="scenarios">
+        <div class="section-heading">
+          <div>
+            <p class="section-kicker">03 / USE CASES</p>
+            <h2>它适合解决什么问题？</h2>
+          </div>
+          <p>判断标准不是“画面够不够酷”，而是参数化地形、浏览器编辑与目标资产格式是否真正缩短工作流。</p>
+        </div>
+
+        <div class="scenario-grid">
+          <article>
+            <span>GAME PROTOTYPING</span>
+            <h3>游戏世界快速原型</h3>
+            <p>在进入关卡工具前快速确定山脉、岛屿、水位、生物群系和探索尺度，再导出高度图、碰撞与网格。</p>
+            <dl><dt>交付物</dt><dd>GLB / RAW / R16 / splat / collision</dd></dl>
+          </article>
+          <article>
+            <span>WORLD BUILDING</span>
+            <h3>影视与概念世界构建</h3>
+            <p>用确定性 seed 建立可反复调整的远景地貌、行星和环境光照，输出到 Blender 继续精修。</p>
+            <dl><dt>交付物</dt><dd>Blender scene assets / textures / reference frames</dd></dl>
+          </article>
+          <article>
+            <span>REAL-WORLD CONTEXT</span>
+            <h3>真实地形可视化原型</h3>
+            <p>把位置高程、影像和建筑足迹转入可交互 3D 场景，适合规划沟通、路线概念和空间叙事原型。</p>
+            <dl><dt>边界</dt><dd>不是测绘级 GIS 或工程高程认证工具</dd></dl>
+          </article>
+          <article>
+            <span>EDUCATION &amp; R&amp;D</span>
+            <h3>Shader 与 LOD 教学研究</h3>
+            <p>同一仓库同时暴露噪声代码生成、chunk LOD、流送、cube-sphere、水和 GPU bake，适合做可见实验。</p>
+            <dl><dt>证据</dt><dd>452 tests / performance panels / serializable state</dd></dl>
+          </article>
+        </div>
+
+        <article class="prototype-proof">
+          <div>
+            <p class="micro-label">BUILT EXTENSION / RUNNABLE PROOF</p>
+            <h3>RTS Map Profile · 从地形资产到游戏地图语义</h3>
+            <p>
+              独立原型已经把确定性高度场继续加工为双阵营基地、两条战略路线、镜像资源、通行网格与建造网格；WebGL
+              用于三维检查，Canvas 2D 作为数据回退，并可直接导出带稳定 ID 的地图 JSON。
+            </p>
+          </div>
+          <dl>
+            <div><dt>已验证</dt><dd>Seed 复现 / 镜像公平 / 出生点有效 / 语义图层 / JSON 导出</dd></div>
+            <div><dt>仍未包含</dt><dd>具体游戏协议、单位寻路运行时、建筑与战斗规则</dd></div>
+          </dl>
+          <a class="button primary" data-rts-prototype href="./rts-map-profile/">进入技术原型 →</a>
+        </article>
+
+        <div class="boundary-box">
+          <strong>不应直接承诺：</strong>
+          <p>低端移动设备上的全质量运行、测绘级精度、物理侵蚀科学模拟、各游戏引擎导入后的完全视觉一致，当前研究都还没有对应证据。</p>
+        </div>
+      </section>
+
+      <section class="section extensions" id="extensions" data-chapter="extensions">
+        <div class="section-heading">
+          <div>
+            <p class="section-kicker">04 / EXTENSION DIRECTIONS</p>
+            <h2>如果恢复研究，应该扩什么？</h2>
+          </div>
+          <p>扩展项必须同时给出价值、源码切入点和验收标准，避免把愿望清单当作路线图。</p>
+        </div>
+
+        <div class="extension-list">
+          <article>
+            <div class="extension-rank"><span>01</span><em>PERFORMANCE</em></div>
+            <div>
+              <h3>按世界模式拆包，并预热关键 Shader</h3>
+              <p>本地首次切换 Infinite World 与 Planet 都出现了可感知的编译等待；构建同时报告 Engine、入口与 Three.js chunk 超过 500 kB。</p>
+            </div>
+            <dl>
+              <div><dt>切入点</dt><dd><code>Engine.js</code>、<code>planetBundle.js</code>、Vite manualChunks</dd></div>
+              <div><dt>验收</dt><dd>首屏请求下降；切换遮罩时间有数据化改善；三模式状态不丢失</dd></div>
+            </dl>
+          </article>
+          <article>
+            <div class="extension-rank"><span>02</span><em>FIDELITY</em></div>
+            <div>
+              <h3>建立“实时画面 → 烘焙 → 目标引擎”的一致性夹具</h3>
+              <p>导出选项很完整，但单元测试和 preflight 不能替代 Unity、Unreal、Godot 与 Blender 的实际导入对比。</p>
+            </div>
+            <dl>
+              <div><dt>切入点</dt><dd><code>TerrainExporter.js</code>、<code>ExportValidator</code>、目标预设</dd></div>
+              <div><dt>验收</dt><dd>固定 seed 的高度误差、法线方向、轴向、比例和水位均可自动核对</dd></div>
+            </dl>
+          </article>
+          <article>
+            <div class="extension-rank"><span>03</span><em>ENGINE API</em></div>
+            <div>
+              <h3>把噪声图、地形采样和世界模式变成稳定插件接口</h3>
+              <p>当前 Engine 边界清晰但体量较大。优先抽取 operator registry、GLSL codegen 与 height sampler，比整体搬运更容易复用。</p>
+            </div>
+            <dl>
+              <div><dt>切入点</dt><dd><code>NoiseStack.js</code>、<code>noiseStackCodegen.js</code>、<code>GpuHeightSampler.js</code></dd></div>
+              <div><dt>验收</dt><dd>第三方噪声节点可注册、序列化、生成 Shader，并在 Tile/Infinite/Planet 中一致运行</dd></div>
+            </dl>
+          </article>
+          <article>
+            <div class="extension-rank"><span>04</span><em>COMPUTE</em></div>
+            <div>
+              <h3>渐进式 GPU 计算，而不是盲目重写 WebGPU</h3>
+              <p>现有 WebGPU 侵蚀模块可作为试点：保留 WebGL2 渲染，把高收益计算迁移到可检测、可回退的 compute 路径。</p>
+            </div>
+            <dl>
+              <div><dt>切入点</dt><dd><code>erosionWebGPU</code>、GPU tier detection、CPU fallback</dd></div>
+              <div><dt>验收</dt><dd>支持设备获得可测加速；不支持设备结果一致且交互仍可用</dd></div>
+            </dl>
+          </article>
+          <article>
+            <div class="extension-rank"><span>05</span><em>GAMEPLAY PROFILE</em></div>
+            <div>
+              <h3>把地形资产升级为可验证的 RTS 地图语义</h3>
+              <p>当前研究原型已证明基地平整、镜像资源、通行/建造网格和稳定路线可以作为独立层生成；下一步是接入具体游戏的地图协议与运行时寻路。</p>
+            </div>
+            <dl>
+              <div><dt>原型</dt><dd><a data-rts-prototype href="./rts-map-profile/">RTS Map Profile ↗</a></dd></div>
+              <div><dt>验收</dt><dd>固定 Seed 可重放；阵营资源和路线公平；导出数据能被目标游戏加载并完成一局路径测试</dd></div>
+            </dl>
+          </article>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <div>
+        <strong>研究结论基于固定提交 b378e0e2</strong>
+        <p>上游代码与界面：Copyright (c) 2026 ZyFou · MIT License</p>
+      </div>
+      <div class="footer-links">
+        <a href="https://github.com/yydshly/0821_githubcode_study/tree/main/projects/procedural-terrains">研究文档 ↗</a>
+        <a href="https://github.com/yydshly/0821_githubcode_study/blob/main/projects/procedural-terrains/ARCHIVE.md">归档结论 ↗</a>
+        <a href="https://github.com/yydshly/0821_githubcode_study/blob/main/projects/procedural-terrains/CAPABILITY_MAP.md">能力图 ↗</a>
+        <a href="https://github.com/ZyFou/ProceduralTerrains">上游仓库 ↗</a>
+      </div>
+    </footer>
+  </body>
+</html>

@@ -13,6 +13,7 @@
 | Moovie | 点播/直播来源配置、可靠性、丰富度、资源匹配与换源 | `archived` | [上游仓库](https://github.com/TwoThreeWang/Moovie) | [来源研究归档](projects/moovie-video-playback/ARCHIVE.md) | [原研究实验室](https://yydshly.github.io/0821_githubcode_study/demos/moovie-video-playback/) · [归档结论页](https://yydshly.github.io/0821_githubcode_study/demos/moovie-source-research/) |
 | Architecture Map | AI 辅助代码库理解、交互式架构逻辑地图、文档漂移检测 | `validated` | [上游仓库](https://github.com/almendili/skills) | [研究记录](projects/architecture-map/) · [扩展方向](projects/architecture-map/EXTENSIONS.md) | [独立实现演示](https://yydshly.github.io/0821_githubcode_study/demos/architecture-map/) |
 | Public APIs Intelligence | 公共 API 发现、全量统计、接入准备度与统一接入建议 | `archived` | [上游仓库](https://github.com/public-apis/public-apis) | [归档档案](projects/public-apis-intelligence/ARCHIVE.md) · [研究记录](projects/public-apis-intelligence/) | [归档能力账本](https://yydshly.github.io/0821_githubcode_study/demos/public-apis-intelligence/) |
+| Procedural Terrains | GPU 地形、三种世界尺度、LOD、环境渲染与游戏地图选型 | `archived` | [上游仓库](https://github.com/ZyFou/ProceduralTerrains) | [归档结论](projects/procedural-terrains/ARCHIVE.md) · [能力图](projects/procedural-terrains/CAPABILITY_MAP.md) | [研究展厅](https://yydshly.github.io/0821_githubcode_study/demos/procedural-terrains/) · [RTS 技术原型](https://yydshly.github.io/0821_githubcode_study/demos/procedural-terrains/rts-map-profile/) |
 
 状态统一使用 `planned`、`researching`、`validated`、`archived`，方便快速判断研究进度。
 
