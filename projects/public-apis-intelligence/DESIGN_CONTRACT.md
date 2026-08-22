@@ -61,8 +61,8 @@ Observable completion criteria: 全量条目可追溯到上游快照；统计总
 | 农业扩展 | 桌面与 390px 手机可完成农业路径 | 浅色/深色/响应式 | 浏览器截图、交互、详情和溢出检查 | 7 | pass | 桌面浅/深色与 390px 通过；手机 scrollWidth = 390 |
 | 过程归档 | 页面说明本项目如何从资源清单走到能力账本 | 过程网页/桌面与手机 | 时间线、归档状态、边界和文档入口 | 3 | pass | 六阶段过程、归档状态和三个文档入口通过浏览器验收 |
 | 文档沉淀 | 归档结论、过程、数据和重启条件可追溯 | GitHub 项目目录 | README、NOTES、ARCHIVE、设计契约和生成数据 | 8 | pass | README、NOTES、ARCHIVE、契约、数据与脚本齐备 |
-| 远端提交 | 只提交 Public APIs Intelligence 相关资产 | Git 提交/main | 暂存清单、提交内容和远端 SHA | 9 | continue | 隔离其他工作区改动后提交 |
-| Pages 部署 | 过程网页与能力账本公开可访问 | GitHub Pages | Actions 成功状态、线上 URL 与 HTTP/DOM 检查 | 9 | continue | 推送 main 并等待 Pages 工作流 |
+| 远端提交 | 只提交 Public APIs Intelligence 相关资产 | Git 提交/main | 暂存清单、提交内容和远端 SHA | 9 | pass | 在独立 worktree 基于 `origin/main` 合入并推送；未带入工作区内其他项目改动 |
+| Pages 部署 | 过程网页与能力账本公开可访问 | GitHub Pages | Actions 成功状态、线上 URL 与 HTTP/DOM 检查 | 9 | pass | `https://yydshly.github.io/0821_githubcode_study/demos/public-apis-intelligence/` 返回 200；线上桌面与 390px 手机验收通过 |
 
 ## 修复记录：本地数据未显示
 
