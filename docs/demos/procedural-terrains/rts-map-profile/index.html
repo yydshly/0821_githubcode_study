@@ -1,0 +1,165 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Procedural Terrains 的已归档 RTS Map Profile 技术探索；不代表生产可用或竞技公平" />
+    <title>RTS Map Profile · Procedural Terrains</title>
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23101614'/%3E%3Cpath d='m11 45 12-20 8 11 9-18 13 27H11Z' fill='%238ed457'/%3E%3Ccircle cx='18' cy='19' r='5' fill='%23efb54a'/%3E%3C/svg%3E" />
+    <script type="module" crossorigin src="./assets/index-D3YeE_Cp.js"></script>
+    <link rel="stylesheet" crossorigin href="./assets/index-B3vBMVbU.css">
+  </head>
+  <body>
+    <a class="skip-link" href="#map-stage">跳到地图工作台</a>
+
+    <div class="app-shell">
+      <header class="topbar">
+        <a class="brand" href="../" aria-label="返回 Procedural Terrains 研究展厅">
+          <span class="brand-mark" aria-hidden="true">RTS</span>
+          <span>
+            <strong>Map Profile</strong>
+            <small>ARCHIVED TECHNICAL PROOF · NOT GAME-READY</small>
+          </span>
+        </a>
+
+        <div class="run-state" aria-label="当前生成状态">
+          <span><i class="status-dot" aria-hidden="true"></i><b id="run-status">地图已就绪</b></span>
+          <span class="status-separator" aria-hidden="true"></span>
+          <span>GRID <b id="grid-status">65 × 65</b></span>
+          <span>SEED <b id="seed-status">48271</b></span>
+        </div>
+
+        <div class="topbar-actions">
+          <button class="button secondary" id="open-panel" type="button" aria-controls="control-panel" aria-expanded="false">
+            参数
+          </button>
+          <button class="button primary" id="export-top" type="button">导出地图 JSON</button>
+        </div>
+      </header>
+
+      <main class="workspace">
+        <section class="map-stage" id="map-stage" aria-label="RTS 地图三维预览">
+          <div class="scene-webgl" id="scene-webgl"></div>
+          <section class="fallback-stage" id="fallback-stage" hidden aria-live="polite">
+            <canvas id="fallback-map" width="720" height="720" aria-label="RTS 地图二维回退视图"></canvas>
+            <div>
+              <p class="eyebrow">2D DATA FALLBACK</p>
+              <h1>WebGL 不可用，地图数据仍然有效。</h1>
+              <p>你仍可重生成 Seed、检查通行/建造图层，并导出相同的 RTS 地图 JSON。</p>
+            </div>
+          </section>
+
+          <div class="stage-topline">
+            <div>
+              <p class="eyebrow">DETERMINISTIC DATA + VISUAL INSPECTION</p>
+              <h1>双阵营战术地形验证台</h1>
+            </div>
+            <div class="view-tabs" role="group" aria-label="地图视图">
+              <button type="button" data-view="terrain" aria-pressed="true">地形</button>
+              <button type="button" data-view="walkable" aria-pressed="false">通行</button>
+              <button type="button" data-view="buildable" aria-pressed="false">建造</button>
+              <button type="button" data-view="strategic" aria-pressed="false">战略</button>
+            </div>
+          </div>
+
+          <aside class="map-legend" aria-label="地图图例">
+            <span><i class="legend-base"></i>基地</span>
+            <span><i class="legend-route"></i>主路线</span>
+            <span><i class="legend-resource"></i>资源</span>
+            <span><i class="legend-choke"></i>隘口</span>
+          </aside>
+
+          <aside class="cell-inspector" id="cell-inspector" aria-live="polite">
+            <p class="eyebrow">CELL INSPECTOR</p>
+            <strong>点击地图检查格点</strong>
+            <span>高度、坡度、通行和建造语义会显示在这里。</span>
+          </aside>
+
+          <div class="scene-hint">拖动旋转 · 滚轮缩放 · 点击检查格点</div>
+        </section>
+
+        <div class="panel-backdrop" id="panel-backdrop" hidden></div>
+        <aside class="control-panel" id="control-panel" aria-label="地图生成参数">
+          <div class="panel-header">
+            <div>
+              <p class="eyebrow">GENERATION PROFILE</p>
+              <h2>RTS 探索参数</h2>
+            </div>
+            <button class="icon-button" id="close-panel" type="button" aria-label="关闭参数面板">×</button>
+          </div>
+
+          <section class="control-section">
+            <div class="section-title">
+              <span>01</span>
+              <div><strong>地图身份</strong><small>相同 Seed 与参数得到相同数据</small></div>
+            </div>
+            <label class="field-label" for="seed-input">Seed</label>
+            <div class="seed-row">
+              <input id="seed-input" type="number" value="48271" inputmode="numeric" />
+              <button class="icon-button dice" id="random-seed" type="button" aria-label="生成随机 Seed">↻</button>
+            </div>
+            <div class="preset-row" aria-label="地图预设">
+              <button type="button" data-preset="balanced" aria-pressed="true">平衡</button>
+              <button type="button" data-preset="open" aria-pressed="false">开阔</button>
+              <button type="button" data-preset="highlands" aria-pressed="false">高地</button>
+            </div>
+          </section>
+
+          <section class="control-section">
+            <div class="section-title">
+              <span>02</span>
+              <div><strong>地形约束</strong><small>连续参数更新地图高度函数</small></div>
+            </div>
+            <label class="range-field" for="roughness-input">
+              <span>地形粗糙度 <output id="roughness-output">0.58</output></span>
+              <input id="roughness-input" type="range" min="0.2" max="0.95" step="0.01" value="0.58" />
+            </label>
+            <label class="range-field" for="ridge-input">
+              <span>中央山脊 <output id="ridge-output">0.62</output></span>
+              <input id="ridge-input" type="range" min="0" max="1" step="0.01" value="0.62" />
+            </label>
+            <label class="range-field" for="water-input">
+              <span>水位 <output id="water-output">0.20</output></span>
+              <input id="water-input" type="range" min="0.1" max="0.34" step="0.01" value="0.20" />
+            </label>
+            <button class="button generate" id="generate-map" type="button">重新生成地图</button>
+          </section>
+
+          <section class="control-section tactical-map-section">
+            <div class="section-title">
+              <span>03</span>
+              <div><strong>战术数据图</strong><small>不是装饰缩略图，而是同一语义网格</small></div>
+            </div>
+            <canvas id="tactical-map" width="480" height="480" aria-label="RTS 地图战术数据图"></canvas>
+          </section>
+
+          <section class="control-section metrics-section">
+            <div class="section-title">
+              <span>04</span>
+              <div><strong>基础指标</strong><small>不等同于可玩性或竞技验证</small></div>
+            </div>
+            <dl class="metrics-grid">
+              <div><dt>镜像公平</dt><dd id="metric-symmetry">100%</dd></div>
+              <div><dt>可通行</dt><dd id="metric-walkable">—</dd></div>
+              <div><dt>可建造</dt><dd id="metric-buildable">—</dd></div>
+              <div><dt>声明路线</dt><dd id="metric-routes">2</dd></div>
+            </dl>
+            <div class="validation-list" aria-label="验证规则">
+              <span><i></i>两个出生点均可通行、可建造</span>
+              <span><i></i>资源按阵营镜像，中央资源为争夺点</span>
+              <span><i></i>配方声明两条路线；尚未证明独立拓扑与有效净宽</span>
+            </div>
+          </section>
+
+          <footer class="panel-footer">
+            <button class="button primary export" id="export-map" type="button">导出地图 JSON</button>
+            <p>输出包含高度、通行、建造、道路、基地、资源与稳定 ID。</p>
+          </footer>
+        </aside>
+      </main>
+
+      <div class="toast" id="toast" role="status" aria-live="polite" hidden></div>
+    </div>
+
+  </body>
+</html>

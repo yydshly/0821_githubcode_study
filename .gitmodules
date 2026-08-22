@@ -1,3 +1,6 @@
 [submodule "projects/moovie-video-playback/upstream"]
 	path = projects/moovie-video-playback/upstream
 	url = https://github.com/TwoThreeWang/Moovie.git
+[submodule "projects/procedural-terrains/upstream"]
+	path = projects/procedural-terrains/upstream
+	url = https://github.com/ZyFou/ProceduralTerrains.git

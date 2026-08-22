@@ -13,6 +13,7 @@
 | Chinese Poetry：古典诗词产品基础底座 | `researching` | [数据边界、基础底座与产品方向](chinese-poetry-product-foundation/) | 暂无 |
 | ebook2audiobook：电子书转有声书 | `archived` | [能力与技术归档](ebook2audiobook/ARCHIVE.md) · [研究记录](ebook2audiobook/) | 暂无 |
 | Public APIs Intelligence：公共 API 能力账本 | `archived` | [归档档案](public-apis-intelligence/ARCHIVE.md) · [研究记录](public-apis-intelligence/) | [归档演示](https://yydshly.github.io/0821_githubcode_study/demos/public-apis-intelligence/) |
+| Procedural Terrains：GPU 地形与游戏地图选型 | `archived` | [归档结论](procedural-terrains/ARCHIVE.md) · [能力图](procedural-terrains/CAPABILITY_MAP.md) | [研究展厅](https://yydshly.github.io/0821_githubcode_study/demos/procedural-terrains/) · [RTS 技术原型](https://yydshly.github.io/0821_githubcode_study/demos/procedural-terrains/rts-map-profile/) |
 
 ## 推荐布局
 
