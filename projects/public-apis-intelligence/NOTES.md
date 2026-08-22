@@ -92,3 +92,5 @@
 - 推荐后续按需启动 OpenAPI Intelligence、Open Data Intelligence、MCP Intelligence、Open-source Product Intelligence、Agriculture & Ecology Intelligence 五个子项目。
 - 网页新增“找到 API 之后，还缺什么？”章节，展示关系路径、五个优先研究方向、15 个来源入口和诚实验证边界。
 - 本次仍不安装全部项目、调用全部服务或下载全部数据集；相关资源只作为发现和调度入口，不作为安全、许可、可用性或生产质量认证。
+- 关联资源生态以提交 `0b65e55` 隔离合入远端 `main`，没有带入工作区内其他未提交内容。
+- GitHub Pages 更新后返回 HTTP 200；1440×1000 浅色/深色和 390×844 手机均显示 5 步关系路径、5 个子项目、15 个来源、4 个归档文档入口，无横向溢出、控制台错误、页面脚本异常或失败资源请求。

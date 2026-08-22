@@ -66,7 +66,7 @@ Observable completion criteria: 全量条目可追溯到上游快照；统计总
 | 关联资源生态 | 将推荐库整理为可复用的结构化研究数据 | 数据/文档 | JSON 字段、来源链接、关系、优先级与验证边界 | 3 | pass | 15 条记录通过唯一 ID、GitHub 来源、必填关系和优先级自动测试 |
 | 关联资源生态 | 解释 API、数据集、OpenAPI、开源产品、MCP 与基础设施怎样组合 | 过程网页/桌面与手机 | 关系路径、分层卡片、垂直资源和子项目建议 | 3 | pass | 5 步关系路径、5 个子项目和 15 个来源在桌面/深色/390px 验收通过 |
 | 文档沉淀 | README、NOTES、ARCHIVE 记录扩展研究与后续调度方式 | GitHub 项目目录 | 文档内容与链接检查 | 8 | pass | README、NOTES、ARCHIVE、RELATED_RESOURCES 和结构化 JSON 已互相链接并保留验证边界 |
-| 增量交付 | 仅提交关联资源生态相关资产并更新 Pages | Git/main、GitHub Pages | 测试、提交 SHA、HTTP/DOM 与浏览器验收 | 9 | continue | 隔离其他工作区改动后提交并验证线上版本 |
+| 增量交付 | 仅提交关联资源生态相关资产并更新 Pages | Git/main、GitHub Pages | 测试、提交 SHA、HTTP/DOM 与浏览器验收 | 9 | pass | `0b65e55` 已合入 main；Pages 返回 200，桌面/深色/390px 与 15 个来源 DOM 验收通过 |
 
 ## 修复记录：本地数据未显示
 
